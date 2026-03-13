@@ -50,6 +50,7 @@ ONE4ALL/
   engine/
   skills/
     SKILL_TEMPLATE.md
+    novel2script/
     recap_analysis/
     recap_production/
   outputs/
@@ -84,6 +85,20 @@ The app now talks to skills through a stable adapter boundary instead of reachin
   `app/skills/adapters/skill_md_adapter.py` is the generic Phase 2 bridge for current markdown-spec skills. It wraps the existing `SKILL.md` loading and shared engine execution flow instead of reimplementing it.
 
 This is the key difference from Phase 1: the registry still decides what the app exposes, but the app now dispatches through adapters rather than directly coupling `run.py` to raw skill folders and engine-specific loading steps.
+
+## Shared Engine Capabilities
+
+The shared engine now supports an embedded ```skill-registry``` block inside `SKILL.md` for markdown-spec skills that need richer step metadata without adding per-skill YAML files.
+
+That generic support is what allows `skills/novel2script/` to run through the existing `skill_md` adapter and shared engine.
+
+Shared capabilities added for this:
+
+- parsing embedded step registries from `SKILL.md`
+- resolving prompt and asset resources relative to the skill folder
+- loading text-like references from `.txt` / `.md` and extracting readable text from `.docx` / `.xlsx`
+- carrying named step outputs forward across resume so later steps can consume multiple prior artifacts
+- writing stable per-step filenames when the skill spec defines them
 
 ## Skill Registry
 
@@ -152,6 +167,8 @@ Minimal flow for a new skill:
 5. Add any prompt or reference files under `skills/<your_skill>/references/`.
 6. Run `python run.py` and choose the new skill from the menu.
 
+For richer markdown-spec skills, resources can also live beside the skill under folders such as `prompts/` and `assets/`, as long as the `SKILL.md` spec references them.
+
 ## Runtime Inputs
 
 Runtime inputs are driven by skill config, not hardcoded runner branches.
@@ -217,3 +234,4 @@ See `.env.example` for supported variables. The engine supports OpenRouter and O
 
 - `recap_analysis` via `skills/registry.yaml` -> `skills/recap_analysis/SKILL.md`
 - `recap_production` via `skills/registry.yaml` -> `skills/recap_production/SKILL.md`
+- `novel2script` via `skills/registry.yaml` -> `skills/novel2script/SKILL.md`

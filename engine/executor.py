@@ -4,7 +4,7 @@ from pathlib import Path
 from typing import Any
 
 from . import terminal_ui
-from .input_loader import chunk_text, load_input_document
+from .input_loader import chunk_text, load_input_document, read_resource_text
 from .llm_client import call_chat_completion, load_config_from_env, parse_json_response
 from .models import DocumentResult, RunState, SkillDefinition, StructuredStage
 from .planner import build_execution_plan
@@ -138,6 +138,7 @@ def execute_document(
         runtime_inputs=runtime_values,
         status="running",
         output_directory=str(output_dir),
+        output_files=dict(resume_state.output_files) if resume_state else {},
         strategy=skill.execution_strategy,
         notes=[plan.detected_step.reason],
         resume_from=resume_state.output_directory if resume_state else None,
@@ -216,22 +217,25 @@ def _run_step_prompt(
             reference_ids.append(reference.reference_id)
 
     reference_texts = load_reference_texts(skill, reference_ids)
+    input_blocks = _resolve_step_input_blocks(skill, step, document, state)
     messages = build_step_prompt_messages(
         skill,
         step,
         document,
         reference_texts,
         runtime_values,
+        input_blocks=input_blocks,
         resume_state=resume_state,
     )
     response = call_chat_completion(config, messages, json_mode=False)
+    output_filename = step.output_filename or render_output_filename(
+        skill.output_config.filename_template,
+        document,
+        step_number=step_number,
+    )
     output_path = write_text_file(
         output_dir,
-        render_output_filename(
-            skill.output_config.filename_template,
-            document,
-            step_number=step_number,
-        ),
+        output_filename,
         response.text,
     )
     if skill.output_config.include_prompt_dump:
@@ -246,7 +250,9 @@ def _run_step_prompt(
             prompt_payload,
         )
         write_json_file(output_dir, f"prompt_dump_step_{step_number}.json", prompt_payload)
-    state.output_files = {"primary": str(output_path)}
+    state.output_files["primary"] = str(output_path)
+    if step.output_key:
+        state.output_files[step.output_key] = str(output_path)
     state.working_input_path = str(output_path if step_number < skill.final_step_number else document.path)
     state.status = "completed_step" if step_number < skill.final_step_number else "completed"
     save_state(state, output_dir)
@@ -421,3 +427,48 @@ def _extract_final_sections(stage_outputs: dict[str, Any]) -> dict[str, Any]:
         if isinstance(value, dict) and isinstance(value.get("sections"), dict):
             return dict(value["sections"])
     raise ExecutionError("Structured workflow did not return a final sections payload.")
+
+
+def _resolve_step_input_blocks(
+    skill: SkillDefinition,
+    step,
+    document,
+    state: RunState,
+) -> list[tuple[str, str]] | None:
+    if not step.input_blocks:
+        return None
+
+    resolved: list[tuple[str, str]] = []
+    used_document_fallback = False
+    for block in step.input_blocks:
+        content = _resolve_input_block_content(block.source_key, document, state, used_document_fallback)
+        if content is None:
+            if block.required:
+                raise ExecutionError(
+                    f"Required input block '{block.source_key}' is missing for skill '{skill.name}' step {step.number}."
+                )
+            continue
+        if block.source_key != "user_brief" and content == document.text and not used_document_fallback:
+            used_document_fallback = True
+        resolved.append((block.label, content))
+    return resolved
+
+
+def _resolve_input_block_content(
+    source_key: str,
+    document,
+    state: RunState,
+    used_document_fallback: bool,
+) -> str | None:
+    if source_key == "user_brief":
+        return document.text
+
+    output_path = state.output_files.get(source_key)
+    if output_path:
+        candidate = Path(output_path)
+        if candidate.exists():
+            return read_resource_text(candidate).strip()
+
+    if not used_document_fallback:
+        return document.text
+    return None

@@ -10,6 +10,7 @@ from .models import (
     ChunkingConfig,
     OutputConfig,
     ReferenceDefinition,
+    SkillInputBlock,
     RuntimeInputDefinition,
     SkillDefinition,
     SkillRegistryEntry,
@@ -74,17 +75,26 @@ def load_skill(skill_dir: Path) -> SkillDefinition:
     if not isinstance(frontmatter, dict):
         raise SkillLoadError(f"Invalid frontmatter in {skill_md_path}")
 
-    steps = _load_steps(frontmatter, skill_dir, body)
-    references = _load_references(frontmatter, skill_dir, steps)
+    embedded_registry = _load_embedded_skill_registry(body, skill_md_path)
+    body = _strip_embedded_skill_registry(body)
+    steps = _load_steps(frontmatter, embedded_registry, skill_dir, body)
+    references = _load_references(frontmatter, embedded_registry, skill_dir, steps)
     stages = _load_stages(frontmatter)
     chunking = _load_chunking(frontmatter)
     output_config = _load_output_config(frontmatter)
-    runtime_inputs = _load_runtime_inputs(frontmatter)
+    runtime_inputs = _load_runtime_inputs(frontmatter, embedded_registry, steps)
     name = str(frontmatter.get("name") or skill_dir.name)
-    display_name = str(frontmatter.get("display_name") or name)
+    display_name = str(frontmatter.get("display_name") or frontmatter.get("display") or name)
     description = str(frontmatter.get("description") or _extract_title(body) or name)
     execution = frontmatter.get("execution", {}) or {}
     strategy = str(execution.get("strategy") or ("structured_report" if stages else "step_prompt"))
+    supports_resume = bool(
+        frontmatter.get(
+            "supports_resume",
+            embedded_registry.get("supports_resume", False),
+        )
+    )
+    system_instructions = _load_system_instructions(frontmatter, embedded_registry)
 
     return SkillDefinition(
         name=name,
@@ -93,7 +103,7 @@ def load_skill(skill_dir: Path) -> SkillDefinition:
         skill_dir=skill_dir,
         skill_md_path=skill_md_path,
         body=body.strip(),
-        supports_resume=bool(frontmatter.get("supports_resume", False)),
+        supports_resume=supports_resume,
         execution_strategy=strategy,
         steps=steps,
         runtime_inputs=runtime_inputs,
@@ -103,6 +113,7 @@ def load_skill(skill_dir: Path) -> SkillDefinition:
         output_config=output_config,
         input_extensions=[str(item).lower() for item in frontmatter.get("input_extensions", [".txt"])],
         folder_mode=str(frontmatter.get("folder_mode", "non_recursive")),
+        system_instructions=system_instructions,
     )
 
 
@@ -114,10 +125,7 @@ def load_reference_texts(skill: SkillDefinition, reference_ids: list[str]) -> di
             raise SkillLoadError(
                 f"Referenced file '{reference.relative_path}' is missing for skill '{skill.name}'."
             )
-        try:
-            loaded[reference_id] = reference.absolute_path.read_text(encoding="utf-8")
-        except UnicodeDecodeError:
-            loaded[reference_id] = reference.absolute_path.read_text(encoding="utf-8-sig")
+        loaded[reference_id] = _read_reference_resource(reference.absolute_path)
     return loaded
 
 
@@ -232,8 +240,17 @@ def _split_frontmatter(raw_text: str) -> tuple[dict[str, Any], str]:
     return frontmatter, body
 
 
-def _load_steps(frontmatter: dict[str, Any], skill_dir: Path, body: str) -> dict[int, SkillStep]:
+def _load_steps(
+    frontmatter: dict[str, Any],
+    embedded_registry: dict[str, Any],
+    skill_dir: Path,
+    body: str,
+) -> dict[int, SkillStep]:
     raw_steps = frontmatter.get("steps")
+    if not raw_steps:
+        raw_steps = embedded_registry.get("steps")
+        if raw_steps:
+            return _load_registry_steps(embedded_registry)
     if not raw_steps:
         return _infer_steps_from_body(skill_dir, body)
 
@@ -244,6 +261,7 @@ def _load_steps(frontmatter: dict[str, Any], skill_dir: Path, body: str) -> dict
         number = int(raw_step["number"])
         steps[number] = SkillStep(
             number=number,
+            step_id=str(raw_step.get("id") or f"step{number}"),
             title=str(raw_step.get("title") or f"Step {number}"),
             prompt_reference_id=_optional_string(raw_step.get("prompt_reference")),
             description=str(raw_step.get("description", "")),
@@ -252,6 +270,9 @@ def _load_steps(frontmatter: dict[str, Any], skill_dir: Path, body: str) -> dict
             route_priority=int(raw_step.get("route_priority", 0)),
             requires_list_like=bool(raw_step.get("requires_list_like", False)),
             requires_script_like=bool(raw_step.get("requires_script_like", False)),
+            input_blocks=_load_input_blocks(raw_step.get("input_blocks")),
+            output_key=_optional_string(raw_step.get("write_to")),
+            output_filename=_optional_string(raw_step.get("output_filename")),
             default=bool(raw_step.get("default", False)),
         )
     if not steps:
@@ -261,11 +282,15 @@ def _load_steps(frontmatter: dict[str, Any], skill_dir: Path, body: str) -> dict
 
 def _load_references(
     frontmatter: dict[str, Any],
+    embedded_registry: dict[str, Any],
     skill_dir: Path,
     steps: dict[int, SkillStep],
 ) -> dict[str, ReferenceDefinition]:
     raw_references = frontmatter.get("references", []) or []
+    if not raw_references:
+        raw_references = embedded_registry.get("references", []) or []
     references: dict[str, ReferenceDefinition] = {}
+    step_id_to_number = {step.step_id or f"step{step.number}": step.number for step in steps.values()}
     for raw_reference in raw_references:
         if not isinstance(raw_reference, dict):
             continue
@@ -278,9 +303,26 @@ def _load_references(
             absolute_path=absolute_path,
             kind=str(raw_reference.get("kind", "reference")),
             description=str(raw_reference.get("description", "")),
-            step_numbers=[int(item) for item in raw_reference.get("step_numbers", [])],
+            step_numbers=_resolve_step_numbers(raw_reference, step_id_to_number),
             stage_names=_to_string_list(raw_reference.get("stage_names")),
             load=str(raw_reference.get("load", "auto")),
+        )
+
+    for step in steps.values():
+        if not step.prompt_reference_id:
+            continue
+        if step.prompt_reference_id in references:
+            continue
+        relative_path = embedded_registry_path_for_step(embedded_registry, step.step_id or f"step{step.number}")
+        if not relative_path:
+            continue
+        references[step.prompt_reference_id] = ReferenceDefinition(
+            reference_id=step.prompt_reference_id,
+            relative_path=relative_path,
+            absolute_path=skill_dir / Path(relative_path),
+            kind="prompt",
+            description=f"Prompt for {step.title}",
+            step_numbers=[step.number],
         )
 
     for step in steps.values():
@@ -291,9 +333,18 @@ def _load_references(
     return references
 
 
-def _load_runtime_inputs(frontmatter: dict[str, Any]) -> list[RuntimeInputDefinition]:
+def _load_runtime_inputs(
+    frontmatter: dict[str, Any],
+    embedded_registry: dict[str, Any],
+    steps: dict[int, SkillStep],
+) -> list[RuntimeInputDefinition]:
     definitions: list[RuntimeInputDefinition] = []
-    for raw_definition in frontmatter.get("runtime_inputs", []) or []:
+    raw_definitions = frontmatter.get("runtime_inputs", []) or []
+    if not raw_definitions:
+        raw_definitions = embedded_registry.get("runtime_inputs", []) or []
+
+    step_id_to_number = {step.step_id or f"step{step.number}": step.number for step in steps.values()}
+    for raw_definition in raw_definitions:
         if not isinstance(raw_definition, dict):
             continue
         definitions.append(
@@ -302,7 +353,7 @@ def _load_runtime_inputs(frontmatter: dict[str, Any]) -> list[RuntimeInputDefini
                 prompt=str(raw_definition["prompt"]),
                 field_type=str(raw_definition.get("type", "string")),
                 required=bool(raw_definition.get("required", True)),
-                step_numbers=[int(item) for item in raw_definition.get("step_numbers", [])],
+                step_numbers=_resolve_step_numbers(raw_definition, step_id_to_number),
                 choices=_to_string_list(raw_definition.get("choices")),
                 default=raw_definition.get("default"),
                 min_value=_optional_int(raw_definition.get("min")),
@@ -368,6 +419,7 @@ def _infer_steps_from_body(skill_dir: Path, body: str) -> dict[int, SkillStep]:
         reference_id = Path(prompt_file).stem.replace("-", "_")
         steps[step_number] = SkillStep(
             number=step_number,
+            step_id=f"step{step_number}",
             title=f"Step {step_number}",
             prompt_reference_id=reference_id,
             default=step_number == 1,
@@ -378,6 +430,7 @@ def _infer_steps_from_body(skill_dir: Path, body: str) -> dict[int, SkillStep]:
     return {
         1: SkillStep(
             number=1,
+            step_id="step1",
             title=_extract_title(body) or skill_dir.name,
             default=True,
         )
@@ -407,3 +460,109 @@ def _optional_string(value: Any) -> str | None:
     if value in (None, ""):
         return None
     return str(value)
+
+
+def _load_embedded_skill_registry(body: str, skill_md_path: Path) -> dict[str, Any]:
+    match = re.search(r"```skill-registry\s*\n(.*?)```", body, flags=re.DOTALL)
+    if not match:
+        return {}
+    try:
+        payload = yaml.safe_load(match.group(1)) or {}
+    except yaml.YAMLError as exc:
+        raise SkillLoadError(f"Invalid skill-registry block in {skill_md_path}: {exc}") from exc
+    if not isinstance(payload, dict):
+        raise SkillLoadError(f"skill-registry block must decode to a mapping in {skill_md_path}")
+    return payload
+
+
+def _strip_embedded_skill_registry(body: str) -> str:
+    return re.sub(r"\n?```skill-registry\s*\n.*?```", "", body, flags=re.DOTALL).strip()
+
+
+def _load_registry_steps(embedded_registry: dict[str, Any]) -> dict[int, SkillStep]:
+    raw_steps = embedded_registry.get("steps", []) or []
+    entrypoint = str(embedded_registry.get("entrypoint") or "")
+    step_id_to_number: dict[str, int] = {}
+    for index, raw_step in enumerate(raw_steps, start=1):
+        if not isinstance(raw_step, dict):
+            continue
+        step_id = str(raw_step.get("id") or f"step{index}")
+        step_id_to_number[step_id] = index
+
+    steps: dict[int, SkillStep] = {}
+    for index, raw_step in enumerate(raw_steps, start=1):
+        if not isinstance(raw_step, dict):
+            continue
+        step_id = str(raw_step.get("id") or f"step{index}")
+        prompt_path = _optional_string(raw_step.get("prompt"))
+        prompt_reference_id = (
+            str(raw_step.get("prompt_reference_id"))
+            if raw_step.get("prompt_reference_id") not in (None, "")
+            else (Path(prompt_path).stem.replace("-", "_") if prompt_path else None)
+        )
+        next_value = _optional_string(raw_step.get("next"))
+        next_step_number = None if next_value in (None, "END") else step_id_to_number.get(next_value)
+        steps[index] = SkillStep(
+            number=index,
+            step_id=step_id,
+            title=str(raw_step.get("title") or f"Step {index}"),
+            prompt_reference_id=prompt_reference_id,
+            description=str(raw_step.get("description", "")),
+            route_keywords_any=_to_string_list(raw_step.get("route_keywords_any")),
+            route_keywords_all=_to_string_list(raw_step.get("route_keywords_all")),
+            route_priority=int(raw_step.get("route_priority", 0)),
+            requires_list_like=bool(raw_step.get("requires_list_like", False)),
+            requires_script_like=bool(raw_step.get("requires_script_like", False)),
+            input_blocks=_load_input_blocks(raw_step.get("input_blocks")),
+            output_key=_optional_string(raw_step.get("write_to")),
+            output_filename=_optional_string(raw_step.get("output_filename")),
+            next_step_number=next_step_number,
+            default=bool(raw_step.get("default", False) or step_id == entrypoint or (not entrypoint and index == 1)),
+        )
+    if not steps:
+        raise SkillLoadError("Embedded skill-registry defines no runnable steps.")
+    return steps
+
+
+def embedded_registry_path_for_step(embedded_registry: dict[str, Any], step_id: str) -> str | None:
+    for raw_step in embedded_registry.get("steps", []) or []:
+        if isinstance(raw_step, dict) and str(raw_step.get("id") or "") == step_id:
+            return _optional_string(raw_step.get("prompt"))
+    return None
+
+
+def _resolve_step_numbers(raw_item: dict[str, Any], step_id_to_number: dict[str, int]) -> list[int]:
+    if raw_item.get("step_numbers"):
+        return [int(item) for item in raw_item.get("step_numbers", [])]
+    step_ids = _to_string_list(raw_item.get("step_ids"))
+    numbers = [step_id_to_number[step_id] for step_id in step_ids if step_id in step_id_to_number]
+    return numbers
+
+
+def _load_input_blocks(raw_blocks: Any) -> list[SkillInputBlock]:
+    blocks: list[SkillInputBlock] = []
+    for raw_block in raw_blocks or []:
+        if not isinstance(raw_block, dict):
+            continue
+        blocks.append(
+            SkillInputBlock(
+                label=str(raw_block.get("label") or raw_block.get("from") or "Input"),
+                source_key=str(raw_block.get("from") or ""),
+                required=bool(raw_block.get("required", True)),
+            )
+        )
+    return blocks
+
+
+def _load_system_instructions(frontmatter: dict[str, Any], embedded_registry: dict[str, Any]) -> str:
+    llm_config = embedded_registry.get("llm", {}) or {}
+    return str(frontmatter.get("system_instructions") or llm_config.get("instructions") or "")
+
+
+def _read_reference_resource(path: Path) -> str:
+    try:
+        from .input_loader import read_resource_text
+
+        return read_resource_text(path)
+    except Exception as exc:  # noqa: BLE001
+        raise SkillLoadError(f"Could not load reference resource: {path}") from exc

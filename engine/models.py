@@ -47,6 +47,13 @@ class ReferenceDefinition:
 
 
 @dataclass(slots=True)
+class SkillInputBlock:
+    label: str
+    source_key: str
+    required: bool = True
+
+
+@dataclass(slots=True)
 class RuntimeInputDefinition:
     name: str
     prompt: str
@@ -79,6 +86,7 @@ class RuntimeInputDefinition:
 class SkillStep:
     number: int
     title: str
+    step_id: str = ""
     prompt_reference_id: str | None = None
     description: str = ""
     route_keywords_any: list[str] = field(default_factory=list)
@@ -86,6 +94,10 @@ class SkillStep:
     route_priority: int = 0
     requires_list_like: bool = False
     requires_script_like: bool = False
+    input_blocks: list[SkillInputBlock] = field(default_factory=list)
+    output_key: str | None = None
+    output_filename: str | None = None
+    next_step_number: int | None = None
     default: bool = False
 
 
@@ -136,6 +148,7 @@ class SkillDefinition:
     output_config: OutputConfig
     input_extensions: list[str]
     folder_mode: str = "non_recursive"
+    system_instructions: str = ""
 
     def ordered_steps(self) -> list[SkillStep]:
         return [self.steps[number] for number in sorted(self.steps)]

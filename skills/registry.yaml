@@ -15,3 +15,11 @@ skills:
     description: Run resumable step-based recap production workflow
     spec_path: skills/recap_production/SKILL.md
     enabled: true
+
+  - id: novel2script
+    type: skill
+    adapter: skill_md
+    display_name: Novel 2 Script
+    description: Multi-step novel-to-script workflow
+    spec_path: skills/novel2script/SKILL.md
+    enabled: true

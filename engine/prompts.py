@@ -12,6 +12,7 @@ def build_step_prompt_messages(
     document: InputDocument,
     reference_texts: dict[str, str],
     runtime_values: dict[str, Any],
+    input_blocks: list[tuple[str, str]] | None = None,
     resume_state: RunState | None = None,
 ) -> list[PromptMessage]:
     prompt_reference = ""
@@ -39,6 +40,9 @@ def build_step_prompt_messages(
         PromptMessage(role="system", content=f"Skill instructions excerpt:\n{distill_skill_body(skill)}"),
     ]
 
+    if skill.system_instructions:
+        messages.append(PromptMessage(role="system", content=skill.system_instructions))
+
     if prompt_reference:
         messages.append(PromptMessage(role="system", content=prompt_reference))
 
@@ -50,12 +54,21 @@ def build_step_prompt_messages(
             )
         )
 
-    messages.append(
-        PromptMessage(
-            role="user",
-            content=f"Input document ({document.path.name}):\n{document.text}",
+    if input_blocks:
+        block_text = "\n\n".join(f"{label}\n{text}" for label, text in input_blocks if text.strip())
+        messages.append(
+            PromptMessage(
+                role="user",
+                content=f"Source document ({document.path.name}) with resolved workflow inputs:\n\n{block_text}",
+            )
         )
-    )
+    else:
+        messages.append(
+            PromptMessage(
+                role="user",
+                content=f"Input document ({document.path.name}):\n{document.text}",
+            )
+        )
 
     if runtime_values:
         runtime_lines = "\n".join(f"- {key}: {value}" for key, value in runtime_values.items())
