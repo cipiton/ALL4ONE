@@ -1,78 +1,159 @@
 # RECAP123
 
-This repository contains two independent Python tools in the same repo root:
+Shared multi-skill LLM runner for recap workflows.
 
-- `recap_analysis/`: skill-driven novel evaluation workflow
-- `recap_production/`: interactive drama prep / production helper
+## What Changed
 
-Each tool keeps its own code, prompts, references, and outputs inside its folder.
+The repository now has:
 
-## Run From The Repo Root
+- one shared runtime engine in `engine/`
+- one shared interactive entrypoint at `run.py`
+- multiple workflow folders under `skills/`
+- shared outputs under `outputs/<skill>/<timestamp>/`
 
-Yes, you can run both tools separately from the root with different commands.
+Adding a normal new workflow should only require:
 
-Analysis tool:
+1. creating `skills/<new_skill>/`
+2. adding `SKILL.md`
+3. adding any files under `references/`
 
-```bash
-python recap_analysis/run.py 
-```
+No new dedicated `run.py` or private engine package is required for standard skills.
 
-Interactive production tool:
+## Run
 
-```bash
-python recap_production/run.py
-```
-
-## Windows examples:
+From the repo root:
 
 ```bash
-python recap_analysis/run.py 
-python recap_production/run.py
+python run.py
 ```
 
-## Environment Configuration
+The runner will:
 
-Both tools use a shared repo-root `.env`.
+1. print a brief introduction
+2. show discovered skills
+3. prompt for a skill
+4. prompt for a `.txt` file or a folder of `.txt` files
+5. execute the selected workflow
+6. keep the session interactive so another job can be started without restarting
 
-Recommended setup:
+Folder processing is non-recursive and uses stable sorted order.
 
-1. Create a `.env` file in the repo root.
-2. Put your LLM/API settings there.
-3. Run either script from the repo root using the commands above.
-
-## Suggested Repo Layout
+## Repository Layout
 
 ```text
 RECAP123/
+  run.py
+  engine/
+  skills/
+    SKILL_TEMPLATE.md
+    recap_analysis/
+    recap_production/
+  outputs/
   README.md
-  .env
+  tasks.md
   .env.example
-  .gitignore
-  recap_analysis/
-  recap_production/
 ```
 
-## Git Notes
+## Skill Architecture
 
-The root `.gitignore` excludes:
+Each skill is driven by `SKILL.md` frontmatter plus human-readable instructions in the markdown body.
 
-- `.env` and secret files
-- Python cache and virtual environment files
-- generated `outputs/` folders
+The shared engine currently supports two generic execution strategies:
 
-If you want to initialize and push this repo:
+- `step_prompt`
+  For multi-step workflows where each step has its own prompt/reference file.
+- `structured_report`
+  For report-style workflows that run a configurable series of structured JSON stages and then render a final report.
 
-```bash
-git init
-git add .
-git commit -m "Initial commit"
+### Supported `SKILL.md` metadata
+
+- `name`
+- `display_name`
+- `description`
+- `supports_resume`
+- `input_extensions`
+- `folder_mode`
+- `steps`
+- `runtime_inputs`
+- `references`
+- `execution`
+- `output`
+
+The markdown body remains the human source of truth for workflow behavior and guardrails. The frontmatter makes the workflow runnable by the shared engine.
+
+## Standard Skill Template
+
+Use [skills/SKILL_TEMPLATE.md](/c:/Users/CP/Documents/WORKSPACES/RECAP123/skills/SKILL_TEMPLATE.md) when adding a new skill.
+
+Minimal flow for a new skill:
+
+1. Copy `skills/SKILL_TEMPLATE.md` into `skills/<your_skill>/SKILL.md`.
+2. Set the frontmatter fields.
+3. Add any prompt or reference files under `skills/<your_skill>/references/`.
+4. Run `python run.py` and choose the new skill from the menu.
+
+## Runtime Inputs
+
+Runtime inputs are driven by skill config, not hardcoded runner branches.
+
+Examples already in use:
+
+- `episode_count` for `recap_production` step 1
+- `style` for `recap_production` step 2
+
+Supported input types:
+
+- `string`
+- `int`
+- `choice`
+- `bool`
+
+## Resume Behavior
+
+Skills can opt into resume with `supports_resume: true`.
+
+For resumable skills, the runner offers the latest unfinished state for that skill. State is stored in the output directory and includes:
+
+- selected skill
+- input path
+- current step
+- runtime inputs
+- status
+- output paths
+- notes
+
+For multi-step step-prompt workflows such as `recap_production`, a completed step can resume into the next step using the prior step output as the next input.
+
+## Outputs
+
+Outputs are written to:
+
+```text
+outputs/<skill_name>/<timestamp>/
 ```
 
-Then add your remote and push as usual.
+Single-file runs write directly into that timestamp directory.
 
-## Tool-Specific Docs
+Folder runs also create:
 
-See the per-tool docs for workflow details:
+```text
+outputs/<skill_name>/<timestamp>/documents/<index>_<input_stem>/
+```
 
-- `recap_analysis/README.md`
-- `recap_production/README.md`
+Typical artifacts:
+
+- `state.json`
+- `prompt_dump.json`
+- `stage_outputs.json` for structured workflows
+- final `.txt` output
+
+## Environment
+
+The shared runtime loads `.env` from the repo root.
+
+See `.env.example` for supported variables. The engine supports OpenRouter and OpenAI-compatible chat completions.
+
+## Current Skills
+
+- [skills/recap_analysis/SKILL.md](/c:/Users/CP/Documents/WORKSPACES/RECAP123/skills/recap_analysis/SKILL.md)
+- [skills/recap_production/SKILL.md](/c:/Users/CP/Documents/WORKSPACES/RECAP123/skills/recap_production/SKILL.md)
