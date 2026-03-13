@@ -12,6 +12,7 @@ from .models import (
     ReferenceDefinition,
     RuntimeInputDefinition,
     SkillDefinition,
+    SkillRegistryEntry,
     SkillStep,
     SkillSummary,
     StructuredStage,
@@ -27,6 +28,14 @@ def discover_skills(repo_root: Path) -> list[SkillSummary]:
     if not skills_root.exists():
         raise SkillLoadError(f"Skills directory not found: {skills_root}")
 
+    registry_path = skills_root / "registry.yaml"
+    if registry_path.exists():
+        return _discover_skills_from_registry(repo_root, registry_path)
+
+    return _discover_skills_from_directories(skills_root)
+
+
+def _discover_skills_from_directories(skills_root: Path) -> list[SkillSummary]:
     summaries: list[SkillSummary] = []
     for candidate in sorted(skills_root.iterdir(), key=lambda path: path.name.casefold()):
         if not candidate.is_dir():
@@ -35,16 +44,23 @@ def discover_skills(repo_root: Path) -> list[SkillSummary]:
         if not skill_md_path.exists():
             continue
         skill = load_skill(candidate)
-        summaries.append(
-            SkillSummary(
-                name=skill.name,
-                display_name=skill.display_name,
-                description=skill.description,
-                skill_dir=candidate,
-            )
-        )
+        summaries.append(_build_skill_summary(skill))
     if not summaries:
         raise SkillLoadError(f"No valid skills found in {skills_root}")
+    return summaries
+
+
+def _discover_skills_from_registry(repo_root: Path, registry_path: Path) -> list[SkillSummary]:
+    entries = _load_registry_entries(repo_root, registry_path)
+    summaries: list[SkillSummary] = []
+    for entry in entries:
+        if not entry.enabled:
+            continue
+        skill = load_skill(entry.spec_path.parent)
+        summaries.append(_build_skill_summary(skill, entry))
+
+    if not summaries:
+        raise SkillLoadError(f"No enabled skills found in registry: {registry_path}")
     return summaries
 
 
@@ -103,6 +119,106 @@ def load_reference_texts(skill: SkillDefinition, reference_ids: list[str]) -> di
         except UnicodeDecodeError:
             loaded[reference_id] = reference.absolute_path.read_text(encoding="utf-8-sig")
     return loaded
+
+
+def _load_registry_entries(repo_root: Path, registry_path: Path) -> list[SkillRegistryEntry]:
+    try:
+        raw_registry = yaml.safe_load(registry_path.read_text(encoding="utf-8")) or {}
+    except yaml.YAMLError as exc:
+        raise SkillLoadError(f"Invalid YAML in registry file {registry_path}: {exc}") from exc
+
+    if not isinstance(raw_registry, dict):
+        raise SkillLoadError(f"Registry file must contain a mapping at the top level: {registry_path}")
+
+    version = raw_registry.get("version")
+    if version != 1:
+        raise SkillLoadError(
+            f"Unsupported registry version in {registry_path}: expected 1, got {version!r}"
+        )
+
+    raw_skills = raw_registry.get("skills")
+    if not isinstance(raw_skills, list):
+        raise SkillLoadError(f"Registry file must define a 'skills' list: {registry_path}")
+
+    entries: list[SkillRegistryEntry] = []
+    seen_ids: set[str] = set()
+    for index, raw_entry in enumerate(raw_skills, start=1):
+        entry = _parse_registry_entry(repo_root, registry_path, raw_entry, index)
+        if entry.id in seen_ids:
+            raise SkillLoadError(
+                f"Duplicate skill id '{entry.id}' in {registry_path} at entry #{index}."
+            )
+        seen_ids.add(entry.id)
+        entries.append(entry)
+    return entries
+
+
+def _parse_registry_entry(
+    repo_root: Path,
+    registry_path: Path,
+    raw_entry: Any,
+    index: int,
+) -> SkillRegistryEntry:
+    if not isinstance(raw_entry, dict):
+        raise SkillLoadError(
+            f"Registry entry #{index} in {registry_path} must be a mapping."
+        )
+
+    entry_id = _require_registry_string(raw_entry, "id", registry_path, index)
+    entry_type = _require_registry_string(raw_entry, "type", registry_path, index)
+    raw_spec_path = _require_registry_string(raw_entry, "spec_path", registry_path, index)
+
+    if entry_type != "skill":
+        raise SkillLoadError(
+            f"Unsupported registry type '{entry_type}' for skill '{entry_id}' in {registry_path}; "
+            "Phase 1 only supports type: skill."
+        )
+
+    spec_path = (repo_root / Path(raw_spec_path)).resolve()
+    if spec_path.name != "SKILL.md":
+        raise SkillLoadError(
+            f"Registry entry '{entry_id}' in {registry_path} must point to a SKILL.md file: {raw_spec_path}"
+        )
+    if not spec_path.exists():
+        raise SkillLoadError(
+            f"Registry entry '{entry_id}' points to a missing SKILL.md: {raw_spec_path}"
+        )
+
+    return SkillRegistryEntry(
+        id=entry_id,
+        entry_type=entry_type,
+        adapter=str(raw_entry.get("adapter") or "skill_md"),
+        spec_path=spec_path,
+        enabled=bool(raw_entry.get("enabled", True)),
+        display_name=str(raw_entry.get("display_name") or ""),
+        description=str(raw_entry.get("description") or ""),
+    )
+
+
+def _require_registry_string(
+    raw_entry: dict[str, Any],
+    field_name: str,
+    registry_path: Path,
+    index: int,
+) -> str:
+    value = raw_entry.get(field_name)
+    if value in (None, ""):
+        raise SkillLoadError(
+            f"Registry entry #{index} in {registry_path} is missing required field '{field_name}'."
+        )
+    return str(value)
+
+
+def _build_skill_summary(
+    skill: SkillDefinition,
+    entry: SkillRegistryEntry | None = None,
+) -> SkillSummary:
+    return SkillSummary(
+        name=entry.id if entry else skill.name,
+        display_name=(entry.display_name if entry and entry.display_name else skill.display_name),
+        description=(entry.description if entry and entry.description else skill.description),
+        skill_dir=skill.skill_dir,
+    )
 
 
 def _split_frontmatter(raw_text: str) -> tuple[dict[str, Any], str]:

@@ -1,9 +1,18 @@
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Any
+from typing import Any, Protocol
 
-from .models import RuntimeInputDefinition, SkillDefinition, SkillSummary
+from .models import RuntimeInputDefinition, SkillDefinition
+
+
+class MenuSkill(Protocol):
+    display_name: str
+    description: str
+
+
+class InputSkill(Protocol):
+    input_extensions: list[str]
 
 
 INTRO_TEXT = (
@@ -25,7 +34,7 @@ def print_intro() -> None:
     print(INTRO_TEXT)
 
 
-def choose_skill(skills: list[SkillSummary]) -> SkillSummary | None:
+def choose_skill(skills: list[MenuSkill]) -> MenuSkill | None:
     print()
     print("Available skills:")
     for index, skill in enumerate(skills, start=1):
@@ -46,7 +55,7 @@ def choose_skill(skills: list[SkillSummary]) -> SkillSummary | None:
         print("Enter a valid menu number.")
 
 
-def prompt_for_input_path(skill: SkillDefinition) -> str | None:
+def prompt_for_input_path(skill: SkillDefinition | InputSkill) -> str | None:
     suffixes = ", ".join(skill.input_extensions)
     raw_value = input(f"Enter a file or folder path ({suffixes}; blank to cancel): ").strip()
     return raw_value or None

@@ -44,8 +44,8 @@ htmlcov/
 *.swo
 Thumbs.db
 .DS_Store
+planner.txt
+tasks.md
 
 # Runtime outputs
 /outputs/
-recap_analysis/outputs/
-recap_production/outputs/

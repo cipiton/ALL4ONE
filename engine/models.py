@@ -24,6 +24,17 @@ class SkillSummary:
 
 
 @dataclass(slots=True)
+class SkillRegistryEntry:
+    id: str
+    entry_type: str
+    spec_path: Path
+    adapter: str = "skill_md"
+    enabled: bool = True
+    display_name: str = ""
+    description: str = ""
+
+
+@dataclass(slots=True)
 class ReferenceDefinition:
     reference_id: str
     relative_path: str

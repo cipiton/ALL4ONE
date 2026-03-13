@@ -1,0 +1,17 @@
+version: 1
+skills:
+  - id: recap_analysis
+    type: skill
+    adapter: skill_md
+    display_name: Recap Analysis
+    description: Analyze recap inputs and generate structured outputs
+    spec_path: skills/recap_analysis/SKILL.md
+    enabled: true
+
+  - id: recap_production
+    type: skill
+    adapter: skill_md
+    display_name: Recap Production
+    description: Run resumable step-based recap production workflow
+    spec_path: skills/recap_production/SKILL.md
+    enabled: true
