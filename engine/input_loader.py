@@ -16,7 +16,12 @@ class InputLoadError(RuntimeError):
     """Raised when the runtime cannot load the requested input."""
 
 
-def resolve_input_paths(raw_path: str, supported_extensions: list[str]) -> list[Path]:
+def resolve_input_paths(
+    raw_path: str,
+    supported_extensions: list[str],
+    *,
+    folder_mode: str = "non_recursive",
+) -> list[Path]:
     candidate = Path(raw_path.strip().strip('"')).expanduser().resolve()
     if not candidate.exists():
         raise InputLoadError(f"Input path does not exist: {candidate}")
@@ -32,14 +37,18 @@ def resolve_input_paths(raw_path: str, supported_extensions: list[str]) -> list[
     if not candidate.is_dir():
         raise InputLoadError(f"Input path is neither a file nor a directory: {candidate}")
 
+    if folder_mode == "recursive":
+        file_iter = candidate.rglob("*")
+    else:
+        file_iter = candidate.iterdir()
+
     files = sorted(
-        [path for path in candidate.iterdir() if path.is_file() and path.suffix.lower() in allowed],
-        key=lambda path: path.name.casefold(),
+        [path for path in file_iter if path.is_file() and path.suffix.lower() in allowed],
+        key=lambda path: str(path.relative_to(candidate)).casefold(),
     )
     if not files:
-        raise InputLoadError(
-            f"No supported files found in {candidate}. Folder mode is non-recursive."
-        )
+        mode_label = "recursive" if folder_mode == "recursive" else "non-recursive"
+        raise InputLoadError(f"No supported files found in {candidate}. Folder mode is {mode_label}.")
     return files
 
 

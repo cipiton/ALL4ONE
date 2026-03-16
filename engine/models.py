@@ -131,6 +131,22 @@ class OutputConfig:
 
 
 @dataclass(slots=True)
+class SkillStartupPolicy:
+    mode: str = "auto_route"
+    default_step_number: int | None = None
+    allow_resume: bool = True
+    allow_auto_route: bool = True
+
+
+@dataclass(slots=True)
+class SkillExecutionPolicy:
+    mode: str = "single_step"
+    continue_until_end: bool = False
+    preview_before_save: bool = False
+    save_only_on_accept: bool = False
+
+
+@dataclass(slots=True)
 class SkillDefinition:
     name: str
     display_name: str
@@ -148,6 +164,8 @@ class SkillDefinition:
     output_config: OutputConfig
     input_extensions: list[str]
     folder_mode: str = "non_recursive"
+    startup_policy: SkillStartupPolicy = field(default_factory=SkillStartupPolicy)
+    execution_policy: SkillExecutionPolicy = field(default_factory=SkillExecutionPolicy)
     system_instructions: str = ""
 
     def ordered_steps(self) -> list[SkillStep]:
@@ -177,6 +195,14 @@ class SkillDefinition:
     @property
     def final_step_number(self) -> int:
         return self.ordered_steps()[-1].number
+
+    def next_step_number_for(self, step_number: int) -> int | None:
+        step = self.get_step(step_number)
+        if step.next_step_number is not None:
+            return step.next_step_number
+        if step.number < self.final_step_number:
+            return step.number + 1
+        return None
 
 
 @dataclass(slots=True)

@@ -6,6 +6,7 @@ from typing import Any
 from . import terminal_ui
 from .input_loader import chunk_text, load_input_document, read_resource_text
 from .llm_client import call_chat_completion, load_config_from_env, parse_json_response
+from .runtime_config import load_runtime_config
 from .models import DocumentResult, RunState, SkillDefinition, StructuredStage
 from .planner import build_execution_plan
 from .prompts import build_step_prompt_messages, build_structured_stage_messages
@@ -13,6 +14,7 @@ from .skill_loader import load_reference_texts
 from .state_store import save_batch_summary, save_state
 from .writer import (
     create_document_directory,
+    create_internal_directory,
     create_session_directory,
     render_output_filename,
     render_section_report,
@@ -31,9 +33,11 @@ def execute_input_paths(
     input_paths: list[Path],
     *,
     resume_state: RunState | None = None,
-    resumed_step_hint: int | None = None,
+    forced_step_number: int | None = None,
+    input_root_path: Path | None = None,
 ) -> tuple[Path, list[DocumentResult]]:
     outputs_root = repo_root / "outputs"
+    runtime_config = load_runtime_config(repo_root)
     single_resume = resume_state is not None and len(input_paths) == 1
 
     if single_resume:
@@ -41,7 +45,7 @@ def execute_input_paths(
         session_dir.mkdir(parents=True, exist_ok=True)
         timestamp = session_dir.name
     else:
-        timestamp, session_dir = create_session_directory(outputs_root, skill.name)
+        timestamp, session_dir = create_session_directory(outputs_root, skill.name, input_root_path or (input_paths[0] if input_paths else None))
 
     results: list[DocumentResult] = []
     total = len(input_paths)
@@ -52,7 +56,7 @@ def execute_input_paths(
         "documents": [],
     }
     if total > 1:
-        save_batch_summary(session_dir, batch_summary)
+        save_batch_summary(session_dir, batch_summary, runtime_config)
 
     for index, input_path in enumerate(input_paths, start=1):
         if total > 1:
@@ -68,7 +72,8 @@ def execute_input_paths(
                 document,
                 output_dir,
                 resume_state=active_resume_state,
-                resumed_step_hint=resumed_step_hint,
+                forced_step_number=forced_step_number,
+                runtime_config=runtime_config,
                 verbose=verbose,
             )
             primary_output = Path(state.primary_output_path) if state.primary_output_path else None
@@ -108,7 +113,7 @@ def execute_input_paths(
             print(f"Error in {input_path.name}: {error_message}")
         finally:
             if total > 1:
-                save_batch_summary(session_dir, batch_summary)
+                save_batch_summary(session_dir, batch_summary, runtime_config)
 
     return session_dir, results
 
@@ -119,13 +124,13 @@ def execute_document(
     document,
     output_dir: Path,
     *,
-    resume_state: RunState | None = None,
-    resumed_step_hint: int | None = None,
+    resume_state=None,
+    forced_step_number=None,
+    runtime_config=None,
     verbose: bool = True,
 ) -> RunState:
-    plan = build_execution_plan(skill, document.text, resumed_step_hint=resumed_step_hint)
+    plan = build_execution_plan(skill, document.text, forced_step_number=forced_step_number)
     runtime_values = dict(resume_state.runtime_inputs) if resume_state else {}
-    runtime_values = gather_runtime_inputs(plan.runtime_inputs, runtime_values)
 
     state = RunState(
         timestamp=Path(output_dir).name,
@@ -143,11 +148,28 @@ def execute_document(
         notes=[plan.detected_step.reason],
         resume_from=resume_state.output_directory if resume_state else None,
     )
-    save_state(state, output_dir)
+    save_state(state, output_dir, runtime_config)
 
     config = load_config_from_env(repo_root)
 
+    if plan.strategy == "step_prompt" and skill.execution_policy.mode == "sequential_with_review":
+        return _run_step_prompt_review_sequence(
+            skill,
+            document,
+            output_dir,
+            plan.step.number,
+            runtime_values,
+            resume_state,
+            state,
+            config,
+            runtime_config,
+            verbose,
+        )
+
     if plan.strategy == "step_prompt":
+        runtime_values = gather_runtime_inputs(plan.runtime_inputs, runtime_values)
+        state.runtime_inputs = runtime_values
+        save_state(state, output_dir, runtime_config)
         return _run_step_prompt(
             skill,
             document,
@@ -157,6 +179,7 @@ def execute_document(
             resume_state,
             state,
             config,
+            runtime_config,
             verbose,
         )
 
@@ -166,6 +189,7 @@ def execute_document(
         output_dir,
         state,
         config,
+        runtime_config,
         verbose,
     )
 
@@ -187,10 +211,12 @@ def load_resume_document(skill: SkillDefinition, state: RunState):
     if not resume_path.exists():
         raise ExecutionError(f"Resume file does not exist: {resume_path}")
 
-    resumed_step_hint = state.detected_step
-    if state.status == "completed_step" and state.detected_step < skill.final_step_number:
-        resumed_step_hint = state.detected_step + 1
-    return load_input_document(resume_path), resumed_step_hint
+    forced_step_number = state.detected_step
+    if state.status == "completed_step":
+        next_step = skill.next_step_number_for(state.detected_step)
+        if next_step is not None:
+            forced_step_number = next_step
+    return load_input_document(resume_path), forced_step_number
 
 
 def _run_step_prompt(
@@ -202,6 +228,7 @@ def _run_step_prompt(
     resume_state: RunState | None,
     state: RunState,
     config,
+    runtime_config,
     verbose: bool,
 ) -> RunState:
     if verbose:
@@ -238,33 +265,167 @@ def _run_step_prompt(
         output_filename,
         response.text,
     )
-    if skill.output_config.include_prompt_dump:
+    if skill.output_config.include_prompt_dump and runtime_config.should_write_prompt_dump:
         prompt_payload = {
             "model": response.model,
             "messages": [message.to_dict() for message in messages],
             "raw_response": response.raw_response,
         }
-        write_json_file(
-            output_dir,
-            "prompt_dump.json",
-            prompt_payload,
-        )
-        write_json_file(output_dir, f"prompt_dump_step_{step_number}.json", prompt_payload)
+        _write_prompt_dump_files(output_dir, prompt_payload, step_number=step_number)
     state.output_files["primary"] = str(output_path)
     if step.output_key:
         state.output_files[step.output_key] = str(output_path)
     state.working_input_path = str(output_path if step_number < skill.final_step_number else document.path)
     state.status = "completed_step" if step_number < skill.final_step_number else "completed"
-    save_state(state, output_dir)
+    save_state(state, output_dir, runtime_config)
     return state
 
 
+def _generate_step_draft(skill, document, step_number: int, runtime_values: dict[str, Any], state: RunState, config, *, resume_state=None, draft_text=None, revision_request=None):
+    reference_ids = []
+    step = skill.get_step(step_number)
+    if step.prompt_reference_id:
+        reference_ids.append(step.prompt_reference_id)
+    for reference in skill.references.values():
+        if reference.reference_id in reference_ids:
+            continue
+        if reference.load == "always" or (reference.step_numbers and step_number in reference.step_numbers):
+            reference_ids.append(reference.reference_id)
+
+    reference_texts = load_reference_texts(skill, reference_ids)
+    input_blocks = _resolve_step_input_blocks(skill, step, document, state)
+    messages = build_step_prompt_messages(
+        skill,
+        step,
+        document,
+        reference_texts,
+        runtime_values,
+        input_blocks=input_blocks,
+        resume_state=resume_state,
+        draft_text=draft_text,
+        revision_request=revision_request,
+    )
+    response = call_chat_completion(config, messages, json_mode=False)
+    prompt_payload = {
+        "model": response.model,
+        "messages": [message.to_dict() for message in messages],
+        "raw_response": response.raw_response,
+    }
+    return response.text, prompt_payload
+
+
+def _persist_accepted_step_output(skill, document, output_dir: Path, step_number: int, output_text: str, state: RunState, runtime_config, prompt_payload=None) -> Path:
+    step = skill.get_step(step_number)
+    output_filename = step.output_filename or render_output_filename(
+        skill.output_config.filename_template,
+        document,
+        step_number=step_number,
+    )
+    output_path = write_text_file(output_dir, output_filename, output_text)
+    if prompt_payload and skill.output_config.include_prompt_dump and runtime_config.should_write_prompt_dump:
+        _write_prompt_dump_files(output_dir, prompt_payload, step_number=step_number)
+    state.output_files["primary"] = str(output_path)
+    if step.output_key:
+        state.output_files[step.output_key] = str(output_path)
+    next_step_number = skill.next_step_number_for(step_number)
+    state.working_input_path = str(output_path if next_step_number is not None else document.path)
+    return output_path
+
+
+ 
+def _run_step_prompt_review_sequence(skill, document, output_dir: Path, step_number: int, runtime_values: dict[str, Any], resume_state, state: RunState, config, runtime_config, verbose: bool):  
+    current_step_number = step_number  
+    current_resume_state = resume_state  
+    while current_step_number is not None:  
+        step = skill.get_step(current_step_number)  
+        step_runtime_inputs = [definition for definition in skill.runtime_inputs if definition.applies_to(step.number, document.text)]  
+        runtime_values = gather_runtime_inputs(step_runtime_inputs, runtime_values)  
+        state.runtime_inputs = runtime_values  
+        save_state(state, output_dir, runtime_config)  
+        if verbose:  
+            terminal_ui.print_progress(f"running step {step.number}: {step.title}")  
+  
+        revision_request = None  
+        draft_text = None  
+        while True:  
+            draft_text, prompt_payload = _generate_step_draft(  
+                skill,  
+                document,  
+                step.number,  
+                runtime_values,  
+                state,  
+                config,  
+                resume_state=current_resume_state,  
+                draft_text=draft_text,  
+                revision_request=revision_request,  
+            )  
+            current_resume_state = None  
+  
+            while True:  
+                if skill.execution_policy.preview_before_save:  
+                    terminal_ui.show_step_output_preview(step.title, draft_text)  
+                action = terminal_ui.prompt_for_review_action()  
+                if action == "view_full":  
+                    terminal_ui.print_full_output(step.title, draft_text)  
+                    continue  
+                if action == "revise":  
+                    revision_request = terminal_ui.prompt_for_revision_request()  
+                    if not revision_request:  
+                        continue  
+                    break 
+                if action == "cancel":  
+                    return _finalize_review_cancellation(skill, output_dir, state, runtime_config)  
+  
+                _persist_accepted_step_output(  
+                    skill,  
+                    document,  
+                    output_dir,  
+                    step.number,  
+                    draft_text,  
+                    state,  
+                    runtime_config,  
+                    prompt_payload=prompt_payload,  
+                )  
+                state.detected_step = step.number  
+                state.step_title = step.title  
+                state.step_reason = f"Accepted step {step.number}: {step.title}."  
+                next_step_number = skill.next_step_number_for(step.number)  
+                if next_step_number is None:  
+                    state.status = "completed"  
+                    save_state(state, output_dir, runtime_config)  
+                    return state  
+                state.status = "completed_step"  
+                save_state(state, output_dir, runtime_config)  
+                if not skill.execution_policy.continue_until_end:  
+                    return state  
+                current_step_number = next_step_number  
+                revision_request = None  
+                draft_text = None  
+                break  
+  
+            if action == "revise":  
+                continue  
+            break  
+  
+    return state  
+  
+  
+def _finalize_review_cancellation(skill, output_dir: Path, state: RunState, runtime_config):  
+    if state.output_files:  
+        next_step_number = skill.next_step_number_for(state.detected_step)  
+        state.status = "completed" if next_step_number is None else "completed_step"  
+    else:  
+        state.status = "awaiting_input"  
+    state.notes.append("Run cancelled during review.")  
+    save_state(state, output_dir, runtime_config)  
+    return state 
 def _run_structured(
     skill: SkillDefinition,
     document,
     output_dir: Path,
     state: RunState,
     config,
+    runtime_config,
     verbose: bool,
 ) -> RunState:
     if verbose:
@@ -284,15 +445,15 @@ def _run_structured(
         render_output_filename(skill.output_config.filename_template, document, step_number=state.detected_step),
         report_text,
     )
-    if skill.output_config.include_prompt_dump:
-        write_json_file(output_dir, "prompt_dump.json", prompt_dump)
+    if skill.output_config.include_prompt_dump and runtime_config.should_write_prompt_dump:
+        _write_prompt_dump_files(output_dir, prompt_dump)
 
     state.output_files = {
         "primary": str(output_path),
         "stage_outputs": str(output_dir / "stage_outputs.json"),
     }
     state.status = "completed"
-    save_state(state, output_dir)
+    save_state(state, output_dir, runtime_config)
     return state
 
 
@@ -416,6 +577,13 @@ def _run_chunked_stage(
         "raw_response": merge_response.raw_response,
     }
     return merged, chunk_prompt_dump, merge_response.model
+
+
+def _write_prompt_dump_files(output_dir: Path, payload: dict[str, Any], step_number: int | None = None) -> None:
+    internal_dir = create_internal_directory(output_dir)
+    write_json_file(internal_dir, "prompt_dump.json", payload)
+    if step_number is not None:
+        write_json_file(internal_dir, f"prompt_dump_step_{step_number}.json", payload)
 
 
 def _extract_final_sections(stage_outputs: dict[str, Any]) -> dict[str, Any]:

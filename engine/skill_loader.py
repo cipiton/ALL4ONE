@@ -13,7 +13,9 @@ from .models import (
     SkillInputBlock,
     RuntimeInputDefinition,
     SkillDefinition,
+    SkillExecutionPolicy,
     SkillRegistryEntry,
+    SkillStartupPolicy,
     SkillStep,
     SkillSummary,
     StructuredStage,
@@ -77,6 +79,7 @@ def load_skill(skill_dir: Path) -> SkillDefinition:
 
     embedded_registry = _load_embedded_skill_registry(body, skill_md_path)
     body = _strip_embedded_skill_registry(body)
+    metadata = frontmatter.get("metadata", {}) or {}
     steps = _load_steps(frontmatter, embedded_registry, skill_dir, body)
     references = _load_references(frontmatter, embedded_registry, skill_dir, steps)
     stages = _load_stages(frontmatter)
@@ -84,16 +87,18 @@ def load_skill(skill_dir: Path) -> SkillDefinition:
     output_config = _load_output_config(frontmatter)
     runtime_inputs = _load_runtime_inputs(frontmatter, embedded_registry, steps)
     name = str(frontmatter.get("name") or skill_dir.name)
-    display_name = str(frontmatter.get("display_name") or frontmatter.get("display") or name)
+    display_name = str(frontmatter.get("display_name") or metadata.get("display_name") or frontmatter.get("display") or name)
     description = str(frontmatter.get("description") or _extract_title(body) or name)
     execution = frontmatter.get("execution", {}) or {}
     strategy = str(execution.get("strategy") or ("structured_report" if stages else "step_prompt"))
     supports_resume = bool(
         frontmatter.get(
             "supports_resume",
-            embedded_registry.get("supports_resume", False),
+            metadata.get("supports_resume", embedded_registry.get("supports_resume", False)),
         )
     )
+    startup_policy = _load_startup_policy(frontmatter, metadata, steps, supports_resume)
+    execution_policy = _load_execution_policy(frontmatter, metadata)
     system_instructions = _load_system_instructions(frontmatter, embedded_registry)
 
     return SkillDefinition(
@@ -111,8 +116,10 @@ def load_skill(skill_dir: Path) -> SkillDefinition:
         stages=stages,
         chunking=chunking,
         output_config=output_config,
-        input_extensions=[str(item).lower() for item in frontmatter.get("input_extensions", [".txt"])],
-        folder_mode=str(frontmatter.get("folder_mode", "non_recursive")),
+        input_extensions=_load_input_extensions(frontmatter, metadata),
+        folder_mode=_load_folder_mode(frontmatter, metadata, embedded_registry),
+        startup_policy=startup_policy,
+        execution_policy=execution_policy,
         system_instructions=system_instructions,
     )
 
@@ -559,6 +566,58 @@ def _load_system_instructions(frontmatter: dict[str, Any], embedded_registry: di
     return str(frontmatter.get("system_instructions") or llm_config.get("instructions") or "")
 
 
+def _load_input_extensions(frontmatter: dict[str, Any], metadata: dict[str, Any]) -> list[str]:
+    raw_extensions = frontmatter.get("input_extensions") or metadata.get("input_extensions") or [".txt"]
+    return [str(item).lower() for item in raw_extensions]
+
+
+def _load_folder_mode(frontmatter: dict[str, Any], metadata: dict[str, Any], embedded_registry: dict[str, Any]) -> str:
+    if frontmatter.get("folder_mode"):
+        return str(frontmatter["folder_mode"])
+    if metadata.get("folder_mode"):
+        return str(metadata["folder_mode"])
+    intake = embedded_registry.get("intake", {}) or {}
+    if intake.get("recursive_txt_search"):
+        return "recursive"
+    return "non_recursive"
+
+
+def _load_startup_policy(
+    frontmatter: dict[str, Any],
+    metadata: dict[str, Any],
+    steps: dict[int, SkillStep],
+    supports_resume: bool,
+) -> SkillStartupPolicy:
+    raw_startup = metadata.get("startup") or frontmatter.get("startup") or {}
+    if not isinstance(raw_startup, dict):
+        raw_startup = {}
+
+    default_step_number = _optional_int(raw_startup.get("default_step"))
+    if default_step_number not in steps:
+        default_step_number = next((step.number for step in steps.values() if step.default), None)
+    if default_step_number not in steps and steps:
+        default_step_number = min(steps)
+
+    return SkillStartupPolicy(
+        mode=str(raw_startup.get("mode", "auto_route")),
+        default_step_number=default_step_number,
+        allow_resume=bool(raw_startup.get("allow_resume", supports_resume)),
+        allow_auto_route=bool(raw_startup.get("allow_auto_route", True)),
+    )
+
+
+
+
+def _load_execution_policy(frontmatter: dict[str, Any], metadata: dict[str, Any]) -> SkillExecutionPolicy:
+    raw_execution = metadata.get("execution") or frontmatter.get("execution_policy") or {}
+    if not isinstance(raw_execution, dict):
+        raw_execution = {}
+    return SkillExecutionPolicy(
+        mode=str(raw_execution.get("mode", "single_step")),
+        continue_until_end=bool(raw_execution.get("continue_until_end", False)),
+        preview_before_save=bool(raw_execution.get("preview_before_save", False)),
+        save_only_on_accept=bool(raw_execution.get("save_only_on_accept", False)),
+    )
 def _read_reference_resource(path: Path) -> str:
     try:
         from .input_loader import read_resource_text

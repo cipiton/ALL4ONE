@@ -1,13 +1,25 @@
 ---
 name: novel2script
-display_name: Novel 2 Script
 description: end-to-end workflow for chinese ai short drama / vertical microdrama creation. use when the user wants to turn an idea, premise, novel excerpt, character sheet, episode outline, or draft script into story polish, episode plot, highlight beats, per-episode screenplay, script analysis, production asset extraction, or asset image config; supports full pipeline or any single step with iterative revisions.
-supports_resume: true
-input_extensions:
-  - .txt
+metadata:
+  display_name: Novel 2 Script
+  supports_resume: true
+  input_extensions:
+    - .txt
+  folder_mode: recursive
+  startup:
+    mode: explicit_step_selection
+    default_step: 1
+    allow_resume: true
+    allow_auto_route: false
+  execution:
+    mode: sequential_with_review
+    continue_until_end: true
+    preview_before_save: true
+    save_only_on_accept: true
 ---
 
-# txt2script: short drama creation pipeline
+# novel2script: short drama creation pipeline
 
 ## what this skill does
 Convert raw story material (idea / synopsis / novel excerpt / outline / draft script) into production-ready short-drama deliverables:
@@ -15,10 +27,10 @@ Convert raw story material (idea / synopsis / novel excerpt / outline / draft sc
 
 This skill is designed to run **either the full pipeline** or **a single requested step**.
 
-`txt2script` is the new user-facing name for the existing `novel2script` runtime and package folder.
+This skill runs through the shared skill-driven architecture under the `novel2script` skill id.
 
 ## runtime output files
-When the runtime executes this workflow, persist every available step output as UTF-8 plain text under the deterministic `txt2script` output directory. Overwrite the same file when a step is rerun or revised.
+When the shared runtime executes this workflow, persist every available step output as UTF-8 plain text under the shared `outputs/novel2script/` run directory. Reuse the same stable filenames when a step is rerun or revised in the same run directory.
 
 - step 1 `story` -> `01_story.txt`
 - step 2 `episode_outline` -> `02_episode_outline.txt`

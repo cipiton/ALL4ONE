@@ -3,6 +3,8 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Any, Protocol
 
+from app.skills.protocol import SkillResumePoint, SkillStartupPolicySummary, SkillStepSummary
+
 from .models import RuntimeInputDefinition, SkillDefinition
 
 
@@ -109,6 +111,41 @@ def prompt_for_runtime_value(
             return _parse_runtime_value(definition, raw_value)
         except ValueError as exc:
             print(exc)
+
+
+def choose_start_mode(
+    steps: list[SkillStepSummary],
+    startup_policy: SkillStartupPolicySummary,
+    resume_point: SkillResumePoint | None = None,
+) -> tuple[str, int | None]:
+    default_step = startup_policy.default_step_number
+    if default_step is None and steps:
+        default_step = steps[0].number
+
+    print()
+    print("Available steps:")
+    for step in steps:
+        suffix = " (default)" if step.number == default_step else ""
+        detail = f" - {step.description}" if step.description else ""
+        print(f"{step.number}. {step.title}{suffix}{detail}")
+    if startup_policy.allow_resume and resume_point is not None:
+        next_step = resume_point.next_step_number or resume_point.detected_step
+        print(f"R. Resume latest unfinished run (next step {next_step})")
+
+    while True:
+        raw_value = input("Choose a step (Enter for default): ").strip()
+        if not raw_value:
+            return "run", default_step
+        if raw_value.lower() == "r":
+            if startup_policy.allow_resume and resume_point is not None:
+                return "resume", None
+            print("Resume is not available for this skill right now.")
+            continue
+        if raw_value.isdigit():
+            selected = int(raw_value)
+            if any(step.number == selected for step in steps):
+                return "run", selected
+        print("Choose a listed step number, press Enter, or use R to resume.")
 
 
 def print_progress(message: str) -> None:

@@ -39,7 +39,7 @@ The runner will:
 5. execute the selected workflow
 6. keep the session interactive so another job can be started without restarting
 
-Folder processing is non-recursive and uses stable sorted order.
+Folder processing defaults to non-recursive and uses stable sorted order unless a skill opts into recursive folder intake in metadata.
 
 ## Repository Layout
 
@@ -235,3 +235,55 @@ See `.env.example` for supported variables. The engine supports OpenRouter and O
 - `recap_analysis` via `skills/registry.yaml` -> `skills/recap_analysis/SKILL.md`
 - `recap_production` via `skills/registry.yaml` -> `skills/recap_production/SKILL.md`
 - `novel2script` via `skills/registry.yaml` -> `skills/novel2script/SKILL.md`
+  
+## Startup Policy Metadata  
+  
+Skills can now declare startup behavior in `SKILL.md` frontmatter under `metadata.startup`.  
+  
+Example:  
+  
+```yaml  
+metadata:  
+  startup:  
+    mode: explicit_step_selection  
+    default_step: 1  
+    allow_resume: true  
+    allow_auto_route: false  
+```  
+  
+When `mode: explicit_step_selection` is set, the shared runner prompts for the input path first, then shows a step menu derived from the parsed skill steps. `novel2script` now uses this metadata, and skills that do not define it keep the previous auto-route behavior.  
+  
+## Runtime Config And Internal Artifacts  
+  
+Shared runtime output behavior is now controlled by `engine/config.ini`.  
+  
+```ini  
+[outputs]  
+write_state_json = 0  
+write_prompt_dump = 0  
+write_debug_log = 0  
+  
+[debug]  
+troubleshooting_mode = 0  
+```
+
+## Execution Review Metadata 
+ 
+Skills can now opt into a shared sequential review loop through metadata.execution in SKILL.md. 
+ 
+```yaml 
+metadata: 
+  execution: 
+    mode: sequential_with_review 
+    continue_until_end: true 
+    preview_before_save: true 
+    save_only_on_accept: true 
+``` 
+ 
+When this mode is enabled, the shared runtime starts from the chosen step, generates a draft, previews it in the terminal, and asks whether to accept, revise, view the full text, or cancel. Only accepted outputs are saved, and accepted earlier steps remain in place when a later step is revised. 
+ 
+novel2script now uses this metadata without any skill-specific runner or hardcoded skill branch. 
+ 
+## Output Folder Naming 
+ 
+Single-run folders are now derived from the selected input name plus timestamp: outputs/<skill>/<input_name>__<timestamp>/. Folder inputs use the selected folder name. Accepted artifacts for a run stay together in one run directory, while internal runtime files stay under .internal/ unless debug config enables visible troubleshooting files.
