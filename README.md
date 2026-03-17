@@ -287,3 +287,24 @@ novel2script now uses this metadata without any skill-specific runner or hardcod
 ## Output Folder Naming 
  
 Single-run folders are now derived from the selected input name plus timestamp: outputs/<skill>/<input_name>__<timestamp>/. Folder inputs use the selected folder name. Accepted artifacts for a run stay together in one run directory, while internal runtime files stay under .internal/ unless debug config enables visible troubleshooting files.
+
+## LLM Config Precedence
+
+Root `config.ini` is the canonical place to choose the default provider and model. A normal OpenRouter setup is:
+
+```ini
+[llm]
+provider = openrouter
+model = openai/gpt-5.4
+base_url = https://openrouter.ai/api/v1
+```
+
+Use `.env` for secrets and optional overrides, for example:
+
+```env
+LLM_PROVIDER=openrouter
+OPENROUTER_API_KEY=...
+OPENROUTER_BASE_URL=https://openrouter.ai/api/v1
+```
+
+Precedence is: provider from env override then config; model from provider-specific env override then config; base URL from env override then config.

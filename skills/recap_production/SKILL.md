@@ -6,6 +6,18 @@ supports_resume: true
 input_extensions:
   - .txt
 folder_mode: non_recursive
+metadata:
+  startup:
+    mode: explicit_step_selection
+    default_step: 1
+    allow_resume: true
+    allow_auto_route: false
+  execution:
+    mode: sequential_with_review
+    continue_until_end: true
+    preview_before_save: true
+    save_only_on_accept: true
+
 
 steps:
   - number: 1
@@ -106,8 +118,9 @@ output:
 
 协助完成解说剧制作的前期文本准备工作，并保持以下规则：
 
-- 每次运行只执行当前一步，严禁自动连续执行多个步骤。
-- 当用户后续继续时，共享引擎可基于最近一步的输出进行 resume。
+- 从用户选择的起始步骤开始执行；共享运行时会在每一步生成草稿后先预览，再由用户选择接受、改进、重来、查看全文或取消。
+- 只有用户接受的结果才会保存为当前步骤输出；一旦接受，共享运行时会自动继续到下一步，直到流程结束或用户取消。
+- 如果运行被中断，共享引擎可基于最近一次已接受的步骤进行 resume。
 - 步骤一输出解说剧剧本。
 - 步骤二基于剧本输出角色、场景、道具等资产及提示词。
 - 步骤三基于资产结果输出生图配置文本。
@@ -118,15 +131,16 @@ output:
 
 - 从零创作时，需要询问集数。
 - 如果输入明显是影视剧剧本改写任务，则不要再要求集数。
-- 输出文本内容，不自动进入下一步。
+- 输出文本内容，等待共享评审流程中的接受、改进或重来决定。
 
 ### 步骤二
 
 - 基于剧本进行资产提炼。
 - 需要先确认资产风格：写实、2D、或 3D。
-- 输出资产总清单和资产详情，不自动进入下一步。
+- 输出资产总清单和资产详情，等待共享评审流程中的接受、改进或重来决定。
 
 ### 步骤三
 
 - 基于资产清单输出生图配置文本。
 - 直接输出可保存的 txt 内容。
+- 在共享评审流程中被接受后结束当前运行。
