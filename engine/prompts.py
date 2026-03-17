@@ -16,6 +16,7 @@ def build_step_prompt_messages(
     resume_state: RunState | None = None,  
     draft_text: str | None = None,  
     revision_request: str | None = None,  
+    user_instruction: str | None = None,
 ) -> list[PromptMessage]:  
     prompt_reference = ''  
     auxiliary_references: dict[str, str] = {}  
@@ -84,7 +85,7 @@ def build_step_prompt_messages(
                     'Resume context:\n'  
                     f'- Previous step: {resume_state.detected_step}\n'  
                     f'- Previous status: {resume_state.status}\n'  
-                    f'- Previous output: {resume_state.primary_output_path or 'N/A'}'  
+                    f"- Previous output: {resume_state.primary_output_path or "N/A"}"
                 ),  
             ),  
         )  
@@ -103,6 +104,11 @@ def build_step_prompt_messages(
             ),  
         )  
   
+
+    if user_instruction:
+        messages.append(
+            PromptMessage(role='user', content=user_instruction),
+        )
     return messages  
   
   

@@ -7,14 +7,14 @@ from app.skills.catalog import SkillCatalog, SkillCatalogError
 from app.skills.protocol import SkillResumeRequest, SkillRunRequest  
 from engine import terminal_ui  
 from engine.input_loader import InputLoadError, resolve_input_paths  
-from engine.llm_client import LLMClientError, load_env_file  
+from engine.llm_client import LLMClientError, describe_active_model, load_env_file  
   
   
 def main() -> int:  
     repo_root = Path(__file__).resolve().parent  
     terminal_ui.configure_console()  
     load_env_file(repo_root / '.env')  
-    terminal_ui.print_intro()  
+    terminal_ui.print_intro(describe_active_model(repo_root))  
   
     while True:  
         try:  

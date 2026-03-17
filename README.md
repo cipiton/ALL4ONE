@@ -255,7 +255,7 @@ When `mode: explicit_step_selection` is set, the shared runner prompts for the i
   
 ## Runtime Config And Internal Artifacts  
   
-Shared runtime output behavior is now controlled by `engine/config.ini`.  
+Shared runtime and output behavior is now controlled by repo-root `config.ini`.  
   
 ```ini  
 [outputs]  
@@ -280,7 +280,7 @@ metadata:
     save_only_on_accept: true 
 ``` 
  
-When this mode is enabled, the shared runtime starts from the chosen step, generates a draft, previews it in the terminal, and asks whether to accept, revise, view the full text, or cancel. Only accepted outputs are saved, and accepted earlier steps remain in place when a later step is revised. 
+When this mode is enabled, the shared runtime starts from the chosen step, generates a draft, previews it in the terminal, and asks whether to accept, improve, restart, view the full text, or cancel. Improve reruns the current step using the current draft plus user instructions. Restart reruns the current step from scratch with optional restart guidance. Only accepted outputs are saved, and accepted earlier steps remain in place when a later step is improved or restarted. 
  
 novel2script now uses this metadata without any skill-specific runner or hardcoded skill branch. 
  

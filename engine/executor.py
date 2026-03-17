@@ -1,4 +1,4 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 from pathlib import Path
 from typing import Any
@@ -281,7 +281,7 @@ def _run_step_prompt(
     return state
 
 
-def _generate_step_draft(skill, document, step_number: int, runtime_values: dict[str, Any], state: RunState, config, *, resume_state=None, draft_text=None, revision_request=None):
+def _generate_step_draft(skill, document, step_number: int, runtime_values: dict[str, Any], state: RunState, config, *, resume_state=None, draft_text=None, revision_request=None, user_instruction=None):
     reference_ids = []
     step = skill.get_step(step_number)
     if step.prompt_reference_id:
@@ -304,6 +304,7 @@ def _generate_step_draft(skill, document, step_number: int, runtime_values: dict
         resume_state=resume_state,
         draft_text=draft_text,
         revision_request=revision_request,
+        user_instruction=user_instruction,
     )
     response = call_chat_completion(config, messages, json_mode=False)
     prompt_payload = {
@@ -333,6 +334,13 @@ def _persist_accepted_step_output(skill, document, output_dir: Path, step_number
 
 
  
+def _build_restart_instruction(restart_request):  
+    base_instruction = "Restart the current workflow step from scratch."  
+    if restart_request:  
+        return f"{base_instruction}\nAdditional restart instructions: {restart_request}"  
+    return base_instruction  
+  
+  
 def _run_step_prompt_review_sequence(skill, document, output_dir: Path, step_number: int, runtime_values: dict[str, Any], resume_state, state: RunState, config, runtime_config, verbose: bool):  
     current_step_number = step_number  
     current_resume_state = resume_state  
@@ -345,8 +353,9 @@ def _run_step_prompt_review_sequence(skill, document, output_dir: Path, step_num
         if verbose:  
             terminal_ui.print_progress(f"running step {step.number}: {step.title}")  
   
-        revision_request = None  
         draft_text = None  
+        revision_request = None  
+        user_instruction = None  
         while True:  
             draft_text, prompt_payload = _generate_step_draft(  
                 skill,  
@@ -358,8 +367,11 @@ def _run_step_prompt_review_sequence(skill, document, output_dir: Path, step_num
                 resume_state=current_resume_state,  
                 draft_text=draft_text,  
                 revision_request=revision_request,  
-            )  
+                user_instruction=user_instruction,  
+            ) 
             current_resume_state = None  
+            revision_request = None  
+            user_instruction = None  
   
             while True:  
                 if skill.execution_policy.preview_before_save:  
@@ -368,11 +380,16 @@ def _run_step_prompt_review_sequence(skill, document, output_dir: Path, step_num
                 if action == "view_full":  
                     terminal_ui.print_full_output(step.title, draft_text)  
                     continue  
-                if action == "revise":  
-                    revision_request = terminal_ui.prompt_for_revision_request()  
+                if action == "improve":  
+                    revision_request = terminal_ui.prompt_for_improvement_request()  
                     if not revision_request:  
                         continue  
-                    break 
+                    break  
+                if action == "restart":  
+                    restart_request = terminal_ui.prompt_for_restart_request()  
+                    draft_text = None  
+                    user_instruction = _build_restart_instruction(restart_request)  
+                    break  
                 if action == "cancel":  
                     return _finalize_review_cancellation(skill, output_dir, state, runtime_config)  
   
@@ -399,17 +416,15 @@ def _run_step_prompt_review_sequence(skill, document, output_dir: Path, step_num
                 if not skill.execution_policy.continue_until_end:  
                     return state  
                 current_step_number = next_step_number  
-                revision_request = None  
                 draft_text = None  
                 break  
   
-            if action == "revise":  
+            if action in {"improve", "restart"}:  
                 continue  
             break  
   
-    return state  
-  
-  
+    return state
+
 def _finalize_review_cancellation(skill, output_dir: Path, state: RunState, runtime_config):  
     if state.output_files:  
         next_step_number = skill.next_step_number_for(state.detected_step)  
@@ -640,3 +655,4 @@ def _resolve_input_block_content(
     if not used_document_fallback:
         return document.text
     return None
+
