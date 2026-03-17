@@ -6,6 +6,11 @@ supports_resume: false
 input_extensions:
   - .txt
 folder_mode: non_recursive
+metadata:
+  execution:
+    mode: sequential_with_review
+    preview_before_save: true
+    save_only_on_accept: true
 
 steps:
   - number: 1

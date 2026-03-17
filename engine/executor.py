@@ -7,7 +7,7 @@ from . import terminal_ui
 from .input_loader import chunk_text, load_input_document, read_resource_text
 from .llm_client import call_chat_completion, load_config_from_env, parse_json_response
 from .runtime_config import load_runtime_config
-from .models import DocumentResult, RunState, SkillDefinition, StructuredStage
+from .models import DocumentResult, PromptMessage, RunState, SkillDefinition, StructuredStage
 from .planner import build_execution_plan
 from .prompts import build_step_prompt_messages, build_structured_stage_messages
 from .skill_loader import load_reference_texts
@@ -177,6 +177,17 @@ def execute_document(
             plan.step.number,
             runtime_values,
             resume_state,
+            state,
+            config,
+            runtime_config,
+            verbose,
+        )
+
+    if plan.strategy == "structured_report" and skill.execution_policy.mode == "sequential_with_review":
+        return _run_structured_review_sequence(
+            skill,
+            document,
+            output_dir,
             state,
             config,
             runtime_config,
@@ -434,6 +445,140 @@ def _finalize_review_cancellation(skill, output_dir: Path, state: RunState, runt
     state.notes.append("Run cancelled during review.")  
     save_state(state, output_dir, runtime_config)  
     return state 
+
+
+def _run_structured_review_sequence(
+    skill: SkillDefinition,
+    document,
+    output_dir: Path,
+    state: RunState,
+    config,
+    runtime_config,
+    verbose: bool,
+) -> RunState:
+    report_text = None
+    prompt_payload = None
+    model_name = config.model
+    revision_request = None
+
+    while True:
+        if report_text is None:
+            if verbose:
+                terminal_ui.print_progress("running structured workflow")
+            stage_outputs, prompt_dump, model_name = run_structured_workflow(
+                skill,
+                document,
+                config,
+                verbose=verbose,
+            )
+            final_sections = _extract_final_sections(stage_outputs)
+            report_text = render_section_report(skill, document, final_sections, model_name=model_name)
+            prompt_payload = {
+                "model": model_name,
+                "stages": prompt_dump.get("stages", {}),
+                "stage_outputs": stage_outputs,
+            }
+        elif revision_request:
+            report_text, prompt_payload, model_name = _revise_structured_report(
+                skill,
+                document,
+                report_text,
+                revision_request,
+                config,
+                model_name=model_name,
+            )
+            revision_request = None
+
+        if skill.execution_policy.preview_before_save:
+            terminal_ui.show_step_output_preview("Structured report", report_text)
+
+        while True:
+            action = terminal_ui.prompt_for_review_action()
+            if action == "view_full":
+                terminal_ui.print_full_output("Structured report", report_text)
+                continue
+            if action == "improve":
+                revision_request = terminal_ui.prompt_for_improvement_request()
+                if not revision_request:
+                    continue
+                break
+            if action == "restart":
+                restart_request = terminal_ui.prompt_for_restart_request()
+                report_text = None
+                prompt_payload = None
+                revision_request = None
+                if restart_request:
+                    state.notes.append(f"Structured workflow restart request: {restart_request}")
+                break
+            if action == "cancel":
+                state.status = "awaiting_input"
+                state.notes.append("Run cancelled during structured review.")
+                save_state(state, output_dir, runtime_config)
+                return state
+
+            output_path = write_text_file(
+                output_dir,
+                render_output_filename(
+                    skill.output_config.filename_template,
+                    document,
+                    step_number=state.detected_step,
+                ),
+                report_text,
+            )
+            write_json_file(output_dir, "stage_outputs.json", prompt_payload.get("stage_outputs", {}))
+            if skill.output_config.include_prompt_dump and runtime_config.should_write_prompt_dump:
+                _write_prompt_dump_files(output_dir, prompt_payload)
+
+            state.output_files = {
+                "primary": str(output_path),
+                "stage_outputs": str(output_dir / "stage_outputs.json"),
+            }
+            state.status = "completed"
+            save_state(state, output_dir, runtime_config)
+            return state
+
+        if action in {"improve", "restart"}:
+            continue
+
+    return state
+
+
+def _revise_structured_report(
+    skill: SkillDefinition,
+    document,
+    current_report: str,
+    revision_request: str,
+    config,
+    *,
+    model_name: str,
+) -> tuple[str, dict[str, Any], str]:
+    messages = [
+        PromptMessage(
+            role="system",
+            content=(
+                "You are revising a workflow output. Return only the complete revised report text. "
+                "Preserve the report language, section structure, and useful factual content unless the revision request requires changes."
+            ),
+        ),
+        PromptMessage(
+            role="user",
+            content=(
+                f"Skill: {skill.display_name}\n"
+                f"Description: {skill.description}\n"
+                f"Input document: {document.path.name}\n\n"
+                f"Current report:\n{current_report}\n\n"
+                f"Revision request:\n{revision_request}"
+            ),
+        ),
+    ]
+    response = call_chat_completion(config, messages, json_mode=False)
+    payload = {
+        "model": response.model,
+        "revision_request": revision_request,
+        "messages": [message.to_dict() for message in messages],
+        "raw_response": response.raw_response,
+    }
+    return response.text, payload, response.model
 def _run_structured(
     skill: SkillDefinition,
     document,
