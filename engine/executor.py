@@ -355,9 +355,19 @@ def _build_restart_instruction(restart_request):
 def _run_step_prompt_review_sequence(skill, document, output_dir: Path, step_number: int, runtime_values: dict[str, Any], resume_state, state: RunState, config, runtime_config, verbose: bool):  
     current_step_number = step_number  
     current_resume_state = resume_state  
+    current_document = document
     while current_step_number is not None:  
+        working_input_path = Path(state.working_input_path)
+        if working_input_path != current_document.path:
+            current_document = load_input_document(
+                working_input_path,
+                index=document.index,
+                total=document.total,
+            )
         step = skill.get_step(current_step_number)  
-        step_runtime_inputs = [definition for definition in skill.runtime_inputs if definition.applies_to(step.number, document.text)]  
+        step_runtime_inputs = [
+            definition for definition in skill.runtime_inputs if definition.applies_to(step.number, current_document.text)
+        ]
         runtime_values = gather_runtime_inputs(step_runtime_inputs, runtime_values)  
         state.runtime_inputs = runtime_values  
         save_state(state, output_dir, runtime_config)  
@@ -370,7 +380,7 @@ def _run_step_prompt_review_sequence(skill, document, output_dir: Path, step_num
         while True:  
             draft_text, prompt_payload = _generate_step_draft(  
                 skill,  
-                document,  
+                current_document,  
                 step.number,  
                 runtime_values,  
                 state,  
@@ -406,7 +416,7 @@ def _run_step_prompt_review_sequence(skill, document, output_dir: Path, step_num
   
                 _persist_accepted_step_output(  
                     skill,  
-                    document,  
+                    current_document,  
                     output_dir,  
                     step.number,  
                     draft_text,  
