@@ -22,6 +22,19 @@ Adding a normal new workflow should only require:
 
 No new dedicated `run.py` or private engine package is required for standard skills.
 
+## Install
+
+From the repo root:
+
+```bash
+python -m pip install -r requirements.txt
+```
+
+Current runtime requirements:
+
+- Python 3.10+
+- `PyYAML` via `requirements.txt`
+
 ## Run
 
 From the repo root:
@@ -229,6 +242,13 @@ Typical artifacts:
 The shared runtime loads `.env` from the repo root.
 
 See `.env.example` for supported variables. The engine supports OpenRouter and OpenAI-compatible chat completions.
+
+Typical setup:
+
+1. install dependencies with `python -m pip install -r requirements.txt`
+2. copy `.env.example` to `.env`
+3. set your API key and any provider overrides
+4. run `python run.py`
 
 ## Current Skills
 
