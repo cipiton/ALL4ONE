@@ -1,3 +1,3 @@
 # Runtime dependency for ONE4ALL.
-# Python 3.12+ is required by the codebase, but that constraint is not expressed here.
+# Python version is declared in pyproject.toml via requires-python >=3.12.
 PyYAML>=6.0,<7.0
