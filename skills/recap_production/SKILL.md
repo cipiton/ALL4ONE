@@ -23,6 +23,7 @@ steps:
   - number: 1
     title: 输出解说剧剧本
     prompt_reference: step1_prompt
+    write_to: recap_script
     default: true
     route_keywords_any:
       - 梗概
@@ -34,9 +35,13 @@ steps:
       - synopsis
       - premise
     route_priority: 1
+    input_blocks:
+      - label: 【用户需求】
+        from: user_brief
   - number: 2
     title: 提炼资产
     prompt_reference: step2_prompt
+    write_to: extracted_assets
     route_keywords_any:
       - 旁白
       - 对白
@@ -47,9 +52,13 @@ steps:
       - dialogue
       - 提炼资产
     requires_script_like: true
+    input_blocks:
+      - label: 【解说剧剧本】
+        from: recap_script
   - number: 3
     title: 输出生图配置
     prompt_reference: step3_prompt
+    write_to: image_config
     route_keywords_any:
       - 角色
       - 场景
@@ -63,6 +72,9 @@ steps:
       - config
       - prompt
     requires_list_like: true
+    input_blocks:
+      - label: 【资产清单】
+        from: extracted_assets
 
 runtime_inputs:
   - name: episode_count
