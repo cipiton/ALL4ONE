@@ -24,6 +24,7 @@ steps:
     title: 输出解说剧剧本
     prompt_reference: step1_prompt
     write_to: recap_script
+    output_filename: 01_recap_script.txt
     default: true
     route_keywords_any:
       - 梗概
@@ -42,6 +43,7 @@ steps:
     title: 提炼资产
     prompt_reference: step2_prompt
     write_to: extracted_assets
+    output_filename: 02_assets.txt
     route_keywords_any:
       - 旁白
       - 对白
@@ -59,6 +61,7 @@ steps:
     title: 输出生图配置
     prompt_reference: step3_prompt
     write_to: image_config
+    output_filename: 03_image_config.txt
     route_keywords_any:
       - 角色
       - 场景
