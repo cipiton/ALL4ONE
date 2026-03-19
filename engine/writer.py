@@ -64,18 +64,18 @@ def render_output_filename(
     return rendered or f'{safe_stem(document.path.stem)}.txt' 
   
   
-def write_text_file(output_dir: Path, filename: str, content: str) -> Path:  
-    output_dir.mkdir(parents=True, exist_ok=True)  
-    target = output_dir / filename  
-    target.write_text(content, encoding='utf-8')  
-    return target  
-  
-  
-def write_json_file(output_dir: Path, filename: str, payload: Any) -> Path:  
-    output_dir.mkdir(parents=True, exist_ok=True)  
-    target = output_dir / filename  
-    target.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding='utf-8')  
-    return target  
+def write_text_file(output_dir: Path, filename: str, content: str) -> Path:
+    output_dir.mkdir(parents=True, exist_ok=True)
+    target = _resolve_output_path(output_dir, filename)
+    target.write_text(content, encoding='utf-8')
+    return target
+
+
+def write_json_file(output_dir: Path, filename: str, payload: Any) -> Path:
+    output_dir.mkdir(parents=True, exist_ok=True)
+    target = _resolve_output_path(output_dir, filename)
+    target.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding='utf-8')
+    return target
   
   
 def render_section_report(  
@@ -116,14 +116,24 @@ def safe_stem(value: str) -> str:
     return slug[:80]  
   
   
-def stringify(value: Any) -> str:  
-    if value is None:  
-        return '未明确提及'  
+def stringify(value: Any) -> str:
+    if value is None:
+        return '未明确提及'
     if isinstance(value, str):  
         stripped = value.strip()  
         return stripped or '未明确提及'  
-    if isinstance(value, list):  
-        parts = [stringify(item) for item in value]  
-        return ';'.join(part for part in parts if part and part != '未明确提及') or '未明确提及'  
-    return str(value).strip() or '未明确提及'  
+    if isinstance(value, list):
+        parts = [stringify(item) for item in value]
+        return ';'.join(part for part in parts if part and part != '未明确提及') or '未明确提及'
+    return str(value).strip() or '未明确提及'
+
+
+def _resolve_output_path(output_dir: Path, filename: str) -> Path:
+    base_dir = output_dir.resolve()
+    target = (base_dir / filename).resolve()
+    try:
+        target.relative_to(base_dir)
+    except ValueError as exc:
+        raise ValueError(f"Output filename escapes the output directory: {filename}") from exc
+    return target
 

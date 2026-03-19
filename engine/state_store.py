@@ -36,12 +36,12 @@ def save_batch_summary(session_dir: Path, payload: dict[str, object], runtime_co
     return path  
   
   
-def find_latest_resumable_state(outputs_root: Path, skill: SkillDefinition):  
-    skill_root = outputs_root / skill.name  
-    if not skill_root.exists():  
-        return None  
-  
-    candidates = sorted(skill_root.rglob("state.json"), key=_candidate_sort_key, reverse=True)  
+def find_latest_resumable_state(outputs_root: Path, skill: SkillDefinition):
+    skill_root = outputs_root / skill.name
+    if not skill_root.exists():
+        return None
+
+    candidates = sorted(skill_root.rglob("state.json"), key=_candidate_sort_key, reverse=True)
     for candidate in candidates:  
         state = load_state(candidate)  
         if state is None or state.skill_name != skill.name:  
@@ -59,7 +59,10 @@ def is_resumable_state(skill: SkillDefinition, state: RunState):
     return False  
   
   
-def _candidate_sort_key(path: Path):  
-    parent_key = path.parent.parent if path.parent.name == ".internal" else path.parent  
-    internal_rank = 1 if path.parent.name == ".internal" else 0  
-    return (str(parent_key), internal_rank) 
+def _candidate_sort_key(path: Path):
+    internal_rank = 1 if path.parent.name == ".internal" else 0
+    try:
+        modified_at = path.stat().st_mtime_ns
+    except OSError:
+        modified_at = -1
+    return (modified_at, internal_rank, str(path))

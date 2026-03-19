@@ -189,7 +189,7 @@ def _parse_registry_entry(
             "Phase 1 only supports type: skill."
         )
 
-    spec_path = (repo_root / Path(raw_spec_path)).resolve()
+    spec_path = _resolve_repo_path(repo_root, raw_spec_path, description=f"registry entry '{entry_id}' spec_path")
     if spec_path.name != "SKILL.md":
         raise SkillLoadError(
             f"Registry entry '{entry_id}' in {registry_path} must point to a SKILL.md file: {raw_spec_path}"
@@ -303,7 +303,11 @@ def _load_references(
             continue
         relative_path = str(raw_reference["path"]).replace("\\", "/")
         reference_id = str(raw_reference.get("id") or Path(relative_path).stem.replace("-", "_"))
-        absolute_path = skill_dir / Path(relative_path)
+        absolute_path = _resolve_skill_path(
+            skill_dir,
+            relative_path,
+            description=f"reference '{reference_id}' for skill '{skill_dir.name}'",
+        )
         references[reference_id] = ReferenceDefinition(
             reference_id=reference_id,
             relative_path=relative_path,
@@ -326,7 +330,11 @@ def _load_references(
         references[step.prompt_reference_id] = ReferenceDefinition(
             reference_id=step.prompt_reference_id,
             relative_path=relative_path,
-            absolute_path=skill_dir / Path(relative_path),
+            absolute_path=_resolve_skill_path(
+                skill_dir,
+                relative_path,
+                description=f"prompt reference '{step.prompt_reference_id}' for skill '{skill_dir.name}'",
+            ),
             kind="prompt",
             description=f"Prompt for {step.title}",
             step_numbers=[step.number],
@@ -625,3 +633,23 @@ def _read_reference_resource(path: Path) -> str:
         return read_resource_text(path)
     except Exception as exc:  # noqa: BLE001
         raise SkillLoadError(f"Could not load reference resource: {path}") from exc
+
+
+def _resolve_repo_path(repo_root: Path, raw_path: str, *, description: str) -> Path:
+    repo_root = repo_root.resolve()
+    candidate = (repo_root / Path(raw_path)).resolve()
+    try:
+        candidate.relative_to(repo_root)
+    except ValueError as exc:
+        raise SkillLoadError(f"{description} escapes the repository root: {raw_path}") from exc
+    return candidate
+
+
+def _resolve_skill_path(skill_dir: Path, raw_path: str, *, description: str) -> Path:
+    skill_dir = skill_dir.resolve()
+    candidate = (skill_dir / Path(raw_path)).resolve()
+    try:
+        candidate.relative_to(skill_dir)
+    except ValueError as exc:
+        raise SkillLoadError(f"{description} escapes the skill directory: {raw_path}") from exc
+    return candidate

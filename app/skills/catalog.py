@@ -111,7 +111,7 @@ def _parse_registry_entry(
             "Phase 2 only supports type: skill."
         )
 
-    spec_path = (repo_root / Path(raw_spec_path)).resolve()
+    spec_path = _resolve_repo_path(repo_root, raw_spec_path, description=f"registry entry '{entry_id}' spec_path")
     if spec_path.name != "SKILL.md":
         raise SkillCatalogError(
             f"Registry entry '{entry_id}' in {registry_path} must point to a SKILL.md file: {raw_spec_path}"
@@ -161,3 +161,12 @@ def _require_string(
             f"Registry entry #{index} in {registry_path} is missing required field '{field_name}'."
         )
     return str(value)
+
+
+def _resolve_repo_path(repo_root: Path, raw_path: str, *, description: str) -> Path:
+    candidate = (repo_root / Path(raw_path)).resolve()
+    try:
+        candidate.relative_to(repo_root.resolve())
+    except ValueError as exc:
+        raise SkillCatalogError(f"{description} escapes the repository root: {raw_path}") from exc
+    return candidate
