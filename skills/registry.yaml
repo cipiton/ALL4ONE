@@ -23,3 +23,27 @@ skills:
     description: Multi-step novel-to-script workflow
     spec_path: skills/novel2script/SKILL.md
     enabled: true
+
+  - id: script_revision
+    type: skill
+    adapter: skill_md
+    display_name: Script Revision
+    description: Script rewrite and sanitization workflow
+    spec_path: skills/script_revision/SKILL.md
+    enabled: true
+
+  - id: short_drama_adaption
+    type: skill
+    adapter: skill_md
+    display_name: Short Drama Adaption
+    description: Industrialized short-drama adaptation planning workflow
+    spec_path: skills/short_drama_adaption/SKILL.md
+    enabled: true
+
+  - id: novel_to_drama_script
+    type: skill
+    adapter: skill_md
+    display_name: Novel To Drama Script
+    description: Novel-to-drama episode script generation workflow
+    spec_path: skills/novel_to_drama_script/SKILL.md
+    enabled: true

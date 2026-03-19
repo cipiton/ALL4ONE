@@ -244,8 +244,8 @@ def _run_step_prompt(
 ) -> RunState:
     if verbose:
         terminal_ui.print_progress(f"running step {step_number}: {skill.get_step(step_number).title}")
-    reference_ids = []
     step = skill.get_step(step_number)
+    reference_ids = []
     if step.prompt_reference_id:
         reference_ids.append(step.prompt_reference_id)
     for reference in skill.references.values():
@@ -293,8 +293,8 @@ def _run_step_prompt(
 
 
 def _generate_step_draft(skill, document, step_number: int, runtime_values: dict[str, Any], state: RunState, config, *, resume_state=None, draft_text=None, revision_request=None, user_instruction=None):
-    reference_ids = []
     step = skill.get_step(step_number)
+    reference_ids = []
     if step.prompt_reference_id:
         reference_ids.append(step.prompt_reference_id)
     for reference in skill.references.values():
@@ -324,8 +324,6 @@ def _generate_step_draft(skill, document, step_number: int, runtime_values: dict
         "raw_response": response.raw_response,
     }
     return response.text, prompt_payload
-
-
 def _persist_accepted_step_output(skill, document, output_dir: Path, step_number: int, output_text: str, state: RunState, runtime_config, prompt_payload=None) -> Path:
     step = skill.get_step(step_number)
     output_filename = step.output_filename or render_output_filename(
