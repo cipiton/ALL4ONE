@@ -1,7 +1,8 @@
 ﻿from __future__ import annotations  
   
-import sys  
-from pathlib import Path  
+import sys
+from datetime import datetime
+from pathlib import Path
   
 from app.skills.catalog import SkillCatalog, SkillCatalogError  
 from app.skills.protocol import SkillResumeRequest, SkillRunRequest  
@@ -85,15 +86,42 @@ def main() -> int:
             print()  
   
   
-def prompt_for_paths(skill) -> tuple[Path, list[Path]]:  
-    raw_path = terminal_ui.prompt_for_input_path(skill)  
-    if not raw_path:  
-        raise RuntimeError('Cancelled.')  
-    return Path(raw_path), resolve_input_paths(  
-        raw_path,  
-        skill.input_extensions,  
-        folder_mode=skill.folder_mode,  
-    )  
+def prompt_for_paths(skill) -> tuple[Path, list[Path]]:
+    repo_root = Path(__file__).resolve().parent
+    raw_path = terminal_ui.prompt_for_input_path(skill)
+    if not raw_path:
+        raise RuntimeError('Cancelled.')
+
+    if bool(getattr(skill, 'allow_inline_text_input', False)) and _should_treat_as_inline_text(raw_path):
+        return _create_inline_input_paths(repo_root, skill, raw_path)
+
+    return Path(raw_path), resolve_input_paths(
+        raw_path,
+        skill.input_extensions,
+        folder_mode=skill.folder_mode,
+    )
+
+
+def _should_treat_as_inline_text(raw_value: str) -> bool:
+    stripped = raw_value.strip().strip('"')
+    if not stripped:
+        return False
+    if any(separator in stripped for separator in ('\\', '/')):
+        return False
+    if Path(stripped).suffix:
+        return False
+    return True
+
+
+def _create_inline_input_paths(repo_root: Path, skill, brief_text: str) -> tuple[Path, list[Path]]:
+    skill_id = str(getattr(skill, 'skill_id', getattr(skill, 'name', 'skill'))).strip().replace(' ', '_') or 'skill'
+    inline_inputs_dir = repo_root / 'outputs' / '.internal' / 'inline_inputs'
+    inline_inputs_dir.mkdir(parents=True, exist_ok=True)
+    timestamp = datetime.now().strftime('%Y%m%d_%H%M%S_%f')
+    input_path = inline_inputs_dir / f'{skill_id}__{timestamp}.txt'
+    input_path.write_text(brief_text.strip() + '\n', encoding='utf-8')
+    synthetic_root = repo_root / f'{skill_id}_inline_brief.txt'
+    return synthetic_root, [input_path]
   
   
 if __name__ == '__main__':  

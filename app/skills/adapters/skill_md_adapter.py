@@ -57,6 +57,14 @@ class SkillMdAdapter(SkillAdapter):
         return self._skill_definition.folder_mode
 
     @property
+    def allow_inline_text_input(self) -> bool:
+        return self._skill_definition.allow_inline_text_input
+
+    @property
+    def inline_input_prompt(self) -> str:
+        return self._skill_definition.inline_input_prompt
+
+    @property
     def startup_policy(self) -> SkillStartupPolicySummary:
         policy = self._skill_definition.startup_policy
         return SkillStartupPolicySummary(

@@ -47,3 +47,11 @@ skills:
     description: Novel-to-drama episode script generation workflow
     spec_path: skills/novel_to_drama_script/SKILL.md
     enabled: true
+
+  - id: story_creation
+    type: skill
+    adapter: skill_md
+    display_name: Story Creation
+    description: Generate an original microseries step-1 storyline package from a short brief
+    spec_path: skills/story_creation/SKILL.md
+    enabled: true

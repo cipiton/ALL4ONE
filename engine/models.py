@@ -164,6 +164,8 @@ class SkillDefinition:
     output_config: OutputConfig
     input_extensions: list[str]
     folder_mode: str = "non_recursive"
+    allow_inline_text_input: bool = False
+    inline_input_prompt: str = ""
     startup_policy: SkillStartupPolicy = field(default_factory=SkillStartupPolicy)
     execution_policy: SkillExecutionPolicy = field(default_factory=SkillExecutionPolicy)
     system_instructions: str = ""

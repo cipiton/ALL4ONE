@@ -56,7 +56,13 @@ def choose_skill(skills: list[MenuSkill]) -> MenuSkill | None:
   
 def prompt_for_input_path(skill: SkillDefinition | InputSkill) -> str | None:  
     suffixes = ', '.join(skill.input_extensions)  
-    raw_value = input(f'Enter a file or folder path ({suffixes}; blank to cancel): ').strip()  
+    allow_inline = bool(getattr(skill, 'allow_inline_text_input', False))
+    inline_prompt = str(getattr(skill, 'inline_input_prompt', '') or '').strip()
+    if allow_inline:
+        prompt = inline_prompt or f'Enter a file or folder path ({suffixes}) or type a brief directly (blank to cancel): '
+    else:
+        prompt = f'Enter a file or folder path ({suffixes}; blank to cancel): '
+    raw_value = input(prompt).strip()  
     return raw_value or None  
   
   

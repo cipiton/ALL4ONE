@@ -86,6 +86,7 @@ def load_skill(skill_dir: Path) -> SkillDefinition:
     chunking = _load_chunking(frontmatter)
     output_config = _load_output_config(frontmatter)
     runtime_inputs = _load_runtime_inputs(frontmatter, embedded_registry, steps)
+    allow_inline_text_input, inline_input_prompt = _load_inline_input_settings(frontmatter, metadata, embedded_registry)
     name = str(frontmatter.get("name") or skill_dir.name)
     display_name = str(frontmatter.get("display_name") or metadata.get("display_name") or frontmatter.get("display") or name)
     description = str(frontmatter.get("description") or _extract_title(body) or name)
@@ -118,6 +119,8 @@ def load_skill(skill_dir: Path) -> SkillDefinition:
         output_config=output_config,
         input_extensions=_load_input_extensions(frontmatter, metadata),
         folder_mode=_load_folder_mode(frontmatter, metadata, embedded_registry),
+        allow_inline_text_input=allow_inline_text_input,
+        inline_input_prompt=inline_input_prompt,
         startup_policy=startup_policy,
         execution_policy=execution_policy,
         system_instructions=system_instructions,
@@ -588,6 +591,32 @@ def _load_folder_mode(frontmatter: dict[str, Any], metadata: dict[str, Any], emb
     if intake.get("recursive_txt_search"):
         return "recursive"
     return "non_recursive"
+
+
+def _load_inline_input_settings(
+    frontmatter: dict[str, Any],
+    metadata: dict[str, Any],
+    embedded_registry: dict[str, Any],
+) -> tuple[bool, str]:
+    raw_intake = metadata.get("intake") or frontmatter.get("intake") or {}
+    if not isinstance(raw_intake, dict):
+        raw_intake = {}
+    embedded_intake = embedded_registry.get("intake") or {}
+    if not isinstance(embedded_intake, dict):
+        embedded_intake = {}
+
+    allow_inline_text_input = bool(
+        raw_intake.get(
+            "allow_inline_text_input",
+            embedded_intake.get("allow_inline_text_input", False),
+        )
+    )
+    inline_input_prompt = str(
+        raw_intake.get("inline_input_prompt")
+        or embedded_intake.get("inline_input_prompt")
+        or ""
+    )
+    return allow_inline_text_input, inline_input_prompt
 
 
 def _load_startup_policy(
