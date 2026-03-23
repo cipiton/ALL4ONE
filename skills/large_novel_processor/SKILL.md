@@ -60,9 +60,9 @@ It only:
 
 Use it before downstream skills such as:
 
-- `Script Revision`
-- `Short Drama Adaption`
-- `Novel To Drama Script`
+- `Rewriting`
+- `Novel Adaptation Plan`
+- `Novel-to-Drama Script`
 
 ## Input
 

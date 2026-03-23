@@ -65,6 +65,14 @@ class SkillMdAdapter(SkillAdapter):
         return self._skill_definition.inline_input_prompt
 
     @property
+    def aliases(self) -> list[str]:
+        aliases = list(self._entry.aliases)
+        for alias in self._skill_definition.aliases:
+            if alias not in aliases:
+                aliases.append(alias)
+        return aliases
+
+    @property
     def startup_policy(self) -> SkillStartupPolicySummary:
         policy = self._skill_definition.startup_policy
         return SkillStartupPolicySummary(

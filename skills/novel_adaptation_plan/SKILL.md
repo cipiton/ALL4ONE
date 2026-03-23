@@ -1,9 +1,13 @@
 ---
-name: short-drama-adaption
-description: AI短剧工业化改编策划，根据小说原文自动完成名场面提取分级、5阶段节奏规划、单集名场面绑定，输出标准化制作方案；当用户需要将小说改编为竖屏短剧、需要短剧分镜/配音/生成的标准化方案时使用
+name: novel_adaptation_plan
+display_name: Novel Adaptation Plan
+description: Generate a novel adaptation plan for short-drama production by extracting key set pieces, planning pacing phases, and binding major beats into a standardized adaptation outline.
+aliases:
+  - short_drama_adaption
+  - short-drama-adaption
 ---
 
-# AI短剧工业化改编策划
+# Novel Adaptation Plan
 
 ## 任务目标
 - 本技能用于：根据小说原文，一键全自动完成AI短剧工业化改编策划与编剧

@@ -21,6 +21,12 @@ class SkillCatalog:
         self.repo_root = repo_root
         self._skills = skills
         self._skills_by_id = {skill.skill_id: skill for skill in skills}
+        self._alias_to_skill_id: dict[str, str] = {}
+        for skill in skills:
+            aliases = getattr(skill, "aliases", [])
+            for alias in aliases:
+                if alias and alias not in self._skills_by_id and alias not in self._alias_to_skill_id:
+                    self._alias_to_skill_id[alias] = skill.skill_id
 
     @classmethod
     def load(cls, repo_root: Path) -> "SkillCatalog":
@@ -57,6 +63,8 @@ class SkillCatalog:
         return list(self._skills)
 
     def get_skill(self, skill_id: str) -> SkillAdapter:
+        if skill_id not in self._skills_by_id and skill_id in self._alias_to_skill_id:
+            skill_id = self._alias_to_skill_id[skill_id]
         try:
             return self._skills_by_id[skill_id]
         except KeyError as exc:
@@ -125,6 +133,7 @@ def _parse_registry_entry(
         id=entry_id,
         entry_type=entry_type,
         adapter=adapter,
+        aliases=[str(item) for item in raw_entry.get("aliases", []) or []],
         spec_path=spec_path,
         enabled=bool(raw_entry.get("enabled", True)),
         display_name=str(raw_entry.get("display_name") or ""),
@@ -140,6 +149,7 @@ def _build_legacy_entries(repo_root: Path) -> list[SkillRegistryEntry]:
                 id=summary.name,
                 entry_type="skill",
                 adapter="skill_md",
+                aliases=[],
                 spec_path=(summary.skill_dir / "SKILL.md").resolve(),
                 enabled=True,
                 display_name=summary.display_name,

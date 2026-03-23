@@ -1,9 +1,12 @@
 ---
-name: novel-to-drama-script
-description: 将小说文字结合名场面整理和分集大纲，分阶段输出演绎剧分集剧本；当用户需要把小说改编为剧本、创作演绎剧剧本、或根据名场面和大纲生成分集剧本时使用
+name: novel_to_drama_script
+display_name: Novel-to-Drama Script
+description: Turn novel source material, set-piece notes, and episode outlines into episode-level drama scripts for short-form production.
+aliases:
+  - novel-to-drama-script
 ---
 
-# 小说改编演绎剧剧本
+# Novel-to-Drama Script
 
 ## 任务目标
 - 本Skill用于：将小说文字改编为短剧演绎剧分集剧本

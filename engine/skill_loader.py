@@ -91,6 +91,7 @@ def load_skill(skill_dir: Path) -> SkillDefinition:
     name = str(frontmatter.get("name") or skill_dir.name)
     display_name = str(frontmatter.get("display_name") or metadata.get("display_name") or frontmatter.get("display") or name)
     description = str(frontmatter.get("description") or _extract_title(body) or name)
+    aliases = _load_aliases(frontmatter, metadata)
     execution = frontmatter.get("execution", {}) or {}
     strategy = str(execution.get("strategy") or ("structured_report" if stages else "step_prompt"))
     utility_script = _load_utility_script(frontmatter, skill_dir)
@@ -127,6 +128,7 @@ def load_skill(skill_dir: Path) -> SkillDefinition:
         folder_mode=_load_folder_mode(frontmatter, metadata, embedded_registry),
         allow_inline_text_input=allow_inline_text_input,
         inline_input_prompt=inline_input_prompt,
+        aliases=aliases,
         utility_script=utility_script,
         startup_policy=startup_policy,
         execution_policy=execution_policy,
@@ -213,6 +215,7 @@ def _parse_registry_entry(
         id=entry_id,
         entry_type=entry_type,
         adapter=str(raw_entry.get("adapter") or "skill_md"),
+        aliases=_to_string_list(raw_entry.get("aliases")),
         spec_path=spec_path,
         enabled=bool(raw_entry.get("enabled", True)),
         display_name=str(raw_entry.get("display_name") or ""),
@@ -608,6 +611,20 @@ def _load_system_instructions(frontmatter: dict[str, Any], embedded_registry: di
 def _load_input_extensions(frontmatter: dict[str, Any], metadata: dict[str, Any]) -> list[str]:
     raw_extensions = frontmatter.get("input_extensions") or metadata.get("input_extensions") or [".txt"]
     return [str(item).lower() for item in raw_extensions]
+
+
+def _load_aliases(frontmatter: dict[str, Any], metadata: dict[str, Any]) -> list[str]:
+    raw_aliases = metadata.get("aliases")
+    if raw_aliases is None:
+        raw_aliases = frontmatter.get("aliases")
+    aliases = [str(item) for item in _to_string_list(raw_aliases)]
+    seen: set[str] = set()
+    ordered: list[str] = []
+    for alias in aliases:
+        if alias and alias not in seen:
+            ordered.append(alias)
+            seen.add(alias)
+    return ordered
 
 
 def _load_folder_mode(frontmatter: dict[str, Any], metadata: dict[str, Any], embedded_registry: dict[str, Any]) -> str:

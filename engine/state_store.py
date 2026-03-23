@@ -37,14 +37,18 @@ def save_batch_summary(session_dir: Path, payload: dict[str, object], runtime_co
   
   
 def find_latest_resumable_state(outputs_root: Path, skill: SkillDefinition):
-    skill_root = outputs_root / skill.name
-    if not skill_root.exists():
+    candidate_paths: list[Path] = []
+    for skill_name in skill.all_names:
+        skill_root = outputs_root / skill_name
+        if skill_root.exists():
+            candidate_paths.extend(skill_root.rglob("state.json"))
+    if not candidate_paths:
         return None
 
-    candidates = sorted(skill_root.rglob("state.json"), key=_candidate_sort_key, reverse=True)
+    candidates = sorted(candidate_paths, key=_candidate_sort_key, reverse=True)
     for candidate in candidates:  
         state = load_state(candidate)  
-        if state is None or state.skill_name != skill.name:  
+        if state is None or state.skill_name not in set(skill.all_names):  
             continue  
         if is_resumable_state(skill, state):  
             return state  

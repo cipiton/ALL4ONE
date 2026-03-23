@@ -29,6 +29,7 @@ class SkillRegistryEntry:
     entry_type: str
     spec_path: Path
     adapter: str = "skill_md"
+    aliases: list[str] = field(default_factory=list)
     enabled: bool = True
     display_name: str = ""
     description: str = ""
@@ -173,10 +174,15 @@ class SkillDefinition:
     folder_mode: str = "non_recursive"
     allow_inline_text_input: bool = False
     inline_input_prompt: str = ""
+    aliases: list[str] = field(default_factory=list)
     utility_script: UtilityScriptConfig | None = None
     startup_policy: SkillStartupPolicy = field(default_factory=SkillStartupPolicy)
     execution_policy: SkillExecutionPolicy = field(default_factory=SkillExecutionPolicy)
     system_instructions: str = ""
+
+    @property
+    def all_names(self) -> list[str]:
+        return [self.name, *self.aliases]
 
     def ordered_steps(self) -> list[SkillStep]:
         return [self.steps[number] for number in sorted(self.steps)]

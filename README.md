@@ -258,9 +258,9 @@ Typical setup:
 - `recap_analysis` via `skills/registry.yaml` -> `skills/recap_analysis/SKILL.md`
 - `recap_production` via `skills/registry.yaml` -> `skills/recap_production/SKILL.md`
 - `novel2script` via `skills/registry.yaml` -> `skills/novel2script/SKILL.md`
-- `script_revision` via `skills/registry.yaml` -> `skills/script_revision/SKILL.md`
-- `short_drama_adaption` via `skills/registry.yaml` -> `skills/short_drama_adaption/SKILL.md`
+- `novel_adaptation_plan` via `skills/registry.yaml` -> `skills/novel_adaptation_plan/SKILL.md`
 - `novel_to_drama_script` via `skills/registry.yaml` -> `skills/novel_to_drama_script/SKILL.md`
+- `rewriting` via `skills/registry.yaml` -> `skills/rewriting/SKILL.md`
 - `story_creation` via `skills/registry.yaml` -> `skills/story_creation/SKILL.md`
 - `large_novel_processor` via `skills/registry.yaml` -> `skills/large_novel_processor/SKILL.md`
 
