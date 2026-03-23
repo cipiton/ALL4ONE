@@ -16,6 +16,7 @@ from .runtime_config import load_runtime_config
 from .models import DocumentResult, PromptMessage, RunState, SkillDefinition, StructuredStage
 from .planner import build_execution_plan
 from .prompts import build_step_prompt_messages, build_structured_stage_messages
+from .project_ingestion import execute_project_ingestion, should_use_project_ingestion
 from .skill_loader import load_reference_texts
 from .state_store import save_batch_summary, save_state
 from .writer import (
@@ -52,6 +53,21 @@ def execute_input_paths(
         timestamp = session_dir.name
     else:
         timestamp, session_dir = create_session_directory(outputs_root, skill.name, input_root_path or (input_paths[0] if input_paths else None))
+
+    if not single_resume and should_use_project_ingestion(skill, input_paths, input_root_path=input_root_path):
+        config = load_config_from_env(repo_root)
+        return execute_project_ingestion(
+            repo_root,
+            skill,
+            input_paths,
+            input_root_path=input_root_path,
+            session_dir=session_dir,
+            forced_step_number=forced_step_number,
+            runtime_config=runtime_config,
+            config=config,
+            execute_document_fn=execute_document,
+            verbose=True,
+        )
 
     results: list[DocumentResult] = []
     total = len(input_paths)

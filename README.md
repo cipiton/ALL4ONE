@@ -54,6 +54,8 @@ The runner will:
 
 Folder processing defaults to non-recursive and uses stable sorted order unless a skill opts into recursive folder intake in metadata.
 
+For LLM-backed `.txt` skills, oversized single files and detected chunk folders now switch into a shared project-ingestion mode automatically. The runtime builds continuity state across chunks first, then generates unified final outputs from consolidated state instead of treating each chunk as an unrelated run.
+
 ## Repository Layout
 
 ```text
@@ -153,6 +155,38 @@ The shared engine currently supports two generic execution strategies:
 - `utility_script`
   For local preprocessing or utility skills that execute a reusable Python helper under the normal shared runner and output directory.
 
+## Large Text Project Ingestion
+
+Large `.txt` inputs no longer need to fail as isolated chunk runs.
+
+For LLM-backed `.txt` skills, the shared runtime now uses this flow when a file is too large for safe single-pass execution or when the selected input looks like a chunk folder:
+
+1. detect oversized or chunked input
+2. switch into project-ingestion mode
+3. build persistent canonical state plus rolling recent context across chunks
+4. write shared intermediate artifacts under `intermediate/`
+5. synthesize a consolidated `master_outline.txt`
+6. run the selected skill once against that consolidated project context
+7. write unified deliverables under `final/`
+
+Intermediate artifacts can include:
+
+- `project_state.json`
+- `continuity_log.json`
+- `chunk_summaries.json`
+- `master_outline.txt`
+- `ingestion_report.txt`
+
+Project-mode outputs are organized like:
+
+```text
+outputs/<skill>/<job>/
+  intermediate/
+  final/
+```
+
+Small `.txt` files still use the previous single-pass behavior.
+
 ### Supported `SKILL.md` metadata
 
 - `name`
@@ -239,6 +273,8 @@ Typical artifacts:
 - `prompt_dump.json`
 - `stage_outputs.json` for structured workflows
 - final `.txt` output
+
+Project-ingestion runs additionally write chunk continuity/state artifacts under `intermediate/` and keep user-facing deliverables under `final/`.
 
 ## Environment
 
