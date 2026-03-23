@@ -4,6 +4,20 @@ display_name: Novel-to-Drama Script
 description: Turn novel source material, set-piece notes, and episode outlines into episode-level drama scripts for short-form production.
 aliases:
   - novel-to-drama-script
+system_instructions: |
+  If source_mode=project_ingested or source_type=synthesized_master_outline, treat the provided dossier as sufficient working source material.
+  In that case, operate in best-effort production mode:
+  - do not ask the user to provide more materials
+  - do not output a checklist, questionnaire, or confirmation note
+  - make conservative assumptions where details are missing
+  - produce a substantive script-ready deliverable directly
+  If a full dialogue script would be too large or underdetermined, output a script-ready episode package instead:
+  - episode-by-episode breakdown
+  - scene order
+  - dramatic beats and turning points
+  - key dialogue cues
+  - ending hooks
+  The result must be usable by a downstream writer without first answering more questions.
 ---
 
 # Novel-to-Drama Script
@@ -12,6 +26,32 @@ aliases:
 - 本Skill用于：将小说文字改编为短剧演绎剧分集剧本
 - 能力包含：结合名场面整理、遵循分集大纲、创作短剧剧本（对白占比>70%，单句≤12字，第一集3秒黄金开头，每集开头承接上集，每集结尾留钩子，中间有情绪拐点）
 - 触发条件：用户需要改编小说为短剧剧本、创作短剧演绎剧剧本、或根据名场面和大纲生成分集剧本
+
+## Project-Ingested Mode
+- 当输入源带有 `source_mode: project_ingested` / `source_type: synthesized_master_outline` 元数据时，表示上游已经把长篇原文整合为统一的剧情母本、人物关系、时间线、名场面与连续性档案。
+- 在该模式下，必须把这份整合档案视为可直接开工的脚本底稿，而不是再次向用户索要“小说正文/名场面整理/分集大纲确认”。
+- 采用最佳努力生成：
+  - 缺细节时做保守补足
+  - 缺少逐章原文时，以母本大纲中的明确事件链、角色功能、关键场次和连续性约束为准
+  - 优先交付可写、可拆、可继续生产的剧本化成果
+- 不得把最终输出写成确认清单、问题单、需求问卷或“请先提供更多资料”的说明文。
+- 只有在确实无法成稿时，才允许在正文末尾补充极短阻塞说明；正文主体仍必须先交付最佳努力结果。
+
+## 强制输出合同
+- 输出必须是“实质性的剧本化交付物”，至少包含以下部分：
+  1. 项目定位 / 本轮改编范围
+  2. 分集规划或集群规划
+  3. 每集的核心戏剧目标
+  4. 场次顺序 / scene sequence
+  5. 关键戏剧 beats 与冲突钩子
+  6. 关键对白走向或可直接扩写的对白提示
+  7. 集尾钩子
+- 如果篇幅不足以写出完整台词正稿，优先输出“剧本化分集总包”：
+  - EP-by-EP 场次拆解
+  - 每场的目标/冲突/推进
+  - 关键对白提示
+  - 视觉与节奏说明
+- 输出必须让下游编剧可以直接继续扩写，不允许退化为需求确认文档。
 
 ## 前置准备
 - 需要用户提供：
@@ -64,6 +104,7 @@ aliases:
 - 画面描述要简洁有力，为拍摄或演绎提供指导
 - 忠实于原著人物性格，不随意改变人物设定
 - 名场面要重点突出，保持原著的情感张力
+- 若输入已经是上游整合后的 `master_outline` / 母本档案，则直接据此生成剧本化交付物，不再把输出写成“还缺哪些资料”
 
 ## 使用示例
 ### 示例1：改编武侠小说

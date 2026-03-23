@@ -5,6 +5,15 @@ description: Generate a novel adaptation plan for short-drama production by extr
 aliases:
   - short_drama_adaption
   - short-drama-adaption
+system_instructions: |
+  If source_mode=project_ingested or source_type=synthesized_master_outline, treat the provided dossier as sufficient working source material.
+  In that case, operate in best-effort production mode:
+  - do not ask the user to confirm missing inputs
+  - do not output a questionnaire, checklist, or requirements request
+  - make conservative assumptions where details are missing
+  - produce a substantive adaptation plan directly
+  The final output must include: adaptation positioning, compression/omission strategy, principal characters and functions, major arcs, stage/episode structure, key set pieces/reversals, tone/style notes, and production-facing planning notes.
+  Only mention blockers briefly at the end if generation is truly impossible; blockers must never replace the deliverable.
 ---
 
 # Novel Adaptation Plan
@@ -13,6 +22,33 @@ aliases:
 - 本技能用于：根据小说原文，一键全自动完成AI短剧工业化改编策划与编剧
 - 能力包含：名场面提取与分级、5阶段节奏规划、单集名场面绑定、标准化制作方案输出
 - 触发条件：用户提供小说题材、原文字数、自定义总集数（默认60集），需要将小说改编为竖屏短剧
+
+## Project-Ingested Mode
+- 当输入源带有 `source_mode: project_ingested` / `source_type: synthesized_master_outline` 元数据时，说明上游已完成长文本分块、连续性合并、人物与线索整理。
+- 在该模式下，必须把 `master_outline.txt` 与其背后的共享 continuity state 视为足够可靠的工作底稿，直接进入“最佳努力生成”。
+- 不要把输出写成“请补充字数/集数/确认信息”的问卷、确认单或 checklist。
+- 若缺少局部细节，采用保守合理假设并在成稿内自然落地，例如：
+  - 未指定总集数时默认按 `60集` 规划
+  - 未给出精确字数时按“当前覆盖章节体量”做压缩规划
+  - 细枝末节不明时优先保主线、人物功能与节奏节点
+- 只有在根本无法形成改编方案时，才允许在正文最后用不超过3行指出真正阻塞项；不得让阻塞说明取代正文主体。
+
+## 交付原则
+- 优先交付完整改编方案，而不是索要更多材料。
+- 输出必须是可直接用于短剧开发、编剧拆解或制作评审的实质性文档。
+- 若原始材料是上游整合后的母本档案，默认其已包含足够的世界观、角色、案件、阶段节奏与关键名场面信息。
+
+## 强制输出合同
+- 最终输出必须至少包含以下部分，且内容具体，不可留空：
+  1. 项目定位与改编一句话卖点
+  2. 改编压缩策略 / 取舍原则
+  3. 核心主线与主要人物功能表
+  4. 主要阶段节奏规划
+  5. 分集结构规划（至少给出每阶段或每集的明确推进）
+  6. 名场面/关键反转落点
+  7. 风格与拍法建议
+  8. 编剧/制作侧注意事项
+- 输出必须以“已生成的改编方案”收束，不能停在“待确认/待补充”。
 
 ## 前置准备
 - 无需额外依赖
@@ -96,3 +132,4 @@ aliases:
 - 严格按照规则执行，确保输出标准化、可直接用于AI生产
 - 在名场面提取和分级时，结合小说题材特点进行判断
 - 确保阶段节奏符合竖屏短剧的流量和留存规律
+- 如果已经收到项目整合后的 `master_outline` / 母本大纲，则直接把它当成可执行底稿，不再回退成需求确认问卷

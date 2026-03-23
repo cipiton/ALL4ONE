@@ -42,6 +42,28 @@ def build_step_prompt_messages(
         ),  
         PromptMessage(role='system', content=f'Skill instructions excerpt:\n{distill_skill_body(skill)}'),  
     ]  
+
+    source_context = dict(document.context_metadata or {})
+    if source_context:
+        messages.append(
+            PromptMessage(
+                role='system',
+                content=f'Source context metadata:\n{format_source_context(source_context)}',
+            )
+        )
+        if source_context.get('source_mode') == 'project_ingested':
+            messages.append(
+                PromptMessage(
+                    role='system',
+                    content=(
+                        'Project-ingested execution policy:\n'
+                        '- Treat the synthesized master outline/dossier as the working source of truth.\n'
+                        '- Shared continuity state is available upstream; do not ask the user to reconfirm the dossier.\n'
+                        '- Use best-effort generation and make conservative assumptions where details are missing.\n'
+                        '- Do not turn the deliverable into a questionnaire, checklist, or request-for-more-input note unless generation is genuinely impossible.'
+                    ),
+                )
+            )
   
     if skill.system_instructions:  
         messages.append(PromptMessage(role='system', content=skill.system_instructions))  
@@ -132,7 +154,7 @@ def build_structured_stage_messages(
     }  
     inputs = {key: stage_outputs[key] for key in stage.input_keys if key in stage_outputs} 
   
-    return [  
+    messages = [  
         PromptMessage(  
             role='system',  
             content='You are a precise workflow runner. Return only a JSON object with no extra commentary.',  
@@ -151,7 +173,32 @@ def build_structured_stage_messages(
                 f'{_build_stage_payload(document, document_text_override, chunk_label, merge_payload)}'  
             ),  
         ),  
-    ]  
+    ]
+
+    source_context = dict(document.context_metadata or {})
+    if source_context:
+        messages.insert(
+            1,
+            PromptMessage(
+                role='system',
+                content=f'Source context metadata:\n{format_source_context(source_context)}',
+            ),
+        )
+        if source_context.get('source_mode') == 'project_ingested':
+            messages.insert(
+                2,
+                PromptMessage(
+                    role='system',
+                    content=(
+                        'Project-ingested execution policy:\n'
+                        '- Treat the synthesized master outline/dossier as the working source of truth.\n'
+                        '- Shared continuity state is available upstream; do not ask the user to reconfirm the dossier.\n'
+                        '- Use best-effort generation and make conservative assumptions where details are missing.\n'
+                        '- Do not turn the deliverable into a questionnaire, checklist, or request-for-more-input note unless generation is genuinely impossible.'
+                    ),
+                ),
+            )
+    return messages  
   
   
 def distill_skill_body(skill: SkillDefinition) -> str:  
@@ -168,6 +215,14 @@ def format_reference_texts(reference_texts: dict[str, str]) -> str:
     for path, text in reference_texts.items():  
         blocks.append(f'[{path}]\n{text.strip()}')  
     return '\n\n'.join(blocks)  
+
+
+def format_source_context(source_context: dict[str, Any]) -> str:
+    lines = []
+    for key, value in source_context.items():
+        rendered = json.dumps(value, ensure_ascii=False) if isinstance(value, (dict, list, bool)) else str(value)
+        lines.append(f'- {key}: {rendered}')
+    return '\n'.join(lines) if lines else 'No source context metadata.'
   
   
 def _build_stage_payload(  

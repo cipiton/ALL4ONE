@@ -230,6 +230,7 @@ class InputDocument:
     estimated_tokens: int
     index: int = 1
     total: int = 1
+    context_metadata: dict[str, Any] = field(default_factory=dict)
 
 
 @dataclass(slots=True)

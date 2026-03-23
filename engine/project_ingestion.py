@@ -85,6 +85,15 @@ def execute_project_ingestion(
         print("[...] generating final deliverables from consolidated state")
 
     master_document = load_input_document(master_outline_path)
+    master_document.context_metadata = {
+        "source_mode": "project_ingested",
+        "source_type": "synthesized_master_outline",
+        "interaction_policy": "best_effort_no_questionnaire",
+        "continuity_state_available": True,
+        "project_state_available": True,
+        "chunk_count": len(chunks),
+        "source_origin_mode": source_metadata.get("mode", ""),
+    }
     state = execute_document_fn(
         repo_root,
         skill,
