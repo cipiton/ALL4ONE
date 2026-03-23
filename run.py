@@ -8,11 +8,18 @@ from app.skills.catalog import SkillCatalog, SkillCatalogError
 from app.skills.protocol import SkillResumeRequest, SkillRunRequest  
 from engine import terminal_ui  
 from engine.input_loader import InputLoadError, resolve_input_paths  
-from engine.llm_client import LLMClientError, describe_active_model, load_env_file  
+from engine.llm_client import (
+    LLMClientError,
+    describe_active_model,
+    format_runtime_error_message,
+    load_env_file,
+)
+from engine.runtime_config import load_runtime_config
   
   
 def main() -> int:  
     repo_root = Path(__file__).resolve().parent  
+    runtime_config = load_runtime_config(repo_root)
     terminal_ui.configure_console()  
     load_env_file(repo_root / '.env')  
     terminal_ui.print_intro(describe_active_model(repo_root))  
@@ -82,7 +89,11 @@ def main() -> int:
             if not terminal_ui.ask_yes_no('Run another job? [Y/n]: ', default=True):  
                 return 0  
         except (SkillCatalogError, InputLoadError, LLMClientError, RuntimeError) as exc:  
-            print(f'Error: {exc}', file=sys.stderr)  
+            message = format_runtime_error_message(
+                exc,
+                troubleshooting_mode=runtime_config.troubleshooting_mode,
+            )
+            print(f'Error: {message}', file=sys.stderr)  
             print()  
   
   

@@ -1,11 +1,17 @@
 ﻿from __future__ import annotations
 
+import importlib.util
 from pathlib import Path
 from typing import Any
 
 from . import terminal_ui
 from .input_loader import chunk_text, load_input_document, read_resource_text
-from .llm_client import call_chat_completion, load_config_from_env, parse_json_response
+from .llm_client import (
+    call_chat_completion,
+    format_runtime_error_message,
+    load_config_from_env,
+    parse_json_response,
+)
 from .runtime_config import load_runtime_config
 from .models import DocumentResult, PromptMessage, RunState, SkillDefinition, StructuredStage
 from .planner import build_execution_plan
@@ -95,6 +101,10 @@ def execute_input_paths(
             )
         except Exception as exc:  # noqa: BLE001
             error_message = str(exc)
+            display_message = format_runtime_error_message(
+                exc,
+                troubleshooting_mode=runtime_config.troubleshooting_mode,
+            )
             results.append(
                 DocumentResult(
                     document_path=input_path,
@@ -110,7 +120,7 @@ def execute_input_paths(
                     "error_message": error_message,
                 }
             )
-            print(f"Error in {input_path.name}: {error_message}")
+            print(f"Error in {input_path.name}: {display_message}")
         finally:
             if total > 1:
                 save_batch_summary(session_dir, batch_summary, runtime_config)
@@ -150,9 +160,8 @@ def execute_document(
     )
     save_state(state, output_dir, runtime_config)
 
-    config = load_config_from_env(repo_root)
-
     if plan.strategy == "step_prompt" and skill.execution_policy.mode == "sequential_with_review":
+        config = load_config_from_env(repo_root)
         return _run_step_prompt_review_sequence(
             skill,
             document,
@@ -167,6 +176,7 @@ def execute_document(
         )
 
     if plan.strategy == "step_prompt":
+        config = load_config_from_env(repo_root)
         runtime_values = gather_runtime_inputs(plan.runtime_inputs, runtime_values)
         state.runtime_inputs = runtime_values
         save_state(state, output_dir, runtime_config)
@@ -183,7 +193,24 @@ def execute_document(
             verbose,
         )
 
+    if plan.strategy == "utility_script":
+        runtime_values = gather_runtime_inputs(plan.runtime_inputs, runtime_values)
+        state.runtime_inputs = runtime_values
+        save_state(state, output_dir, runtime_config)
+        return _run_utility_script(
+            repo_root,
+            skill,
+            document,
+            output_dir,
+            plan.step.number,
+            runtime_values,
+            state,
+            runtime_config,
+            verbose,
+        )
+
     if plan.strategy == "structured_report" and skill.execution_policy.mode == "sequential_with_review":
+        config = load_config_from_env(repo_root)
         return _run_structured_review_sequence(
             skill,
             document,
@@ -194,6 +221,7 @@ def execute_document(
             verbose,
         )
 
+    config = load_config_from_env(repo_root)
     return _run_structured(
         skill,
         document,
@@ -625,6 +653,88 @@ def _run_structured(
     return state
 
 
+def _run_utility_script(
+    repo_root: Path,
+    skill: SkillDefinition,
+    document,
+    output_dir: Path,
+    step_number: int,
+    runtime_values: dict[str, Any],
+    state: RunState,
+    runtime_config,
+    verbose: bool,
+) -> RunState:
+    step = skill.get_step(step_number)
+    if verbose:
+        terminal_ui.print_progress(f"running utility step {step_number}: {step.title}")
+
+    utility = skill.utility_script
+    if utility is None:
+        raise ExecutionError(f"Skill '{skill.name}' is missing utility script configuration.")
+    if not utility.absolute_path.exists():
+        raise ExecutionError(f"Utility script does not exist: {utility.absolute_path}")
+
+    module_name = f"_skill_utility_{skill.name}_{step_number}"
+    spec = importlib.util.spec_from_file_location(module_name, utility.absolute_path)
+    if spec is None or spec.loader is None:
+        raise ExecutionError(f"Could not load utility script: {utility.absolute_path}")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+
+    entrypoint = getattr(module, utility.entrypoint, None)
+    if not callable(entrypoint):
+        raise ExecutionError(
+            f"Utility script '{utility.relative_path}' does not define callable entrypoint '{utility.entrypoint}'."
+        )
+
+    raw_result = entrypoint(
+        repo_root=repo_root,
+        skill=skill,
+        document=document,
+        output_dir=output_dir,
+        step_number=step_number,
+        runtime_values=dict(runtime_values),
+        state=state,
+    )
+    result = raw_result if isinstance(raw_result, dict) else {}
+
+    resolved_outputs: dict[str, str] = {}
+    raw_output_files = result.get("output_files", {})
+    if isinstance(raw_output_files, dict):
+        for key, value in raw_output_files.items():
+            resolved_outputs[str(key)] = str(_resolve_utility_output_path(output_dir, value))
+
+    primary_candidate = result.get("primary_output")
+    if primary_candidate in (None, "") and "primary" in resolved_outputs:
+        primary_candidate = resolved_outputs["primary"]
+    primary_path = (
+        _resolve_utility_output_path(output_dir, primary_candidate)
+        if primary_candidate not in (None, "")
+        else _resolve_default_utility_primary_output(output_dir)
+    )
+    resolved_outputs["primary"] = str(primary_path)
+    if step.output_key and step.output_key not in resolved_outputs:
+        resolved_outputs[step.output_key] = str(primary_path)
+
+    state.output_files.update(resolved_outputs)
+    state.working_input_path = str(
+        _resolve_utility_output_path(output_dir, result["working_input_path"])
+        if result.get("working_input_path") not in (None, "")
+        else document.path
+    )
+
+    notes = result.get("notes", [])
+    if isinstance(notes, list):
+        state.notes.extend(str(item) for item in notes if str(item).strip())
+
+    status = str(result.get("status") or "completed")
+    if status not in {"completed", "completed_step", "awaiting_input", "running", "error"}:
+        status = "completed"
+    state.status = status
+    save_state(state, output_dir, runtime_config)
+    return state
+
+
 def run_structured_workflow(
     skill: SkillDefinition,
     document,
@@ -808,4 +918,28 @@ def _resolve_input_block_content(
     if not used_document_fallback:
         return document.text
     return None
+
+
+def _resolve_utility_output_path(output_dir: Path, value: Any) -> Path:
+    if value in (None, ""):
+        raise ExecutionError("Utility script returned an empty output path.")
+    candidate = Path(str(value))
+    if not candidate.is_absolute():
+        candidate = output_dir / candidate
+    candidate = candidate.resolve()
+    base_dir = output_dir.resolve()
+    try:
+        candidate.relative_to(base_dir)
+    except ValueError as exc:
+        raise ExecutionError(f"Utility output escapes the session directory: {value}") from exc
+    if not candidate.exists():
+        raise ExecutionError(f"Utility output path does not exist: {candidate}")
+    return candidate
+
+
+def _resolve_default_utility_primary_output(output_dir: Path) -> Path:
+    default_index = output_dir / "index.txt"
+    if default_index.exists():
+        return default_index.resolve()
+    raise ExecutionError("Utility script did not return a primary output and no default index.txt was found.")
 

@@ -147,6 +147,13 @@ class SkillExecutionPolicy:
 
 
 @dataclass(slots=True)
+class UtilityScriptConfig:
+    relative_path: str
+    absolute_path: Path
+    entrypoint: str = "run"
+
+
+@dataclass(slots=True)
 class SkillDefinition:
     name: str
     display_name: str
@@ -166,6 +173,7 @@ class SkillDefinition:
     folder_mode: str = "non_recursive"
     allow_inline_text_input: bool = False
     inline_input_prompt: str = ""
+    utility_script: UtilityScriptConfig | None = None
     startup_policy: SkillStartupPolicy = field(default_factory=SkillStartupPolicy)
     execution_policy: SkillExecutionPolicy = field(default_factory=SkillExecutionPolicy)
     system_instructions: str = ""

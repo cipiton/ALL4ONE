@@ -12,6 +12,45 @@ from .models import LLMConfig, LLMResponse, PromptMessage
   
 class LLMClientError(RuntimeError):  
     pass
+
+
+_CONTEXT_LIMIT_PATTERNS = (
+    "maximum context length",
+    "requested about",
+    "too many tokens",
+    "input too large",
+    "context window",
+    "context length",
+    "reduce the length",
+    "please reduce",
+    "prompt is too long",
+    "token limit",
+)
+
+
+def is_context_limit_error_message(message: str) -> bool:
+    lowered = message.casefold()
+    return any(pattern in lowered for pattern in _CONTEXT_LIMIT_PATTERNS)
+
+
+def format_runtime_error_message(error: BaseException, *, troubleshooting_mode: bool = False) -> str:
+    raw_message = str(error).strip() or error.__class__.__name__
+    if not is_context_limit_error_message(raw_message):
+        return raw_message
+
+    lines = [
+        "The input .txt file is too large for the current model's context window.",
+        "Suggestion: use the 'Large Novel Processor' skill first to split the novel into chapters or chunk files, then rerun the downstream skill.",
+    ]
+    if troubleshooting_mode:
+        lines.extend(
+            [
+                "",
+                "Raw provider error:",
+                raw_message,
+            ]
+        )
+    return "\n".join(lines)
   
   
 def load_env_file(env_path: Path) -> None:  

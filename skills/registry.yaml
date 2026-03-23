@@ -55,3 +55,11 @@ skills:
     description: Generate an original microseries step-1 storyline package from a short brief
     spec_path: skills/story_creation/SKILL.md
     enabled: true
+
+  - id: large_novel_processor
+    type: skill
+    adapter: skill_md
+    display_name: Large Novel Processor
+    description: Split large novel .txt files into chapter or chunk outputs plus an index for downstream skills
+    spec_path: skills/large_novel_processor/SKILL.md
+    enabled: true

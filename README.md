@@ -150,6 +150,8 @@ The shared engine currently supports two generic execution strategies:
   For multi-step workflows where each step has its own prompt/reference file.
 - `structured_report`
   For report-style workflows that run a configurable series of structured JSON stages and then render a final report.
+- `utility_script`
+  For local preprocessing or utility skills that execute a reusable Python helper under the normal shared runner and output directory.
 
 ### Supported `SKILL.md` metadata
 
@@ -190,6 +192,7 @@ Examples already in use:
 
 - `episode_count` for `recap_production` step 1
 - `style` for `recap_production` step 2
+- `split_mode` and `chunk_size` for `Large Novel Processor`
 
 Supported input types:
 
@@ -255,6 +258,32 @@ Typical setup:
 - `recap_analysis` via `skills/registry.yaml` -> `skills/recap_analysis/SKILL.md`
 - `recap_production` via `skills/registry.yaml` -> `skills/recap_production/SKILL.md`
 - `novel2script` via `skills/registry.yaml` -> `skills/novel2script/SKILL.md`
+- `script_revision` via `skills/registry.yaml` -> `skills/script_revision/SKILL.md`
+- `short_drama_adaption` via `skills/registry.yaml` -> `skills/short_drama_adaption/SKILL.md`
+- `novel_to_drama_script` via `skills/registry.yaml` -> `skills/novel_to_drama_script/SKILL.md`
+- `story_creation` via `skills/registry.yaml` -> `skills/story_creation/SKILL.md`
+- `large_novel_processor` via `skills/registry.yaml` -> `skills/large_novel_processor/SKILL.md`
+
+## Large Novel Processor
+
+`Large Novel Processor` is a reusable preparation skill for oversized `.txt` novels.
+
+Use it when the source novel is too large to send directly into downstream prompt-based skills. The skill:
+
+1. detects chapter headings
+2. splits the source into chapter files
+3. optionally groups those chapters into chunk files
+4. writes `index.txt`
+
+It runs locally through the shared runner and does not call the LLM.
+
+Run it from the normal shared flow:
+
+```bash
+python run.py
+```
+
+Then choose `Large Novel Processor`, select a `.txt` novel file, choose `chapter` or `chunk`, and if chunk mode is selected provide the chapters-per-chunk size. The resulting output folder can then be used as prepared source material for downstream skills that accept `.txt` file or folder input.
   
 ## Startup Policy Metadata  
   

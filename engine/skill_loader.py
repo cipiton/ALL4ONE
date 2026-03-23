@@ -19,6 +19,7 @@ from .models import (
     SkillStep,
     SkillSummary,
     StructuredStage,
+    UtilityScriptConfig,
 )
 
 
@@ -92,6 +93,11 @@ def load_skill(skill_dir: Path) -> SkillDefinition:
     description = str(frontmatter.get("description") or _extract_title(body) or name)
     execution = frontmatter.get("execution", {}) or {}
     strategy = str(execution.get("strategy") or ("structured_report" if stages else "step_prompt"))
+    utility_script = _load_utility_script(frontmatter, skill_dir)
+    if strategy == "utility_script" and utility_script is None:
+        raise SkillLoadError(
+            f"Skill '{name}' declares execution.strategy=utility_script but does not define execution.utility_script.path."
+        )
     supports_resume = bool(
         frontmatter.get(
             "supports_resume",
@@ -121,6 +127,7 @@ def load_skill(skill_dir: Path) -> SkillDefinition:
         folder_mode=_load_folder_mode(frontmatter, metadata, embedded_registry),
         allow_inline_text_input=allow_inline_text_input,
         inline_input_prompt=inline_input_prompt,
+        utility_script=utility_script,
         startup_policy=startup_policy,
         execution_policy=execution_policy,
         system_instructions=system_instructions,
@@ -415,6 +422,27 @@ def _load_chunking(frontmatter: dict[str, Any]) -> ChunkingConfig:
         threshold_chars=int(raw_chunking.get("threshold_chars", 18_000)),
         chunk_size=int(raw_chunking.get("chunk_size", 12_000)),
         overlap=int(raw_chunking.get("overlap", 1_200)),
+    )
+
+
+def _load_utility_script(frontmatter: dict[str, Any], skill_dir: Path) -> UtilityScriptConfig | None:
+    execution = frontmatter.get("execution", {}) or {}
+    raw_utility = execution.get("utility_script") or {}
+    if not isinstance(raw_utility, dict):
+        raw_utility = {}
+
+    relative_path = _optional_string(raw_utility.get("path"))
+    if not relative_path:
+        return None
+
+    return UtilityScriptConfig(
+        relative_path=relative_path.replace("\\", "/"),
+        absolute_path=_resolve_skill_path(
+            skill_dir,
+            relative_path,
+            description=f"utility script for skill '{skill_dir.name}'",
+        ),
+        entrypoint=str(raw_utility.get("entrypoint") or "run"),
     )
 
 

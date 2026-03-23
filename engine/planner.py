@@ -26,7 +26,7 @@ def build_execution_plan(skill: SkillDefinition, input_text: str, forced_step_nu
                 continue  
             if reference.step_numbers and step.number in reference.step_numbers:  
                 reference_ids.append(reference.reference_id)  
-    else:  
+    elif skill.execution_strategy == "structured_report":  
         for stage in skill.stages:  
             for reference_id in stage.reference_ids:  
                 if reference_id not in reference_ids:  
