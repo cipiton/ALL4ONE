@@ -9,8 +9,8 @@ from .project_outputs import build_ingestion_report
 from .writer import safe_stem, write_text_file
 
 
-AUTO_SPLIT_CHUNK_SIZE = 12_000
-AUTO_SPLIT_OVERLAP = 1_200
+AUTO_SPLIT_CHUNK_SIZE = 300_000
+AUTO_SPLIT_OVERLAP = 1000
 
 
 def prepare_project_chunks(

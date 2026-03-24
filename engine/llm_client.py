@@ -7,11 +7,21 @@ from pathlib import Path
 from urllib import error, request  
   
 from .config_loader import get_config_value, load_repo_config  
-from .models import LLMConfig, LLMResponse, PromptMessage  
+from .models import LLMConfig, LLMResponse, PromptMessage, SkillDefinition, SkillStep  
   
   
 class LLMClientError(RuntimeError):  
     pass
+
+
+ROUTE_LABELS = {
+    "default": "global default",
+    "step_execution": "step execution",
+    "final_deliverable": "final deliverable",
+    "qa_final_polish": "QA/final polish",
+    "project_chunk_ingestion": "project chunk ingestion",
+    "project_master_outline": "project master outline synthesis",
+}
 
 
 _CONTEXT_LIMIT_PATTERNS = (
@@ -71,10 +81,43 @@ def load_env_file(env_path: Path) -> None:
 def describe_active_model(repo_root: Path) -> str:  
     selection = _resolve_llm_selection(repo_root)  
     return f"Model: {selection['provider']} / {selection['model']}"
+
+
+def describe_model_route(
+    repo_root: Path,
+    *,
+    skill: SkillDefinition | None = None,
+    step: SkillStep | None = None,
+    route_role: str | None = None,
+    model_override: str | None = None,
+) -> str:
+    selection = _resolve_llm_selection(
+        repo_root,
+        skill=skill,
+        step=step,
+        route_role=route_role,
+        model_override=model_override,
+    )
+    label = ROUTE_LABELS.get(selection["route_role"], selection["route_role"])
+    source = selection["selection_source"]
+    return f"{label}: {selection['provider']} / {selection['model']} ({source})"
   
   
-def load_config_from_env(repo_root: Path) -> LLMConfig:  
-    selection = _resolve_llm_selection(repo_root)  
+def load_config_from_env(
+    repo_root: Path,
+    *,
+    skill: SkillDefinition | None = None,
+    step: SkillStep | None = None,
+    route_role: str | None = None,
+    model_override: str | None = None,
+) -> LLMConfig:
+    selection = _resolve_llm_selection(
+        repo_root,
+        skill=skill,
+        step=step,
+        route_role=route_role,
+        model_override=model_override,
+    )
     provider = selection['provider']  
     timeout = float(selection['timeout'])  
     max_retries = int(selection['max_retries'])  
@@ -116,7 +159,14 @@ def load_config_from_env(repo_root: Path) -> LLMConfig:
     )  
   
   
-def _resolve_llm_selection(repo_root: Path) -> dict[str, str]:  
+def _resolve_llm_selection(
+    repo_root: Path,
+    *,
+    skill: SkillDefinition | None = None,
+    step: SkillStep | None = None,
+    route_role: str | None = None,
+    model_override: str | None = None,
+) -> dict[str, str]:
     load_env_file(repo_root / '.env')  
     parser = load_repo_config(repo_root)  
   
@@ -128,7 +178,15 @@ def _resolve_llm_selection(repo_root: Path) -> dict[str, str]:
     if provider not in {'openai', 'openrouter'}:  
         provider = 'openrouter' if openrouter_key else 'openai'  
   
-    model = _resolve_model_name(parser, provider)  
+    resolved_route_role = route_role or _infer_route_role(skill, step)
+    model, selection_source = _resolve_model_name(
+        parser,
+        provider,
+        skill=skill,
+        step=step,
+        route_role=resolved_route_role,
+        model_override=model_override,
+    )
     base_url = _resolve_base_url(parser, provider)  
     timeout = os.getenv('OPENAI_TIMEOUT', '').strip() or get_config_value(parser, 'llm', 'timeout', '90')  
     max_retries = os.getenv('OPENAI_MAX_RETRIES', '').strip() or get_config_value(parser, 'llm', 'max_retries', '3')  
@@ -144,18 +202,87 @@ def _resolve_llm_selection(repo_root: Path) -> dict[str, str]:
         'base_url': base_url,  
         'timeout': timeout,  
         'max_retries': max_retries,  
+        'route_role': resolved_route_role,
+        'selection_source': selection_source,
     }  
   
   
-def _resolve_model_name(parser, provider: str) -> str:  
+def _resolve_model_name(
+    parser,
+    provider: str,
+    *,
+    skill: SkillDefinition | None = None,
+    step: SkillStep | None = None,
+    route_role: str | None = None,
+    model_override: str | None = None,
+) -> tuple[str, str]:
     config_model = get_config_value(parser, 'llm', 'model', '')  
+    env_model = (
+        os.getenv('OPENROUTER_MODEL', '').strip()
+        or os.getenv('OPENAI_MODEL', '').strip()
+        if provider == 'openrouter'
+        else os.getenv('OPENAI_MODEL', '').strip()
+    )
+    default_model = env_model or config_model
+
+    resolved_override = _resolve_model_alias(parser, model_override)
+    if resolved_override:
+        return resolved_override, 'step override'
+
+    skill_route_value = _resolve_skill_route_model(skill, route_role)
+    resolved_skill_route = _resolve_model_alias(parser, skill_route_value)
+    if resolved_skill_route:
+        return resolved_skill_route, f"skill route '{route_role}'"
+
+    config_route_value = get_config_value(parser, 'model_routing', f'{route_role}_model', '')
+    resolved_config_route = _resolve_model_alias(parser, config_route_value)
+    if resolved_config_route:
+        return resolved_config_route, f"config route '{route_role}'"
+
+    skill_default = _resolve_model_alias(parser, skill.model_routing.default_model if skill else None)
+    if skill_default:
+        return skill_default, "skill default"
+
     if provider == 'openrouter':  
-        return (  
-            os.getenv('OPENROUTER_MODEL', '').strip()  
-            or os.getenv('OPENAI_MODEL', '').strip()  
-            or config_model  
-        )  
-    return os.getenv('OPENAI_MODEL', '').strip() or config_model 
+        return default_model, ('env' if env_model else 'global default')
+    return default_model, ('env' if env_model else 'global default')
+
+
+def _resolve_model_alias(parser, value: str | None) -> str:
+    candidate = (value or '').strip()
+    if not candidate:
+        return ''
+    alias_value = get_config_value(parser, 'model_aliases', candidate, '').strip()
+    return alias_value or candidate
+
+
+def _resolve_skill_route_model(skill: SkillDefinition | None, route_role: str | None) -> str | None:
+    if skill is None or route_role is None:
+        return None
+    routing = skill.model_routing
+    route_map = {
+        'step_execution': routing.step_execution_model,
+        'final_deliverable': routing.final_deliverable_model,
+        'qa_final_polish': routing.qa_final_polish_model,
+        'project_chunk_ingestion': routing.project_chunk_ingestion_model,
+        'project_master_outline': routing.project_master_outline_model,
+    }
+    return route_map.get(route_role)
+
+
+def _infer_route_role(skill: SkillDefinition | None, step: SkillStep | None) -> str:
+    if step is not None:
+        if step.model_role:
+            return step.model_role
+        title = f"{step.title} {step.step_id}".casefold()
+        if any(token in title for token in ('qa', '质检', 'polish', 'final check', '统一')):
+            return 'qa_final_polish'
+        if skill is not None and step.number == skill.final_step_number:
+            return 'final_deliverable'
+        return 'step_execution'
+    if skill is None:
+        return 'default'
+    return 'step_execution'
   
   
 def _resolve_base_url(parser, provider: str) -> str:  

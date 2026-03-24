@@ -36,6 +36,8 @@ htmlcov/
 .mypy_cache/
 .ruff_cache/
 .pyre/
+/_tmp_*
+.internal/
 
 # Editor and OS files
 .vscode/

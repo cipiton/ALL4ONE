@@ -8,6 +8,7 @@ from . import terminal_ui
 from .input_loader import chunk_text, load_input_document, read_resource_text
 from .llm_client import (
     call_chat_completion,
+    describe_model_route,
     format_runtime_error_message,
     load_config_from_env,
     parse_json_response,
@@ -52,10 +53,14 @@ def execute_input_paths(
         session_dir.mkdir(parents=True, exist_ok=True)
         timestamp = session_dir.name
     else:
-        timestamp, session_dir = create_session_directory(outputs_root, skill.name, input_root_path or (input_paths[0] if input_paths else None))
+        timestamp, session_dir = create_session_directory(
+            outputs_root,
+            skill.name,
+            input_root_path or (input_paths[0] if input_paths else None),
+            input_paths=input_paths,
+        )
 
     if not single_resume and should_use_project_ingestion(skill, input_paths, input_root_path=input_root_path):
-        config = load_config_from_env(repo_root)
         return execute_project_ingestion(
             repo_root,
             skill,
@@ -64,7 +69,6 @@ def execute_input_paths(
             session_dir=session_dir,
             forced_step_number=forced_step_number,
             runtime_config=runtime_config,
-            config=config,
             execute_document_fn=execute_document,
             verbose=True,
         )
@@ -177,8 +181,8 @@ def execute_document(
     save_state(state, output_dir, runtime_config)
 
     if plan.strategy == "step_prompt" and skill.execution_policy.mode == "sequential_with_review":
-        config = load_config_from_env(repo_root)
         return _run_step_prompt_review_sequence(
+            repo_root,
             skill,
             document,
             output_dir,
@@ -186,17 +190,22 @@ def execute_document(
             runtime_values,
             resume_state,
             state,
-            config,
             runtime_config,
             verbose,
         )
 
     if plan.strategy == "step_prompt":
-        config = load_config_from_env(repo_root)
+        step_config = load_config_from_env(
+            repo_root,
+            skill=skill,
+            step=plan.step,
+            model_override=plan.step.model_override,
+        )
         runtime_values = gather_runtime_inputs(plan.runtime_inputs, runtime_values)
         state.runtime_inputs = runtime_values
         save_state(state, output_dir, runtime_config)
         return _run_step_prompt(
+            repo_root,
             skill,
             document,
             output_dir,
@@ -204,7 +213,7 @@ def execute_document(
             runtime_values,
             resume_state,
             state,
-            config,
+            step_config,
             runtime_config,
             verbose,
         )
@@ -226,7 +235,7 @@ def execute_document(
         )
 
     if plan.strategy == "structured_report" and skill.execution_policy.mode == "sequential_with_review":
-        config = load_config_from_env(repo_root)
+        config = load_config_from_env(repo_root, skill=skill, route_role="step_execution")
         return _run_structured_review_sequence(
             skill,
             document,
@@ -237,7 +246,7 @@ def execute_document(
             verbose,
         )
 
-    config = load_config_from_env(repo_root)
+    config = load_config_from_env(repo_root, skill=skill, route_role="step_execution")
     return _run_structured(
         skill,
         document,
@@ -275,6 +284,7 @@ def load_resume_document(skill: SkillDefinition, state: RunState):
 
 
 def _run_step_prompt(
+    repo_root: Path,
     skill: SkillDefinition,
     document,
     output_dir: Path,
@@ -286,9 +296,12 @@ def _run_step_prompt(
     runtime_config,
     verbose: bool,
 ) -> RunState:
-    if verbose:
-        terminal_ui.print_progress(f"running step {step_number}: {skill.get_step(step_number).title}")
     step = skill.get_step(step_number)
+    if verbose:
+        terminal_ui.print_progress(f"running step {step_number}: {step.title}")
+        terminal_ui.print_progress(
+            f"model: {describe_model_route(repo_root, skill=skill, step=step, model_override=step.model_override)}"
+        )
     reference_ids = []
     if step.prompt_reference_id:
         reference_ids.append(step.prompt_reference_id)
@@ -394,7 +407,7 @@ def _build_restart_instruction(restart_request):
     return base_instruction  
   
   
-def _run_step_prompt_review_sequence(skill, document, output_dir: Path, step_number: int, runtime_values: dict[str, Any], resume_state, state: RunState, config, runtime_config, verbose: bool):  
+def _run_step_prompt_review_sequence(repo_root: Path, skill, document, output_dir: Path, step_number: int, runtime_values: dict[str, Any], resume_state, state: RunState, runtime_config, verbose: bool):  
     current_step_number = step_number  
     current_resume_state = resume_state  
     current_document = document
@@ -413,8 +426,17 @@ def _run_step_prompt_review_sequence(skill, document, output_dir: Path, step_num
         runtime_values = gather_runtime_inputs(step_runtime_inputs, runtime_values)  
         state.runtime_inputs = runtime_values  
         save_state(state, output_dir, runtime_config)  
+        step_config = load_config_from_env(
+            repo_root,
+            skill=skill,
+            step=step,
+            model_override=step.model_override,
+        )
         if verbose:  
             terminal_ui.print_progress(f"running step {step.number}: {step.title}")  
+            terminal_ui.print_progress(
+                f"model: {describe_model_route(repo_root, skill=skill, step=step, model_override=step.model_override)}"
+            )
   
         draft_text = None  
         revision_request = None  
@@ -426,7 +448,7 @@ def _run_step_prompt_review_sequence(skill, document, output_dir: Path, step_num
                 step.number,  
                 runtime_values,  
                 state,  
-                config,  
+                step_config,  
                 resume_state=current_resume_state,  
                 draft_text=draft_text,  
                 revision_request=revision_request,  
@@ -439,7 +461,12 @@ def _run_step_prompt_review_sequence(skill, document, output_dir: Path, step_num
             while True:  
                 if skill.execution_policy.preview_before_save:  
                     terminal_ui.show_step_output_preview(step.title, draft_text)  
-                action = terminal_ui.prompt_for_review_action()  
+                if runtime_config.auto_accept_review_steps:
+                    if verbose:
+                        terminal_ui.print_progress("auto-accept enabled; accepting current draft")
+                    action = "accept"
+                else:
+                    action = terminal_ui.prompt_for_review_action()  
                 if action == "view_full":  
                     terminal_ui.print_full_output(step.title, draft_text)  
                     continue  
@@ -517,6 +544,7 @@ def _run_structured_review_sequence(
         if report_text is None:
             if verbose:
                 terminal_ui.print_progress("running structured workflow")
+                terminal_ui.print_progress(f"model: {config.model}")
             stage_outputs, prompt_dump, model_name = run_structured_workflow(
                 skill,
                 document,
@@ -545,7 +573,12 @@ def _run_structured_review_sequence(
             terminal_ui.show_step_output_preview("Structured report", report_text)
 
         while True:
-            action = terminal_ui.prompt_for_review_action()
+            if runtime_config.auto_accept_review_steps:
+                if verbose:
+                    terminal_ui.print_progress("auto-accept enabled; accepting current draft")
+                action = "accept"
+            else:
+                action = terminal_ui.prompt_for_review_action()
             if action == "view_full":
                 terminal_ui.print_full_output("Structured report", report_text)
                 continue
@@ -642,6 +675,7 @@ def _run_structured(
 ) -> RunState:
     if verbose:
         terminal_ui.print_progress("running structured workflow")
+        terminal_ui.print_progress(f"model: {config.model}")
     stage_outputs, prompt_dump, model_name = run_structured_workflow(
         skill,
         document,

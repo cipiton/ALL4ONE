@@ -10,6 +10,7 @@ from .models import (
     ChunkingConfig,
     OutputConfig,
     ReferenceDefinition,
+    SkillModelRouting,
     SkillInputBlock,
     RuntimeInputDefinition,
     SkillDefinition,
@@ -107,6 +108,7 @@ def load_skill(skill_dir: Path) -> SkillDefinition:
     )
     startup_policy = _load_startup_policy(frontmatter, metadata, steps, supports_resume)
     execution_policy = _load_execution_policy(frontmatter, metadata)
+    model_routing = _load_model_routing(frontmatter, metadata)
     system_instructions = _load_system_instructions(frontmatter, embedded_registry)
 
     return SkillDefinition(
@@ -132,6 +134,7 @@ def load_skill(skill_dir: Path) -> SkillDefinition:
         utility_script=utility_script,
         startup_policy=startup_policy,
         execution_policy=execution_policy,
+        model_routing=model_routing,
         system_instructions=system_instructions,
     )
 
@@ -293,6 +296,8 @@ def _load_steps(
             input_blocks=_load_input_blocks(raw_step.get("input_blocks")),
             output_key=_optional_string(raw_step.get("write_to")),
             output_filename=_optional_string(raw_step.get("output_filename")),
+            model_role=_optional_string(raw_step.get("model_role")),
+            model_override=_optional_string(raw_step.get("model_override") or raw_step.get("model")),
             default=bool(raw_step.get("default", False)),
         )
     if not steps:
@@ -565,6 +570,8 @@ def _load_registry_steps(embedded_registry: dict[str, Any]) -> dict[int, SkillSt
             input_blocks=_load_input_blocks(raw_step.get("input_blocks")),
             output_key=_optional_string(raw_step.get("write_to")),
             output_filename=_optional_string(raw_step.get("output_filename")),
+            model_role=_optional_string(raw_step.get("model_role")),
+            model_override=_optional_string(raw_step.get("model_override") or raw_step.get("model")),
             next_step_number=next_step_number,
             default=bool(raw_step.get("default", False) or step_id == entrypoint or (not entrypoint and index == 1)),
         )
@@ -700,6 +707,22 @@ def _load_execution_policy(frontmatter: dict[str, Any], metadata: dict[str, Any]
         preview_before_save=bool(raw_execution.get("preview_before_save", False)),
         save_only_on_accept=bool(raw_execution.get("save_only_on_accept", False)),
     )
+
+
+def _load_model_routing(frontmatter: dict[str, Any], metadata: dict[str, Any]) -> SkillModelRouting:
+    raw_routing = metadata.get("model_routing") or frontmatter.get("model_routing") or {}
+    if not isinstance(raw_routing, dict):
+        raw_routing = {}
+    return SkillModelRouting(
+        default_model=_optional_string(raw_routing.get("default_model")),
+        step_execution_model=_optional_string(raw_routing.get("step_execution_model")),
+        final_deliverable_model=_optional_string(raw_routing.get("final_deliverable_model")),
+        qa_final_polish_model=_optional_string(raw_routing.get("qa_final_polish_model")),
+        project_chunk_ingestion_model=_optional_string(raw_routing.get("project_chunk_ingestion_model")),
+        project_master_outline_model=_optional_string(raw_routing.get("project_master_outline_model")),
+    )
+
+
 def _read_reference_resource(path: Path) -> str:
     try:
         from .input_loader import read_resource_text

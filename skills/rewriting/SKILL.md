@@ -20,6 +20,10 @@ metadata:
     continue_until_end: true
     preview_before_save: true
     save_only_on_accept: true
+  model_routing:
+    step_execution_model: fast
+    final_deliverable_model: strong
+    qa_final_polish_model: strong
 
 steps:
   - number: 1
@@ -28,6 +32,7 @@ steps:
     prompt_reference: step1_prompt
     write_to: normalized_source
     output_filename: 01_normalized_source.txt
+    model_role: step_execution
     default: true
     input_blocks:
       - label: 【原始剧本/文本】
@@ -38,6 +43,7 @@ steps:
     prompt_reference: step2_prompt
     write_to: sanitization_plan
     output_filename: 02_sanitization_plan.txt
+    model_role: step_execution
     input_blocks:
       - label: 【规范化原稿】
         from: normalized_source
@@ -47,6 +53,7 @@ steps:
     prompt_reference: step3_prompt
     write_to: revised_script_draft
     output_filename: 03_revised_script_draft.txt
+    model_role: final_deliverable
     input_blocks:
       - label: 【规范化原稿】
         from: normalized_source
@@ -58,6 +65,7 @@ steps:
     prompt_reference: step4_prompt
     write_to: revised_script_final
     output_filename: 04_revised_script_final.txt
+    model_role: qa_final_polish
     input_blocks:
       - label: 【洗稿方案】
         from: sanitization_plan

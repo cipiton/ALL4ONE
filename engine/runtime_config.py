@@ -12,6 +12,7 @@ class RuntimeConfig:
     write_prompt_dump: bool = False  
     write_debug_log: bool = False  
     troubleshooting_mode: bool = False  
+    auto_accept_review_steps: bool = False  
   
     @property  
     def should_write_visible_state(self) -> bool:  
@@ -33,4 +34,5 @@ def load_runtime_config(repo_root: Path) -> RuntimeConfig:
         write_prompt_dump=get_config_bool(parser, 'outputs', 'write_prompt_dump', False),  
         write_debug_log=get_config_bool(parser, 'outputs', 'write_debug_log', False),  
         troubleshooting_mode=get_config_bool(parser, 'debug', 'troubleshooting_mode', False),  
+        auto_accept_review_steps=get_config_bool(parser, 'debug', 'auto_accept_review_steps', False),  
     )  

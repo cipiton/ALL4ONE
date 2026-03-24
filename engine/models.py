@@ -98,6 +98,8 @@ class SkillStep:
     input_blocks: list[SkillInputBlock] = field(default_factory=list)
     output_key: str | None = None
     output_filename: str | None = None
+    model_role: str | None = None
+    model_override: str | None = None
     next_step_number: int | None = None
     default: bool = False
 
@@ -148,6 +150,16 @@ class SkillExecutionPolicy:
 
 
 @dataclass(slots=True)
+class SkillModelRouting:
+    default_model: str | None = None
+    step_execution_model: str | None = None
+    final_deliverable_model: str | None = None
+    qa_final_polish_model: str | None = None
+    project_chunk_ingestion_model: str | None = None
+    project_master_outline_model: str | None = None
+
+
+@dataclass(slots=True)
 class UtilityScriptConfig:
     relative_path: str
     absolute_path: Path
@@ -178,6 +190,7 @@ class SkillDefinition:
     utility_script: UtilityScriptConfig | None = None
     startup_policy: SkillStartupPolicy = field(default_factory=SkillStartupPolicy)
     execution_policy: SkillExecutionPolicy = field(default_factory=SkillExecutionPolicy)
+    model_routing: SkillModelRouting = field(default_factory=SkillModelRouting)
     system_instructions: str = ""
 
     @property

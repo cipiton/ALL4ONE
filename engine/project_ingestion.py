@@ -5,7 +5,7 @@ from pathlib import Path
 from typing import Any
 
 from .input_loader import load_input_document
-from .llm_client import call_chat_completion, parse_json_response
+from .llm_client import call_chat_completion, describe_model_route, load_config_from_env, parse_json_response
 from .models import DocumentResult, InputDocument, PromptMessage, SkillDefinition
 from .project_chunks import prepare_project_chunks
 from .project_detection import should_use_project_ingestion as _should_use_project_ingestion
@@ -33,7 +33,6 @@ def execute_project_ingestion(
     session_dir: Path,
     forced_step_number: int | None,
     runtime_config,
-    config,
     execute_document_fn,
     verbose: bool = True,
 ) -> tuple[Path, list[DocumentResult]]:
@@ -59,9 +58,15 @@ def execute_project_ingestion(
     persist_project_artifacts(intermediate_dir, project_state, continuity_log)
 
     for index, chunk in enumerate(chunks, start=1):
+        chunk_config = load_config_from_env(
+            repo_root,
+            skill=skill,
+            route_role="project_chunk_ingestion",
+        )
         if verbose:
             print(f"[project {index}/{len(chunks)}] ingesting {chunk.path.name}")
-        chunk_update = _ingest_chunk(skill, chunk, project_state, config)
+            print(f"[model] {describe_model_route(repo_root, skill=skill, route_role='project_chunk_ingestion')}")
+        chunk_update = _ingest_chunk(skill, chunk, project_state, chunk_config)
         merge_project_state(project_state, chunk_update, chunk)
         continuity_log.extend(
             {
@@ -75,8 +80,14 @@ def execute_project_ingestion(
 
     if verbose:
         print("[...] synthesizing consolidated project outline from shared state")
-
-    master_outline_text = _synthesize_master_outline(skill, project_state, config)
+    synthesis_config = load_config_from_env(
+        repo_root,
+        skill=skill,
+        route_role="project_master_outline",
+    )
+    if verbose:
+        print(f"[model] {describe_model_route(repo_root, skill=skill, route_role='project_master_outline')}")
+    master_outline_text = _synthesize_master_outline(skill, project_state, synthesis_config)
     master_outline_path = write_text_file(intermediate_dir, "master_outline.txt", master_outline_text)
     project_state["master_outline_path"] = str(master_outline_path)
     persist_project_artifacts(intermediate_dir, project_state, continuity_log)
