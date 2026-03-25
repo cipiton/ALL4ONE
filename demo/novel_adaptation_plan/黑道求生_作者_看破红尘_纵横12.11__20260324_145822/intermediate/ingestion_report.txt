@@ -1,0 +1,9 @@
+Project ingestion report
+Mode: auto_split
+Source path: C:\Users\CP\Documents\WORKSPACES\ONE4ALL\黑道求生》作者：看破红尘（纵横12.11.12完结）.txt
+Chunk count: 2
+Overlap chars: 1000
+
+Chunks:
+- 001/002 001_黑道求生_作者_看破红尘_纵横12.11.12完结_chunk.txt | chars=299913 | est_tokens=268204
+- 002/002 002_黑道求生_作者_看破红尘_纵横12.11.12完结_chunk.txt | chars=94945 | est_tokens=86099

@@ -1,0 +1,14 @@
+{
+  "detected_total_episodes": 60,
+  "selected_episode_range": "all",
+  "episodes_per_file": 10,
+  "generated_files": [
+    "episodes_01_10.txt",
+    "episodes_11_20.txt",
+    "episodes_21_30.txt",
+    "episodes_31_40.txt",
+    "episodes_41_50.txt",
+    "episodes_51_60.txt"
+  ],
+  "failures": []
+}

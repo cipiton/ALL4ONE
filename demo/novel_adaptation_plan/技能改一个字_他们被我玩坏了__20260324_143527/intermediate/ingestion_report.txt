@@ -1,0 +1,17 @@
+Project ingestion report
+Mode: chunk_folder
+Source path: c:\Users\CP\Documents\WORKSPACES\ONE4ALL\outputs\large_novel_processor\技能改一个字_他们被我玩坏了__20260324_143500\chunks
+Chunk count: 10
+Overlap chars: 0
+
+Chunks:
+- 001/010 001_chapters_001-050.txt | chars=125333 | est_tokens=105197
+- 002/010 002_chapters_051-100.txt | chars=118629 | est_tokens=99432
+- 003/010 003_chapters_101-150.txt | chars=115693 | est_tokens=96207
+- 004/010 004_chapters_151-200.txt | chars=115879 | est_tokens=98242
+- 005/010 005_chapters_201-250.txt | chars=117674 | est_tokens=98779
+- 006/010 006_chapters_251-300.txt | chars=116639 | est_tokens=98198
+- 007/010 007_chapters_301-350.txt | chars=116639 | est_tokens=97243
+- 008/010 008_chapters_351-400.txt | chars=116107 | est_tokens=98375
+- 009/010 009_chapters_401-450.txt | chars=116083 | est_tokens=98689
+- 010/010 010_chapters_451-473.txt | chars=60054 | est_tokens=51093

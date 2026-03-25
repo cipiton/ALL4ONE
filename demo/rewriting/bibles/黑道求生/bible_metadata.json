@@ -1,0 +1,11 @@
+{
+  "mode": "build_bible",
+  "created_at": "2026-03-25T16:18:55",
+  "plan_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\demo\\novel_adaptation_plan\\黑道求生_作者_看破红尘_纵横12.11__20260324_145822\\final\\06_final_adaptation_plan.txt",
+  "source_title": "黑道求生",
+  "refreshed_project_title": "城巷狼局",
+  "title_policy": "generate_refreshed_title",
+  "supplemental_script_paths": [],
+  "refresh_bible_json": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\rewriting\\bibles\\黑道求生\\refresh_bible.json",
+  "refresh_bible_txt": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\rewriting\\bibles\\黑道求生\\refresh_bible.txt"
+}

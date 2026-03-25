@@ -1,0 +1,11 @@
+{
+  "mode": "build_bible",
+  "created_at": "2026-03-25T16:16:49",
+  "plan_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\demo\\novel_adaptation_plan\\技能改一个字_他们被我玩坏了__20260324_143527\\final\\06_final_adaptation_plan.txt",
+  "source_title": "技能改一个字，他们被我玩坏了",
+  "refreshed_project_title": "改命一字：废柴写死诸神",
+  "title_policy": "generate_refreshed_title",
+  "supplemental_script_paths": [],
+  "refresh_bible_json": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\rewriting\\bibles\\技能改一个字_他们被我玩坏了\\refresh_bible.json",
+  "refresh_bible_txt": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\rewriting\\bibles\\技能改一个字_他们被我玩坏了\\refresh_bible.txt"
+}

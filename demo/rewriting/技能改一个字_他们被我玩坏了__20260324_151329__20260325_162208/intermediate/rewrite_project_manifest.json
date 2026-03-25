@@ -1,0 +1,60 @@
+{
+  "mode": "rewrite_with_bible",
+  "input_root_path": "c:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\demo\\novel_to_drama_script\\技能改一个字_他们被我玩坏了__20260324_151329",
+  "plan_path": null,
+  "rewrite_render_mode": "final",
+  "supplemental_script_paths": [],
+  "refresh_bible_json": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\rewriting\\技能改一个字_他们被我玩坏了__20260324_151329__20260325_162208\\intermediate\\refresh_bible.json",
+  "refresh_bible_txt": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\rewriting\\技能改一个字_他们被我玩坏了__20260324_151329__20260325_162208\\intermediate\\refresh_bible.txt",
+  "final_outputs": [
+    {
+      "input": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\demo\\novel_to_drama_script\\技能改一个字_他们被我玩坏了__20260324_151329\\episodes_01_05.txt",
+      "output": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\rewriting\\技能改一个字_他们被我玩坏了__20260324_151329__20260325_162208\\final\\episodes_01_05.txt"
+    },
+    {
+      "input": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\demo\\novel_to_drama_script\\技能改一个字_他们被我玩坏了__20260324_151329\\episodes_06_10.txt",
+      "output": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\rewriting\\技能改一个字_他们被我玩坏了__20260324_151329__20260325_162208\\final\\episodes_06_10.txt"
+    },
+    {
+      "input": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\demo\\novel_to_drama_script\\技能改一个字_他们被我玩坏了__20260324_151329\\episodes_11_15.txt",
+      "output": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\rewriting\\技能改一个字_他们被我玩坏了__20260324_151329__20260325_162208\\final\\episodes_11_15.txt"
+    },
+    {
+      "input": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\demo\\novel_to_drama_script\\技能改一个字_他们被我玩坏了__20260324_151329\\episodes_16_20.txt",
+      "output": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\rewriting\\技能改一个字_他们被我玩坏了__20260324_151329__20260325_162208\\final\\episodes_16_20.txt"
+    },
+    {
+      "input": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\demo\\novel_to_drama_script\\技能改一个字_他们被我玩坏了__20260324_151329\\episodes_21_25.txt",
+      "output": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\rewriting\\技能改一个字_他们被我玩坏了__20260324_151329__20260325_162208\\final\\episodes_21_25.txt"
+    },
+    {
+      "input": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\demo\\novel_to_drama_script\\技能改一个字_他们被我玩坏了__20260324_151329\\episodes_26_30.txt",
+      "output": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\rewriting\\技能改一个字_他们被我玩坏了__20260324_151329__20260325_162208\\final\\episodes_26_30.txt"
+    },
+    {
+      "input": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\demo\\novel_to_drama_script\\技能改一个字_他们被我玩坏了__20260324_151329\\episodes_31_35.txt",
+      "output": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\rewriting\\技能改一个字_他们被我玩坏了__20260324_151329__20260325_162208\\final\\episodes_31_35.txt"
+    },
+    {
+      "input": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\demo\\novel_to_drama_script\\技能改一个字_他们被我玩坏了__20260324_151329\\episodes_36_40.txt",
+      "output": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\rewriting\\技能改一个字_他们被我玩坏了__20260324_151329__20260325_162208\\final\\episodes_36_40.txt"
+    },
+    {
+      "input": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\demo\\novel_to_drama_script\\技能改一个字_他们被我玩坏了__20260324_151329\\episodes_41_45.txt",
+      "output": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\rewriting\\技能改一个字_他们被我玩坏了__20260324_151329__20260325_162208\\final\\episodes_41_45.txt"
+    },
+    {
+      "input": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\demo\\novel_to_drama_script\\技能改一个字_他们被我玩坏了__20260324_151329\\episodes_46_50.txt",
+      "output": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\rewriting\\技能改一个字_他们被我玩坏了__20260324_151329__20260325_162208\\final\\episodes_46_50.txt"
+    },
+    {
+      "input": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\demo\\novel_to_drama_script\\技能改一个字_他们被我玩坏了__20260324_151329\\episodes_51_55.txt",
+      "output": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\rewriting\\技能改一个字_他们被我玩坏了__20260324_151329__20260325_162208\\final\\episodes_51_55.txt"
+    },
+    {
+      "input": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\demo\\novel_to_drama_script\\技能改一个字_他们被我玩坏了__20260324_151329\\episodes_56_60.txt",
+      "output": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\rewriting\\技能改一个字_他们被我玩坏了__20260324_151329__20260325_162208\\final\\episodes_56_60.txt"
+    }
+  ],
+  "failures": []
+}

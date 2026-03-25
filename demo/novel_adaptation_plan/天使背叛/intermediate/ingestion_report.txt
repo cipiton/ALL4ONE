@@ -1,0 +1,13 @@
+Project ingestion report
+Mode: chunk_folder
+Source path: c:\Users\CP\Documents\WORKSPACES\ONE4ALL\outputs\large_novel_processor\天使背叛_反手与魅魔签订契约_全民_神话_逆袭__20260323_175033\chunks
+Chunk count: 6
+Overlap chars: 0
+
+Chunks:
+- 001/006 001_chapters_001-050.txt | chars=143508 | est_tokens=118350
+- 002/006 002_chapters_051-100.txt | chars=146258 | est_tokens=120647
+- 003/006 003_chapters_101-150.txt | chars=146492 | est_tokens=121457
+- 004/006 004_chapters_151-200.txt | chars=145322 | est_tokens=120893
+- 005/006 005_chapters_201-250.txt | chars=160366 | est_tokens=133474
+- 006/006 006_chapters_251-259.txt | chars=26195 | est_tokens=21609

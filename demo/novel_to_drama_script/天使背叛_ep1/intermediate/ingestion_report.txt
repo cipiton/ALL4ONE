@@ -1,0 +1,8 @@
+Project ingestion report
+Mode: auto_split
+Source path: C:\Users\CP\Documents\WORKSPACES\ONE4ALL\outputs\novel_adaptation_plan\天使背叛\final\06_final_adaptation_plan.txt
+Chunk count: 1
+Overlap chars: 1000
+
+Chunks:
+- 001/001 001_06_final_adaptation_plan_chunk.txt | chars=18163 | est_tokens=12618

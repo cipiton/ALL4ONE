@@ -444,7 +444,7 @@ This skill is best understood as a **refresh / rewrite / canon-consistency layer
 2. Rewrite using existing refresh bible
 3. Create bible and rewrite
 
-**Refresh bible**
+**Refresh bible** 
 
 The bible is project-scoped and can include:
 

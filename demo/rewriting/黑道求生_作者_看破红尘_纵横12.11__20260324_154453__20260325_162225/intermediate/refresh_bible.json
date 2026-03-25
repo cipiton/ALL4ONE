@@ -1,0 +1,787 @@
+{
+  "source_title": "黑道求生",
+  "refreshed_project_title": "城巷狼局",
+  "title_policy": "generate_refreshed_title",
+  "source_metadata": {
+    "adaptation_plan_used": true,
+    "adaptation_plan_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\demo\\novel_adaptation_plan\\黑道求生_作者_看破红尘_纵横12.11__20260324_145822\\final\\06_final_adaptation_plan.txt",
+    "supplemental_script_sources": []
+  },
+  "naming_policy": {
+    "target_language": "zh-CN",
+    "default_render_mode": "final",
+    "transliteration_policy": "forbid_english_transliteration",
+    "fallback_policy": "major_terms_refresh_by_default_preserve_only_with_reason"
+  },
+  "characters": [
+    {
+      "original_name": "萧狼",
+      "refreshed_name": "顾夜狼",
+      "aliases": [
+        "夜狼",
+        "狼哥",
+        "顾哥"
+      ],
+      "titles": [
+        "狼巷主事",
+        "狼帮首领"
+      ],
+      "role": "男主，校园小混子起步，成长为城市级地下势力核心决策者，最终主动隐退。",
+      "notes": "姓改为“顾”偏都市、冷感，“夜狼”强调巷战、夜战意象，与后期城战主基调契合。剧情中统一使用“顾夜狼”作正式称呼，同辈多用“狼哥”“顾哥”，敌对多用“那小子”“夜狼”。写作时避免再出现“萧狼”二字。",
+      "consistency_rule": "涉及其过往、现在、未来三个阶段，一律称顾夜狼或相应称谓，不得混用旧名；回忆段也不写回旧姓。",
+      "preserve_original": false,
+      "preserve_reason": ""
+    },
+    {
+      "original_name": "柳老大",
+      "refreshed_name": "柳擎川",
+      "aliases": [
+        "柳爷",
+        "川哥",
+        "柳叔"
+      ],
+      "titles": [
+        "星流会会首",
+        "江城老大"
+      ],
+      "role": "本地既有秩序代表，星流会的掌舵人，顾夜狼的半导师、背书人与最终交棒者。",
+      "notes": "去掉直白的“老大”外号，改为正式姓名“柳擎川”，显得稳重、有掌控感。“柳爷”为下属尊称，“柳叔”为顾夜狼等半后辈私下称呼。原有“柳老大”的语气在台词里用“柳爷”替代。",
+      "consistency_rule": "正式场景、旁白用“柳擎川”，小弟口语统一用“柳爷”，顾夜狼私下可用“柳叔”。不得再出现“柳老大”三字。",
+      "preserve_original": false,
+      "preserve_reason": ""
+    },
+    {
+      "original_name": "柳流",
+      "refreshed_name": "柳擎川",
+      "aliases": [],
+      "titles": [],
+      "role": "原文对柳老大的本名，合并规范为同一人物，不单独出现。",
+      "notes": "后续剧本不再分“柳流/柳老大”，一律写作“柳擎川”。",
+      "consistency_rule": "识别到“柳流”“柳老大”均替换为“柳擎川”或其称呼。",
+      "preserve_original": false,
+      "preserve_reason": ""
+    },
+    {
+      "original_name": "柳初夏",
+      "refreshed_name": "柳初暖",
+      "aliases": [
+        "小暖",
+        "暖暖"
+      ],
+      "titles": [
+        "柳家小妹"
+      ],
+      "role": "女主线，柳擎川之妹，顾夜狼情感与道德锚点，推动其隐退的关键力量。",
+      "notes": "保留“柳”姓强调家族关联，“初暖”兼具温柔与希望感。感情戏中男主多称“小暖”，严肃场景用“柳初暖”。避免再提“初夏”。",
+      "consistency_rule": "所有季节意象相关昵称统一往“暖”方向延展，禁止再用“夏”相关梗。",
+      "preserve_original": false,
+      "preserve_reason": ""
+    },
+    {
+      "original_name": "刘天海",
+      "refreshed_name": "周天魁",
+      "aliases": [
+        "天魁哥",
+        "周哥"
+      ],
+      "titles": [
+        "天魁会会头"
+      ],
+      "role": "前中期主要反派之一，旧式暴力派地盘老大，其被刺引爆白牌名单悬疑线。",
+      "notes": "改姓为“周”以区分顾、柳两条线，“天魁”保留其原有“天海”气势与星宿意味。组织名同步改为“天魁会”。",
+      "consistency_rule": "敌对或下属称其“天魁哥”，正式叙述用“周天魁”，不再出现“天海会”“刘天海”。",
+      "preserve_original": false,
+      "preserve_reason": ""
+    },
+    {
+      "original_name": "吴勇",
+      "refreshed_name": "吴折竹",
+      "aliases": [
+        "老吴",
+        "竹叔"
+      ],
+      "titles": [
+        "白牌线人"
+      ],
+      "role": "情报中介，白牌制度及“牙/主宰”高层线的关键触须，模糊立场线人。",
+      "notes": "“折竹”寓意看似弯折实则韧性强且易断人，贴合左右逢源又危险的角色属性。街面多称“老吴”，顾夜狼偶尔半戏谑称“竹叔”。",
+      "consistency_rule": "涉及其过去与未来身份，一律以“吴折竹”为本名，旧名替换干净。",
+      "preserve_original": false,
+      "preserve_reason": ""
+    },
+    {
+      "original_name": "远",
+      "refreshed_name": "陈远听",
+      "aliases": [
+        "远子",
+        "听哥"
+      ],
+      "titles": [
+        "狼帮突击副队",
+        "听声手"
+      ],
+      "role": "宿舍兄弟核心战力之一，听音辨位能力突出，小队战术中坚。",
+      "notes": "本名扩展为“陈远听”，突出“听”这一听音特长，便于记忆和打战术梗。队内戏谑称“远子”“听哥”。",
+      "consistency_rule": "战斗文本中如出现“耳朵”“听声”与他绑定时，优先用“远听”或“听哥”强化标签。",
+      "preserve_original": false,
+      "preserve_reason": ""
+    },
+    {
+      "original_name": "慕容风",
+      "refreshed_name": "封暮川",
+      "aliases": [
+        "阿封",
+        "暮川"
+      ],
+      "titles": [
+        "狼帮突击组尖刀"
+      ],
+      "role": "突击组冷面杀伤手，执行力极高，负责冷静精准的一路。",
+      "notes": "去掉“慕容”这一过于显眼的传统门阀姓，改为“封暮川”，既有冷感又避免土豪感。“暮川”适合战场呼号。",
+      "consistency_rule": "镜头调度和对话中，如强调其冷静精准，用“暮川”单名；不得再使用“慕容”字样。",
+      "preserve_original": false,
+      "preserve_reason": ""
+    },
+    {
+      "original_name": "虞飞",
+      "refreshed_name": "庄野飞",
+      "aliases": [
+        "阿飞",
+        "野飞"
+      ],
+      "titles": [
+        "狼帮突击组猛子"
+      ],
+      "role": "突击组健谈、冲动的一路，承担氛围与牺牲情绪点。",
+      "notes": "改为“庄野飞”，增强市井与粗粝感。“阿飞”作为嘴碎、冲动人设标配称呼。",
+      "consistency_rule": "与封暮川构成“冷/热”对比时，文案中可组合写作“暮川、阿飞”固定搭配。",
+      "preserve_original": false,
+      "preserve_reason": ""
+    },
+    {
+      "original_name": "梦颜",
+      "refreshed_name": "顾梦瓷",
+      "aliases": [
+        "梦梦",
+        "小瓷"
+      ],
+      "titles": [
+        "武大校花"
+      ],
+      "role": "校园女神型受害者线，武大枪响事件的核心受体，触发顾夜狼道德裂缝与极端复仇心。",
+      "notes": "改姓“顾”与男主形成“远房同姓/同乡”式弱关联，便于强化代入感；“梦瓷”寓意易碎、被打碎的美好。前期多用“梦梦”，重伤后多用“梦瓷”突出疏离感。",
+      "consistency_rule": "涉及武大事件报道时统一称“顾梦瓷”，避免暧昧匿名称呼。",
+      "preserve_original": false,
+      "preserve_reason": ""
+    },
+    {
+      "original_name": "王浩",
+      "refreshed_name": "江少廷",
+      "aliases": [
+        "少廷",
+        "江少"
+      ],
+      "titles": [
+        "江南会少爷"
+      ],
+      "role": "江南会高层子弟，典型特权恶少，是梦瓷受害线和江南会全面开战的导火索。",
+      "notes": "改姓“江”与江南会直接绑定，“少廷”带富家子气质。场面人一般称“江少”。",
+      "consistency_rule": "凡原文本中“王浩”相关的嚣张、骚扰行为，统一替换为“江少廷/江少”。",
+      "preserve_original": false,
+      "preserve_reason": ""
+    },
+    {
+      "original_name": "南震",
+      "refreshed_name": "南临渊",
+      "aliases": [
+        "南哥",
+        "渊哥"
+      ],
+      "titles": [
+        "境外中间人"
+      ],
+      "role": "军火中介，带顾夜狼接入杀蛇镇与雇佣兵系统。",
+      "notes": "“临渊”有临界、危险之意，符合跨境黑市掮客身份。",
+      "consistency_rule": "境外线如出现“老南”，一律替换为“南哥”“南临渊”。",
+      "preserve_original": false,
+      "preserve_reason": ""
+    },
+    {
+      "original_name": "蒋卫东",
+      "refreshed_name": "蒋卫深",
+      "aliases": [
+        "老蒋"
+      ],
+      "titles": [
+        "军火联络人"
+      ],
+      "role": "与南临渊并行的国内军火与渠道联络人，负责对接上游资源。",
+      "notes": "稍微刷新为“卫深”，寓意卷入更深层暗流。",
+      "consistency_rule": "如角色被合并，可将军火联络功能集中到“南临渊”，在简化版中裁剪蒋卫深。",
+      "preserve_original": false,
+      "preserve_reason": ""
+    },
+    {
+      "original_name": "冷刀",
+      "refreshed_name": "冷砺",
+      "aliases": [
+        "砺哥"
+      ],
+      "titles": [
+        "QA锋刃小队队长"
+      ],
+      "role": "雇佣兵体系中的近战核心，代表职业化冷酷战力。",
+      "notes": "保留“冷”姓做代号式感觉，“砺”有打磨锋刃之意，形象统一又利于短视频口播。",
+      "consistency_rule": "任何“冷刀”代号统一换成“冷砺”，禁止用真实姓名设定，保持职业兵匿名感。",
+      "preserve_original": false,
+      "preserve_reason": ""
+    },
+    {
+      "original_name": "火蛇",
+      "refreshed_name": "焰蛇",
+      "aliases": [
+        "蛇姐"
+      ],
+      "titles": [
+        "QA狙击组核心"
+      ],
+      "role": "远程火力核心，雇佣兵风格的代表之一。",
+      "notes": "改为“焰蛇”，保留火焰意象，镜头里狙击火光与绰号呼应。",
+      "consistency_rule": "性别可保持中性或偏女，将台词风格设计得干脆利落、职业少废话。",
+      "preserve_original": false,
+      "preserve_reason": ""
+    },
+    {
+      "original_name": "水子涵",
+      "refreshed_name": "水寒舟",
+      "aliases": [
+        "水哥",
+        "寒舟"
+      ],
+      "titles": [
+        "一河地带话事人"
+      ],
+      "role": "一河区域老大，后期重要盟友与潜在新管理层。",
+      "notes": "“寒舟”有摇摆、观望感，符合趋利避害气质。",
+      "consistency_rule": "前期可用“水哥”，后期与顾夜狼平起平坐时多用本名“水寒舟”。",
+      "preserve_original": false,
+      "preserve_reason": ""
+    }
+  ],
+  "relationship_labels": [
+    {
+      "original_term": "老大",
+      "refreshed_term": "话事人",
+      "alternate_forms": [
+        "带头的",
+        "这片的主事"
+      ],
+      "notes": "在黑道语境中，统一用“话事人”指代某区域或组织真正负责的人，避免过度口语化“老大”。对柳擎川等人，口语可用“柳爷”，正式叙述用“星流会话事人”。",
+      "preserve_original": false,
+      "preserve_reason": ""
+    },
+    {
+      "original_term": "师父",
+      "refreshed_term": "师叔",
+      "alternate_forms": [
+        "师门长辈"
+      ],
+      "notes": "如有拜师意味但非正式门派，一律往“师叔”“前辈”方向柔化，避免传统门派感。",
+      "preserve_original": false,
+      "preserve_reason": ""
+    },
+    {
+      "original_term": "老哥",
+      "refreshed_term": "哥们",
+      "alternate_forms": [
+        "兄弟",
+        "哥"
+      ],
+      "notes": "校园与帮派兄弟之间，通用“兄弟”“哥们”“哥”，后续洗稿按口语氛围自然选择，不必拘泥“老哥”。",
+      "preserve_original": false,
+      "preserve_reason": ""
+    },
+    {
+      "original_term": "少爷",
+      "refreshed_term": "少主",
+      "alternate_forms": [
+        "少爷哥",
+        "少爷人"
+      ],
+      "notes": "江南会少爷统一称“江少”“少主”，既保留权贵感，又贴近都市语境。",
+      "preserve_original": false,
+      "preserve_reason": ""
+    }
+  ],
+  "organizations_factions": [
+    {
+      "original_term": "流星会",
+      "refreshed_term": "星流会",
+      "alternate_forms": [
+        "星流社",
+        "星流这一边"
+      ],
+      "notes": "主地方势力，由柳擎川掌控。统一改为“星流会”，读感更利落也便于视觉LOGO设计（星轨+水流）。",
+      "preserve_original": false,
+      "preserve_reason": ""
+    },
+    {
+      "original_term": "天海会",
+      "refreshed_term": "天魁会",
+      "alternate_forms": [
+        "魁会",
+        "天魁的人"
+      ],
+      "notes": "周天魁所掌控帮会，名称与其名直连，强化个人色彩。场景中可简称“魁会”。",
+      "preserve_original": false,
+      "preserve_reason": ""
+    },
+    {
+      "original_term": "江南会",
+      "refreshed_term": "江南堂",
+      "alternate_forms": [
+        "南堂",
+        "江南那边"
+      ],
+      "notes": "后期主战对手之一，更像传统大社团，统一使用“江南堂”。江少廷为江南堂少主。",
+      "preserve_original": false,
+      "preserve_reason": ""
+    },
+    {
+      "original_term": "狼帮",
+      "refreshed_term": "狼巷盟",
+      "alternate_forms": [
+        "狼盟",
+        "狼巷"
+      ],
+      "notes": "顾夜狼自建新势力，正式名称统一为“狼巷盟”，寓意由城市巷战中崛起的狼群。对外宣传和招牌可用略称“狼盟”。",
+      "preserve_original": false,
+      "preserve_reason": ""
+    },
+    {
+      "original_term": "QA雇佣兵",
+      "refreshed_term": "QA伞队",
+      "alternate_forms": [
+        "伞队",
+        "QA队"
+      ],
+      "notes": "保留“QA”作为代号型字母组织，但作为整体对外称谓固定为“QA伞队”，内部行动单位可称“伞队”。不再单独说“雇佣兵组织”，用“伞队”替代。",
+      "preserve_original": false,
+      "preserve_reason": ""
+    },
+    {
+      "original_term": "警方/警察",
+      "refreshed_term": "公署",
+      "alternate_forms": [
+        "市局",
+        "警署"
+      ],
+      "notes": "为弱化现实指代和审查风险，统一将现实“警方/警察”抽象化为“公署”“市局”，同时保留观众理解度。",
+      "preserve_original": false,
+      "preserve_reason": ""
+    }
+  ],
+  "world_terms": [
+    {
+      "original_term": "黑名单制度",
+      "refreshed_term": "黑卷清单",
+      "alternate_forms": [
+        "黑卷",
+        "清单"
+      ],
+      "notes": "原文的高层清洗规则，统一抽象为“黑卷清单”，与白牌制度对应。是区域级人物生死簿。",
+      "preserve_original": false,
+      "preserve_reason": ""
+    },
+    {
+      "original_term": "黑道",
+      "refreshed_term": "暗巷圈",
+      "alternate_forms": [
+        "圈里",
+        "巷子里那套"
+      ],
+      "notes": "世界观中关于地下势力，文字层面统一替换为“暗巷圈”“圈里”。标题层面已从“黑道”转为“城巷”。",
+      "preserve_original": false,
+      "preserve_reason": ""
+    },
+    {
+      "original_term": "江湖",
+      "refreshed_term": "巷局",
+      "alternate_forms": [
+        "这一局",
+        "城局"
+      ],
+      "notes": "尽量减少传统武侠“江湖”用法，多用“巷局”“这一局”体现现代权力博弈盘。",
+      "preserve_original": false,
+      "preserve_reason": ""
+    },
+    {
+      "original_term": "势力范围/地盘",
+      "refreshed_term": "一河/二河/三河战区",
+      "alternate_forms": [
+        "河区",
+        "战区"
+      ],
+      "notes": "城市分区统一用“河区+数字/名称”的战区化叫法，对应后期一河、二河、三河大战。",
+      "preserve_original": false,
+      "preserve_reason": ""
+    }
+  ],
+  "systems_contracts_powers": [
+    {
+      "original_term": "阎王帖",
+      "refreshed_term": "阎签",
+      "alternate_forms": [
+        "阎王签",
+        "黑签"
+      ],
+      "notes": "若原作存在“阎王帖”作为死亡通牒或名单标记物，统一改为“阎签”，避免过重的民俗感，同时与白牌形成对偶：阎签为暗面，白牌为表面规则。",
+      "preserve_original": false,
+      "preserve_reason": ""
+    },
+    {
+      "original_term": "白卡",
+      "refreshed_term": "白牌",
+      "alternate_forms": [
+        "白牌名单",
+        "白面牌"
+      ],
+      "notes": "核心系统名之一。白牌=区域清洗名单的物理载体，既是通牒也是豁免凭证。所有“白卡”场景统一刷新为“白牌”。",
+      "preserve_original": false,
+      "preserve_reason": ""
+    },
+    {
+      "original_term": "名单制度",
+      "refreshed_term": "白牌规则",
+      "alternate_forms": [
+        "牌面规则",
+        "清洗规则"
+      ],
+      "notes": "上层通过“白牌+黑卷”执行区域清洗的总规则，角色口中多说“牌面规则”“白牌规则”，避免现代法律术语感。",
+      "preserve_original": false,
+      "preserve_reason": ""
+    },
+    {
+      "original_term": "契约/军火合作协议",
+      "refreshed_term": "伞约",
+      "alternate_forms": [
+        "伞队约",
+        "伞线合同"
+      ],
+      "notes": "顾夜狼与QA伞队签署的合作协议统一称为“伞约”，体现专有名词感，方便后续提及时用“伞约还在/伞约要续”。",
+      "preserve_original": false,
+      "preserve_reason": ""
+    }
+  ],
+  "artifacts_props": [
+    {
+      "original_term": "标志性“狼”物件（围巾等）",
+      "refreshed_term": "狼纹围巾",
+      "alternate_forms": [
+        "狼巷围巾",
+        "灰狼围巾"
+      ],
+      "notes": "顾夜狼成名物件统一设定为“狼纹围巾”，灰底黑狼纹，作为视觉IP与象征物贯穿前后（废厂成名战、狼巷盟成立仪式等）。",
+      "preserve_original": false,
+      "preserve_reason": ""
+    },
+    {
+      "original_term": "权杖/戒指/香烟象征物",
+      "refreshed_term": "川戒",
+      "alternate_forms": [
+        "柳戒",
+        "权戒"
+      ],
+      "notes": "柳擎川传给顾夜狼的象征权力物统一定为一枚刻有“川”字的戒指，称为“川戒”，比抽象权杖更适合现代场景。香烟作为辅助象征，不单独命名系统化。",
+      "preserve_original": false,
+      "preserve_reason": ""
+    },
+    {
+      "original_term": "最后一张白卡",
+      "refreshed_term": "终局白牌",
+      "alternate_forms": [
+        "尾牌",
+        "最后一牌"
+      ],
+      "notes": "吴折竹最后留下的那一张，统一称“终局白牌”，是续季关键物件。",
+      "preserve_original": false,
+      "preserve_reason": ""
+    },
+    {
+      "original_term": "江南会独有信物",
+      "refreshed_term": "江南青印",
+      "alternate_forms": [
+        "青印",
+        "江印"
+      ],
+      "notes": "可设定为一枚带青铜色“江”字图案的金属章，称“江南青印”，凡战场遗留之处皆成其签名。",
+      "preserve_original": false,
+      "preserve_reason": ""
+    }
+  ],
+  "locations": [
+    {
+      "original_term": "WH",
+      "refreshed_term": "武衡",
+      "alternate_forms": [
+        "武衡城",
+        "衡城"
+      ],
+      "notes": "原文以“WH”代称的城市，统一实体化为“武衡城”，简称“武衡”“衡城”。武大即“武衡大学”。不得再用英文字母简称。",
+      "preserve_original": false,
+      "preserve_reason": ""
+    },
+    {
+      "original_term": "武大",
+      "refreshed_term": "武衡大学",
+      "alternate_forms": [
+        "武衡大",
+        "衡大"
+      ],
+      "notes": "事件集中爆发的高校，正式写作“武衡大学”，口语可用“武衡大”“衡大”。避免真实高校直指感。",
+      "preserve_original": false,
+      "preserve_reason": ""
+    },
+    {
+      "original_term": "杀蛇镇",
+      "refreshed_term": "蛇镇口",
+      "alternate_forms": [
+        "蛇镇",
+        "镇口"
+      ],
+      "notes": "境外军火交易据点，统一称“蛇镇口”，避免过于猎奇。口语一般说“蛇镇”。",
+      "preserve_original": false,
+      "preserve_reason": ""
+    },
+    {
+      "original_term": "一河/二河/三河",
+      "refreshed_term": "一河区/二河区/三河区",
+      "alternate_forms": [
+        "一河战区",
+        "三河战场"
+      ],
+      "notes": "城市作战主战场，以河流命名的三个区，统一加“区”字，在战斗语境中可加“战区”。例：“三河战区”。",
+      "preserve_original": false,
+      "preserve_reason": ""
+    },
+    {
+      "original_term": "柳老大别墅",
+      "refreshed_term": "星流山庄",
+      "alternate_forms": [
+        "山庄",
+        "星流庄园"
+      ],
+      "notes": "柳擎川主场景，统一命名为“星流山庄”，强调其会首身份和仪式感。",
+      "preserve_original": false,
+      "preserve_reason": ""
+    },
+    {
+      "original_term": "宿舍",
+      "refreshed_term": "狼巷宿舍",
+      "alternate_forms": [
+        "二栋",
+        "老宿舍"
+      ],
+      "notes": "顾夜狼起势的宿舍楼可内定为“二栋”，但作为象征空间时统一称“狼巷宿舍”，与“狼巷盟”形成前后呼应。",
+      "preserve_original": false,
+      "preserve_reason": ""
+    }
+  ],
+  "titles_ranks_labels": [
+    {
+      "original_term": "会首",
+      "refreshed_term": "堂首",
+      "alternate_forms": [
+        "话事人",
+        "顶头人"
+      ],
+      "notes": "非必须统一替换，但在星流会、江南堂这类组织内部，建议正式称“堂首”，对外称“话事人”。",
+      "preserve_original": false,
+      "preserve_reason": ""
+    },
+    {
+      "original_term": "帮主",
+      "refreshed_term": "盟主",
+      "alternate_forms": [
+        "首领",
+        "主事"
+      ],
+      "notes": "狼巷盟内部正式头衔为“盟主”（顾夜狼），对外新闻语境可用“首领”。",
+      "preserve_original": false,
+      "preserve_reason": ""
+    },
+    {
+      "original_term": "少主",
+      "refreshed_term": "少当家",
+      "alternate_forms": [
+        "少爷",
+        "少爷哥"
+      ],
+      "notes": "江少廷等年轻二代，内称“少当家”，街头叫“江少”。若同时出“少主”概念时统一用“少当家”。",
+      "preserve_original": false,
+      "preserve_reason": ""
+    },
+    {
+      "original_term": "突击组",
+      "refreshed_term": "突锋组",
+      "alternate_forms": [
+        "锋组",
+        "突锋队"
+      ],
+      "notes": "顾夜狼手下战斗小队统一称“突锋组”，远听、暮川、野飞皆在其列。简写“锋组”。",
+      "preserve_original": false,
+      "preserve_reason": ""
+    }
+  ],
+  "signature_terms": [
+    {
+      "original_term": "护短",
+      "refreshed_term": "护自己的人",
+      "alternate_forms": [
+        "我只护自己的人",
+        "我就护短"
+      ],
+      "notes": "顾夜狼核心价值观。关键场景的签名台词统一使用“我只护自己的人”，必要时简化为“我就护短”但不高频滥用。",
+      "preserve_original": false,
+      "preserve_reason": ""
+    },
+    {
+      "original_term": "那就试试",
+      "refreshed_term": "那就掂一掂",
+      "alternate_forms": [
+        "那就来掂掂",
+        "那就看谁沉"
+      ],
+      "notes": "顾夜狼对挑衅的标准回应。统一主版本为“那就掂一掂”，既保留狠味又具地方感。",
+      "preserve_original": false,
+      "preserve_reason": ""
+    },
+    {
+      "original_term": "再这样玩会死人",
+      "refreshed_term": "再这么下去，真要见名单了",
+      "alternate_forms": [
+        "再这么玩命，黑卷要翻页了"
+      ],
+      "notes": "医生/理智角色劝告用语，与世界观中的“黑卷清单”挂钩，弱化现实医疗直言。",
+      "preserve_original": false,
+      "preserve_reason": ""
+    },
+    {
+      "original_term": "名单可以改，也可以加人",
+      "refreshed_term": "牌面能翻，也能多写几个名字",
+      "alternate_forms": [
+        "牌面随他们写",
+        "名字是能被加上去的"
+      ],
+      "notes": "吴折竹的标志性信息型台词。主版本统一为“牌面能翻，也能多写几个名字”，保持隐喻感。",
+      "preserve_original": false,
+      "preserve_reason": ""
+    },
+    {
+      "original_term": "我想停了",
+      "refreshed_term": "我想刹车了",
+      "alternate_forms": [
+        "我不想再往前冲了"
+      ],
+      "notes": "顾夜狼中后期对柳初暖的情绪爆点台词，主用“我想刹车了”，与一路“加速”“踩油门”的战争隐喻对应。",
+      "preserve_original": false,
+      "preserve_reason": ""
+    }
+  ],
+  "relationships": [
+    {
+      "between": [
+        "顾夜狼",
+        "柳擎川"
+      ],
+      "original_framing": "萧狼—柳老大，师徒+父辈+权力传承关系。",
+      "refreshed_framing": "顾夜狼—柳擎川之间是“旧局镇场人”对“新局破局人”的选择与交棒，表层是提携，底层是规训与试探，最终完成从被观察者到接盘人的转变。",
+      "notes": "对戏场景统一保持仪式感；第一会面、白牌揭示、川戒交付三场戏必须突出权力流向。"
+    },
+    {
+      "between": [
+        "顾夜狼",
+        "柳初暖"
+      ],
+      "original_framing": "主情感线与道德锚，决定主角能否退出黑道。",
+      "refreshed_framing": "柳初暖不是被动的“黑道女友”，而是不断要求顾夜狼『护人而不是护局』的价值锚点，她的每一次离开或靠近都对应主角一次方向调整。",
+      "notes": "重要转折点：饭店护人初遇、武衡大学枪响后的质问、终局信件与离城。"
+    },
+    {
+      "between": [
+        "顾夜狼",
+        "吴折竹"
+      ],
+      "original_framing": "危险线人，模糊帮手。",
+      "refreshed_framing": "两人是彼此利用的“半同谋”，吴折竹代表牌面背后的黑手世界，顾夜狼每次接近他都走向更深处。",
+      "notes": "每次会面必须带来信息结构升级：白牌→黑卷→牙阁；信任永远不稳定。"
+    },
+    {
+      "between": [
+        "顾夜狼",
+        "江少廷"
+      ],
+      "original_framing": "特权恶少与草根反击的对立。",
+      "refreshed_framing": "江少廷既是江南堂的丑陋门面，也是旧秩序潦草的一张脸，顾夜狼在他身上完成从“打脸恶少”到“向整个堂口宣战”的升级。",
+      "notes": "首场当街打脸，后续以其生死不明象征主角吞并旧权力。"
+    },
+    {
+      "between": [
+        "顾夜狼",
+        "远听/封暮川/庄野飞"
+      ],
+      "original_framing": "宿舍兄弟与战斗中枢。",
+      "refreshed_framing": "三人构成顾夜狼的“战场家人”，每人代表一种作战性格：听（远听）、冷（暮川）、热（野飞）。他们的伤亡与争吵对应主角权力成长的代价。",
+      "notes": "重要节点：宿舍群殴、废厂成名战、突锋组初夜袭、三河战区牺牲场面。"
+    }
+  ],
+  "forbidden_terms": [
+    "萧狼",
+    "柳老大",
+    "柳流",
+    "柳初夏",
+    "刘天海",
+    "天海会",
+    "江南会",
+    "黑道",
+    "黑社会",
+    "黑帮",
+    "黑帮老大",
+    "黑名单制度",
+    "白卡",
+    "阎王帖",
+    "WH",
+    "真实城市名直指（如与武衡实际重合的地名）",
+    "具体真实高校全名",
+    "警察（在本项目中统一替换为公署/市局）"
+  ],
+  "naming_style_rules": [
+    "核心角色姓名风格：两到三字中文名，姓氏尽量常见，名带一字意向（狼、暖、魁、舟等）以便记忆和角色区分。",
+    "势力命名统一偏向『会/堂/盟/会』等字尾，避免与传统门派、宗门混淆。",
+    "系统与规则命名采用『牌/卷/签/约』等偏抽象名物，与现实法律和真实制度拉开距离。",
+    "地点命名以『城/区/河/镇』为主，既有现实感又留一层虚构空间，避免真实地区对号入座。",
+    "所有专有名后续成稿只使用刷新后的规范中文名，不得使用“新名（旧名）”混排形式。",
+    "禁止使用英文主名或英文+拼音混排，如Yu Xiao、Lilith等，不允许作为主canon名出现。",
+    "若出现尚未在圣经中登记的关键新角色或新势力，下游写作需先为其补充中文规范名，并遵循本表风格后再大量使用。"
+  ],
+  "consistency_rules": [
+    "写作模式默认使用“final”规范：禁止出现原著名词，所有角色、组织、系统、地点必须使用刷新表中的规范名。",
+    "涉及同一人物旧称（如柳老大/柳流）一律合并为本圣经中定义的单一规范名，不得在不同场景切换叫法造成混乱。",
+    "世界观规则——白牌、黑卷、阎签的层级必须稳定：白牌=操作层名单载体，黑卷=上层清洗总册，阎签=必死通牒；不得随意互换概念。",
+    "对武衡城的简称必须从语境判断：新闻、官方用“武衡市”，街头人多说“武衡”或“衡城”，不得写出英文字母缩写。",
+    "涉及暴力、对抗场景，优先用“战区/巷战/堵口”等虚构化战场用语，减少真实犯罪术语直指。",
+    "顾夜狼的人设核心『护自己的人』贯穿全季，不得写出对无辜路人滥杀滥伤的桥段，所有极端暴力须带有明确报复或护人动机。",
+    "吴折竹立场保持模糊，禁止在本季中给出完全黑/完全白的定论；对话与行为必须能在二刷时看出双重含义。",
+    "柳初暖不参与任何直接暴力行为，所有涉及她的行动以劝阻、离开、提出条件等非暴力方式为主。",
+    "QA伞队成员不落实名制，仅使用代号式姓名（冷砺、焰蛇等），保持职业兵IP感，避免家长里短戏份压过本地格局线。",
+    "标题、章节名、短视频导语中出现的专有名也必须遵守本刷新圣经的命名，不得偷用旧称作“噱头”。"
+  ],
+  "supplemental_observations": [
+    "若后续引入更上层组织名（对应原案中的“牙/主宰”），建议统一命名为『牙阁』作为上层机构、『主宰席』作为抽象议席，而具体个人名另行在续季圣经中规范。",
+    "狼巷盟成立仪式中建议强化『狼纹围巾』『川戒』『终局白牌』三件物件的视觉存在，以构成交棒与自我选择三重象征。",
+    "所有涉及真实法律、军警系统的细节在洗稿时应进一步抽象为『公署』『战区封锁』『市政应急』等表述，避免现实映射争议。",
+    "如需增加女性角色平衡，可在狼巷盟或星流会中引入一位女性军师/财务角色，需另建中文规范名并保持本圣经风格。",
+    "短剧节奏中，凡是以往需要用『黑社会』『黑道』强调身份的地方，优先用『圈里人』『暗巷圈』『这一局的人』替代，同时通过行动和场景暗示身份，不靠直白标签。"
+  ],
+  "project_title": "黑道求生"
+}

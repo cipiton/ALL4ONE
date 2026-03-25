@@ -1,0 +1,21 @@
+{
+  "generation_mode": "generate",
+  "detected_total_episodes": 60,
+  "selected_episode_range": "all",
+  "episodes_per_file": 5,
+  "generated_files": [
+    "episodes_01_05.txt",
+    "episodes_06_10.txt",
+    "episodes_11_15.txt",
+    "episodes_16_20.txt",
+    "episodes_21_25.txt",
+    "episodes_26_30.txt",
+    "episodes_31_35.txt",
+    "episodes_36_40.txt",
+    "episodes_41_45.txt",
+    "episodes_46_50.txt",
+    "episodes_51_55.txt",
+    "episodes_56_60.txt"
+  ],
+  "failures": []
+}
