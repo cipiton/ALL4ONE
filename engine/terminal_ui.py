@@ -264,3 +264,68 @@ def prompt_for_regeneration_instruction(current_value: str | None = None) -> str
     print("Examples: more detailed, improve pacing, stronger hook, better dialogue, preserve current structure")
     default_suffix = f" [{current_value}]" if current_value else ''
     return input(f"Regeneration instruction{default_suffix}: ").strip()
+
+
+def prompt_for_folder_processing_mode(file_count: int) -> str:
+    print(f"Detected a folder with {file_count} txt files.")
+    print("Choose processing mode:")
+    print("1. shared (Recommended) - treat the folder as one coordinated rewrite project")
+    print("2. individual - process each txt independently")
+    raw_value = input("Mode [shared]: ").strip().lower()
+    if raw_value in {"", "1", "shared", "project"}:
+        return "shared"
+    if raw_value in {"2", "individual", "independent"}:
+        return "individual"
+    print("Defaulting to shared project mode.")
+    return "shared"
+
+
+def prompt_for_rewriting_mode(default_mode: str) -> str:
+    print("Choose rewriting workflow mode:")
+    print("1. Create refresh bible")
+    print("2. Rewrite using existing refresh bible")
+    print("3. Create bible and rewrite")
+    labels = {
+        "build_bible": "1",
+        "rewrite_with_bible": "2",
+        "build_bible_and_rewrite": "3",
+    }
+    default_label = labels.get(default_mode, "1")
+    raw_value = input(f"Mode [{default_label}]: ").strip().lower()
+    if raw_value in {"", default_label}:
+        return default_mode
+    if raw_value in {"1", "build", "build_bible", "bible"}:
+        return "build_bible"
+    if raw_value in {"2", "rewrite", "rewrite_with_bible"}:
+        return "rewrite_with_bible"
+    if raw_value in {"3", "both", "build_bible_and_rewrite", "build_and_rewrite"}:
+        return "build_bible_and_rewrite"
+    print(f"Defaulting to {default_mode}.")
+    return default_mode
+
+
+def prompt_for_path(prompt: str, *, required: bool = False) -> str | None:
+    while True:
+        raw_value = input(prompt).strip()
+        if raw_value:
+            return raw_value
+        if not required:
+            return None
+        print("This path is required.")
+
+
+def prompt_for_existing_bible(options: list[tuple[str, str]]) -> str | None:
+    if not options:
+        return None
+    print("Available refresh bibles:")
+    for index, (label, path) in enumerate(options, start=1):
+        print(f"{index}. {label} - {path}")
+    while True:
+        raw_value = input("Choose a bible (blank to cancel): ").strip()
+        if not raw_value:
+            return None
+        if raw_value.isdigit():
+            selected = int(raw_value)
+            if 1 <= selected <= len(options):
+                return options[selected - 1][1]
+        print("Choose a listed bible number.")

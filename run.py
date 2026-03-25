@@ -14,6 +14,7 @@ from engine.llm_client import (
     format_runtime_error_message,
     load_env_file,
 )
+from engine.rewriting_project import prompt_rewriting_launch
 from engine.runtime_config import load_runtime_config
   
   
@@ -34,6 +35,25 @@ def main() -> int:
   
             skill = catalog.get_skill(summary.skill_id)  
             latest_state = skill.find_resume_point(repo_root / 'outputs') if skill.supports_resume else None  
+
+            if getattr(skill, 'skill_id', '') == 'rewriting':
+                input_root_path, input_paths, launch_options = prompt_rewriting_launch(repo_root)
+                result = skill.run(
+                    SkillRunRequest(
+                        repo_root=repo_root,
+                        input_paths=input_paths,
+                        input_root_path=input_root_path,
+                        launch_options=launch_options,
+                    )
+                )
+                terminal_ui.print_run_summary(
+                    result.success_count,
+                    result.failure_count,
+                    result.session_dir,
+                )
+                if not terminal_ui.ask_yes_no('Run another job? [Y/n]: ', default=True):
+                    return 0
+                continue
   
             if skill.startup_policy.mode == 'explicit_step_selection':  
                 input_root_path, input_paths = prompt_for_paths(skill)  

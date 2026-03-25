@@ -27,6 +27,7 @@ from .models import DocumentResult, PromptMessage, RunState, SkillDefinition, St
 from .planner import build_execution_plan
 from .prompts import build_step_prompt_messages, build_structured_stage_messages
 from .project_ingestion import execute_project_ingestion, should_use_project_ingestion
+from .rewriting_project import execute_rewriting_project, should_offer_rewriting_project_mode
 from .skill_loader import load_reference_texts
 from .state_store import save_batch_summary, save_state
 from .writer import (
@@ -52,6 +53,7 @@ def execute_input_paths(
     resume_state: RunState | None = None,
     forced_step_number: int | None = None,
     input_root_path: Path | None = None,
+    launch_options: dict[str, Any] | None = None,
 ) -> tuple[Path, list[DocumentResult]]:
     outputs_root = repo_root / "outputs"
     runtime_config = load_runtime_config(repo_root)
@@ -68,6 +70,23 @@ def execute_input_paths(
             input_root_path or (input_paths[0] if input_paths else None),
             input_paths=input_paths,
         )
+
+    if not single_resume and should_offer_rewriting_project_mode(
+        skill,
+        input_paths,
+        input_root_path=input_root_path,
+    ):
+        project_result = execute_rewriting_project(
+            repo_root,
+            skill,
+            input_paths,
+            input_root_path=input_root_path,
+            session_dir=session_dir,
+            launch_options=launch_options or {},
+            verbose=True,
+        )
+        if project_result is not None:
+            return project_result
 
     if not single_resume and should_use_project_ingestion(skill, input_paths, input_root_path=input_root_path):
         return execute_project_ingestion(

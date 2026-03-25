@@ -33,6 +33,7 @@ class SkillRunRequest:
     input_paths: list[Path]  
     input_root_path: Optional[Path] = None
     selected_step_number: Optional[int] = None  
+    launch_options: dict[str, object] = field(default_factory=dict)
   
   
 @dataclass(slots=True)  

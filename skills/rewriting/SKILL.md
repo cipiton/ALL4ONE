@@ -121,6 +121,18 @@ Use this skill when the user wants rewriting, script polishing, washing, or sani
 - Only accepted outputs are saved.
 - After acceptance, the shared runtime automatically continues to the next step until the workflow ends or the user cancels.
 - Resume is supported from the latest accepted step output.
+- When the input is a coordinated script folder or a Skill 4 final adaptation plan, the runtime may switch into a shared project workflow that builds or reuses one refresh bible for the whole project before rewriting outputs.
+
+## Refresh Bible Workflow
+
+- Shared project mode supports:
+  - `build_bible`
+  - `rewrite_with_bible`
+  - `build_bible_and_rewrite`
+- The refresh bible is project-scoped and is meant to lock naming, term replacement, and consistency rules across a whole batch.
+- A Skill 4 final adaptation plan is the primary canon source for the refresh bible.
+- Script files can be added as supplemental evidence to enrich on-page terminology, alias usage, and practical naming examples.
+- When a refresh bible already exists for the project, later rewrite runs should reuse it instead of inventing new rename rules.
 
 ## Workflow
 

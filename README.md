@@ -1,28 +1,67 @@
 # ONE4ALL
 
-Shared multi-skill LLM runner for recap workflows.
+A shared terminal-based LLM workflow runner for recap analysis, long-novel adaptation, episode script generation, rewriting, story creation, and large-text preprocessing.
 
-## What Changed
+---
 
-The repository now has:
+## What this project is
 
-- one app-layer skill boundary in `app/skills/`
-- one shared runtime engine in `engine/`
-- one shared interactive entrypoint at `run.py`
-- multiple workflow folders under `skills/`
-- one registry file at `skills/registry.yaml` for exposed skills
-- shared outputs under `outputs/<skill>/<timestamp>/`
+ONE4ALL is a **skill-driven Python app** built around a shared runtime.
 
-Adding a normal new workflow should only require:
+Instead of creating a separate app for each workflow, the project uses:
 
-1. creating `skills/<new_skill>/`
-2. adding `SKILL.md`
-3. registering it in `skills/registry.yaml`
-4. adding any files under `references/`
+- a single entrypoint: `run.py`
+- a shared execution engine in `engine/`
+- a registry of skills in `skills/registry.yaml`
+- one `SKILL.md` per skill for behavior, steps, prompts, and runtime rules
 
-No new dedicated `run.py` or private engine package is required for standard skills.
+This makes it easier to add or evolve workflows without rebuilding the whole app.
 
-## Install
+---
+
+## Main use cases
+
+ONE4ALL is especially suited for:
+
+- long Chinese novel adaptation
+- short-drama planning
+- short-drama episode script generation
+- recap analysis and recap production
+- project-scoped rewriting / refresh workflows
+- large novel preprocessing and chunking
+- original microseries story package generation
+
+---
+
+## Current skills
+
+### 1. Recap Analysis
+Analyze recap inputs and generate structured reports.
+
+### 2. Recap Production
+Run a resumable recap-production workflow.
+
+### 3. Novel 2 Script
+Run a broader multi-step novel-to-script production pipeline.
+
+### 4. Novel Adaptation Plan
+Turn long-form source material into a structured short-drama adaptation plan.
+
+### 5. Novel-to-Drama Script
+Generate short-drama episode scripts from the adaptation plan.
+
+### 6. Rewriting
+Create a refresh bible and rewrite script text with consistent refreshed characters, objects, and terms.
+
+### 7. Story Creation
+Generate an original microseries story package from a short brief.
+
+### 8. Large Novel Processor
+Split oversized novel `.txt` files into chapter/chunk outputs plus an index for downstream workflows.
+
+---
+
+## Installation
 
 From the repo root:
 
@@ -30,14 +69,14 @@ From the repo root:
 python -m pip install -r requirements.txt
 ```
 
-Current runtime requirements:
+Recommended:
 
 - Python 3.10+
-- `PyYAML` via `requirements.txt`
+- a valid API key / provider setup in `config.ini` or environment variables
 
-## Run
+---
 
-From the repo root:
+## Run the app
 
 ```bash
 python run.py
@@ -45,131 +84,92 @@ python run.py
 
 The runner will:
 
-1. print a brief introduction
-2. show discovered skills
-3. prompt for a skill
-4. prompt for a `.txt` file or a folder of `.txt` files
-5. execute the selected workflow
-6. keep the session interactive so another job can be started without restarting
+1. show the available skills
+2. let you choose a skill
+3. ask for the required input(s)
+4. run the selected workflow
+5. keep the session open so you can run another job
 
-Folder processing defaults to non-recursive and uses stable sorted order unless a skill opts into recursive folder intake in metadata.
+---
 
-For LLM-backed `.txt` skills, oversized single files and detected chunk folders now switch into a shared project-ingestion mode automatically. The runtime builds continuity state across chunks first, then generates unified final outputs from consolidated state instead of treating each chunk as an unrelated run.
-
-## Repository Layout
+## Repository structure
 
 ```text
 ONE4ALL/
-  run.py
-  app/
-  engine/
-  skills/
-    SKILL_TEMPLATE.md
-    novel2script/
-    recap_analysis/
-    recap_production/
-  outputs/
-  README.md
-  tasks.md
-  .env.example
+├── run.py
+├── config.ini
+├── README.md
+├── tasks.md
+├── app/
+├── engine/
+├── outputs/
+└── skills/
+    ├── registry.yaml
+    ├── SKILL_TEMPLATE.md
+    ├── recap_analysis/
+    ├── recap_production/
+    ├── novel2script/
+    ├── novel_adaptation_plan/
+    ├── novel_to_drama_script/
+    ├── rewriting/
+    ├── story_creation/
+    └── large_novel_processor/
 ```
 
-## Skill Architecture
+---
 
-Phase 2 now separates app dispatch from engine execution:
+## Core concepts
 
-- `skills/registry.yaml` is the preferred source of truth for which skills the app exposes.
-- `app/skills/protocol.py` defines the normalized app-facing skill interface.
-- `app/skills/catalog.py` loads the registry and instantiates adapters.
-- `app/skills/adapters/` bridges the app layer to the current execution backend.
-- each skill's `SKILL.md` remains the source of truth for runtime behavior, prompts, frontmatter, and references.
+## Skills
+Each workflow is defined as a skill. A skill typically includes:
 
-If `skills/registry.yaml` is present, the app loads skills from that registry through the catalog. If the registry is removed, the catalog falls back to the older `skills/*/SKILL.md` directory scan so current compatibility is retained.
+- `SKILL.md`
+- optional prompt/reference files
+- optional deterministic helper scripts
+- metadata for routing, steps, and runtime prompts
 
-Each skill is still driven by `SKILL.md` frontmatter plus human-readable instructions in the markdown body.
+## Shared runtime
+The shared runtime handles:
 
-## Protocol, Catalog, Adapters
+- menu display
+- input routing
+- folder/file handling
+- step execution
+- review loops
+- model routing
+- output creation
+- oversized text handling
 
-The app now talks to skills through a stable adapter boundary instead of reaching directly into skill folders from `run.py`.
+## Output roots
+Outputs are usually written under:
 
-- protocol:
-  `app/skills/protocol.py` defines normalized concepts such as `SkillRunRequest`, `SkillRunResult`, resume points, and the common adapter interface.
-- catalog:
-  `app/skills/catalog.py` reads `skills/registry.yaml`, validates entries, resolves adapter names, instantiates adapters, and returns menu-friendly summaries.
-- adapter:
-  `app/skills/adapters/skill_md_adapter.py` is the generic Phase 2 bridge for current markdown-spec skills. It wraps the existing `SKILL.md` loading and shared engine execution flow instead of reimplementing it.
-
-This is the key difference from Phase 1: the registry still decides what the app exposes, but the app now dispatches through adapters rather than directly coupling `run.py` to raw skill folders and engine-specific loading steps.
-
-## Shared Engine Capabilities
-
-The shared engine now supports an embedded ```skill-registry``` block inside `SKILL.md` for markdown-spec skills that need richer step metadata without adding per-skill YAML files.
-
-That generic support is what allows `skills/novel2script/` to run through the existing `skill_md` adapter and shared engine.
-
-Shared capabilities added for this:
-
-- parsing embedded step registries from `SKILL.md`
-- resolving prompt and asset resources relative to the skill folder
-- loading text-like references from `.txt` / `.md` and extracting readable text from `.docx` / `.xlsx`
-- carrying named step outputs forward across resume so later steps can consume multiple prior artifacts
-- writing stable per-step filenames when the skill spec defines them
-
-## Skill Registry
-
-`skills/registry.yaml` is a small manifest that explicitly lists the skills available to the app.
-
-In Phase 2, each entry points at an existing `SKILL.md` and declares which adapter should handle it:
-
-```yaml
-version: 1
-skills:
-  - id: recap_analysis
-    type: skill
-    adapter: skill_md
-    spec_path: skills/recap_analysis/SKILL.md
-    enabled: true
+```text
+outputs/<skill>/<job_or_project>/
 ```
 
-Registry responsibilities:
+Some workflows also use:
 
-- decide whether a skill is exposed in the menu
-- provide a stable registration id
-- declare which adapter should execute the skill
-- point the engine at the skill spec file
+```text
+outputs/<skill>/<job>/intermediate/
+outputs/<skill>/<job>/final/
+```
 
-`SKILL.md` responsibilities:
+---
 
-- define execution behavior
-- define frontmatter such as `steps`, `references`, `runtime_inputs`, `execution`, and `output`
-- provide the human-readable workflow instructions
+## Large text support
 
-Phase 2 adds the adapter boundary, but does not add cross-skill workflows or replace the `SKILL.md` parser. The shared engine remains the execution backend.
+LLM-backed `.txt` skills support shared large-text ingestion.
 
-The shared engine currently supports two generic execution strategies:
+When a `.txt` input is too large for safe single-pass processing, the runtime can:
 
-- `step_prompt`
-  For multi-step workflows where each step has its own prompt/reference file.
-- `structured_report`
-  For report-style workflows that run a configurable series of structured JSON stages and then render a final report.
-- `utility_script`
-  For local preprocessing or utility skills that execute a reusable Python helper under the normal shared runner and output directory.
+1. detect oversize input
+2. switch into project ingestion mode
+3. auto-split or consume a chunked project
+4. build continuity state
+5. synthesize a `master_outline.txt`
+6. continue the skill from the consolidated result
 
-## Large Text Project Ingestion
-
-Large `.txt` inputs no longer need to fail as isolated chunk runs.
-
-For LLM-backed `.txt` skills, the shared runtime now uses this flow when a file is too large for safe single-pass execution or when the selected input looks like a chunk folder:
-
-1. detect oversized or chunked input
-2. switch into project-ingestion mode
-3. build persistent canonical state plus rolling recent context across chunks
-4. write shared intermediate artifacts under `intermediate/`
-5. synthesize a consolidated `master_outline.txt`
-6. run the selected skill once against that consolidated project context
-7. write unified deliverables under `final/`
-
-Intermediate artifacts can include:
+Typical intermediate artifacts:
 
 - `project_state.json`
 - `continuity_log.json`
@@ -177,219 +177,575 @@ Intermediate artifacts can include:
 - `master_outline.txt`
 - `ingestion_report.txt`
 
-Project-mode outputs are organized like:
+This lets long novels be processed as one logical project instead of isolated chunk runs.
+
+---
+
+## Model routing
+
+The runtime supports model routing by phase.
+
+Typical routing pattern:
+
+- **fast model** for mechanical or intermediate work
+- **strong model** for final deliverables and polish
+
+Routing can be defined at:
+
+- global config level
+- route level
+- skill level
+- step level
+- project-ingestion phase level
+
+Example phases:
+
+- chunk ingestion
+- master outline synthesis
+- step execution
+- final deliverable
+- QA / final polish
+
+---
+
+## Skill details
+
+## 1. Recap Analysis
+
+**Purpose**
+
+Analyze one or more novel `.txt` files and generate structured recap-fit analysis.
+
+**Typical output**
+
+- title
+- premise
+- theme
+- main plot
+- character summary
+- adaptation suitability
+- episode recommendation
+- audience fit
+- risks
+- conclusion
+
+**Best input**
+
+- one novel `.txt`
+- multiple `.txt` files for separate evaluation
+
+**Execution style**
+
+- structured report
+
+**Use this when**
+
+You want to evaluate whether a novel or source text is suitable for recap / explanation-style production.
+
+---
+
+## 2. Recap Production
+
+**Purpose**
+
+Generate recap-production materials in a step-based workflow.
+
+**Typical steps**
+
+1. output recap script
+2. extract assets
+3. output image-generation config
+
+**Typical output**
+
+- recap script
+- assets / characters / props list
+- image-generation configuration
+
+**Best input**
+
+- synopsis
+- recap-ready text
+- outline
+- story package
+- script-like source
+
+**Execution style**
+
+- step-based workflow with review
+
+**Use this when**
+
+You already know the source is suitable and want recap-production deliverables.
+
+---
+
+## 3. Novel 2 Script
+
+**Purpose**
+
+Run a multi-step end-to-end short-drama creation flow from source text or premise to downstream production materials.
+
+**Typical steps**
+
+1. story polish
+2. episode plot
+3. highlights
+4. episode scripts
+5. analysis
+6. assets
+7. image config
+
+**Best input**
+
+- premise
+- synopsis
+- source text
+- early outline
+- draft story package
+
+**Execution style**
+
+- multi-step workflow
+
+**Use this when**
+
+You want a broader full-pipeline workflow instead of the specialized Skill 4 → 5 → 6 path.
+
+---
+
+## 4. Novel Adaptation Plan
+
+**Purpose**
+
+Convert long-form source material into a structured short-drama adaptation plan.
+
+This is the **planning layer** of the main adaptation workflow.
+
+**What it does**
+
+- reads source novel or consolidated long-text input
+- extracts key set pieces
+- grades and prioritizes them
+- builds phase pacing
+- maps content to episode structure
+- produces a final adaptation-plan handoff
+- includes character-bible style guidance for downstream scripting
+
+**Typical outputs**
+
+- adaptation brief
+- set-piece candidates
+- graded set pieces
+- phase pacing plan
+- episode binding plan
+- final adaptation plan
+
+**Important final handoff**
+
+- `06_final_adaptation_plan.txt`
+
+**Best input**
+
+- raw novel `.txt`
+- project-ingested long novel output
+- consolidated story source
+
+**Execution style**
+
+- multi-step workflow
+- supports project-ingested mode
+
+**Use this when**
+
+You want to turn a long novel into a usable short-drama blueprint.
+
+**Recommended handoff**
 
 ```text
-outputs/<skill>/<job>/
+raw novel -> Skill 4 -> 06_final_adaptation_plan.txt
+```
+
+---
+
+## 5. Novel-to-Drama Script
+
+**Purpose**
+
+Generate episode-level short-drama scripts from the adaptation plan.
+
+This is the **script generation layer**.
+
+**What it does**
+
+- reads the final adaptation plan
+- infers total episode count
+- prompts for episode selection
+- generates scripts in batches
+- supports selective generation or regeneration
+
+**Supported selections**
+
+- blank = all
+- `all`
+- `1-10`
+- `11-20`
+- `60`
+- similar valid ranges
+
+**Batching**
+
+Skill 5 supports configurable episodes-per-file output.
+
+Typical behavior:
+
+- single episode = highest detail
+- small range = more detailed
+- larger range = faster coverage, less detail
+
+**Best input**
+
+- `06_final_adaptation_plan.txt` from Skill 4
+
+**Execution style**
+
+- range-driven script generation workflow
+
+**Use this when**
+
+You want to turn the adaptation plan into actual episode script material.
+
+**Recommended handoff**
+
+```text
+Skill 4 final adaptation plan -> Skill 5
+```
+
+---
+
+## 6. Rewriting
+
+**Purpose**
+
+Create and apply a project-scoped refresh bible, then rewrite script text consistently.
+
+This skill is best understood as a **refresh / rewrite / canon-consistency layer**, not just a cosmetic polish pass.
+
+**What it can do**
+
+- create a refresh bible from the adaptation plan
+- enrich that bible with script evidence
+- rewrite one script file or a whole script folder using that bible
+- keep refreshed character, object, organization, and term usage consistent across a project
+
+**Core workflow modes**
+
+1. Create refresh bible
+2. Rewrite using existing refresh bible
+3. Create bible and rewrite
+
+**Refresh bible**
+
+The bible is project-scoped and can include:
+
+- refreshed character names
+- aliases / titles
+- object / artifact terms
+- faction / organization terms
+- location terms
+- naming rules
+- consistency notes
+- avoid terms
+
+**Shared bible storage**
+
+```text
+outputs/rewriting/bibles/<project_name>/
+  refresh_bible.json
+  refresh_bible.txt
+```
+
+**Folder input**
+
+For script folders, Skill 6 supports:
+
+- shared project mode
+- individual file mode
+
+Shared mode is recommended for consistency.
+
+**Best input patterns**
+
+### Build bible first
+```text
+Skill 4 final adaptation plan -> Skill 6 (create refresh bible)
+```
+
+### Rewrite with bible
+```text
+Skill 5 script output(s) -> Skill 6 (rewrite using existing bible)
+```
+
+### Full consistency workflow
+```text
+Skill 4 final adaptation plan -> Skill 6 (build bible)
+Skill 5 script batches -> Skill 6 (rewrite using bible)
+```
+
+**Use this when**
+
+You want consistent refreshed naming and rewrite logic across a whole project.
+
+---
+
+## 7. Story Creation
+
+**Purpose**
+
+Generate an original microseries story package from a short brief.
+
+**Typical output**
+
+- title
+- genre
+- setting
+- hook
+- main characters
+- story line
+- core conflict
+- reversals
+- climax
+- ending direction
+- episode-direction overview
+- pacing notes
+
+**Best input**
+
+- short idea
+- genre direction
+- tone guidance
+- premise
+
+**Execution style**
+
+- generation workflow
+
+**Use this when**
+
+You want an original project starting point instead of adapting an existing novel.
+
+---
+
+## 8. Large Novel Processor
+
+**Purpose**
+
+Split oversized novel `.txt` files into chapters or chunk groups without using the LLM.
+
+This is the **preprocessing utility**.
+
+**What it does**
+
+- reads a large `.txt`
+- detects chapter structure
+- splits into chapter files
+- optionally groups into chunk files
+- writes an `index.txt`
+
+**Typical output**
+
+```text
+outputs/large_novel_processor/<project>__<timestamp>/
+  index.txt
+  chapters/
+  chunks/
+```
+
+**Best input**
+
+- very large novel `.txt`
+
+**Execution style**
+
+- deterministic utility script
+
+**Use this when**
+
+You want manual chunk control before feeding text into downstream skills.
+
+---
+
+## Recommended workflows
+
+## Workflow A: standard adaptation pipeline
+
+```text
+raw novel -> Skill 4 -> Skill 5 -> Skill 6
+```
+
+Meaning:
+
+1. Skill 4 creates the adaptation blueprint
+2. Skill 5 generates episode scripts
+3. Skill 6 applies the project refresh canon and rewrite logic
+
+---
+
+## Workflow B: consistency-first pipeline
+
+```text
+raw novel -> Skill 4
+Skill 4 final adaptation plan -> Skill 6 (build refresh bible)
+Skill 4 final adaptation plan -> Skill 5
+Skill 5 script batches -> Skill 6 (rewrite using bible)
+```
+
+This is the best workflow when naming consistency matters across many script files.
+
+---
+
+## Workflow C: preprocess first
+
+```text
+raw large novel -> Skill 8
+chunked output -> Skill 4 or Skill 5
+```
+
+Use this when you want explicit chunk control instead of relying entirely on automatic project ingestion.
+
+---
+
+## Workflow D: recap workflow
+
+```text
+novel txt -> Skill 1
+recap-ready source -> Skill 2
+```
+
+---
+
+## Practical guidance
+
+## Skill 4 vs Skill 5 vs Skill 6
+
+### Skill 4
+Use for:
+- adaptation blueprint
+- pacing
+- set pieces
+- episode structure
+- character guidance
+
+### Skill 5
+Use for:
+- actual episode scripts
+- episode-range generation
+- batch output
+- selected episode regeneration
+
+### Skill 6
+Use for:
+- refresh bible creation
+- project-scoped rename consistency
+- rewrite using locked canon
+- consistent character/object/world-term refresh
+
+---
+
+## Detail tradeoff in Skill 5
+
+Smaller episode ranges produce richer script detail.
+
+Rule of thumb:
+
+- **1 episode** = most detailed
+- **2–5 episodes** = good balance
+- **10 episodes** = faster, lighter detail
+
+This is normal and expected.
+
+---
+
+## Why Skill 6 can feel slow
+
+Skill 6 can still be slow when:
+
+- rewriting a lot of script text
+- handling many `.txt` files
+- reading and normalizing large inputs
+- running shared project mode across a full folder
+
+The refresh bible improves consistency and repeatability, but it does not remove the cost of processing large script volumes.
+
+---
+
+## Configuration
+
+Main runtime settings live in `config.ini`.
+
+Typical areas include:
+
+- LLM provider/model
+- model aliases
+- route-based model routing
+- generation defaults
+- debug/review behavior
+
+Example categories:
+
+- `[llm]`
+- `[model_aliases]`
+- `[model_routing]`
+- `[generation]`
+- `[debug]`
+
+---
+
+## Outputs
+
+Most outputs live under:
+
+```text
+outputs/<skill>/<job_or_project>/
+```
+
+Examples:
+
+### Project-ingested run
+```text
+outputs/<skill>/<project>/
   intermediate/
   final/
 ```
 
-Small `.txt` files still use the previous single-pass behavior.
-
-### Supported `SKILL.md` metadata
-
-- `name`
-- `display_name`
-- `description`
-- `supports_resume`
-- `input_extensions`
-- `folder_mode`
-- `steps`
-- `runtime_inputs`
-- `references`
-- `execution`
-- `output`
-
-The markdown body remains the human source of truth for workflow behavior and guardrails. The frontmatter makes the workflow runnable by the shared engine.
-
-## Standard Skill Template
-
-Use `skills/SKILL_TEMPLATE.md` when adding a new skill.
-
-Minimal flow for a new skill:
-
-1. Copy `skills/SKILL_TEMPLATE.md` into `skills/<your_skill>/SKILL.md`.
-2. Set the frontmatter fields.
-3. Add a registry entry to `skills/registry.yaml` that points to `skills/<your_skill>/SKILL.md`.
-4. Set `adapter: skill_md` for standard markdown-spec skills.
-5. Add any prompt or reference files under `skills/<your_skill>/references/`.
-6. Run `python run.py` and choose the new skill from the menu.
-
-For richer markdown-spec skills, resources can also live beside the skill under folders such as `prompts/` and `assets/`, as long as the `SKILL.md` spec references them.
-
-## Runtime Inputs
-
-Runtime inputs are driven by skill config, not hardcoded runner branches.
-
-Examples already in use:
-
-- `episode_count` for `recap_production` step 1
-- `style` for `recap_production` step 2
-- `split_mode` and `chunk_size` for `Large Novel Processor`
-
-Supported input types:
-
-- `string`
-- `int`
-- `choice`
-- `bool`
-
-## Resume Behavior
-
-Skills can opt into resume with `supports_resume: true`.
-
-For resumable skills, the runner offers the latest unfinished state for that skill. State is stored in the output directory and includes:
-
-- selected skill
-- input path
-- current step
-- runtime inputs
-- status
-- output paths
-- notes
-
-For multi-step step-prompt workflows such as `recap_production`, a completed step can resume into the next step using the prior step output as the next input.
-
-## Outputs
-
-Outputs are written to:
-
+### Rewriting bibles
 ```text
-outputs/<skill_name>/<timestamp>/
+outputs/rewriting/bibles/<project_name>/
+  refresh_bible.json
+  refresh_bible.txt
 ```
 
-Single-file runs write directly into that timestamp directory.
+---
 
-Folder runs also create:
+## Adding a new skill
 
-```text
-outputs/<skill_name>/<timestamp>/documents/<index>_<input_stem>/
-```
+Typical process:
 
-Typical artifacts:
+1. create a new folder under `skills/`
+2. add `SKILL.md`
+3. add prompt/reference files if needed
+4. register it in `skills/registry.yaml`
+5. run `python run.py`
 
-- `state.json`
-- `prompt_dump.json`
-- `stage_outputs.json` for structured workflows
-- final `.txt` output
+You can use `skills/SKILL_TEMPLATE.md` as a starting point.
 
-Project-ingestion runs additionally write chunk continuity/state artifacts under `intermediate/` and keep user-facing deliverables under `final/`.
+---
 
-## Environment
+## Notes
 
-The shared runtime loads `.env` from the repo root.
-
-See `.env.example` for supported variables. The engine supports OpenRouter and OpenAI-compatible chat completions.
-
-Typical setup:
-
-1. install dependencies with `python -m pip install -r requirements.txt`
-2. copy `.env.example` to `.env`
-3. set your API key and any provider overrides
-4. run `python run.py`
-
-## Current Skills
-
-- `recap_analysis` via `skills/registry.yaml` -> `skills/recap_analysis/SKILL.md`
-- `recap_production` via `skills/registry.yaml` -> `skills/recap_production/SKILL.md`
-- `novel2script` via `skills/registry.yaml` -> `skills/novel2script/SKILL.md`
-- `novel_adaptation_plan` via `skills/registry.yaml` -> `skills/novel_adaptation_plan/SKILL.md`
-- `novel_to_drama_script` via `skills/registry.yaml` -> `skills/novel_to_drama_script/SKILL.md`
-- `rewriting` via `skills/registry.yaml` -> `skills/rewriting/SKILL.md`
-- `story_creation` via `skills/registry.yaml` -> `skills/story_creation/SKILL.md`
-- `large_novel_processor` via `skills/registry.yaml` -> `skills/large_novel_processor/SKILL.md`
-
-## Large Novel Processor
-
-`Large Novel Processor` is a reusable preparation skill for oversized `.txt` novels.
-
-Use it when the source novel is too large to send directly into downstream prompt-based skills. The skill:
-
-1. detects chapter headings
-2. splits the source into chapter files
-3. optionally groups those chapters into chunk files
-4. writes `index.txt`
-
-It runs locally through the shared runner and does not call the LLM.
-
-Run it from the normal shared flow:
-
-```bash
-python run.py
-```
-
-Then choose `Large Novel Processor`, select a `.txt` novel file, choose `chapter` or `chunk`, and if chunk mode is selected provide the chapters-per-chunk size. The resulting output folder can then be used as prepared source material for downstream skills that accept `.txt` file or folder input.
-  
-## Startup Policy Metadata  
-  
-Skills can now declare startup behavior in `SKILL.md` frontmatter under `metadata.startup`.  
-  
-Example:  
-  
-```yaml  
-metadata:  
-  startup:  
-    mode: explicit_step_selection  
-    default_step: 1  
-    allow_resume: true  
-    allow_auto_route: false  
-```  
-  
-When `mode: explicit_step_selection` is set, the shared runner prompts for the input path first, then shows a step menu derived from the parsed skill steps. `novel2script` now uses this metadata, and skills that do not define it keep the previous auto-route behavior.  
-  
-## Runtime Config And Internal Artifacts  
-  
-Shared runtime and output behavior is now controlled by repo-root `config.ini`.  
-  
-```ini  
-[outputs]  
-write_state_json = 0  
-write_prompt_dump = 0  
-write_debug_log = 0  
-  
-[debug]  
-troubleshooting_mode = 0  
-```
-
-## Execution Review Metadata 
- 
-Skills can now opt into a shared sequential review loop through metadata.execution in SKILL.md. 
- 
-```yaml 
-metadata: 
-  execution: 
-    mode: sequential_with_review 
-    continue_until_end: true 
-    preview_before_save: true 
-    save_only_on_accept: true 
-``` 
- 
-When this mode is enabled, the shared runtime starts from the chosen step, generates a draft, previews it in the terminal, and asks whether to accept, improve, restart, view the full text, or cancel. Improve reruns the current step using the current draft plus user instructions. Restart reruns the current step from scratch with optional restart guidance. Only accepted outputs are saved, and accepted earlier steps remain in place when a later step is improved or restarted. 
- 
-novel2script now uses this metadata without any skill-specific runner or hardcoded skill branch. 
- 
-## Output Folder Naming 
- 
-Single-run folders are now derived from the selected input name plus timestamp: outputs/<skill>/<input_name>__<timestamp>/. Folder inputs use the selected folder name. Accepted artifacts for a run stay together in one run directory, while internal runtime files stay under .internal/ unless debug config enables visible troubleshooting files.
-
-## LLM Config Precedence
-
-Root `config.ini` is the canonical place to choose the default provider and model. A normal OpenRouter setup is:
-
-```ini
-[llm]
-provider = openrouter
-model = openai/gpt-5.4
-base_url = https://openrouter.ai/api/v1
-```
-
-Use `.env` for secrets and optional overrides, for example:
-
-```env
-LLM_PROVIDER=openrouter
-OPENROUTER_API_KEY=...
-OPENROUTER_BASE_URL=https://openrouter.ai/api/v1
-```
-
-Precedence is: provider from env override then config; model from provider-specific env override then config; base URL from env override then config.
+- Keep secrets out of the repo where possible.
+- For future `.exe` packaging, keep `skills/`, `config.ini`, and outputs path-safe and externally accessible.
+- For long-novel work, the most stable serious workflow is:
+  - plan first
+  - generate scripts second
+  - rewrite with a project-scoped refresh bible third

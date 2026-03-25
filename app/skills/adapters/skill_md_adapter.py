@@ -113,6 +113,7 @@ class SkillMdAdapter(SkillAdapter):
             request.input_paths,
             forced_step_number=forced_step_number,
             input_root_path=request.input_root_path,
+            launch_options=request.launch_options,
         )
         return SkillRunResult(
             session_dir=session_dir,
