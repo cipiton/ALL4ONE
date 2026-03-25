@@ -58,11 +58,20 @@ def execute_input_paths(
     outputs_root = repo_root / "outputs"
     runtime_config = load_runtime_config(repo_root)
     single_resume = resume_state is not None and len(input_paths) == 1
+    launch_options = launch_options or {}
+    rewriting_bible_only_mode = (
+        not single_resume
+        and skill.name == "rewriting"
+        and str(launch_options.get("rewriting_project_mode") or "").strip() == "build_bible"
+    )
 
     if single_resume:
         session_dir = Path(resume_state.output_directory)
         session_dir.mkdir(parents=True, exist_ok=True)
         timestamp = session_dir.name
+    elif rewriting_bible_only_mode:
+        session_dir = None
+        timestamp = ""
     else:
         timestamp, session_dir = create_session_directory(
             outputs_root,
@@ -82,11 +91,13 @@ def execute_input_paths(
             input_paths,
             input_root_path=input_root_path,
             session_dir=session_dir,
-            launch_options=launch_options or {},
+            launch_options=launch_options,
             verbose=True,
         )
         if project_result is not None:
             return project_result
+        if session_dir is None:
+            raise RuntimeError("Rewriting bible-only mode did not return a project result.")
 
     if not single_resume and should_use_project_ingestion(skill, input_paths, input_root_path=input_root_path):
         return execute_project_ingestion(

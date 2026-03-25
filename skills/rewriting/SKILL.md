@@ -133,6 +133,12 @@ Use this skill when the user wants rewriting, script polishing, washing, or sani
 - A Skill 4 final adaptation plan is the primary canon source for the refresh bible.
 - Script files can be added as supplemental evidence to enrich on-page terminology, alias usage, and practical naming examples.
 - When a refresh bible already exists for the project, later rewrite runs should reuse it instead of inventing new rename rules.
+- 默认命名策略是中文原名 -> 中文刷新名；除非用户明确要求其他语言，否则不要把中文人名、组织名、地点名、系统名、能力名、法宝名刷新成英文或拼音。
+- 对主要角色与主要专有名词，默认不是“保留原名”，而是“刷新成新的中文规范名”；保留原名必须是例外，并且需要明确 preserve/lock 原因。
+- 刷新圣经必须覆盖人物、称谓、关系标签、阵营/组织、地点、系统/契约/能力、法宝/关键道具、世界观专有名词、签名术语与禁用词。
+- 在真实交付的 `final` 模式下，只使用刷新后的规范称呼，不输出 `新名（旧名）` 或中英混排主名；只有审校型 `audit` 模式才允许保留校对括注。
+- 后续洗稿时，刷新圣经是项目级唯一规范来源；除非圣经明确允许，否则不要临时发明新名字，也不要混用原名和刷新名。
+- 如果某个主要人物或主要名词最终没有被改名，必须记录明确的 preserve_reason，不能静默保持原样。
 
 ## Workflow
 
@@ -167,3 +173,7 @@ Use this skill when the user wants rewriting, script polishing, washing, or sani
 - Sensitive-word handling must be context-aware, not purely literal.
 - Keep replacements unified across the whole text.
 - Do not output explanations, QA notes, or meta commentary in the final step.
+- 中文项目默认采用中文到中文的刷新命名，贴合中文网文/短剧的角色气质、阵营层级和题材语感。
+- 刷新不仅覆盖角色名，也必须覆盖组织、系统、能力、法宝、地点、身份标签和重复术语。
+- 如果共享刷新圣经已经提供规范映射，后续步骤必须把它当作 source of truth 执行。
+- 对主要人物名、主要势力名、主要系统/能力名、主要法宝名和主要地点名，默认应执行真正的中文 canon refresh，而不是仅做同名标准化。
