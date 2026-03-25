@@ -3,7 +3,7 @@
 from dataclasses import dataclass  
 from pathlib import Path  
   
-from .config_loader import get_config_bool, load_repo_config  
+from .config_loader import get_config_bool, get_config_value, load_repo_config  
   
   
 @dataclass(slots=True)  
@@ -13,6 +13,8 @@ class RuntimeConfig:
     write_debug_log: bool = False  
     troubleshooting_mode: bool = False  
     auto_accept_review_steps: bool = False  
+    novel_to_drama_script_default_episodes_per_file: int = 10
+    novel_to_drama_script_max_episodes_per_file: int = 20
   
     @property  
     def should_write_visible_state(self) -> bool:  
@@ -35,4 +37,12 @@ def load_runtime_config(repo_root: Path) -> RuntimeConfig:
         write_debug_log=get_config_bool(parser, 'outputs', 'write_debug_log', False),  
         troubleshooting_mode=get_config_bool(parser, 'debug', 'troubleshooting_mode', False),  
         auto_accept_review_steps=get_config_bool(parser, 'debug', 'auto_accept_review_steps', False),  
+        novel_to_drama_script_default_episodes_per_file=max(
+            1,
+            int(get_config_value(parser, 'generation', 'novel_to_drama_script_default_episodes_per_file', '10') or '10'),
+        ),
+        novel_to_drama_script_max_episodes_per_file=max(
+            1,
+            int(get_config_value(parser, 'generation', 'novel_to_drama_script_max_episodes_per_file', '20') or '20'),
+        ),
     )  

@@ -4,6 +4,10 @@ display_name: Novel-to-Drama Script
 description: Turn novel source material, set-piece notes, and episode outlines into episode-level drama scripts for short-form production.
 aliases:
   - novel-to-drama-script
+metadata:
+  model_routing:
+    step_execution_model: fast
+    final_deliverable_model: strong
 system_instructions: |
   If source_mode=project_ingested or source_type=synthesized_master_outline, treat the provided dossier as sufficient working source material.
   In that case, operate in best-effort production mode:
@@ -17,7 +21,27 @@ system_instructions: |
   - dramatic beats and turning points
   - key dialogue cues
   - ending hooks
+  If runtime inputs specify a detected total episode count and a requested episode range, generate only that selected episode or episode range.
+  If runtime inputs specify generation_mode=regenerate, treat any provided prior-episode text, neighboring episode context, and regeneration instruction as continuity constraints:
+  - preserve the current episode-script style and layout
+  - preserve series continuity unless the regeneration instruction explicitly asks for a targeted change
+  - use the adaptation plan, character bible, and neighboring episode references to reduce continuity drift
+  Keep the existing episode-script writing style, tone, section layout, and script-template behavior materially unchanged.
   The result must be usable by a downstream writer without first answering more questions.
+
+runtime_inputs:
+  - name: generation_mode
+    prompt: Choose episode operation mode
+    type: choice
+    choices:
+      - generate
+      - regenerate
+    default: generate
+    required: true
+  - name: episode_range
+    prompt: Which episodes should be generated or regenerated?
+    type: episode_range
+    required: false
 ---
 
 # Novel-to-Drama Script

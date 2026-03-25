@@ -239,3 +239,28 @@ def _parse_runtime_value(definition: RuntimeInputDefinition, raw_value: str) -> 
         raise ValueError('Choose one of the listed values.')  
   
     return raw_value  
+
+
+def prompt_for_episode_selection(
+    total_episodes: int,
+    *,
+    mode: str,
+    current_value: str | None = None,
+) -> str:
+    action = 'generated' if mode == 'generate' else 'regenerated'
+    print(f"There are {total_episodes} episodes in this adaptation plan.")
+    print(f"Which episodes should be {action}?")
+    if mode == 'generate':
+        print("Examples: blank = all, all, 1-10, 11-20, 60, 15,18,22")
+        default_suffix = f" [{current_value}]" if current_value else " [all]"
+    else:
+        print("Examples: 15, 15-16, 02-05, 15,18,22")
+        default_suffix = f" [{current_value}]" if current_value else ''
+    return input(f"Episode selection{default_suffix}: ").strip()
+
+
+def prompt_for_regeneration_instruction(current_value: str | None = None) -> str:
+    print("Optional regeneration instruction.")
+    print("Examples: more detailed, improve pacing, stronger hook, better dialogue, preserve current structure")
+    default_suffix = f" [{current_value}]" if current_value else ''
+    return input(f"Regeneration instruction{default_suffix}: ").strip()

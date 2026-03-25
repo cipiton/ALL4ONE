@@ -5,6 +5,15 @@ from pathlib import Path
 from typing import Any
 
 from . import terminal_ui
+from .episode_generation import (
+    build_episode_batches,
+    collect_regeneration_context,
+    format_batch_filename,
+    format_episode_range,
+    format_episode_selection,
+    infer_total_planned_episodes,
+    parse_episode_selection,
+)
 from .input_loader import chunk_text, load_input_document, read_resource_text
 from .llm_client import (
     call_chat_completion,
@@ -201,7 +210,13 @@ def execute_document(
             step=plan.step,
             model_override=plan.step.model_override,
         )
-        runtime_values = gather_runtime_inputs(plan.runtime_inputs, runtime_values)
+        runtime_values = gather_runtime_inputs(
+            plan.runtime_inputs,
+            runtime_values,
+            output_dir=output_dir,
+            input_text=document.text,
+            runtime_config=runtime_config,
+        )
         state.runtime_inputs = runtime_values
         save_state(state, output_dir, runtime_config)
         return _run_step_prompt(
@@ -219,7 +234,13 @@ def execute_document(
         )
 
     if plan.strategy == "utility_script":
-        runtime_values = gather_runtime_inputs(plan.runtime_inputs, runtime_values)
+        runtime_values = gather_runtime_inputs(
+            plan.runtime_inputs,
+            runtime_values,
+            output_dir=output_dir,
+            input_text=document.text,
+            runtime_config=runtime_config,
+        )
         state.runtime_inputs = runtime_values
         save_state(state, output_dir, runtime_config)
         return _run_utility_script(
@@ -258,9 +279,93 @@ def execute_document(
     )
 
 
-def gather_runtime_inputs(definitions, existing_values: dict[str, Any]) -> dict[str, Any]:
+def _resolve_step_route_role(skill: SkillDefinition, step) -> str:
+    if step.model_role:
+        return step.model_role
+    title = f"{step.title} {step.step_id}".casefold()
+    if any(token in title for token in ("qa", "质检", "polish", "final check", "统一")):
+        return "qa_final_polish"
+    if step.number == skill.final_step_number:
+        return "final_deliverable"
+    return "step_execution"
+
+
+def gather_runtime_inputs(
+    definitions,
+    existing_values: dict[str, Any],
+    *,
+    output_dir: Path | None = None,
+    input_text: str,
+    runtime_config,
+) -> dict[str, Any]:
     values = dict(existing_values)
     for definition in definitions:
+        if definition.field_type == "episode_range":
+            if definition.name in values and values.get("episode_batches"):
+                continue
+            total_episodes = infer_total_planned_episodes(input_text)
+            if total_episodes is None:
+                raise ExecutionError(
+                    "Could not determine the total planned episodes from this adaptation plan. "
+                    "Please make sure the plan includes a total episode count or numbered episode rows."
+                )
+            print(f"[setup] detected total episodes={total_episodes} from adaptation plan (local parse, no model)")
+            generation_mode = str(values.get("generation_mode") or "generate").strip().lower() or "generate"
+            raw_selection = terminal_ui.prompt_for_episode_selection(
+                total_episodes,
+                mode=generation_mode,
+                current_value=values.get(definition.name),
+            )
+            selection = parse_episode_selection(
+                raw_selection,
+                total_episodes,
+                allow_blank_all=generation_mode != "regenerate",
+            )
+            batch_size = min(
+                runtime_config.novel_to_drama_script_max_episodes_per_file,
+                runtime_config.novel_to_drama_script_default_episodes_per_file,
+            )
+            if generation_mode == "regenerate":
+                batch_size = 1
+            elif selection.start_episode == selection.end_episode:
+                batch_size = 1
+            batches = build_episode_batches(
+                selection,
+                batch_size,
+                preserve_exact_selection=generation_mode == "regenerate",
+            )
+            values[definition.name] = format_episode_selection(selection)
+            values["detected_total_episodes"] = selection.total_episodes
+            values["episodes_per_file"] = batch_size
+            values["generation_mode"] = generation_mode
+            values["selected_episode_numbers"] = list(selection.episodes)
+            values["episode_batches"] = [
+                {"start_episode": start_episode, "end_episode": end_episode}
+                for start_episode, end_episode in batches
+            ]
+            if generation_mode == "regenerate":
+                regeneration_instruction = terminal_ui.prompt_for_regeneration_instruction(
+                    current_value=values.get("regeneration_instruction"),
+                )
+                values["regeneration_instruction"] = (
+                    regeneration_instruction or values.get("regeneration_instruction") or ""
+                )
+                if output_dir is not None:
+                    values.update(
+                        collect_regeneration_context(
+                            output_dir,
+                            total_episodes=selection.total_episodes,
+                            target_episodes=selection.episodes,
+                        )
+                    )
+                if "existing_episode_reference" not in values and "neighboring_episode_context" not in values:
+                    print("[setup] no prior episode drafts found; regeneration will use the adaptation plan and character context only")
+            print(
+                f"[setup] mode={generation_mode} selected episodes={format_episode_selection(selection)} "
+                f"episodes_per_file={batch_size} batches={len(batches)} (local setup, no model)"
+            )
+            continue
+
         if definition.name in values and values[definition.name] not in (None, ""):
             continue
         values[definition.name] = terminal_ui.prompt_for_runtime_value(
@@ -297,6 +402,20 @@ def _run_step_prompt(
     verbose: bool,
 ) -> RunState:
     step = skill.get_step(step_number)
+    if runtime_values.get("episode_batches"):
+        return _run_batched_step_prompt(
+            repo_root,
+            skill,
+            document,
+            output_dir,
+            step,
+            runtime_values,
+            resume_state,
+            state,
+            config,
+            runtime_config,
+            verbose,
+        )
     if verbose:
         terminal_ui.print_progress(f"running step {step_number}: {step.title}")
         terminal_ui.print_progress(
@@ -423,7 +542,13 @@ def _run_step_prompt_review_sequence(repo_root: Path, skill, document, output_di
         step_runtime_inputs = [
             definition for definition in skill.runtime_inputs if definition.applies_to(step.number, current_document.text)
         ]
-        runtime_values = gather_runtime_inputs(step_runtime_inputs, runtime_values)  
+        runtime_values = gather_runtime_inputs(
+            step_runtime_inputs,
+            runtime_values,
+            output_dir=output_dir,
+            input_text=current_document.text,
+            runtime_config=runtime_config,
+        )  
         state.runtime_inputs = runtime_values  
         save_state(state, output_dir, runtime_config)  
         step_config = load_config_from_env(
@@ -699,6 +824,129 @@ def _run_structured(
         "stage_outputs": str(output_dir / "stage_outputs.json"),
     }
     state.status = "completed"
+    save_state(state, output_dir, runtime_config)
+    return state
+
+
+def _run_batched_step_prompt(
+    repo_root: Path,
+    skill: SkillDefinition,
+    document,
+    output_dir: Path,
+    step,
+    runtime_values: dict[str, Any],
+    resume_state: RunState | None,
+    state: RunState,
+    config,
+    runtime_config,
+    verbose: bool,
+) -> RunState:
+    reference_ids = []
+    if step.prompt_reference_id:
+        reference_ids.append(step.prompt_reference_id)
+    for reference in skill.references.values():
+        if reference.reference_id in reference_ids:
+            continue
+        if reference.load == "always" or (reference.step_numbers and step.number in reference.step_numbers):
+            reference_ids.append(reference.reference_id)
+
+    reference_texts = load_reference_texts(skill, reference_ids)
+    input_blocks = _resolve_step_input_blocks(skill, step, document, state)
+    total_episodes = int(runtime_values.get("detected_total_episodes") or 0)
+    batch_specs = list(runtime_values.get("episode_batches") or [])
+    selected_range = str(runtime_values.get("episode_range") or "all")
+    generation_mode = str(runtime_values.get("generation_mode") or "generate")
+    generated_files: list[Path] = []
+    failures: list[dict[str, Any]] = []
+    route_role = _resolve_step_route_role(skill, step)
+    batch_output_dir = output_dir / "regenerated" if generation_mode == "regenerate" else output_dir
+
+    for index, batch in enumerate(batch_specs, start=1):
+        start_episode = int(batch["start_episode"])
+        end_episode = int(batch["end_episode"])
+        batch_range = format_episode_range(start_episode, end_episode, total_episodes=total_episodes)
+        batch_runtime_values = dict(runtime_values)
+        batch_runtime_values.pop("episode_batches", None)
+        batch_runtime_values.pop("selected_episode_numbers", None)
+        batch_runtime_values["episode_range"] = batch_range
+        batch_runtime_values["selected_episode_range"] = selected_range
+        batch_runtime_values["current_batch_index"] = f"{index}/{len(batch_specs)}"
+        batch_runtime_values["current_batch_range"] = batch_range
+        batch_runtime_values["generation_mode"] = generation_mode
+
+        if verbose:
+            print(
+                f"[batch {index}/{len(batch_specs)}] "
+                f"route={route_role} "
+                f"model={config.model} "
+                f"mode={generation_mode} "
+                f"episodes {batch_range}"
+            )
+
+        messages = build_step_prompt_messages(
+            skill,
+            step,
+            document,
+            reference_texts,
+            batch_runtime_values,
+            input_blocks=input_blocks,
+            resume_state=resume_state,
+        )
+        try:
+            response = call_chat_completion(config, messages, json_mode=False)
+        except Exception as exc:  # noqa: BLE001
+            failures.append({"range": batch_range, "error": str(exc)})
+            continue
+
+        output_filename = format_batch_filename(
+            start_episode,
+            end_episode,
+            total_episodes=total_episodes,
+            regeneration=generation_mode == "regenerate",
+        )
+        output_path = write_text_file(batch_output_dir, output_filename, response.text)
+        generated_files.append(output_path)
+
+        if skill.output_config.include_prompt_dump and runtime_config.should_write_prompt_dump:
+            internal_dir = create_internal_directory(batch_output_dir)
+            write_json_file(
+                internal_dir,
+                f"prompt_dump_step_{step.number}_{output_filename.replace('.txt', '')}.json",
+                {
+                    "model": response.model,
+                    "messages": [message.to_dict() for message in messages],
+                    "raw_response": response.raw_response,
+                },
+            )
+
+    if not generated_files:
+        failure_details = "; ".join(f"{item['range']}: {item['error']}" for item in failures) or "no batches generated"
+        raise ExecutionError(f"Episode batch generation failed: {failure_details}")
+
+    manifest_payload = {
+        "generation_mode": generation_mode,
+        "detected_total_episodes": total_episodes,
+        "selected_episode_range": selected_range,
+        "episodes_per_file": runtime_values.get("episodes_per_file"),
+        "generated_files": [path.name for path in generated_files],
+        "failures": failures,
+    }
+    manifest_filename = "episode_regenerations.json" if generation_mode == "regenerate" else "episode_batches.json"
+    manifest_path = write_json_file(batch_output_dir, manifest_filename, manifest_payload)
+
+    state.output_files["primary"] = str(generated_files[0])
+    state.output_files["episode_batch_manifest"] = str(manifest_path)
+    state.output_files["episode_batches"] = str(manifest_path)
+    if generation_mode == "regenerate":
+        state.output_files["episode_regenerations"] = str(manifest_path)
+    if step.output_key:
+        state.output_files[step.output_key] = str(generated_files[0])
+    if failures:
+        state.notes.append(
+            "Batch failures: " + "; ".join(f"{item['range']}: {item['error']}" for item in failures)
+        )
+    state.working_input_path = str(document.path)
+    state.status = "completed_step" if step.number < skill.final_step_number else "completed"
     save_state(state, output_dir, runtime_config)
     return state
 

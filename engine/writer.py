@@ -80,6 +80,8 @@ def _locate_project_metadata_root(input_root_path: Path) -> Path | None:
         candidates.append(parent)
         if parent.name.casefold() in {"chunks", "chapters"}:
             candidates.append(parent.parent)
+        if parent.name.casefold() in {"final", "intermediate"}:
+            candidates.append(parent.parent)
 
     for candidate in candidates:
         if not candidate.exists():

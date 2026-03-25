@@ -8,7 +8,7 @@ from .input_loader import load_input_document
 from .models import SkillDefinition
 
 
-SAFE_SINGLE_PASS_TOKENS = 9_000
+SAFE_SINGLE_PASS_TOKENS = 200_000
 CHUNK_NAME_PATTERNS = (
     re.compile(r"^\d{3}[_-]"),
     re.compile(r"^chapter[_-]?\d+", re.IGNORECASE),
