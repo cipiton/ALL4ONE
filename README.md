@@ -82,6 +82,12 @@ Recommended:
 python run.py
 ```
 
+Desktop GUI:
+
+```bash
+python gui.py
+```
+
 The runner will:
 
 1. show the available skills
@@ -89,6 +95,21 @@ The runner will:
 3. ask for the required input(s)
 4. run the selected workflow
 5. keep the session open so you can run another job
+
+The desktop GUI provides:
+
+- a guided chat-style Run workspace with a left skill sidebar
+- a Settings page for provider/model/API-key configuration plus workspace and project defaults
+- a Logs page for live backend output while a job is running
+
+GUI notes:
+
+- install `customtkinter` from `requirements.txt`
+- the GUI auto-accepts the existing backend review checkpoints in v1
+- the GUI can group work under `workspace_root/<project>/inputs` and `workspace_root/<project>/outputs`
+- the active project now lives in Settings, while Run uses a guided conversation to collect the next needed input
+- skills that support inline text input accept direct pasted text in the Run conversation composer
+- finished runs show result cards with actions like Open, Open Folder, Preview, Copy, and Save As
 
 ---
 

@@ -5,9 +5,10 @@ from PyInstaller.utils.hooks import collect_submodules
 hiddenimports = []
 hiddenimports += collect_submodules("app")
 hiddenimports += collect_submodules("engine")
+hiddenimports += collect_submodules("ui")
 
 a = Analysis(
-    ['run.py'],
+    ['gui.py'],
     pathex=[],
     binaries=[],
     datas=[
@@ -30,12 +31,12 @@ exe = EXE(
     a.scripts,
     [],
     exclude_binaries=True,
-    name='ONE4ALL',
+    name='Fake Agent',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
     upx=True,
-    console=True,
+    console=False,
 )
 
 coll = COLLECT(
@@ -45,5 +46,5 @@ coll = COLLECT(
     strip=False,
     upx=True,
     upx_exclude=[],
-    name='ONE4ALL',
+    name='Fake Agent',
 )

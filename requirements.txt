@@ -1,3 +1,4 @@
 # Runtime dependency for ONE4ALL.
 # Python version is declared in pyproject.toml via requires-python >=3.12.
 PyYAML>=6.0,<7.0
+customtkinter>=5.2,<6.0

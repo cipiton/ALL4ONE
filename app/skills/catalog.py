@@ -5,6 +5,7 @@ from typing import Any
 
 import yaml
 
+from engine.app_paths import get_app_root, get_bundle_root, get_runtime_context
 from engine.models import SkillRegistryEntry
 from engine.skill_loader import discover_skills
 
@@ -30,15 +31,21 @@ class SkillCatalog:
 
     @classmethod
     def load(cls, repo_root: Path) -> "SkillCatalog":
-        skills_root = repo_root / "skills"
+        resource_root = get_bundle_root(repo_root)
+        skills_root = resource_root / "skills"
         if not skills_root.exists():
-            raise SkillCatalogError(f"Skills directory not found: {skills_root}")
+            context = get_runtime_context(repo_root)
+            raise SkillCatalogError(
+                "Skills directory not found: "
+                f"{skills_root} "
+                f"(frozen={context['frozen']}, bundle_root={context['bundle_root']}, app_root={context['app_root']})"
+            )
 
         registry_path = skills_root / "registry.yaml"
         if registry_path.exists():
-            entries = _load_registry_entries(repo_root, registry_path)
+            entries = _load_registry_entries(resource_root, registry_path)
         else:
-            entries = _build_legacy_entries(repo_root)
+            entries = _build_legacy_entries(resource_root)
 
         adapters: list[SkillAdapter] = []
         seen_ids: set[str] = set()
@@ -57,7 +64,7 @@ class SkillCatalog:
             source = registry_path if registry_path.exists() else skills_root
             raise SkillCatalogError(f"No enabled skills available from {source}")
 
-        return cls(repo_root, adapters)
+        return cls(get_app_root(repo_root), adapters)
 
     def list_skills(self) -> list[SkillAdapter]:
         return list(self._skills)

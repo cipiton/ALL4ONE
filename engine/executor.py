@@ -53,12 +53,18 @@ def execute_input_paths(
     resume_state: RunState | None = None,
     forced_step_number: int | None = None,
     input_root_path: Path | None = None,
+    outputs_root: Path | None = None,
+    runtime_values: dict[str, Any] | None = None,
+    auto_accept_review_steps: bool | None = None,
     launch_options: dict[str, Any] | None = None,
 ) -> tuple[Path, list[DocumentResult]]:
-    outputs_root = repo_root / "outputs"
+    outputs_root = (outputs_root or (repo_root / "outputs")).resolve()
     runtime_config = load_runtime_config(repo_root)
+    if auto_accept_review_steps is not None:
+        runtime_config.auto_accept_review_steps = bool(auto_accept_review_steps)
     single_resume = resume_state is not None and len(input_paths) == 1
     launch_options = launch_options or {}
+    runtime_values = dict(runtime_values or {})
     rewriting_bible_only_mode = (
         not single_resume
         and skill.name == "rewriting"
@@ -91,6 +97,7 @@ def execute_input_paths(
             input_paths,
             input_root_path=input_root_path,
             session_dir=session_dir,
+            outputs_root=outputs_root,
             launch_options=launch_options,
             verbose=True,
         )
@@ -144,6 +151,7 @@ def execute_input_paths(
                 resume_state=active_resume_state,
                 forced_step_number=forced_step_number,
                 runtime_config=runtime_config,
+                initial_runtime_values=runtime_values,
                 verbose=verbose,
             )
             primary_output = Path(state.primary_output_path) if state.primary_output_path else None
@@ -201,10 +209,13 @@ def execute_document(
     resume_state=None,
     forced_step_number=None,
     runtime_config=None,
+    initial_runtime_values: dict[str, Any] | None = None,
     verbose: bool = True,
 ) -> RunState:
     plan = build_execution_plan(skill, document.text, forced_step_number=forced_step_number)
-    runtime_values = dict(resume_state.runtime_inputs) if resume_state else {}
+    runtime_values = dict(initial_runtime_values or {})
+    if resume_state:
+        runtime_values.update(resume_state.runtime_inputs)
 
     state = RunState(
         timestamp=Path(output_dir).name,
@@ -346,11 +357,16 @@ def gather_runtime_inputs(
                 )
             print(f"[setup] detected total episodes={total_episodes} from adaptation plan (local parse, no model)")
             generation_mode = str(values.get("generation_mode") or "generate").strip().lower() or "generate"
-            raw_selection = terminal_ui.prompt_for_episode_selection(
-                total_episodes,
-                mode=generation_mode,
-                current_value=values.get(definition.name),
-            )
+            existing_selection = values.get(definition.name)
+            if existing_selection not in (None, ""):
+                raw_selection = str(existing_selection)
+                print(f"[setup] using provided episode selection={raw_selection}")
+            else:
+                raw_selection = terminal_ui.prompt_for_episode_selection(
+                    total_episodes,
+                    mode=generation_mode,
+                    current_value=values.get(definition.name),
+                )
             selection = parse_episode_selection(
                 raw_selection,
                 total_episodes,
@@ -379,9 +395,11 @@ def gather_runtime_inputs(
                 for start_episode, end_episode in batches
             ]
             if generation_mode == "regenerate":
-                regeneration_instruction = terminal_ui.prompt_for_regeneration_instruction(
-                    current_value=values.get("regeneration_instruction"),
-                )
+                regeneration_instruction = values.get("regeneration_instruction")
+                if regeneration_instruction in (None, ""):
+                    regeneration_instruction = terminal_ui.prompt_for_regeneration_instruction(
+                        current_value=values.get("regeneration_instruction"),
+                    )
                 values["regeneration_instruction"] = (
                     regeneration_instruction or values.get("regeneration_instruction") or ""
                 )

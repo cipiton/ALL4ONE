@@ -90,6 +90,10 @@ class SkillMdAdapter(SkillAdapter):
         ]
 
     @property
+    def runtime_input_definitions(self) -> list:
+        return list(self._skill_definition.runtime_inputs)
+
+    @property
     def _skill_definition(self) -> SkillDefinition:
         if self._skill is None:
             self._skill = load_skill(self._entry.spec_path.parent)
@@ -113,6 +117,9 @@ class SkillMdAdapter(SkillAdapter):
             request.input_paths,
             forced_step_number=forced_step_number,
             input_root_path=request.input_root_path,
+            outputs_root=request.outputs_root,
+            runtime_values=request.runtime_values,
+            auto_accept_review_steps=request.auto_accept_review_steps,
             launch_options=request.launch_options,
         )
         return SkillRunResult(
@@ -159,6 +166,7 @@ class SkillMdAdapter(SkillAdapter):
             [resume_document.path],
             resume_state=state,
             forced_step_number=forced_step_number,
+            outputs_root=request.repo_root / "outputs",
         )
         return SkillRunResult(
             session_dir=session_dir,

@@ -3,6 +3,8 @@ from __future__ import annotations
 from dataclasses import dataclass, field  
 from pathlib import Path  
 from typing import Optional, Protocol  
+
+from engine.models import RuntimeInputDefinition
   
   
 @dataclass(slots=True)  
@@ -33,6 +35,9 @@ class SkillRunRequest:
     input_paths: list[Path]  
     input_root_path: Optional[Path] = None
     selected_step_number: Optional[int] = None  
+    outputs_root: Optional[Path] = None
+    runtime_values: dict[str, object] = field(default_factory=dict)
+    auto_accept_review_steps: Optional[bool] = None
     launch_options: dict[str, object] = field(default_factory=dict)
   
   
@@ -97,12 +102,21 @@ class SkillAdapter(Protocol):
   
     @property  
     def folder_mode(self): ...  
+
+    @property
+    def allow_inline_text_input(self): ...
+
+    @property
+    def inline_input_prompt(self): ...
   
     @property  
     def startup_policy(self): ...  
   
     @property  
     def step_summaries(self): ...  
+
+    @property
+    def runtime_input_definitions(self) -> list[RuntimeInputDefinition]: ...
   
     def to_summary(self): ...  
   

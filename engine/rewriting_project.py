@@ -83,6 +83,7 @@ def execute_rewriting_project(
     *,
     input_root_path: Path | None,
     session_dir: Path | None,
+    outputs_root: Path,
     launch_options: dict[str, Any],
     verbose: bool,
 ) -> tuple[Path, list[DocumentResult]] | None:
@@ -100,7 +101,7 @@ def execute_rewriting_project(
 
     existing_bible_path = selected_bible_override
     if existing_bible_path is None and session_dir is not None:
-        existing_bible_path = _find_latest_refresh_bible(repo_root, session_dir)
+        existing_bible_path = _find_latest_refresh_bible(outputs_root, session_dir)
     if not project_mode:
         default_mode = _infer_default_mode(input_paths, existing_bible_path)
         while True:
@@ -148,7 +149,7 @@ def execute_rewriting_project(
             verbose=verbose,
         )
         bible_text = _render_refresh_bible_text(bible_payload)
-        canonical_bible_json_path, canonical_bible_text_path = _write_canonical_bible(repo_root, bible_payload, bible_text)
+        canonical_bible_json_path, canonical_bible_text_path = _write_canonical_bible(outputs_root, bible_payload, bible_text)
     else:
         if session_dir is None:
             raise RuntimeError("A session directory is required for rewrite mode.")
@@ -348,6 +349,10 @@ def _prompt_for_existing_bible(outputs_root: Path) -> Path | None:
     return Path(selected) if selected else None
 
 
+def list_available_rewriting_bibles(outputs_root: Path) -> list[tuple[str, str]]:
+    return list(_list_available_bibles(outputs_root / "rewriting"))
+
+
 def _list_available_bibles(outputs_root: Path) -> list[tuple[str, str]]:
     bibles_root = outputs_root / BIBLE_STORAGE_DIRNAME
     if not bibles_root.exists():
@@ -372,9 +377,9 @@ def _list_available_bibles(outputs_root: Path) -> list[tuple[str, str]]:
     return options
 
 
-def _write_canonical_bible(repo_root: Path, payload: dict[str, Any], bible_text: str) -> tuple[Path, Path]:
+def _write_canonical_bible(outputs_root: Path, payload: dict[str, Any], bible_text: str) -> tuple[Path, Path]:
     project_name = safe_stem(str(payload.get("source_title") or payload.get("project_title") or "project"))
-    bibles_root = repo_root / "outputs" / "rewriting" / BIBLE_STORAGE_DIRNAME / project_name
+    bibles_root = outputs_root / "rewriting" / BIBLE_STORAGE_DIRNAME / project_name
     bibles_root.mkdir(parents=True, exist_ok=True)
     json_path = write_json_file(bibles_root, "refresh_bible.json", payload)
     txt_path = write_text_file(bibles_root, "refresh_bible.txt", bible_text)
@@ -800,9 +805,9 @@ def _run_rewriting_step(
     return response.text
 
 
-def _find_latest_refresh_bible(repo_root: Path, session_dir: Path) -> Path | None:
+def _find_latest_refresh_bible(outputs_root: Path, session_dir: Path) -> Path | None:
     project_name = safe_stem(_session_prefix(session_dir.name))
-    canonical_bible = repo_root / "outputs" / "rewriting" / BIBLE_STORAGE_DIRNAME / project_name / "refresh_bible.json"
+    canonical_bible = outputs_root / "rewriting" / BIBLE_STORAGE_DIRNAME / project_name / "refresh_bible.json"
     if canonical_bible.exists():
         return canonical_bible
 
