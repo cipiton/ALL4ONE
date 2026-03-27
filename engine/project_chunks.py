@@ -9,8 +9,8 @@ from .project_outputs import build_ingestion_report
 from .writer import safe_stem, write_text_file
 
 
-AUTO_SPLIT_CHUNK_SIZE = 300_000
-AUTO_SPLIT_OVERLAP = 1000
+DEFAULT_AUTO_SPLIT_CHUNK_SIZE = 200_000
+DEFAULT_AUTO_SPLIT_OVERLAP = 1_000
 
 
 def prepare_project_chunks(
@@ -18,6 +18,7 @@ def prepare_project_chunks(
     *,
     input_root_path: Path | None,
     intermediate_dir: Path,
+    runtime_config=None,
 ) -> tuple[list[InputDocument], dict[str, Any]]:
     if len(input_paths) > 1:
         chunk_paths = [path for path in input_paths if path.name.casefold() != "index.txt"]
@@ -34,7 +35,17 @@ def prepare_project_chunks(
     source_document = load_input_document(input_paths[0])
     chunk_dir = intermediate_dir / "chunks"
     chunk_dir.mkdir(parents=True, exist_ok=True)
-    chunk_texts = chunk_text(source_document.text, AUTO_SPLIT_CHUNK_SIZE, AUTO_SPLIT_OVERLAP)
+    auto_split_chunk_chars = (
+        int(getattr(runtime_config, "project_ingestion_auto_split_chunk_chars", DEFAULT_AUTO_SPLIT_CHUNK_SIZE))
+        if runtime_config is not None
+        else DEFAULT_AUTO_SPLIT_CHUNK_SIZE
+    )
+    auto_split_overlap_chars = (
+        int(getattr(runtime_config, "project_ingestion_auto_split_overlap_chars", DEFAULT_AUTO_SPLIT_OVERLAP))
+        if runtime_config is not None
+        else DEFAULT_AUTO_SPLIT_OVERLAP
+    )
+    chunk_texts = chunk_text(source_document.text, auto_split_chunk_chars, auto_split_overlap_chars)
     chunk_paths: list[Path] = []
     for index, text in enumerate(chunk_texts, start=1):
         chunk_path = write_text_file(
@@ -49,7 +60,7 @@ def prepare_project_chunks(
         "mode": "auto_split",
         "source_path": str(source_document.path),
         "chunk_count": len(chunks),
-        "overlap_chars": AUTO_SPLIT_OVERLAP,
+        "overlap_chars": auto_split_overlap_chars,
         "estimated_tokens": source_document.estimated_tokens,
     }
     _write_ingestion_report(intermediate_dir, metadata, chunks)

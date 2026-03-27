@@ -38,6 +38,7 @@ htmlcov/
 .pyre/
 /_tmp_*
 .internal/
+demo/
 
 # Editor and OS files
 .vscode/

@@ -99,7 +99,12 @@ def execute_input_paths(
         if session_dir is None:
             raise RuntimeError("Rewriting bible-only mode did not return a project result.")
 
-    if not single_resume and should_use_project_ingestion(skill, input_paths, input_root_path=input_root_path):
+    if not single_resume and should_use_project_ingestion(
+        skill,
+        input_paths,
+        input_root_path=input_root_path,
+        runtime_config=runtime_config,
+    ):
         return execute_project_ingestion(
             repo_root,
             skill,

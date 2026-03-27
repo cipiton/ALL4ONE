@@ -20,8 +20,14 @@ def should_use_project_ingestion(
     input_paths: list[Path],
     *,
     input_root_path: Path | None,
+    runtime_config=None,
 ) -> bool:
-    return _should_use_project_ingestion(skill, input_paths, input_root_path=input_root_path)
+    return _should_use_project_ingestion(
+        skill,
+        input_paths,
+        input_root_path=input_root_path,
+        runtime_config=runtime_config,
+    )
 
 
 def execute_project_ingestion(
@@ -45,6 +51,7 @@ def execute_project_ingestion(
         input_paths,
         input_root_path=input_root_path,
         intermediate_dir=intermediate_dir,
+        runtime_config=runtime_config,
     )
 
     if verbose:

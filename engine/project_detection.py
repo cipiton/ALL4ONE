@@ -8,7 +8,7 @@ from .input_loader import load_input_document
 from .models import SkillDefinition
 
 
-SAFE_SINGLE_PASS_TOKENS = 200_000
+DEFAULT_SAFE_SINGLE_PASS_TOKENS = 200_000
 CHUNK_NAME_PATTERNS = (
     re.compile(r"^\d{3}[_-]"),
     re.compile(r"^chapter[_-]?\d+", re.IGNORECASE),
@@ -33,6 +33,7 @@ def should_use_project_ingestion(
     input_paths: list[Path],
     *,
     input_root_path: Path | None,
+    runtime_config=None,
 ) -> bool:
     if skill.execution_strategy not in {"step_prompt", "structured_report"}:
         return False
@@ -45,7 +46,12 @@ def should_use_project_ingestion(
         return looks_like_chunk_project(input_paths, input_root_path=input_root_path)
 
     document = load_input_document(input_paths[0])
-    return document.estimated_tokens > SAFE_SINGLE_PASS_TOKENS
+    safe_single_pass_tokens = (
+        int(getattr(runtime_config, "project_ingestion_safe_single_pass_tokens", DEFAULT_SAFE_SINGLE_PASS_TOKENS))
+        if runtime_config is not None
+        else DEFAULT_SAFE_SINGLE_PASS_TOKENS
+    )
+    return document.estimated_tokens > safe_single_pass_tokens
 
 
 def looks_like_chunk_project(input_paths: list[Path], *, input_root_path: Path | None) -> bool:
