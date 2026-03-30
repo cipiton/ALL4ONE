@@ -8,6 +8,25 @@ metadata:
   model_routing:
     step_execution_model: fast
     final_deliverable_model: strong
+  i18n:
+    display_name:
+      en: "Novel-to-Drama Script"
+      zh: "小说改编分集剧本"
+    description:
+      en: "Generate episode-level short-drama scripts from novel material, set-piece notes, and episode outlines."
+      zh: "根据小说素材、名场面整理和分集规划生成短剧分集剧本。"
+    workflow_hint:
+      en: "This workflow turns prepared source material into script-ready episode packages or regenerated episode scripts."
+      zh: "此流程会把已准备好的素材转换成可直接使用的分集剧本包，或按指定模式重生成单集。"
+    input_hint:
+      en: "Send a novel text file, adaptation materials, or prepared project dossier, then reply with the requested numbered options."
+      zh: "请提供小说文本、改编资料或项目档案，然后按提示回复对应的编号选项。"
+    output_hint:
+      en: "Writes episode-level drama script deliverables into the active project output folder."
+      zh: "会把分集剧本交付物写入当前项目输出文件夹。"
+    starter_prompt:
+      en: "Send the source package for episode-script generation."
+      zh: "请提供生成分集剧本所需的源资料包。"
 system_instructions: |
   If source_mode=project_ingested or source_type=synthesized_master_outline, treat the provided dossier as sufficient working source material.
   In that case, operate in best-effort production mode:

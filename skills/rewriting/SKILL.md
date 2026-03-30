@@ -10,6 +10,25 @@ metadata:
   aliases:
     - script_revision
     - script-revision
+  i18n:
+    display_name:
+      en: "Rewriting"
+      zh: "洗稿润色"
+    description:
+      en: "Rewrite, sanitize, and polish script-like material while preserving structure and story logic."
+      zh: "在保留结构和剧情逻辑的前提下，对剧本类文本进行洗稿、规避和润色。"
+    workflow_hint:
+      en: "This workflow normalizes the source, builds a replacement plan, writes the rewrite draft, and runs a final QA pass."
+      zh: "此流程会先规范原稿，再生成替换方案，输出洗稿草稿，最后做统一质检。"
+    input_hint:
+      en: "Send a `.txt` script, script folder, or supported project materials for rewriting."
+      zh: "请提供 `.txt` 剧本、剧本文件夹，或支持的项目资料进行洗稿。"
+    output_hint:
+      en: "Writes rewrite plans, rewritten drafts, and final polished outputs into the project output folder."
+      zh: "会把洗稿方案、草稿和最终润色结果写入项目输出文件夹。"
+    starter_prompt:
+      en: "Send the script or source material you want to rewrite."
+      zh: "请提供需要洗稿或润色的剧本/源文本。"
   startup:
     mode: explicit_step_selection
     default_step: 1

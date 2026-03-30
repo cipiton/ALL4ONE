@@ -6,7 +6,7 @@ from typing import Any
 import yaml
 
 from engine.app_paths import get_app_root, get_bundle_root, get_runtime_context
-from engine.models import SkillRegistryEntry
+from engine.models import SkillRegistryEntry, resolve_localized_text
 from engine.skill_loader import discover_skills
 
 from .adapters import SkillAdapterError, create_adapter
@@ -143,8 +143,10 @@ def _parse_registry_entry(
         aliases=[str(item) for item in raw_entry.get("aliases", []) or []],
         spec_path=spec_path,
         enabled=bool(raw_entry.get("enabled", True)),
-        display_name=str(raw_entry.get("display_name") or ""),
-        description=str(raw_entry.get("description") or ""),
+        display_name=resolve_localized_text(_load_localized_text_map(raw_entry.get("display_name")), "en"),
+        description=resolve_localized_text(_load_localized_text_map(raw_entry.get("description")), "en"),
+        display_name_i18n=_load_localized_text_map(raw_entry.get("display_name")),
+        description_i18n=_load_localized_text_map(raw_entry.get("description")),
     )
 
 
@@ -161,6 +163,8 @@ def _build_legacy_entries(repo_root: Path) -> list[SkillRegistryEntry]:
                 enabled=True,
                 display_name=summary.display_name,
                 description=summary.description,
+                display_name_i18n={"en": summary.display_name} if summary.display_name else {},
+                description_i18n={"en": summary.description} if summary.description else {},
             )
         )
     return entries
@@ -187,3 +191,26 @@ def _resolve_repo_path(repo_root: Path, raw_path: str, *, description: str) -> P
     except ValueError as exc:
         raise SkillCatalogError(f"{description} escapes the repository root: {raw_path}") from exc
     return candidate
+
+
+def _normalize_language_key(language: str) -> str:
+    lowered = str(language).strip().lower().replace("-", "_")
+    if lowered in {"zh", "zh_cn", "zh_hans", "zh_hans_cn"}:
+        return "zh_cn"
+    if lowered.startswith("en"):
+        return "en"
+    return lowered
+
+
+def _load_localized_text_map(value: Any) -> dict[str, str]:
+    if value in (None, ""):
+        return {}
+    if isinstance(value, dict):
+        localized: dict[str, str] = {}
+        for language, text in value.items():
+            cleaned = str(text).strip()
+            if cleaned:
+                localized[_normalize_language_key(str(language))] = cleaned
+        return localized
+    cleaned = str(value).strip()
+    return {"en": cleaned} if cleaned else {}

@@ -3,32 +3,48 @@ skills:
   - id: recap_analysis
     type: skill
     adapter: skill_md
-    display_name: Recap Analysis
-    description: Analyze recap inputs and generate structured outputs
+    display_name:
+      en: "Recap Analysis"
+      zh: "解说适配分析"
+    description:
+      en: "Analyze recap-oriented source text and generate a structured adaptation assessment."
+      zh: "分析适合解说剧的源文本，并生成结构化改编评估结果。"
     spec_path: skills/recap_analysis/SKILL.md
     enabled: true
 
   - id: recap_production
     type: skill
     adapter: skill_md
-    display_name: Recap Production
-    description: Run resumable step-based recap production workflow
+    display_name:
+      en: "Recap Production"
+      zh: "解说剧制作"
+    description:
+      en: "Run the resumable step-based recap production workflow for script, assets, and image config."
+      zh: "运行可续接的解说剧多步骤流程，产出剧本、资产和生图配置。"
     spec_path: skills/recap_production/SKILL.md
     enabled: true
 
   - id: novel2script
     type: skill
     adapter: skill_md
-    display_name: Novel 2 Script
-    description: Multi-step novel-to-script workflow
+    display_name:
+      en: "Novel 2 Script"
+      zh: "小说转剧本"
+    description:
+      en: "Run the multi-step novel-to-short-drama script workflow."
+      zh: "运行多步骤的小说转短剧剧本工作流。"
     spec_path: skills/novel2script/SKILL.md
     enabled: true
 
   - id: novel_adaptation_plan
     type: skill
     adapter: skill_md
-    display_name: Novel Adaptation Plan
-    description: Novel adaptation planning workflow for turning long-form source material into a structured short-drama plan
+    display_name:
+      en: "Novel Adaptation Plan"
+      zh: "小说改编计划"
+    description:
+      en: "Turn long-form source material into a structured short-drama adaptation plan."
+      zh: "将长篇源素材转化为结构化短剧改编方案。"
     spec_path: skills/novel_adaptation_plan/SKILL.md
     aliases:
       - short_drama_adaption
@@ -37,16 +53,24 @@ skills:
   - id: novel_to_drama_script
     type: skill
     adapter: skill_md
-    display_name: Novel-to-Drama Script
-    description: Novel-to-drama episode script generation workflow
+    display_name:
+      en: "Novel-to-Drama Script"
+      zh: "小说改编分集剧本"
+    description:
+      en: "Generate episode-level short-drama scripts from novel source material and planning files."
+      zh: "基于小说源素材和规划文件生成短剧分集剧本。"
     spec_path: skills/novel_to_drama_script/SKILL.md
     enabled: true
 
   - id: rewriting
     type: skill
     adapter: skill_md
-    display_name: Rewriting
-    description: Rewriting, script polishing, and sanitization workflow
+    display_name:
+      en: "Rewriting"
+      zh: "洗稿润色"
+    description:
+      en: "Rewrite, polish, and sanitize script-like material while preserving story logic."
+      zh: "在保留故事逻辑的前提下，对剧本类文本进行洗稿、润色与规整。"
     spec_path: skills/rewriting/SKILL.md
     aliases:
       - script_revision
@@ -55,15 +79,23 @@ skills:
   - id: story_creation
     type: skill
     adapter: skill_md
-    display_name: Story Creation
-    description: Generate an original microseries step-1 storyline package from a short brief
+    display_name:
+      en: "Story Creation"
+      zh: "原创故事创建"
+    description:
+      en: "Generate an original microseries storyline package from a short user brief."
+      zh: "根据简短需求生成原创微短剧故事包。"
     spec_path: skills/story_creation/SKILL.md
     enabled: true
 
   - id: large_novel_processor
     type: skill
     adapter: skill_md
-    display_name: Large Novel Processor
-    description: Split large novel .txt files into chapter or chunk outputs plus an index for downstream skills
+    display_name:
+      en: "Large Novel Processor"
+      zh: "长篇小说预处理"
+    description:
+      en: "Split a large novel .txt into chapter or chunk outputs plus an index for downstream workflows."
+      zh: "将长篇小说 txt 拆分为章节或分块，并生成供下游流程使用的索引。"
     spec_path: skills/large_novel_processor/SKILL.md
     enabled: true

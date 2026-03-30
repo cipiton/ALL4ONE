@@ -7,6 +7,25 @@ input_extensions:
   - .txt
 folder_mode: non_recursive
 metadata:
+  i18n:
+    display_name:
+      en: "Recap Production"
+      zh: "解说剧制作"
+    description:
+      en: "Turn a synopsis or script text into a recap script, asset list, and image-config output."
+      zh: "将梗概或剧本文本转为解说剧剧本、资产清单和生图配置。"
+    workflow_hint:
+      en: "This workflow runs step by step: recap script, asset extraction, then image config."
+      zh: "此流程按步骤运行：先生成解说剧剧本，再提炼资产，最后输出生图配置。"
+    input_hint:
+      en: "Send a `.txt` synopsis or script file, then reply with the step number or menu choice the workflow asks for."
+      zh: "请提供一个 `.txt` 梗概或剧本文件，然后按流程提示回复步骤编号或选项编号。"
+    output_hint:
+      en: "Writes accepted outputs for the selected recap-production steps into the project output folder."
+      zh: "会把已接受的解说剧步骤结果写入当前项目输出文件夹。"
+    starter_prompt:
+      en: "Send the synopsis or script source for recap production."
+      zh: "请提供用于解说剧制作的梗概或剧本源文件。"
   startup:
     mode: explicit_step_selection
     default_step: 1

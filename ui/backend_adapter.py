@@ -39,6 +39,10 @@ class GuiSkillOption:
     allow_auto_route: bool
     step_summaries: list[SkillStepSummary]
     runtime_inputs: list[GuiRuntimeInputField]
+    workflow_hint: str = ""
+    input_hint: str = ""
+    output_hint: str = ""
+    starter_prompt: str = ""
     supports_file_input: bool = True
     supports_folder_input: bool = True
     supports_text_input: bool = False
@@ -82,7 +86,7 @@ class GuiBackend:
     def __init__(self, repo_root: Path) -> None:
         self.repo_root = repo_root.resolve()
 
-    def load_skills(self) -> list[GuiSkillOption]:
+    def load_skills(self, language: str = "en") -> list[GuiSkillOption]:
         load_env_file(self.repo_root / ".env")
         catalog = SkillCatalog.load(self.repo_root)
         options: list[GuiSkillOption] = []
@@ -91,11 +95,20 @@ class GuiBackend:
                 _map_runtime_input(definition)
                 for definition in getattr(skill, "runtime_input_definitions", [])
             ]
+            localized_inline_prompt = (
+                skill.localized_inline_input_prompt(language)
+                if hasattr(skill, "localized_inline_input_prompt")
+                else str(getattr(skill, "inline_input_prompt", "") or "")
+            )
             options.append(
                 GuiSkillOption(
                     skill_id=skill.skill_id,
-                    display_name=skill.display_name,
-                    description=skill.description,
+                    display_name=skill.localized_display_name(language),
+                    description=skill.localized_description(language),
+                    workflow_hint=skill.localized_workflow_hint(language),
+                    input_hint=skill.localized_input_hint(language),
+                    output_hint=skill.localized_output_hint(language),
+                    starter_prompt=skill.localized_starter_prompt(language),
                     input_extensions=list(skill.input_extensions),
                     folder_mode=skill.folder_mode,
                     startup_mode=skill.startup_policy.mode,
@@ -106,7 +119,7 @@ class GuiBackend:
                     supports_file_input=True,
                     supports_folder_input=True,
                     supports_text_input=bool(getattr(skill, "allow_inline_text_input", False)),
-                    text_input_prompt=str(getattr(skill, "inline_input_prompt", "") or ""),
+                    text_input_prompt=str(localized_inline_prompt or ""),
                     allow_inline_text_input=bool(getattr(skill, "allow_inline_text_input", False)),
                 )
             )

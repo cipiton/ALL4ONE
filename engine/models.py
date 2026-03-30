@@ -4,6 +4,8 @@ from dataclasses import asdict, dataclass, field
 from pathlib import Path
 from typing import Any, Literal
 
+LocalizedTextMap = dict[str, str]
+
 
 RunStatus = Literal[
     "pending",
@@ -13,6 +15,47 @@ RunStatus = Literal[
     "completed",
     "error",
 ]
+
+
+def normalize_language_code(language: str | None) -> str:
+    lowered = (language or "").strip().lower().replace("-", "_")
+    if lowered in {"zh", "zh_cn", "zh_hans", "zh_hans_cn"}:
+        return "zh_cn"
+    if lowered.startswith("en"):
+        return "en"
+    return lowered or "en"
+
+
+def merge_localized_texts(*sources: LocalizedTextMap) -> LocalizedTextMap:
+    merged: LocalizedTextMap = {}
+    for source in sources:
+        for language, text in source.items():
+            cleaned = str(text).strip()
+            if cleaned:
+                merged[normalize_language_code(language)] = cleaned
+    return merged
+
+
+def resolve_localized_text(
+    localized: LocalizedTextMap | None,
+    language: str,
+    *,
+    fallback: str = "",
+) -> str:
+    if not localized:
+        return fallback
+
+    normalized = normalize_language_code(language)
+    for candidate in (normalized, "zh_cn" if normalized.startswith("zh") else normalized, "en"):
+        text = localized.get(candidate)
+        if text:
+            return text
+
+    for text in localized.values():
+        cleaned = str(text).strip()
+        if cleaned:
+            return cleaned
+    return fallback
 
 
 @dataclass(slots=True)
@@ -33,6 +76,14 @@ class SkillRegistryEntry:
     enabled: bool = True
     display_name: str = ""
     description: str = ""
+    display_name_i18n: LocalizedTextMap = field(default_factory=dict)
+    description_i18n: LocalizedTextMap = field(default_factory=dict)
+
+    def localized_display_name(self, language: str) -> str:
+        return resolve_localized_text(self.display_name_i18n, language, fallback=self.display_name)
+
+    def localized_description(self, language: str) -> str:
+        return resolve_localized_text(self.description_i18n, language, fallback=self.description)
 
 
 @dataclass(slots=True)
@@ -186,6 +237,13 @@ class SkillDefinition:
     folder_mode: str = "non_recursive"
     allow_inline_text_input: bool = False
     inline_input_prompt: str = ""
+    display_name_i18n: LocalizedTextMap = field(default_factory=dict)
+    description_i18n: LocalizedTextMap = field(default_factory=dict)
+    workflow_hint_i18n: LocalizedTextMap = field(default_factory=dict)
+    input_hint_i18n: LocalizedTextMap = field(default_factory=dict)
+    output_hint_i18n: LocalizedTextMap = field(default_factory=dict)
+    starter_prompt_i18n: LocalizedTextMap = field(default_factory=dict)
+    inline_input_prompt_i18n: LocalizedTextMap = field(default_factory=dict)
     aliases: list[str] = field(default_factory=list)
     utility_script: UtilityScriptConfig | None = None
     startup_policy: SkillStartupPolicy = field(default_factory=SkillStartupPolicy)
@@ -196,6 +254,10 @@ class SkillDefinition:
     @property
     def all_names(self) -> list[str]:
         return [self.name, *self.aliases]
+
+    def localized_text(self, field_name: str, language: str, *, fallback: str = "") -> str:
+        localized = getattr(self, f"{field_name}_i18n", {})
+        return resolve_localized_text(localized, language, fallback=fallback)
 
     def ordered_steps(self) -> list[SkillStep]:
         return [self.steps[number] for number in sorted(self.steps)]

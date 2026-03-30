@@ -8,8 +8,10 @@ import yaml
 
 from .models import (
     ChunkingConfig,
+    LocalizedTextMap,
     OutputConfig,
     ReferenceDefinition,
+    resolve_localized_text,
     SkillModelRouting,
     SkillInputBlock,
     RuntimeInputDefinition,
@@ -88,10 +90,35 @@ def load_skill(skill_dir: Path) -> SkillDefinition:
     chunking = _load_chunking(frontmatter)
     output_config = _load_output_config(frontmatter)
     runtime_inputs = _load_runtime_inputs(frontmatter, embedded_registry, steps)
-    allow_inline_text_input, inline_input_prompt = _load_inline_input_settings(frontmatter, metadata, embedded_registry)
+    i18n_metadata = metadata.get("i18n", {}) or {}
+    if not isinstance(i18n_metadata, dict):
+        i18n_metadata = {}
+    allow_inline_text_input, inline_input_prompt, inline_input_prompt_i18n = _load_inline_input_settings(
+        frontmatter,
+        metadata,
+        i18n_metadata,
+        embedded_registry,
+    )
     name = str(frontmatter.get("name") or skill_dir.name)
-    display_name = str(frontmatter.get("display_name") or metadata.get("display_name") or frontmatter.get("display") or name)
-    description = str(frontmatter.get("description") or _extract_title(body) or name)
+    display_name_i18n = _load_localized_text_map(
+        i18n_metadata.get("display_name")
+        or frontmatter.get("display_name")
+        or metadata.get("display_name")
+        or frontmatter.get("display")
+        or name
+    )
+    description_i18n = _load_localized_text_map(
+        i18n_metadata.get("description")
+        or frontmatter.get("description")
+        or _extract_title(body)
+        or name
+    )
+    workflow_hint_i18n = _load_localized_text_map(i18n_metadata.get("workflow_hint"))
+    input_hint_i18n = _load_localized_text_map(i18n_metadata.get("input_hint"))
+    output_hint_i18n = _load_localized_text_map(i18n_metadata.get("output_hint"))
+    starter_prompt_i18n = _load_localized_text_map(i18n_metadata.get("starter_prompt"))
+    display_name = resolve_localized_text(display_name_i18n, "en", fallback=name)
+    description = resolve_localized_text(description_i18n, "en", fallback=name)
     aliases = _load_aliases(frontmatter, metadata)
     execution = frontmatter.get("execution", {}) or {}
     strategy = str(execution.get("strategy") or ("structured_report" if stages else "step_prompt"))
@@ -130,6 +157,13 @@ def load_skill(skill_dir: Path) -> SkillDefinition:
         folder_mode=_load_folder_mode(frontmatter, metadata, embedded_registry),
         allow_inline_text_input=allow_inline_text_input,
         inline_input_prompt=inline_input_prompt,
+        display_name_i18n=display_name_i18n,
+        description_i18n=description_i18n,
+        workflow_hint_i18n=workflow_hint_i18n,
+        input_hint_i18n=input_hint_i18n,
+        output_hint_i18n=output_hint_i18n,
+        starter_prompt_i18n=starter_prompt_i18n,
+        inline_input_prompt_i18n=inline_input_prompt_i18n,
         aliases=aliases,
         utility_script=utility_script,
         startup_policy=startup_policy,
@@ -221,8 +255,10 @@ def _parse_registry_entry(
         aliases=_to_string_list(raw_entry.get("aliases")),
         spec_path=spec_path,
         enabled=bool(raw_entry.get("enabled", True)),
-        display_name=str(raw_entry.get("display_name") or ""),
-        description=str(raw_entry.get("description") or ""),
+        display_name=resolve_localized_text(_load_localized_text_map(raw_entry.get("display_name")), "en"),
+        description=resolve_localized_text(_load_localized_text_map(raw_entry.get("description")), "en"),
+        display_name_i18n=_load_localized_text_map(raw_entry.get("display_name")),
+        description_i18n=_load_localized_text_map(raw_entry.get("description")),
     )
 
 
@@ -504,6 +540,29 @@ def _to_string_list(value: Any) -> list[str]:
     return [str(value)]
 
 
+def _normalize_language_key(language: str) -> str:
+    lowered = str(language).strip().lower().replace("-", "_")
+    if lowered in {"zh", "zh_cn", "zh_hans", "zh_hans_cn"}:
+        return "zh_cn"
+    if lowered.startswith("en"):
+        return "en"
+    return lowered
+
+
+def _load_localized_text_map(value: Any) -> LocalizedTextMap:
+    if value in (None, ""):
+        return {}
+    if isinstance(value, dict):
+        localized: LocalizedTextMap = {}
+        for language, text in value.items():
+            cleaned = str(text).strip()
+            if cleaned:
+                localized[_normalize_language_key(str(language))] = cleaned
+        return localized
+    cleaned = str(value).strip()
+    return {"en": cleaned} if cleaned else {}
+
+
 def _optional_int(value: Any) -> int | None:
     if value in (None, ""):
         return None
@@ -648,8 +707,9 @@ def _load_folder_mode(frontmatter: dict[str, Any], metadata: dict[str, Any], emb
 def _load_inline_input_settings(
     frontmatter: dict[str, Any],
     metadata: dict[str, Any],
+    i18n_metadata: dict[str, Any],
     embedded_registry: dict[str, Any],
-) -> tuple[bool, str]:
+) -> tuple[bool, str, LocalizedTextMap]:
     raw_intake = metadata.get("intake") or frontmatter.get("intake") or {}
     if not isinstance(raw_intake, dict):
         raw_intake = {}
@@ -663,12 +723,13 @@ def _load_inline_input_settings(
             embedded_intake.get("allow_inline_text_input", False),
         )
     )
-    inline_input_prompt = str(
-        raw_intake.get("inline_input_prompt")
+    inline_input_prompt_i18n = _load_localized_text_map(
+        i18n_metadata.get("inline_input_prompt")
+        or raw_intake.get("inline_input_prompt")
         or embedded_intake.get("inline_input_prompt")
-        or ""
     )
-    return allow_inline_text_input, inline_input_prompt
+    inline_input_prompt = resolve_localized_text(inline_input_prompt_i18n, "en", fallback="")
+    return allow_inline_text_input, inline_input_prompt, inline_input_prompt_i18n
 
 
 def _load_startup_policy(

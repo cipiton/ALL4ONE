@@ -7,6 +7,25 @@ input_extensions:
   - .txt
 folder_mode: non_recursive
 metadata:
+  i18n:
+    display_name:
+      en: "Recap Analysis"
+      zh: "解说适配分析"
+    description:
+      en: "Analyze one or more novel text files for recap or audio-drama adaptation feasibility."
+      zh: "评估一个或多个小说文本是否适合做解说剧或有声改编。"
+    workflow_hint:
+      en: "This workflow reads the source, evaluates adaptation fit, recommends episode scale, and summarizes audience fit."
+      zh: "此流程会先理解原文，再评估改编适配度、推荐集数规模，并总结受众匹配情况。"
+    input_hint:
+      en: "Send one `.txt` novel file or a folder containing `.txt` files for batch analysis."
+      zh: "请提供一个 `.txt` 小说文件，或包含多个 `.txt` 文件的文件夹进行批量分析。"
+    output_hint:
+      en: "Writes a structured recap adaptation analysis report for each input file."
+      zh: "会为每个输入文件生成结构化的解说剧适配分析报告。"
+    starter_prompt:
+      en: "Send the novel file or folder you want to evaluate."
+      zh: "请提供要评估的小说文件或文件夹。"
   execution:
     mode: sequential_with_review
     preview_before_save: true

@@ -11,6 +11,7 @@ CHAPTER_HEADING_RE = re.compile(
     r"[^\n]{0,40})\s*$",
     flags=re.IGNORECASE,
 )
+NUMERIC_CHAPTER_HEADING_RE = re.compile(r"^\s*(\d{1,4})\s*$")
 
 
 def run(
@@ -36,7 +37,7 @@ def run(
     chapters, preface = split_into_chapters(document.text)
     if not chapters:
         raise ValueError(
-            "No chapter headings were detected. The input needs visible chapter titles such as '第1章' or 'Chapter 1'."
+            "No chapter headings were detected. Accepted formats include headings like '第1章', 'Chapter 1', or standalone numeric chapter lines such as '1', '2', or '001'."
         )
 
     if preface:
@@ -79,11 +80,12 @@ def split_into_chapters(text: str) -> tuple[list[dict[str, Any]], str]:
     normalized = text.replace("\r\n", "\n")
     lines = normalized.split("\n")
     markers: list[dict[str, Any]] = []
+    numeric_candidates: list[dict[str, Any]] = []
     offset = 0
 
     for line_index, line in enumerate(lines):
         stripped = line.strip()
-        if is_chapter_heading(stripped):
+        if is_explicit_chapter_heading(stripped):
             markers.append(
                 {
                     "line_index": line_index,
@@ -91,7 +93,26 @@ def split_into_chapters(text: str) -> tuple[list[dict[str, Any]], str]:
                     "title": stripped,
                 }
             )
+        elif is_numeric_heading_candidate(stripped):
+            numeric_candidates.append(
+                {
+                    "line_index": line_index,
+                    "offset": offset,
+                    "title": stripped,
+                    "value": int(stripped),
+                }
+            )
         offset += len(line) + 1
+
+    if not markers and is_numeric_heading_pattern(numeric_candidates):
+        markers = [
+            {
+                "line_index": candidate["line_index"],
+                "offset": candidate["offset"],
+                "title": candidate["title"],
+            }
+            for candidate in numeric_candidates
+        ]
 
     if not markers:
         return [], ""
@@ -114,12 +135,44 @@ def split_into_chapters(text: str) -> tuple[list[dict[str, Any]], str]:
     return chapters, preface
 
 
-def is_chapter_heading(value: str) -> bool:
+def is_explicit_chapter_heading(value: str) -> bool:
     if not value:
         return False
     if len(value) > 48:
         return False
     return bool(CHAPTER_HEADING_RE.match(value))
+
+
+def is_numeric_heading_candidate(value: str) -> bool:
+    if not value:
+        return False
+    if len(value.strip()) > 4:
+        return False
+    return bool(NUMERIC_CHAPTER_HEADING_RE.match(value))
+
+
+def is_numeric_heading_pattern(candidates: list[dict[str, Any]]) -> bool:
+    if len(candidates) < 3:
+        return False
+
+    values = [int(candidate["value"]) for candidate in candidates]
+    line_indexes = [int(candidate["line_index"]) for candidate in candidates]
+
+    increasing_pairs = sum(1 for previous, current in zip(values, values[1:]) if current > previous)
+    consecutive_pairs = sum(1 for previous, current in zip(values, values[1:]) if current == previous + 1)
+    spaced_pairs = sum(1 for previous, current in zip(line_indexes, line_indexes[1:]) if current - previous >= 3)
+
+    total_pairs = len(candidates) - 1
+    if total_pairs <= 0:
+        return False
+
+    # Require a repeated standalone numeric pattern that behaves like chapter numbering,
+    # instead of isolated paragraph numbers or numbered list fragments.
+    return (
+        increasing_pairs >= max(2, total_pairs - 1)
+        and consecutive_pairs >= max(2, total_pairs // 2)
+        and spaced_pairs >= max(2, total_pairs // 2)
+    )
 
 
 def write_chapter_files(output_dir: Path, chapters: list[dict[str, Any]]) -> list[dict[str, Any]]:

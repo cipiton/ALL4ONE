@@ -32,7 +32,7 @@ def should_route_to_workflow(skill: GuiSkillOption, session: ChatSessionState, t
 
     stage = session.stage
     if stage == "awaiting_input":
-        return _looks_like_primary_input(skill, value)
+        return _looks_like_primary_input(skill, session, value)
     if stage == "awaiting_step":
         return _looks_like_step_input(value)
     if stage == "awaiting_rewriting_mode":
@@ -49,7 +49,7 @@ def should_route_to_workflow(skill: GuiSkillOption, session: ChatSessionState, t
             return False
         return _looks_like_runtime_value(field, value)
     if stage == "ready_to_run":
-        return value.lower() in {"run", "start", "yes", "y", "go", "restart", "reset", "new"}
+        return value.lower() in {"1", "2", "run", "start", "yes", "y", "go", "restart", "reset", "new"}
     return False
 
 
@@ -74,7 +74,16 @@ def current_runtime_field(skill: GuiSkillOption, session: ChatSessionState) -> G
     return visible_fields[session.runtime_field_index]
 
 
-def _looks_like_primary_input(skill: GuiSkillOption, value: str) -> bool:
+def _looks_like_primary_input(skill: GuiSkillOption, session: ChatSessionState, value: str) -> bool:
+    lowered = value.lower()
+    source_inputs = getattr(session, "source_inputs", [])
+    if source_inputs:
+        if lowered in {"default", "1"}:
+            return True
+        if value.isdigit():
+            index = int(value)
+            if 1 <= index <= len(source_inputs):
+                return True
     if _looks_like_existing_path(value):
         path = Path(value.strip().strip('"')).expanduser()
         if path.is_dir():

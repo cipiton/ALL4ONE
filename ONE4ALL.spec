@@ -1,21 +1,26 @@
 # -*- mode: python ; coding: utf-8 -*-
 
-from PyInstaller.utils.hooks import collect_submodules
+from PyInstaller.utils.hooks import collect_data_files, collect_submodules
 
 hiddenimports = []
 hiddenimports += collect_submodules("app")
 hiddenimports += collect_submodules("engine")
 hiddenimports += collect_submodules("ui")
+hiddenimports += collect_submodules("tkinterdnd2")
+
+datas = [
+    ('skills', 'skills'),
+    ('config.ini', '.'),
+    ('.env.example', '.'),
+    ('README.md', '.'),
+]
+datas += collect_data_files("tkinterdnd2")
 
 a = Analysis(
     ['gui.py'],
     pathex=[],
     binaries=[],
-    datas=[
-        ('skills', 'skills'),
-        ('config.ini', '.'),
-        ('.env.example', '.'),
-    ],
+    datas=datas,
     hiddenimports=hiddenimports,
     hookspath=[],
     hooksconfig={},

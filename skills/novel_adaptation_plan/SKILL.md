@@ -10,6 +10,25 @@ metadata:
   aliases:
     - short_drama_adaption
     - short-drama-adaption
+  i18n:
+    display_name:
+      en: "Novel Adaptation Plan"
+      zh: "小说改编计划"
+    description:
+      en: "Industrial short-drama adaptation planning workflow for novels or prepared master outlines."
+      zh: "面向小说或已归纳母本的工业化短剧改编策划流程。"
+    workflow_hint:
+      en: "This workflow extracts set pieces, grades them, plans pacing, binds episodes, and writes the final adaptation package."
+      zh: "此流程会提取并分级名场面，规划节奏阶段，绑定单集安排，并输出最终改编方案。"
+    input_hint:
+      en: "Send a `.txt` novel file, prepared outline, or project-ingested dossier for adaptation planning."
+      zh: "请提供 `.txt` 小说文件、已整理母本，或项目归纳档案来生成改编方案。"
+    output_hint:
+      en: "Writes the standardized short-drama adaptation package and supporting planning files."
+      zh: "会生成标准化短剧改编方案及配套规划文件。"
+    starter_prompt:
+      en: "Send the novel source or project dossier for adaptation planning."
+      zh: "请提供用于改编策划的小说源文件或项目档案。"
   startup:
     mode: explicit_step_selection
     default_step: 1

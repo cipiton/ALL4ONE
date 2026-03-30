@@ -11,6 +11,7 @@ from engine.config_loader import (
     load_repo_config,
     save_repo_config,
 )
+from .i18n import DEFAULT_LANGUAGE
 from .workspace_manager import default_workspace_root
 
 
@@ -20,6 +21,9 @@ class AppSettings:
     model: str
     api_key: str
     base_url: str
+    language: str
+    auto_accept_review_steps: bool
+    show_internal_project_files: bool
     default_output_path: str
     default_skill_id: str
     workspace_root: str
@@ -47,6 +51,9 @@ class SettingsManager:
             api_key = env_values.get(fallback_key, "").strip()
         model = get_config_value(parser, "llm", "model", "")
         base_url = get_config_value(parser, "llm", "base_url", "")
+        language = get_config_value(parser, "gui", "language", DEFAULT_LANGUAGE).strip().lower() or DEFAULT_LANGUAGE
+        auto_accept_review_steps = parser.getboolean("debug", "auto_accept_review_steps", fallback=True)
+        show_internal_project_files = parser.getboolean("gui", "show_internal_project_files", fallback=False)
         default_output_path = get_config_value(
             parser,
             "gui",
@@ -66,6 +73,9 @@ class SettingsManager:
             model=model,
             api_key=api_key,
             base_url=base_url,
+            language=language,
+            auto_accept_review_steps=auto_accept_review_steps,
+            show_internal_project_files=show_internal_project_files,
             default_output_path=default_output_path,
             default_skill_id=default_skill_id,
             workspace_root=workspace_root,
@@ -77,17 +87,20 @@ class SettingsManager:
         if self.config_path.exists():
             parser.read(self.config_path, encoding="utf-8-sig")
 
-        for section in ("llm", "gui"):
+        for section in ("llm", "gui", "debug"):
             if not parser.has_section(section):
                 parser.add_section(section)
 
         parser.set("llm", "provider", settings.provider.strip().lower())
         parser.set("llm", "model", settings.model.strip())
         parser.set("llm", "base_url", settings.base_url.strip())
+        parser.set("gui", "language", settings.language.strip().lower() or DEFAULT_LANGUAGE)
+        parser.set("gui", "show_internal_project_files", "1" if settings.show_internal_project_files else "0")
         parser.set("gui", "default_output_path", settings.default_output_path.strip())
         parser.set("gui", "default_skill_id", settings.default_skill_id.strip())
         parser.set("gui", "workspace_root", settings.workspace_root.strip())
         parser.set("gui", "last_project_name", settings.last_project_name.strip())
+        parser.set("debug", "auto_accept_review_steps", "1" if settings.auto_accept_review_steps else "0")
         save_repo_config(self.repo_root, parser)
 
         env_updates = {

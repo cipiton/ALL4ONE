@@ -3,7 +3,14 @@ from __future__ import annotations
 from pathlib import Path
 
 from engine.executor import execute_input_paths, load_resume_document
-from engine.models import DocumentResult, RunState, SkillDefinition, SkillRegistryEntry
+from engine.models import (
+    DocumentResult,
+    RunState,
+    SkillDefinition,
+    SkillRegistryEntry,
+    merge_localized_texts,
+    resolve_localized_text,
+)
 from engine.skill_loader import load_skill
 from engine.state_store import find_latest_resumable_state
 
@@ -63,6 +70,39 @@ class SkillMdAdapter(SkillAdapter):
     @property
     def inline_input_prompt(self) -> str:
         return self._skill_definition.inline_input_prompt
+
+    def localized_display_name(self, language: str) -> str:
+        localized = merge_localized_texts(
+            self._skill_definition.display_name_i18n,
+            self._entry.display_name_i18n,
+        )
+        return resolve_localized_text(localized, language, fallback=self.display_name)
+
+    def localized_description(self, language: str) -> str:
+        localized = merge_localized_texts(
+            self._skill_definition.description_i18n,
+            self._entry.description_i18n,
+        )
+        return resolve_localized_text(localized, language, fallback=self.description)
+
+    def localized_workflow_hint(self, language: str) -> str:
+        return self._skill_definition.localized_text("workflow_hint", language, fallback="")
+
+    def localized_input_hint(self, language: str) -> str:
+        return self._skill_definition.localized_text("input_hint", language, fallback="")
+
+    def localized_output_hint(self, language: str) -> str:
+        return self._skill_definition.localized_text("output_hint", language, fallback="")
+
+    def localized_starter_prompt(self, language: str) -> str:
+        return self._skill_definition.localized_text("starter_prompt", language, fallback="")
+
+    def localized_inline_input_prompt(self, language: str) -> str:
+        return self._skill_definition.localized_text(
+            "inline_input_prompt",
+            language,
+            fallback=self.inline_input_prompt,
+        )
 
     @property
     def aliases(self) -> list[str]:
