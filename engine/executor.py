@@ -1,6 +1,7 @@
 ﻿from __future__ import annotations
 
 import importlib.util
+import sys
 from pathlib import Path
 from typing import Any
 
@@ -675,14 +676,29 @@ def _run_step_prompt_review_sequence(repo_root: Path, skill, document, output_di
                 state.step_title = step.title  
                 state.step_reason = f"Accepted step {step.number}: {step.title}."  
                 next_step_number = skill.next_step_number_for(step.number)  
+                if verbose:
+                    terminal_ui.print_progress(f"accepted step {step.number}: {step.title}")
                 if next_step_number is None:  
+                    if verbose:
+                        terminal_ui.print_progress("no next step found; workflow completed")
                     state.status = "completed"  
                     save_state(state, output_dir, runtime_config)  
                     return state  
                 state.status = "completed_step"  
                 save_state(state, output_dir, runtime_config)  
                 if not skill.execution_policy.continue_until_end:  
+                    if verbose:
+                        terminal_ui.print_progress(
+                            f"stopping after accepted step {step.number}; continue_until_end is disabled"
+                        )
                     return state  
+                if verbose:
+                    try:
+                        next_step = skill.get_step(next_step_number)
+                        next_title = next_step.title
+                    except ValueError:
+                        next_title = str(next_step_number)
+                    terminal_ui.print_progress(f"advancing to step {next_step_number}: {next_title}")
                 current_step_number = next_step_number  
                 draft_text = None  
                 break  
@@ -1030,6 +1046,7 @@ def _run_utility_script(
     if spec is None or spec.loader is None:
         raise ExecutionError(f"Could not load utility script: {utility.absolute_path}")
     module = importlib.util.module_from_spec(spec)
+    sys.modules[module_name] = module
     spec.loader.exec_module(module)
 
     entrypoint = getattr(module, utility.entrypoint, None)

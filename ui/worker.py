@@ -2,12 +2,13 @@ from __future__ import annotations
 
 import builtins
 import io
+import sys
 import traceback
 from contextlib import contextmanager
 from contextlib import redirect_stderr, redirect_stdout
 from dataclasses import dataclass, field
-from queue import Queue
-from threading import Thread
+from queue import Empty, Queue
+from threading import Event, Thread
 from typing import Any
 
 from engine import terminal_ui
@@ -16,6 +17,10 @@ from .backend_adapter import GuiBackend, GuiRunRequest
 
 
 WorkerEvent = tuple[str, Any]
+
+
+class WorkerCancelledError(Exception):
+    pass
 
 
 @dataclass(slots=True)
@@ -60,24 +65,40 @@ class GuiWorker(Thread):
         self._request = request
         self._event_queue = event_queue
         self._input_queue: Queue[str] = Queue()
+        self._cancel_requested = Event()
 
     def submit_input(self, value: str) -> None:
         self._input_queue.put(value)
+
+    def request_cancel(self) -> None:
+        self._cancel_requested.set()
 
     def run(self) -> None:
         stream = QueueStream(self._event_queue)
         self._event_queue.put(("started", None))
         try:
-            with redirect_stdout(stream), redirect_stderr(stream), self._patch_prompt_bridge():
+            with redirect_stdout(stream), redirect_stderr(stream), self._patch_prompt_bridge(), self._patch_cancel_trace():
                 result = self._backend.run(self._request)
             stream.flush()
             self._event_queue.put(("result", result))
+        except WorkerCancelledError:
+            stream.flush()
+            self._event_queue.put(("cancelled", None))
         except Exception as exc:  # noqa: BLE001
             stream.write(traceback.format_exc())
             stream.flush()
             self._event_queue.put(("error", str(exc)))
         finally:
             self._event_queue.put(("finished", None))
+
+    @contextmanager
+    def _patch_cancel_trace(self):
+        previous = sys.gettrace()
+        sys.settrace(self._trace_cancel)
+        try:
+            yield
+        finally:
+            sys.settrace(previous)
 
     @contextmanager
     def _patch_prompt_bridge(self):
@@ -113,9 +134,23 @@ class GuiWorker(Thread):
 
     def _emit_prompt(self, request: WorkerPrompt) -> str:
         self._event_queue.put(("awaiting_input", request))
-        reply = self._input_queue.get()
+        while True:
+            self._raise_if_cancelled()
+            try:
+                reply = self._input_queue.get(timeout=0.1)
+                break
+            except Empty:
+                continue
         self._event_queue.put(("input_resumed", None))
         return reply
+
+    def _trace_cancel(self, frame, event, arg):
+        self._raise_if_cancelled()
+        return self._trace_cancel
+
+    def _raise_if_cancelled(self) -> None:
+        if self._cancel_requested.is_set():
+            raise WorkerCancelledError("Cancelled by user.")
 
     def _emit_preview(self, title: str, text: str, *, kind: str) -> None:
         self._event_queue.put(
@@ -124,6 +159,7 @@ class GuiWorker(Thread):
                 {
                     "title": title.strip(),
                     "text": text.rstrip(),
+                    "full_text": text.rstrip(),
                     "kind": kind,
                 },
             )
@@ -150,7 +186,17 @@ class GuiWorker(Thread):
         if truncated_lines or len(text) > len(preview_text):
             rendered = f"{rendered}\n..."
 
-        self._emit_preview(step_title, rendered, kind="preview")
+        self._event_queue.put(
+            (
+                "preview",
+                {
+                    "title": step_title.strip(),
+                    "text": rendered,
+                    "full_text": text.rstrip() or "(empty output)",
+                    "kind": "preview",
+                },
+            )
+        )
 
         print()
         print(f"Preview: {step_title}")

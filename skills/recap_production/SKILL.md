@@ -33,7 +33,7 @@ metadata:
     allow_auto_route: false
   execution:
     mode: sequential_with_review
-    continue_until_end: false
+    continue_until_end: true
     preview_before_save: true
     save_only_on_accept: true
 

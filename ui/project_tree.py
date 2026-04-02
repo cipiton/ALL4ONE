@@ -95,6 +95,7 @@ class ProjectTreePane(ctk.CTkFrame):
         self.tree_container.grid(row=2, column=0, sticky="nsew")
         self.tree_container.grid_columnconfigure(0, weight=1)
         self.tree_container.grid_rowconfigure(0, weight=1)
+        self.tree_container.grid_rowconfigure(1, weight=0)
 
         self.tree = ttk.Treeview(
             self.tree_container,
@@ -103,11 +104,17 @@ class ProjectTreePane(ctk.CTkFrame):
             selectmode="browse",
         )
         self.tree.grid(row=0, column=0, sticky="nsew", padx=(8, 0), pady=8)
+        self.tree.column("#0", width=320, stretch=True)
         self.tree.bind("<Double-1>", self._handle_open)
 
-        scrollbar = ctk.CTkScrollbar(self.tree_container, orientation="vertical", command=self.tree.yview)
-        scrollbar.grid(row=0, column=1, sticky="ns", padx=(6, 8), pady=8)
-        self.tree.configure(yscrollcommand=scrollbar.set)
+        self.vertical_scrollbar = ctk.CTkScrollbar(self.tree_container, orientation="vertical", command=self.tree.yview)
+        self.vertical_scrollbar.grid(row=0, column=1, sticky="ns", padx=(6, 8), pady=(8, 0))
+        self.horizontal_scrollbar = ctk.CTkScrollbar(self.tree_container, orientation="horizontal", command=self.tree.xview)
+        self.horizontal_scrollbar.grid(row=1, column=0, sticky="ew", padx=(8, 0), pady=(0, 8))
+        self.tree.configure(
+            yscrollcommand=self.vertical_scrollbar.set,
+            xscrollcommand=self.horizontal_scrollbar.set,
+        )
 
         actions = ctk.CTkFrame(self.content_frame, fg_color="transparent")
         actions.grid(row=3, column=0, sticky="ew", pady=(8, 0))

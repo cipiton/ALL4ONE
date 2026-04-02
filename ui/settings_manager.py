@@ -24,6 +24,7 @@ class AppSettings:
     language: str
     auto_accept_review_steps: bool
     show_internal_project_files: bool
+    output_display_mode: str
     default_output_path: str
     default_skill_id: str
     workspace_root: str
@@ -54,6 +55,9 @@ class SettingsManager:
         language = get_config_value(parser, "gui", "language", DEFAULT_LANGUAGE).strip().lower() or DEFAULT_LANGUAGE
         auto_accept_review_steps = parser.getboolean("debug", "auto_accept_review_steps", fallback=True)
         show_internal_project_files = parser.getboolean("gui", "show_internal_project_files", fallback=False)
+        output_display_mode = get_config_value(parser, "gui", "output_display_mode", "hybrid").strip().lower() or "hybrid"
+        if output_display_mode not in {"hybrid", "full", "preview"}:
+            output_display_mode = "hybrid"
         default_output_path = get_config_value(
             parser,
             "gui",
@@ -76,6 +80,7 @@ class SettingsManager:
             language=language,
             auto_accept_review_steps=auto_accept_review_steps,
             show_internal_project_files=show_internal_project_files,
+            output_display_mode=output_display_mode,
             default_output_path=default_output_path,
             default_skill_id=default_skill_id,
             workspace_root=workspace_root,
@@ -96,6 +101,7 @@ class SettingsManager:
         parser.set("llm", "base_url", settings.base_url.strip())
         parser.set("gui", "language", settings.language.strip().lower() or DEFAULT_LANGUAGE)
         parser.set("gui", "show_internal_project_files", "1" if settings.show_internal_project_files else "0")
+        parser.set("gui", "output_display_mode", settings.output_display_mode.strip().lower() or "hybrid")
         parser.set("gui", "default_output_path", settings.default_output_path.strip())
         parser.set("gui", "default_skill_id", settings.default_skill_id.strip())
         parser.set("gui", "workspace_root", settings.workspace_root.strip())

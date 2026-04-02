@@ -32,6 +32,11 @@ from .workspace_manager import WorkspaceManager
 
 
 class MainWindow(DnDWindow):
+    OUTPUT_FULL_CHAR_THRESHOLD = 2400
+    OUTPUT_FULL_LINE_THRESHOLD = 60
+    OUTPUT_PREVIEW_CHAR_LIMIT = 1400
+    OUTPUT_PREVIEW_LINE_LIMIT = 18
+
     def __init__(self, repo_root: Path) -> None:
         super().__init__()
         self.repo_root = repo_root.resolve()
@@ -73,6 +78,7 @@ class MainWindow(DnDWindow):
         self._tree_drag_path: Path | None = None
         self._tree_drag_badge: ctk.CTkLabel | None = None
         self._composer_drop_hover_active = False
+        self._run_button_hover_active = False
         self._windows_scroll_lines: int | None = None
 
         self.workspace_root_var = ctk.StringVar(value=self.settings.workspace_root)
@@ -97,6 +103,7 @@ class MainWindow(DnDWindow):
         self.show_api_key_var = ctk.BooleanVar(value=False)
         self.auto_accept_review_steps_var = ctk.BooleanVar(value=self.settings.auto_accept_review_steps)
         self.show_internal_project_files_var = ctk.BooleanVar(value=self.settings.show_internal_project_files)
+        self.output_display_mode_var = ctk.StringVar(value=self._output_display_mode_label(self.settings.output_display_mode))
 
         ctk.set_appearance_mode("system")
         ctk.set_default_color_theme("blue")
@@ -123,7 +130,25 @@ class MainWindow(DnDWindow):
         self.localizer.set_language(language)
         self._reload_skill_options()
         self.language_var.set(self.localizer.language_label(self.localizer.language))
+        self.output_display_mode_var.set(self._output_display_mode_label(self.settings.output_display_mode))
         self.title(self._t("app.title"))
+
+    def _output_display_mode_label(self, mode: str) -> str:
+        mapping = {
+            "hybrid": self._t("settings.output_mode.hybrid"),
+            "full": self._t("settings.output_mode.full"),
+            "preview": self._t("settings.output_mode.preview"),
+        }
+        return mapping.get(mode, mapping["hybrid"])
+
+    def _output_display_mode_code(self) -> str:
+        label = self.output_display_mode_var.get()
+        reverse = {
+            self._t("settings.output_mode.hybrid"): "hybrid",
+            self._t("settings.output_mode.full"): "full",
+            self._t("settings.output_mode.preview"): "preview",
+        }
+        return reverse.get(label, "hybrid")
 
     def _reload_skill_options(self) -> None:
         current_skill_id = self.selected_skill_id
@@ -265,10 +290,12 @@ class MainWindow(DnDWindow):
         self.run_skill_button = ctk.CTkButton(
             selector_row,
             text=self._t("project.header.run"),
-            command=self._run_selected_skill,
+            command=self._on_run_skill_button,
             width=96,
         )
         self.run_skill_button.grid(row=0, column=2, sticky="e", padx=(10, 0))
+        self.run_skill_button.bind("<Enter>", self._on_run_button_enter, add="+")
+        self.run_skill_button.bind("<Leave>", self._on_run_button_leave, add="+")
 
         self.workspace_details_frame = ctk.CTkFrame(header_frame, fg_color="transparent")
         self.workspace_details_frame.grid(row=4, column=0, sticky="ew", padx=14, pady=(0, 10))
@@ -473,8 +500,21 @@ class MainWindow(DnDWindow):
             command=self._on_toggle_show_internal_project_files,
         ).grid(row=0, column=1, sticky="e")
 
+        ctk.CTkLabel(body, text=self._t("settings.output_display_mode")).grid(row=7, column=0, sticky="w", padx=12, pady=(2, 8))
+        self.output_display_mode_combo = ctk.CTkComboBox(
+            body,
+            variable=self.output_display_mode_var,
+            values=[
+                self._t("settings.output_mode.hybrid"),
+                self._t("settings.output_mode.full"),
+                self._t("settings.output_mode.preview"),
+            ],
+            state="readonly",
+        )
+        self.output_display_mode_combo.grid(row=7, column=1, sticky="ew", padx=12, pady=(2, 8))
+
         workspace_section = ctk.CTkFrame(body)
-        workspace_section.grid(row=7, column=0, columnspan=2, sticky="ew", padx=12, pady=(10, 6))
+        workspace_section.grid(row=8, column=0, columnspan=2, sticky="ew", padx=12, pady=(10, 6))
         workspace_section.grid_columnconfigure(1, weight=1)
 
         ctk.CTkLabel(
@@ -553,10 +593,10 @@ class MainWindow(DnDWindow):
         ).grid(row=0, column=2)
 
         ctk.CTkLabel(body, text=self._t("settings.fallback_output_root")).grid(
-            row=8, column=0, sticky="w", padx=12, pady=(10, 6)
+            row=9, column=0, sticky="w", padx=12, pady=(10, 6)
         )
         output_frame = ctk.CTkFrame(body, fg_color="transparent")
-        output_frame.grid(row=8, column=1, sticky="ew", padx=12, pady=(10, 6))
+        output_frame.grid(row=9, column=1, sticky="ew", padx=12, pady=(10, 6))
         output_frame.grid_columnconfigure(0, weight=1)
         ctk.CTkEntry(output_frame, textvariable=self.output_path_var).grid(
             row=0, column=0, sticky="ew", padx=(0, 8)
@@ -566,7 +606,7 @@ class MainWindow(DnDWindow):
         )
 
         footer_actions = ctk.CTkFrame(body, fg_color="transparent")
-        footer_actions.grid(row=9, column=1, sticky="e", padx=12, pady=(16, 12))
+        footer_actions.grid(row=10, column=1, sticky="e", padx=12, pady=(16, 12))
         ctk.CTkButton(
             footer_actions,
             text=self._t("settings.help"),
@@ -646,6 +686,103 @@ class MainWindow(DnDWindow):
         self._refresh_project_list()
         self._update_composer_state()
         self._save_current_project()
+
+    def _on_run_skill_button(self) -> None:
+        mode = self._run_button_mode()
+        if mode == "running":
+            self._request_stop_workflow()
+            return
+        if mode == "stopping":
+            return
+        self._run_selected_skill()
+
+    def _on_run_button_enter(self, _event: Any) -> None:
+        self._run_button_hover_active = True
+        self._update_run_button_state()
+
+    def _on_run_button_leave(self, _event: Any) -> None:
+        self._run_button_hover_active = False
+        self._update_run_button_state()
+
+    def _run_button_mode(self) -> str:
+        worker_alive = self.worker is not None and self.worker.is_alive()
+        assistant_alive = self.assistant_worker is not None and self.assistant_worker.is_alive()
+        session = self._current_project()
+        if session is not None and worker_alive and self.running_project_id == session.id:
+            if session.stage == "cancelling":
+                return "stopping"
+            return "running"
+        if worker_alive or assistant_alive:
+            return "busy"
+        return "idle"
+
+    def _update_run_button_state(self) -> None:
+        if not hasattr(self, "run_skill_button"):
+            return
+
+        mode = self._run_button_mode()
+        base_fg = ("#3b82f6", "#2563eb")
+        base_hover = ("#2563eb", "#1d4ed8")
+        stop_fg = ("#f59e0b", "#d97706")
+        stop_hover = ("#ef4444", "#dc2626")
+        stopping_fg = ("#6b7280", "#475569")
+
+        if mode == "running":
+            hover_stop = self._run_button_hover_active
+            self.run_skill_button.configure(
+                state="normal",
+                text=self._t("project.header.stop") if hover_stop else self._t("project.header.running"),
+                fg_color=stop_fg if hover_stop else stopping_fg,
+                hover_color=stop_hover if hover_stop else stop_fg,
+                text_color="#f8fafc",
+            )
+            return
+        if mode == "stopping":
+            self.run_skill_button.configure(
+                state="disabled",
+                text=self._t("project.header.stopping"),
+                fg_color=stopping_fg,
+                hover_color=stopping_fg,
+                text_color="#f8fafc",
+            )
+            return
+        if mode == "busy":
+            self.run_skill_button.configure(
+                state="disabled",
+                text=self._t("project.header.run"),
+                fg_color=base_fg,
+                hover_color=base_hover,
+                text_color="#f8fafc",
+            )
+            return
+        self.run_skill_button.configure(
+            state="normal" if self.current_project_id is not None else "disabled",
+            text=self._t("project.header.run"),
+            fg_color=base_fg,
+            hover_color=base_hover,
+            text_color="#f8fafc",
+        )
+
+    def _request_stop_workflow(self) -> None:
+        project = self._current_project()
+        worker = self.worker
+        if project is None or worker is None or not worker.is_alive() or self.running_project_id != project.id:
+            return
+        if not messagebox.askyesno(self._t("dialog.stop_workflow"), self._t("warning.stop_workflow_confirm")):
+            return
+
+        project.stage = "cancelling"
+        project.current_prompt = self._t("chat.run_cancelling")
+        project.current_choices = []
+        project.touch()
+        self.status_var.set(self._t("status.cancelling"))
+        self._append_chat_message(project.id, "status", self._t("project.activity.run_cancelling"))
+        self._refresh_chat_view()
+        self._refresh_project_workspace()
+        self._refresh_project_list()
+        self._update_composer_state()
+        self._save_current_project()
+        worker.request_cancel()
 
     def _build_sidebar_nav(self, parent: ctk.CTkFrame) -> None:
         nav_items = [
@@ -1054,6 +1191,7 @@ class MainWindow(DnDWindow):
             self.project_summary_var.set("")
             self._refresh_project_tree()
             self._refresh_run_context()
+            self._update_run_button_state()
             return
 
         self.project_title_var.set(project.name)
@@ -1062,6 +1200,7 @@ class MainWindow(DnDWindow):
         self.project_summary_var.set(self._project_summary(project))
         self._refresh_project_tree()
         self._refresh_run_context()
+        self._update_run_button_state()
 
     def _refresh_project_tree(self) -> None:
         if not hasattr(self, "project_tree_pane"):
@@ -1334,6 +1473,7 @@ class MainWindow(DnDWindow):
             language=self._language_code(),
             auto_accept_review_steps=self.auto_accept_review_steps_var.get(),
             show_internal_project_files=self.show_internal_project_files_var.get(),
+            output_display_mode=self._output_display_mode_code(),
             default_output_path=self.output_path_var.get().strip() or self.settings.default_output_path,
             default_skill_id=self.selected_skill_id or "",
             workspace_root=self.workspace_root_var.get().strip() or self.settings.workspace_root,
@@ -1536,16 +1676,6 @@ class MainWindow(DnDWindow):
         self.running_project_id = session.id
         self.status_var.set(self._t("status.running"))
         self._update_composer_state()
-        self._append_chat_message(
-            session.id,
-            "status",
-            self._t("chat.run_started_status"),
-        )
-        self._append_chat_message(
-            session.id,
-            "status",
-            self._t("project.activity.run_started", skill=skill.display_name),
-        )
         self._append_log(f"\n=== Run started: {skill.display_name} ===\n")
         self.worker = GuiWorker(self.backend, request, self.event_queue)
         self.worker.start()
@@ -1567,6 +1697,8 @@ class MainWindow(DnDWindow):
                 self._handle_worker_resumed()
             elif event_type == "result":
                 self._handle_worker_result(payload)
+            elif event_type == "cancelled":
+                self._handle_worker_cancelled()
             elif event_type == "error":
                 self._handle_worker_error(str(payload))
             elif event_type == "assistant_result":
@@ -1592,10 +1724,17 @@ class MainWindow(DnDWindow):
 
         title = str(payload.get("title", "")).strip()
         preview_text = str(payload.get("text", "")).strip()
+        full_text = str(payload.get("full_text", "")).strip() or preview_text
+        payload_kind = str(payload.get("kind", "preview")).strip().lower()
         if not title or not preview_text:
             return
 
-        body = f"{title}\n\n{preview_text}"
+        _, inline_text = self._choose_output_display_text(
+            full_text=full_text,
+            preview_text=preview_text,
+            force_full=(payload_kind == "full_output"),
+        )
+        body = f"{title}\n\n{inline_text}"
         self._append_chat_message(project_id, "preview", body)
         if self.current_project_id == project_id:
             self._refresh_chat_view()
@@ -1689,6 +1828,24 @@ class MainWindow(DnDWindow):
                 self._t("info.run_finished_with_errors", path=result.session_dir, count=result.failure_count),
             )
 
+    def _handle_worker_cancelled(self) -> None:
+        project_id = self.running_project_id
+        if project_id is not None:
+            session = self.projects.get(project_id)
+            if session is not None:
+                session.execution_in_progress = False
+                session.stage = "idle"
+                session.current_prompt = ""
+                session.current_choices = []
+                session.touch()
+                self._append_chat_message(project_id, "status", self._t("project.activity.run_cancelled"))
+                if self.current_project_id == project_id:
+                    self._refresh_chat_view()
+                self._refresh_project_workspace()
+                self._refresh_project_list()
+                self._save_current_project()
+        self.status_var.set(self._t("status.cancelled"))
+
     def _handle_worker_error(self, error_message: str) -> None:
         project_id = self.running_project_id
         if project_id is not None:
@@ -1778,14 +1935,28 @@ class MainWindow(DnDWindow):
 
     def _chat_text_wraplength(self, role: str) -> int:
         available_width = self.chat_history.winfo_width() or self.run_tab.winfo_width() or 860
-        ratio = 0.78
+        ratio = 0.86
         if role == "user":
-            ratio = 0.62
+            ratio = 0.74
         elif role in {"result", "preview"}:
-            ratio = 0.84
+            ratio = 0.92
         elif role in {"status", "error"}:
-            ratio = 0.72
+            ratio = 0.80
         return max(240, int(available_width * ratio) - 44)
+
+    def _chat_bubble_pad_x(self, role: str) -> tuple[int, int]:
+        available_width = self.chat_history.winfo_width() or self.run_tab.winfo_width() or 860
+        if role == "user":
+            left_margin = max(44, min(140, int(available_width * 0.16)))
+            return (left_margin, 0)
+        if role in {"result", "preview"}:
+            right_margin = max(32, min(90, int(available_width * 0.08)))
+            return (0, right_margin)
+        if role in {"status", "error"}:
+            right_margin = max(40, min(110, int(available_width * 0.10)))
+            return (0, right_margin)
+        right_margin = max(44, min(120, int(available_width * 0.11)))
+        return (0, right_margin)
 
     def _render_chat_message(self, message: ChatMessage) -> None:
         outer = ctk.CTkFrame(self.chat_history, fg_color="transparent")
@@ -1800,7 +1971,7 @@ class MainWindow(DnDWindow):
         role_label = self._t("chat.role.assistant")
         column = 0
         sticky = "w"
-        pad_x = (0, 140)
+        pad_x = self._chat_bubble_pad_x(role)
         border_color = ("#d1d5db", "#3f4754")
 
         if role == "user":
@@ -1809,30 +1980,32 @@ class MainWindow(DnDWindow):
             role_label = self._t("chat.role.user")
             column = 1
             sticky = "e"
-            pad_x = (140, 0)
+            pad_x = self._chat_bubble_pad_x(role)
             border_color = ("#93c5fd", "#2d6ab3")
         elif role == "status":
             bubble_color = ("#f3f4f6", "#2d323a")
             text_color = ("#374151", "#d1d5db")
             role_label = self._t("chat.role.status")
+            pad_x = self._chat_bubble_pad_x(role)
             border_color = ("#d1d5db", "#4b5563")
         elif role == "error":
             bubble_color = ("#fee2e2", "#5f2020")
             text_color = ("#991b1b", "#fecaca")
             role_label = self._t("chat.role.error")
+            pad_x = self._chat_bubble_pad_x(role)
             border_color = ("#fca5a5", "#7f1d1d")
         elif role == "result":
             bubble_color = ("#dcfce7", "#193b2b")
             text_color = ("#14532d", "#dcfce7")
             role_label = self._t("chat.role.result")
-            pad_x = (0, 90)
+            pad_x = self._chat_bubble_pad_x(role)
             border_color = ("#86efac", "#2d6a4f")
         elif role == "preview":
-            bubble_color = ("#fef3c7", "#43311a")
-            text_color = ("#92400e", "#fde68a")
+            bubble_color = ("#dcfce7", "#193b2b")
+            text_color = ("#14532d", "#dcfce7")
             role_label = self._t("chat.role.preview")
-            pad_x = (0, 110)
-            border_color = ("#fbbf24", "#92400e")
+            pad_x = self._chat_bubble_pad_x(role)
+            border_color = ("#86efac", "#2d6a4f")
 
         bubble = ctk.CTkFrame(
             outer,
@@ -1857,21 +2030,30 @@ class MainWindow(DnDWindow):
             role_widget.grid(row=0, column=0, sticky="w", padx=14, pady=(12, 2))
             self._bind_chat_scroll_widget(role_widget)
             body_row = 1
-        body_widget = self._build_selectable_chat_text(
-            bubble,
-            message.text,
-            role=role,
-            background=bubble_color,
-            foreground=text_color,
-        )
-        body_widget.grid(
-            row=body_row,
-            column=0,
-            sticky="ew",
-            padx=14,
-            pady=((12, 10) if role == "user" else (0, 10)),
-        )
-        self._bind_chat_scroll_widget(body_widget)
+        if role == "preview":
+            self._render_preview_body(
+                bubble,
+                row=body_row,
+                text=message.text,
+                background=bubble_color,
+                foreground=text_color,
+            )
+        else:
+            body_widget = self._build_selectable_chat_text(
+                bubble,
+                message.text,
+                role=role,
+                background=bubble_color,
+                foreground=text_color,
+            )
+            body_widget.grid(
+                row=body_row,
+                column=0,
+                sticky="ew",
+                padx=14,
+                pady=((12, 10) if role == "user" else (0, 10)),
+            )
+            self._bind_chat_scroll_widget(body_widget)
 
         for index, card in enumerate(message.output_cards, start=body_row + 1):
             self._render_output_card(bubble, index, card)
@@ -1915,6 +2097,130 @@ class MainWindow(DnDWindow):
         widget.configure(state="disabled")
         self._bind_chat_scroll_widget(widget)
         return widget
+
+    def _render_preview_body(
+        self,
+        parent: ctk.CTkFrame,
+        *,
+        row: int,
+        text: str,
+        background: str | tuple[str, str],
+        foreground: str | tuple[str, str],
+    ) -> None:
+        title, content = self._split_preview_text(text)
+        if title:
+            title_widget = ctk.CTkLabel(
+                parent,
+                text=title,
+                anchor="w",
+                justify="left",
+                text_color=foreground,
+                font=ctk.CTkFont(size=14, weight="bold"),
+            )
+            title_widget.grid(row=row, column=0, sticky="ew", padx=14, pady=(0, 8))
+            self._bind_chat_scroll_widget(title_widget)
+            row += 1
+
+        preview_frame = ctk.CTkFrame(
+            parent,
+            fg_color=("white", "#111827"),
+            border_width=1,
+            border_color=("#bbf7d0", "#2d6a4f"),
+        )
+        preview_frame.grid(row=row, column=0, sticky="ew", padx=14, pady=(0, 12))
+        preview_frame.grid_columnconfigure(0, weight=1)
+        preview_frame.grid_rowconfigure(0, weight=1)
+
+        bg_color = preview_frame._apply_appearance_mode(("white", "#111827"))
+        fg_color = preview_frame._apply_appearance_mode(foreground)
+        max_wrap_chars = max(32, self._chat_text_wraplength("preview") // 8)
+        width_chars = max_wrap_chars
+        display_lines = self._estimate_chat_text_lines(content, width_chars)
+        visible_lines = min(max(6, min(display_lines, 16)), 16)
+
+        preview_text = tk.Text(
+            preview_frame,
+            wrap="word",
+            relief="flat",
+            bd=0,
+            highlightthickness=0,
+            padx=10,
+            pady=10,
+            spacing1=0,
+            spacing2=0,
+            spacing3=0,
+            bg=bg_color,
+            fg=fg_color,
+            insertbackground=fg_color,
+            selectbackground="#2563eb",
+            selectforeground="#f8fafc",
+            font=("Segoe UI", 12),
+            cursor="xterm",
+            width=width_chars,
+            height=visible_lines,
+        )
+        preview_scrollbar = ctk.CTkScrollbar(preview_frame, orientation="vertical", command=preview_text.yview)
+        preview_text.configure(yscrollcommand=preview_scrollbar.set)
+        preview_text.grid(row=0, column=0, sticky="nsew", padx=(8, 0), pady=8)
+        preview_scrollbar.grid(row=0, column=1, sticky="ns", padx=(6, 8), pady=8)
+        preview_text.insert("1.0", content)
+        preview_text.configure(state="disabled")
+
+    def _split_preview_text(self, text: str) -> tuple[str, str]:
+        normalized = text.strip()
+        if not normalized:
+            return "", ""
+        if "\n\n" in normalized:
+            title, content = normalized.split("\n\n", 1)
+            return title.strip(), content.strip()
+        lines = normalized.splitlines()
+        if len(lines) > 1:
+            return lines[0].strip(), "\n".join(lines[1:]).strip()
+        return "", normalized
+
+    def _should_show_full_output(self, text: str) -> bool:
+        normalized = text.strip()
+        if not normalized:
+            return False
+        line_count = len(normalized.splitlines())
+        return len(normalized) <= self.OUTPUT_FULL_CHAR_THRESHOLD and line_count <= self.OUTPUT_FULL_LINE_THRESHOLD
+
+    def _build_output_preview_text(self, full_text: str, preview_text: str = "") -> str:
+        candidate = preview_text.strip() or full_text.strip()
+        if not candidate:
+            return ""
+        lines = candidate.splitlines()
+        truncated_by_lines = len(lines) > self.OUTPUT_PREVIEW_LINE_LIMIT
+        if truncated_by_lines:
+            lines = lines[: self.OUTPUT_PREVIEW_LINE_LIMIT]
+        rendered = "\n".join(lines).strip()
+        if len(rendered) > self.OUTPUT_PREVIEW_CHAR_LIMIT:
+            rendered = rendered[: self.OUTPUT_PREVIEW_CHAR_LIMIT].rstrip()
+            truncated_by_lines = True
+        if truncated_by_lines or (full_text.strip() and rendered != full_text.strip()):
+            return rendered.rstrip() + "..."
+        return rendered
+
+    def _choose_output_display_text(
+        self,
+        *,
+        full_text: str,
+        preview_text: str = "",
+        force_full: bool = False,
+    ) -> tuple[str, str]:
+        normalized_full = full_text.strip()
+        normalized_preview = preview_text.strip()
+        if force_full and normalized_full:
+            return "full", normalized_full
+
+        mode = self._output_display_mode_code()
+        if mode == "full":
+            return "full", normalized_full or normalized_preview
+        if mode == "preview":
+            return "preview", self._build_output_preview_text(normalized_full, normalized_preview)
+        if normalized_full and self._should_show_full_output(normalized_full):
+            return "full", normalized_full
+        return "preview", self._build_output_preview_text(normalized_full, normalized_preview)
 
     def _chat_text_width_chars(self, text: str, max_wrap_chars: int) -> int:
         lines = text.splitlines() or [text]
@@ -1974,19 +2280,24 @@ class MainWindow(DnDWindow):
         )
         path_widget.grid(row=1, column=0, sticky="ew", padx=12)
         self._bind_chat_scroll_widget(path_widget)
-        if card.preview_text:
-            preview_widget = ctk.CTkLabel(
+
+        full_text = self._load_output_text(card.path)
+        display_mode, inline_text = self._choose_output_display_text(
+            full_text=full_text,
+            preview_text=card.preview_text,
+        )
+        next_row = 2
+        if inline_text:
+            self._render_output_content_block(
                 card_frame,
-                text=card.preview_text,
-                justify="left",
-                anchor="w",
-                wraplength=self._chat_text_wraplength("result") - 32,
+                row=next_row,
+                text=inline_text,
+                mode=display_mode,
             )
-            preview_widget.grid(row=2, column=0, sticky="ew", padx=12, pady=(8, 6))
-            self._bind_chat_scroll_widget(preview_widget)
+            next_row += 2
 
         actions = ctk.CTkFrame(card_frame, fg_color="transparent")
-        actions.grid(row=3, column=0, sticky="w", padx=12, pady=(0, 12))
+        actions.grid(row=next_row, column=0, sticky="w", padx=12, pady=(12, 12))
         self._bind_chat_scroll_widget(actions)
         ctk.CTkButton(actions, text=self._t("settings.open"), command=lambda p=card.path: self._open_path(p), width=80).pack(
             side="left", padx=(0, 8)
@@ -1999,7 +2310,7 @@ class MainWindow(DnDWindow):
         ).pack(side="left", padx=(0, 8))
         ctk.CTkButton(
             actions,
-            text=self._t("dialog.preview"),
+            text=self._t("result.view_full"),
             command=lambda c=card: self._preview_output_card(c),
             width=90,
         ).pack(side="left", padx=(0, 8))
@@ -2015,6 +2326,67 @@ class MainWindow(DnDWindow):
             command=lambda c=card: self._save_output_card_as(c),
             width=90,
         ).pack(side="left")
+
+    def _render_output_content_block(
+        self,
+        parent: ctk.CTkFrame,
+        *,
+        row: int,
+        text: str,
+        mode: str,
+    ) -> None:
+        label_key = "result.inline_full" if mode == "full" else "result.inline_preview"
+        ctk.CTkLabel(
+            parent,
+            text=self._t(label_key),
+            font=ctk.CTkFont(size=12, weight="bold"),
+            anchor="w",
+            text_color=("gray45", "#cbd5e1"),
+        ).grid(row=row, column=0, sticky="w", padx=12, pady=(10, 4))
+
+        content_frame = ctk.CTkFrame(
+            parent,
+            fg_color=("#f8fafc", "#0f172a"),
+            border_width=1,
+            border_color=("#bbf7d0", "#2d6a4f"),
+        )
+        content_frame.grid(row=row + 1, column=0, sticky="ew", padx=12, pady=(0, 0))
+        content_frame.grid_columnconfigure(0, weight=1)
+        content_frame.grid_rowconfigure(0, weight=1)
+        self._bind_chat_scroll_widget(content_frame)
+
+        bg_color = content_frame._apply_appearance_mode(("#f8fafc", "#0f172a"))
+        fg_color = content_frame._apply_appearance_mode(("#14532d", "#dcfce7"))
+        max_wrap_chars = max(32, self._chat_text_wraplength("result") // 8)
+        visible_lines = min(max(4, self._estimate_chat_text_lines(text, max_wrap_chars)), 16)
+        textbox = tk.Text(
+            content_frame,
+            wrap="word",
+            relief="flat",
+            bd=0,
+            highlightthickness=0,
+            padx=10,
+            pady=10,
+            spacing1=0,
+            spacing2=0,
+            spacing3=0,
+            bg=bg_color,
+            fg=fg_color,
+            insertbackground=fg_color,
+            selectbackground="#2563eb",
+            selectforeground="#f8fafc",
+            font=("Segoe UI", 12),
+            cursor="xterm",
+            width=max_wrap_chars,
+            height=visible_lines,
+        )
+        scrollbar = ctk.CTkScrollbar(content_frame, orientation="vertical", command=textbox.yview)
+        textbox.configure(yscrollcommand=scrollbar.set)
+        textbox.grid(row=0, column=0, sticky="nsew", padx=(8, 0), pady=8)
+        scrollbar.grid(row=0, column=1, sticky="ns", padx=(6, 8), pady=8)
+        textbox.insert("1.0", text)
+        textbox.configure(state="disabled")
+        self._bind_chat_scroll_widget(textbox)
 
     def _render_inline_progress_card(
         self,
@@ -2104,9 +2476,7 @@ class MainWindow(DnDWindow):
         self.browse_file_button.configure(state=state)
         self.browse_folder_button.configure(state=state)
         self.open_output_button.configure(state=state)
-        if hasattr(self, "run_skill_button"):
-            run_state = "normal" if (self.current_project_id is not None and not (self.worker is not None and self.worker.is_alive()) and not (self.assistant_worker is not None and self.assistant_worker.is_alive())) else "disabled"
-            self.run_skill_button.configure(state=run_state)
+        self._update_run_button_state()
 
     def _submit_worker_reply(self, session: ProjectState, text: str) -> None:
         worker = self.worker
@@ -2137,6 +2507,7 @@ class MainWindow(DnDWindow):
         language = self._language_code()
         auto_accept_review_steps = self.auto_accept_review_steps_var.get()
         show_internal_project_files = self.show_internal_project_files_var.get()
+        output_display_mode = self._output_display_mode_code()
         default_output_path = self.output_path_var.get().strip()
         workspace_root = self.workspace_root_var.get().strip()
 
@@ -2166,6 +2537,7 @@ class MainWindow(DnDWindow):
             language=language,
             auto_accept_review_steps=auto_accept_review_steps,
             show_internal_project_files=show_internal_project_files,
+            output_display_mode=output_display_mode,
             default_output_path=default_output_path,
             default_skill_id=selected_skill.skill_id if selected_skill else "",
             workspace_root=workspace_root,
@@ -2581,8 +2953,25 @@ class MainWindow(DnDWindow):
         preview_window.grid_columnconfigure(0, weight=1)
         preview_window.grid_rowconfigure(0, weight=1)
 
-        textbox = ctk.CTkTextbox(preview_window, wrap="word")
-        textbox.grid(row=0, column=0, sticky="nsew", padx=12, pady=12)
+        frame = ctk.CTkFrame(
+            preview_window,
+            fg_color=("white", "#111827"),
+            border_width=1,
+            border_color=("#bbf7d0", "#2d6a4f"),
+        )
+        frame.grid(row=0, column=0, sticky="nsew", padx=12, pady=12)
+        frame.grid_columnconfigure(0, weight=1)
+        frame.grid_rowconfigure(1, weight=1)
+
+        ctk.CTkLabel(
+            frame,
+            text=card.title,
+            anchor="w",
+            font=ctk.CTkFont(size=15, weight="bold"),
+        ).grid(row=0, column=0, sticky="ew", padx=12, pady=(12, 4))
+
+        textbox = ctk.CTkTextbox(frame, wrap="word")
+        textbox.grid(row=1, column=0, sticky="nsew", padx=12, pady=(0, 12))
         textbox.insert("1.0", preview_text)
         textbox.configure(state="disabled")
 

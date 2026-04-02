@@ -1,0 +1,17 @@
+python .\tts_runner.py --help
+
+python .\tts_runner.py --text "Hello from Qwen TTS." --output .\outputs\smoke_test.wav --mode custom_voice --voice Ryan --dry-run
+
+python .\tts_runner.py --text-file .\examples\episode_sample.txt --output .\outputs\smoke_test.wav --mode custom_voice --voice Ryan --dry-run
+
+python .\tts_runner.py --text "Hello from Qwen TTS." --output .\outputs\smoke_test.wav --mode custom_voice --voice Ryan
+
+python .\tts_runner.py --text-file .\examples\episode_sample.txt --output .\outputs\episode_sample.wav --mode custom_voice --voice Ryan
+
+python .\tts_runner.py --text "You finally made it back." --output .\outputs\voice_design.wav --mode voice_design --prompt_text "Warm, mysterious female voice with a calm but dangerous undertone."
+
+python .\tts_runner.py --text "I can imitate this reference voice." --output .\outputs\voice_clone.wav --mode voice_clone --ref_audio .\examples\reference.wav --prompt_text "This is the transcript for the reference audio."
+
+python .\tts_runner.py --text "I can imitate this reference voice." --output .\outputs\voice_clone_xvector.wav --mode voice_clone --ref_audio .\examples\reference.wav
+
+python .\tts_runner.py --text "Use a local model path instead of automatic download." --output .\outputs\local_model.wav --mode custom_voice --voice Ryan --model .\models\Qwen3-TTS-12Hz-0.6B-CustomVoice

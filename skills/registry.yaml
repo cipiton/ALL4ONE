@@ -24,6 +24,18 @@ skills:
     spec_path: skills/recap_production/SKILL.md
     enabled: true
 
+  - id: recap_to_tts
+    type: skill
+    adapter: skill_md
+    display_name:
+      en: "Recap To TTS"
+      zh: "解说稿转配音"
+    description:
+      en: "Split a recap script into episode narration WAV files by calling the local Qwen TTS runner."
+      zh: "将解说剧脚本拆成分集旁白音频，并调用本地 Qwen TTS 生成 WAV。"
+    spec_path: skills/recap_to_tts/SKILL.md
+    enabled: true
+
   - id: novel2script
     type: skill
     adapter: skill_md

@@ -39,6 +39,7 @@ htmlcov/
 /_tmp_*
 .internal/
 demo/
+EXEchecklist.md
 
 # Editor and OS files
 .vscode/
