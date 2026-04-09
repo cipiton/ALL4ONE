@@ -120,3 +120,90 @@ python .\tts_runner.py --text "Hello from Qwen TTS." --output .\outputs\smoke_te
 
 - Official repo: <https://github.com/QwenLM/Qwen3-TTS>
 - Official package metadata: <https://raw.githubusercontent.com/QwenLM/Qwen3-TTS/main/pyproject.toml>
+
+
+## Qwen3-TTS Notes
+
+This project currently uses **Qwen3-TTS** through the local `qwen-tts` Python package.
+
+### Model families
+
+Qwen3-TTS provides three main model families:
+
+- **CustomVoice**  
+  Best for using built-in preset voices with optional natural-language style control.
+- **VoiceDesign**  
+  Best for designing a voice from a text description.
+- **Base**  
+  Best for **voice cloning** from reference audio and for future fine-tuning workflows.
+
+### Current local setup
+
+The current local TTS runner is designed around:
+
+- `custom_voice` mode for preset narration voices
+- optional `prompt_text` / `instruct` for style control
+- future support for `voice_clone` mode when character voice cloning is needed
+
+### Supported preset CustomVoice speakers
+
+For `Qwen3-TTS-12Hz-1.7B/0.6B-CustomVoice`, the official supported speakers include:
+
+#### Chinese
+- `Vivian` — bright, slightly edgy young female voice
+- `Serena` — warm, gentle young female voice
+- `Uncle_Fu` — seasoned male voice with a low, mellow timbre
+- `Dylan` — youthful Beijing male voice with a clear, natural timbre
+- `Eric` — lively Chengdu male voice with a slightly husky brightness
+
+#### English
+- `Ryan` — dynamic male voice with strong rhythmic drive
+- `Aiden` — sunny American male voice with a clear midrange
+
+#### Japanese
+- `Ono_Anna` — playful Japanese female voice with a light, nimble timbre
+
+#### Korean
+- `Sohee` — warm Korean female voice with rich emotion
+
+> Recommendation: use each speaker’s native language when possible for the best quality.
+
+### How style control works
+
+In `custom_voice` mode, Qwen3-TTS supports an optional natural-language `instruct` prompt.
+This can be used to shape:
+
+- emotion
+- pacing
+- delivery style
+- dramatic intensity
+- recap / narration tone
+
+Examples of useful narration prompts:
+
+- `用短剧解说旁白的风格，语速中快，节奏紧凑，重点更突出，不要平铺直叙。`
+- `中文剧情旁白，语气克制但有戏剧张力，关键反转句更有力，结尾带悬念感。`
+- `不要慢，不要像普通念稿。像高能剧情复盘，语速更利落。`
+- `像短剧解说博主，语气更抓人，节奏明快，但不要夸张到搞笑。`
+
+### Practical guidance for this project
+
+For Chinese recap narration, good first voices to test are:
+
+- `Dylan`
+- `Uncle_Fu`
+- `Vivian`
+
+These generally make more sense than English-native voices such as `Ryan` when the narration text is Chinese.
+
+### Future direction for character voice cloning
+
+If future versions of this project need recurring character voices for dramas, cartoons, or series,
+the recommended path is to use **Base** models with `voice_clone` mode instead of relying only on preset CustomVoice speakers.
+
+Suggested progression:
+
+1. **v1**: preset CustomVoice narration
+2. **v2**: stronger `instruct` / narration-style prompting
+3. **v3**: character voice cloning with `Base` model + reference audio
+4. **v4**: reusable voice profiles per series / character

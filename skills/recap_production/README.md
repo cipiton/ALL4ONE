@@ -1,6 +1,6 @@
 ﻿# Recap Production
 
-Shared-engine skill for multi-step recap production and asset preparation.
+Shared-engine skill for multi-step recap production, asset preparation, and downstream episode scene planning.
 
 ## Execution Mode
 
@@ -21,6 +21,13 @@ From the chosen step, the shared runtime now:
 - saves only accepted outputs
 - continues to the next parsed step after acceptance until the workflow ends or the user cancels
 
+## Steps
+
+- step 1: `01_recap_script.txt`
+- step 2: `02_assets.txt`
+- step 3: `03_image_config.txt`
+- step 4: `04_episode_scene_script.md` plus `04_episode_scene_script.json`
+
 ## Runtime Inputs
 
 - `episode_count` on step 1 when the input is not a rewrite task
@@ -31,3 +38,4 @@ From the chosen step, the shared runtime now:
 - `references/step1-prompt.md`
 - `references/step2-prompt.md`
 - `references/step3-prompt.md`
+- `references/step4-prompt.md`

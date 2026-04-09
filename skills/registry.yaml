@@ -19,8 +19,8 @@ skills:
       en: "Recap Production"
       zh: "解说剧制作"
     description:
-      en: "Run the resumable step-based recap production workflow for script, assets, and image config."
-      zh: "运行可续接的解说剧多步骤流程，产出剧本、资产和生图配置。"
+      en: "Run the resumable step-based recap production workflow for script, assets, image config, and episode scene planning."
+      zh: "运行可续接的解说剧多步骤流程，产出剧本、资产、生图配置和分集视频场景规划。"
     spec_path: skills/recap_production/SKILL.md
     enabled: true
 

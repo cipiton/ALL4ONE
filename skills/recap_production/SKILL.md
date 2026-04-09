@@ -1,7 +1,7 @@
 ---
 name: recap_production
 display_name: Recap Production
-description: Multi-step drama prep workflow for turning a synopsis or script `.txt` into a recap script, extracting assets, and generating an image-config text file.
+description: Multi-step drama prep workflow for turning a synopsis or script `.txt` into a recap script, extracting assets, generating an image-config text file, and planning episode-level video scenes.
 supports_resume: true
 input_extensions:
   - .txt
@@ -12,17 +12,17 @@ metadata:
       en: "Recap Production"
       zh: "解说剧制作"
     description:
-      en: "Turn a synopsis or script text into a recap script, asset list, and image-config output."
-      zh: "将梗概或剧本文本转为解说剧剧本、资产清单和生图配置。"
+      en: "Turn a synopsis or script text into a recap script, asset list, image-config output, and episode scene-planning package."
+      zh: "将梗概或剧本文本转为解说剧剧本、资产清单、生图配置和分集视频场景规划包。"
     workflow_hint:
-      en: "This workflow runs step by step: recap script, asset extraction, then image config."
-      zh: "此流程按步骤运行：先生成解说剧剧本，再提炼资产，最后输出生图配置。"
+      en: "This workflow runs step by step: recap script, asset extraction, image config, then episode scene planning."
+      zh: "此流程按步骤运行：先生成解说剧剧本，再提炼资产、输出生图配置，最后生成分集视频场景规划。"
     input_hint:
       en: "Send a `.txt` synopsis or script file, then reply with the step number or menu choice the workflow asks for."
       zh: "请提供一个 `.txt` 梗概或剧本文件，然后按流程提示回复步骤编号或选项编号。"
     output_hint:
-      en: "Writes accepted outputs for the selected recap-production steps into the project output folder."
-      zh: "会把已接受的解说剧步骤结果写入当前项目输出文件夹。"
+      en: "Writes accepted recap-production outputs, including the final episode scene-plan markdown and JSON package, into the project output folder."
+      zh: "会把已接受的解说剧步骤结果写入当前项目输出文件夹，包括最终的分集场景规划 Markdown 和 JSON 包。"
     starter_prompt:
       en: "Send the synopsis or script source for recap production."
       zh: "请提供用于解说剧制作的梗概或剧本源文件。"
@@ -97,6 +97,31 @@ steps:
     input_blocks:
       - label: 【资产清单】
         from: extracted_assets
+  - number: 4
+    title: 输出视频场景脚本
+    prompt_reference: step4_prompt
+    write_to: episode_scene_script
+    output_filename: 04_episode_scene_script.md
+    json_write_to: episode_scene_script_json
+    json_output_filename: 04_episode_scene_script.json
+    route_keywords_any:
+      - 视频
+      - 分镜
+      - 镜头
+      - 场景脚本
+      - 场景提示词
+      - visual beat
+      - scene beat
+      - scene prompt
+      - video
+      - shot
+    input_blocks:
+      - label: 【解说剧剧本】
+        from: recap_script
+      - label: 【资产清单】
+        from: extracted_assets
+      - label: 【生图配置】
+        from: image_config
 
 runtime_inputs:
   - name: episode_count
@@ -138,6 +163,11 @@ references:
     kind: prompt
     step_numbers:
       - 3
+  - id: step4_prompt
+    path: references/step4-prompt.md
+    kind: prompt
+    step_numbers:
+      - 4
 
 execution:
   strategy: step_prompt
@@ -158,6 +188,7 @@ output:
 - 步骤一输出解说剧剧本。
 - 步骤二基于剧本输出角色、场景、道具等资产及提示词。
 - 步骤三基于资产结果输出生图配置文本。
+- 步骤四基于剧本、资产和生图配置输出分集视频场景脚本，并额外保存 JSON 场景规划包。
 
 ## Step Rules
 
@@ -177,4 +208,16 @@ output:
 
 - 基于资产清单输出生图配置文本。
 - 直接输出可保存的 txt 内容。
-- 在共享评审流程中被接受后结束当前运行。
+- 在共享评审流程中被接受后自动进入步骤四。
+
+### 步骤四
+
+- 基于步骤一到步骤三的结果生成 recap 视频用的分集视觉规划。
+- 每集按有意义的视觉节拍拆成约 8-14 个 scene beat，不要逐句机械切分。
+- 重点遵循 hook -> 核心推进 -> cliffhanger 的节奏组织方式。
+- 每个 beat 都应同时作为视觉生成、旁白锚点和后续装配的共享规划单元。
+- `anchor_text`、`priority`、`beat_role`、`pace_weight`、`asset_focus` 在实践中都应视为必填字段。
+- `anchor_text` 必须短且可直接用于后续 narration/subtitle 对齐；`pace_weight` 只表示相对节奏，不表示真实时长。
+- 相邻 beats 默认应保持人物、服装、地点和情绪连续性；镜头距离与机位运动应尽量避免机械重复。
+- 输出可读 Markdown，并在文末附上可解析的唯一 `json` 代码块，供共享运行时保存为结构化场景规划文件。
+- 保持故事与视觉规划导向，不要绑定最终 TTS 时长或逐秒时间轴。

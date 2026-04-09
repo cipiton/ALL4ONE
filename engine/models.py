@@ -149,6 +149,8 @@ class SkillStep:
     input_blocks: list[SkillInputBlock] = field(default_factory=list)
     output_key: str | None = None
     output_filename: str | None = None
+    json_output_key: str | None = None
+    json_output_filename: str | None = None
     model_role: str | None = None
     model_override: str | None = None
     next_step_number: int | None = None

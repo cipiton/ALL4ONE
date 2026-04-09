@@ -1,6 +1,8 @@
 ﻿from __future__ import annotations
 
 import importlib.util
+import json
+import re
 import sys
 from pathlib import Path
 from typing import Any
@@ -501,10 +503,12 @@ def _run_step_prompt(
         document,
         step_number=step_number,
     )
-    output_path = write_text_file(
+    output_path = _write_step_output_artifacts(
+        step,
         output_dir,
         output_filename,
         response.text,
+        state=state,
     )
     if skill.output_config.include_prompt_dump and runtime_config.should_write_prompt_dump:
         prompt_payload = {
@@ -513,9 +517,6 @@ def _run_step_prompt(
             "raw_response": response.raw_response,
         }
         _write_prompt_dump_files(output_dir, prompt_payload, step_number=step_number)
-    state.output_files["primary"] = str(output_path)
-    if step.output_key:
-        state.output_files[step.output_key] = str(output_path)
     state.working_input_path = str(output_path if step_number < skill.final_step_number else document.path)
     state.status = "completed_step" if step_number < skill.final_step_number else "completed"
     save_state(state, output_dir, runtime_config)
@@ -561,15 +562,51 @@ def _persist_accepted_step_output(skill, document, output_dir: Path, step_number
         document,
         step_number=step_number,
     )
-    output_path = write_text_file(output_dir, output_filename, output_text)
+    output_path = _write_step_output_artifacts(
+        step,
+        output_dir,
+        output_filename,
+        output_text,
+        state=state,
+    )
     if prompt_payload and skill.output_config.include_prompt_dump and runtime_config.should_write_prompt_dump:
         _write_prompt_dump_files(output_dir, prompt_payload, step_number=step_number)
-    state.output_files["primary"] = str(output_path)
-    if step.output_key:
-        state.output_files[step.output_key] = str(output_path)
     next_step_number = skill.next_step_number_for(step_number)
     state.working_input_path = str(output_path if next_step_number is not None else document.path)
     return output_path
+
+
+def _write_step_output_artifacts(step, output_dir: Path, output_filename: str, output_text: str, *, state: RunState) -> Path:
+    output_path = write_text_file(output_dir, output_filename, output_text)
+    resolved_outputs = {"primary": str(output_path)}
+    if step.output_key:
+        resolved_outputs[step.output_key] = str(output_path)
+    if step.json_output_filename:
+        json_payload = _extract_step_json_payload(step, output_text)
+        json_path = write_json_file(output_dir, step.json_output_filename, json_payload)
+        if step.json_output_key:
+            resolved_outputs[step.json_output_key] = str(json_path)
+    state.output_files.update(resolved_outputs)
+    return output_path
+
+
+def _extract_step_json_payload(step, output_text: str) -> Any:
+    if not step.json_output_filename:
+        raise ExecutionError(f"Step {step.number} does not define a JSON sidecar output.")
+
+    matches = list(re.finditer(r"```json\s*(.*?)\s*```", output_text, flags=re.IGNORECASE | re.DOTALL))
+    if not matches:
+        raise ExecutionError(
+            f"Step {step.number} requires a fenced JSON code block so '{step.json_output_filename}' can be written."
+        )
+
+    payload_text = matches[-1].group(1).strip()
+    try:
+        return json.loads(payload_text)
+    except json.JSONDecodeError as exc:
+        raise ExecutionError(
+            f"Step {step.number} produced invalid JSON for '{step.json_output_filename}': {exc}"
+        ) from exc
 
 
  
