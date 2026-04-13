@@ -36,6 +36,18 @@ skills:
     spec_path: skills/recap_to_tts/SKILL.md
     enabled: true
 
+  - id: recap_to_comfy_bridge
+    type: skill
+    adapter: skill_md
+    display_name:
+      en: "Recap To Comfy Bridge"
+      zh: "解说产物转 Comfy 桥接"
+    description:
+      en: "Convert recap_production outputs into VideoArc-style JSON payloads for legacy ComfyUI asset and storyboard workflows."
+      zh: "把 recap_production 产物转换成可供旧 ComfyUI 资产与分镜流程使用的 VideoArc 风格 JSON。"
+    spec_path: skills/recap_to_comfy_bridge/SKILL.md
+    enabled: true
+
   - id: novel2script
     type: skill
     adapter: skill_md
