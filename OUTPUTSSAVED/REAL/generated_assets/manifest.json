@@ -1,0 +1,783 @@
+{
+  "schema": "flux_asset_generation_manifest_v1",
+  "timestamp": "2026-04-16T08:56:42.982964+00:00",
+  "input_folder": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\OUTPUTSSAVED\\REAL\\02_recap_production",
+  "mode": "asset",
+  "style_target": "realism",
+  "final_prompt_language": "en",
+  "chosen_model": "black-forest-labs/FLUX.2-klein-9B",
+  "backend": "klein_cli",
+  "output_root": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets",
+  "selected_asset_types": [
+    "characters",
+    "props",
+    "scenes"
+  ],
+  "item_count": 19,
+  "items": [
+    {
+      "timestamp": "2026-04-16T08:46:48.991545+00:00",
+      "asset_type": "character",
+      "asset_id": "character_张雪_19岁",
+      "asset_name": "张雪_19岁",
+      "mode": "asset",
+      "style_target": "realism",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-9B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 2136449099,
+      "width": 512,
+      "height": 768,
+      "prompt": "lean and tall standing as a full-body identity reference against a clean light background, with around 19 years old, short black hair, lean as the main subject. Keep the face, hair silhouette, clothing outline, hand details, and full posture clearly readable, prioritizing character recognition before secondary detail. Use soft natural light so the face, fabric, and silhouette read clearly without letting the background take over. Keep the mood restrained and story-driven so the character immediately feels lived-in: 19, background, race bike. stormy mountain road press van. Style: cinematic realism, convincing materials and believable lighting, avoid cartoon stylization.",
+      "final_rendered_prompt": "lean and tall standing as a full-body identity reference against a clean light background, with around 19 years old, short black hair, lean as the main subject. Keep the face, hair silhouette, clothing outline, hand details, and full posture clearly readable, prioritizing character recognition before secondary detail. Use soft natural light so the face, fabric, and silhouette read clearly without letting the background take over. Keep the mood restrained and story-driven so the character immediately feels lived-in: 19, background, race bike. stormy mountain road press van. Style: cinematic realism, convincing materials and believable lighting, avoid cartoon stylization.",
+      "final_prompt_language": "en",
+      "source_structured_input": {
+        "asset_type": "character",
+        "asset_id": "character_张雪_19岁",
+        "asset_name": "张雪_19岁",
+        "core_feature": "旧风衣瘦高少年男",
+        "subject_content": "19岁左右的男性，偏瘦身材，略长的黑色短发，清瘦长脸，肤色偏小麦色，四肢修长，穿着被雨水浸透感的旧款深色风衣、磨旧长裤和耐磨短靴，整体造型朴素，有长期接触机修工作的粗糙手部特征",
+        "description": "19岁的修车少年，出身普通，没有背景和门路，靠一股不服输的劲头追逐赛车梦想。在湖南暴雨山路上追赶电视台采访车，被拒绝后仍不放弃，是故事中最早的起点形象。",
+        "style_lighting": "照片级写实，电影质感，柔和自然光",
+        "prompt_fields": {
+          "核心特征": "旧风衣瘦高少年男",
+          "风格及光线": "照片级写实，电影质感，柔和自然光",
+          "输出要求": "高清4k，细节丰富，纯白背景，单人全身，正面朝向，平视机位，中性站姿，单张干净角色身份参考图",
+          "主体内容": "19岁左右的男性，偏瘦身材，略长的黑色短发，清瘦长脸，肤色偏小麦色，四肢修长，穿着被雨水浸透感的旧款深色风衣、磨旧长裤和耐磨短靴，整体造型朴素，有长期接触机修工作的粗糙手部特征"
+        },
+        "fallback_visual_prompt": "核心特征：旧风衣瘦高少年男\n风格及光线：照片级写实，电影质感，柔和自然光\n输出要求：高清4k，细节丰富，纯白背景，单人全身，正面朝向，平视机位，中性站姿，单张干净角色身份参考图\n主体内容：19岁左右的男性，偏瘦身材，略长的黑色短发，清瘦长脸，肤色偏小麦色，四肢修长，穿着被雨水浸透感的旧款深色风衣、磨旧长裤和耐磨短靴，整体造型朴素，有长期接触机修工作的粗糙手部特征"
+      },
+      "prompt_source": "02_assets.json structured fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "Built from structured recap asset fields following the FLUX.2 klein prose-first prompt pattern.",
+        "Final prompt rendered in `en`."
+      ],
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\characters\\character_张雪_19岁.png"
+    },
+    {
+      "timestamp": "2026-04-16T08:47:22.608054+00:00",
+      "asset_type": "character",
+      "asset_id": "character_张雪",
+      "asset_name": "张雪",
+      "mode": "asset",
+      "style_target": "realism",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-9B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 3483958158,
+      "width": 512,
+      "height": 768,
+      "prompt": "short hair standing as a full-body identity reference against a clean light background, with around 39 years old, short black hair mature, sturdy, restrained as the main subject. Keep the face, hair silhouette, clothing outline, hand details, and full posture clearly readable, prioritizing character recognition before secondary detail. Use soft natural light so the face, fabric, and silhouette read clearly without letting the background take over. Keep the mood restrained and story-driven so the character immediately feels lived-in: around 39 years old, character, engine race bike. , track, race bike. Style: cinematic realism, convincing materials and believable lighting, avoid cartoon stylization.",
+      "final_rendered_prompt": "short hair standing as a full-body identity reference against a clean light background, with around 39 years old, short black hair mature, sturdy, restrained as the main subject. Keep the face, hair silhouette, clothing outline, hand details, and full posture clearly readable, prioritizing character recognition before secondary detail. Use soft natural light so the face, fabric, and silhouette read clearly without letting the background take over. Keep the mood restrained and story-driven so the character immediately feels lived-in: around 39 years old, character, engine race bike. , track, race bike. Style: cinematic realism, convincing materials and believable lighting, avoid cartoon stylization.",
+      "final_prompt_language": "en",
+      "source_structured_input": {
+        "asset_type": "character",
+        "asset_id": "character_张雪",
+        "asset_name": "张雪",
+        "core_feature": "深夹克短发中年男",
+        "subject_content": "39岁左右的男性，硬朗偏瘦的脸型，黑色短发夹杂少量细微成熟感，肤色健康，小麦色偏深，身材结实匀称，站姿挺拔，穿着深色夹克或简洁工装外套、纯色内搭、深色长裤和皮鞋，手部有常年机械装配留下的粗粝感，整体气质克制干练",
+        "description": "39岁左右的造车人，从修车少年成长为品牌创始核心人物，长期专注发动机与赛车研发。经历借债创业、内部理念冲突、国际赛道突破后，终于把中国赛车带上欧洲领奖台。",
+        "style_lighting": "照片级写实，电影质感，柔和自然光",
+        "prompt_fields": {
+          "核心特征": "深夹克短发中年男",
+          "风格及光线": "照片级写实，电影质感，柔和自然光",
+          "输出要求": "高清4k，细节丰富，纯白背景，单人全身，正面朝向，平视机位，中性站姿，单张干净角色身份参考图",
+          "主体内容": "39岁左右的男性，硬朗偏瘦的脸型，黑色短发夹杂少量细微成熟感，肤色健康，小麦色偏深，身材结实匀称，站姿挺拔，穿着深色夹克或简洁工装外套、纯色内搭、深色长裤和皮鞋，手部有常年机械装配留下的粗粝感，整体气质克制干练"
+        },
+        "fallback_visual_prompt": "核心特征：深夹克短发中年男\n风格及光线：照片级写实，电影质感，柔和自然光\n输出要求：高清4k，细节丰富，纯白背景，单人全身，正面朝向，平视机位，中性站姿，单张干净角色身份参考图\n主体内容：39岁左右的男性，硬朗偏瘦的脸型，黑色短发夹杂少量细微成熟感，肤色健康，小麦色偏深，身材结实匀称，站姿挺拔，穿着深色夹克或简洁工装外套、纯色内搭、深色长裤和皮鞋，手部有常年机械装配留下的粗粝感，整体气质克制干练"
+      },
+      "prompt_source": "02_assets.json structured fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "Built from structured recap asset fields following the FLUX.2 klein prose-first prompt pattern.",
+        "Final prompt rendered in `en`."
+      ],
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\characters\\character_张雪.png"
+    },
+    {
+      "timestamp": "2026-04-16T08:47:55.967820+00:00",
+      "asset_type": "character",
+      "asset_id": "character_陈星熠",
+      "asset_name": "陈星熠",
+      "mode": "asset",
+      "style_target": "realism",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-9B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 3158083199,
+      "width": 512,
+      "height": 768,
+      "prompt": "the character standing as a full-body identity reference against a clean light background, with around 30 years old, natural, environment as the main subject. Keep the face, hair silhouette, clothing outline, hand details, and full posture clearly readable, prioritizing character recognition before secondary detail. Use soft natural light so the face, fabric, and silhouette read clearly without letting the background take over. Keep the mood restrained and story-driven so the character immediately feels lived-in: road. Style: cinematic realism, convincing materials and believable lighting, avoid cartoon stylization.",
+      "final_rendered_prompt": "the character standing as a full-body identity reference against a clean light background, with around 30 years old, natural, environment as the main subject. Keep the face, hair silhouette, clothing outline, hand details, and full posture clearly readable, prioritizing character recognition before secondary detail. Use soft natural light so the face, fabric, and silhouette read clearly without letting the background take over. Keep the mood restrained and story-driven so the character immediately feels lived-in: road. Style: cinematic realism, convincing materials and believable lighting, avoid cartoon stylization.",
+      "final_prompt_language": "en",
+      "source_structured_input": {
+        "asset_type": "character",
+        "asset_id": "character_陈星熠",
+        "asset_name": "陈星熠",
+        "core_feature": "深外套长发青年女",
+        "subject_content": "30岁左右的女性，鹅蛋脸，黑色中长发自然垂落，身材纤细匀称，穿着朴素的深色外套、针织上衣、休闲长裤和平底鞋，整体造型简洁干净，带有长期在车间环境中陪伴工作的轻微生活磨损感",
+        "description": "张雪的妻子，也是他创业低谷时期最坚定的支持者。在狭小车间和沉重债务中陪伴他，把借来的钱继续投入研发，是张雪梦想道路上最重要的同路人。",
+        "style_lighting": "照片级写实，电影质感，柔和自然光",
+        "prompt_fields": {
+          "核心特征": "深外套长发青年女",
+          "风格及光线": "照片级写实，电影质感，柔和自然光",
+          "输出要求": "高清4k，细节丰富，纯白背景，单人全身，正面朝向，平视机位，中性站姿，单张干净角色身份参考图",
+          "主体内容": "30岁左右的女性，鹅蛋脸，黑色中长发自然垂落，身材纤细匀称，穿着朴素的深色外套、针织上衣、休闲长裤和平底鞋，整体造型简洁干净，带有长期在车间环境中陪伴工作的轻微生活磨损感"
+        },
+        "fallback_visual_prompt": "核心特征：深外套长发青年女\n风格及光线：照片级写实，电影质感，柔和自然光\n输出要求：高清4k，细节丰富，纯白背景，单人全身，正面朝向，平视机位，中性站姿，单张干净角色身份参考图\n主体内容：30岁左右的女性，鹅蛋脸，黑色中长发自然垂落，身材纤细匀称，穿着朴素的深色外套、针织上衣、休闲长裤和平底鞋，整体造型简洁干净，带有长期在车间环境中陪伴工作的轻微生活磨损感"
+      },
+      "prompt_source": "02_assets.json structured fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "Built from structured recap asset fields following the FLUX.2 klein prose-first prompt pattern.",
+        "Final prompt rendered in `en`."
+      ],
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\characters\\character_陈星熠.png"
+    },
+    {
+      "timestamp": "2026-04-16T08:48:29.506431+00:00",
+      "asset_type": "character",
+      "asset_id": "character_Debise",
+      "asset_name": "Debise",
+      "mode": "asset",
+      "style_target": "realism",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-9B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 739774388,
+      "width": 512,
+      "height": 768,
+      "prompt": "the character standing as a full-body identity reference against a clean light background, with around 30 years old, tallsturdy, short hair, race bike, race bike, helmet helmet as the main subject. Keep the face, hair silhouette, clothing outline, hand details, and full posture clearly readable, prioritizing character recognition before secondary detail. Use soft natural light so the face, fabric, and silhouette read clearly without letting the background take over. Keep the mood restrained and story-driven so the character immediately feels lived-in: ZXMOTO 820RR-RS track. , race bike. Style: cinematic realism, convincing materials and believable lighting, avoid cartoon stylization.",
+      "final_rendered_prompt": "the character standing as a full-body identity reference against a clean light background, with around 30 years old, tallsturdy, short hair, race bike, race bike, helmet helmet as the main subject. Keep the face, hair silhouette, clothing outline, hand details, and full posture clearly readable, prioritizing character recognition before secondary detail. Use soft natural light so the face, fabric, and silhouette read clearly without letting the background take over. Keep the mood restrained and story-driven so the character immediately feels lived-in: ZXMOTO 820RR-RS track. , race bike. Style: cinematic realism, convincing materials and believable lighting, avoid cartoon stylization.",
+      "final_prompt_language": "en",
+      "source_structured_input": {
+        "asset_type": "character",
+        "asset_id": "character_Debise",
+        "asset_name": "Debise",
+        "core_feature": "连体皮衣高个男",
+        "subject_content": "30岁左右的男性，高挑结实身材，脸型立体，浅色短发，欧洲人面部轮廓，穿着专业红银黑配色赛车连体皮衣、赛车靴和防护手套，手持全罩式头盔或头盔置于身侧，整体装备完整专业",
+        "description": "法国车手，驾驶ZXMOTO 820RR-RS征战葡萄牙波尔蒂芒赛道。在关键比赛中完成极限制动与超车，帮助中国赛车夺得里程碑式胜利。",
+        "style_lighting": "照片级写实，电影质感，柔和自然光",
+        "prompt_fields": {
+          "核心特征": "连体皮衣高个男",
+          "风格及光线": "照片级写实，电影质感，柔和自然光",
+          "输出要求": "高清4k，细节丰富，纯白背景，单人全身，正面朝向，平视机位，中性站姿，单张干净角色身份参考图",
+          "主体内容": "30岁左右的男性，高挑结实身材，脸型立体，浅色短发，欧洲人面部轮廓，穿着专业红银黑配色赛车连体皮衣、赛车靴和防护手套，手持全罩式头盔或头盔置于身侧，整体装备完整专业"
+        },
+        "fallback_visual_prompt": "核心特征：连体皮衣高个男\n风格及光线：照片级写实，电影质感，柔和自然光\n输出要求：高清4k，细节丰富，纯白背景，单人全身，正面朝向，平视机位，中性站姿，单张干净角色身份参考图\n主体内容：30岁左右的男性，高挑结实身材，脸型立体，浅色短发，欧洲人面部轮廓，穿着专业红银黑配色赛车连体皮衣、赛车靴和防护手套，手持全罩式头盔或头盔置于身侧，整体装备完整专业"
+      },
+      "prompt_source": "02_assets.json structured fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "Built from structured recap asset fields following the FLUX.2 klein prose-first prompt pattern.",
+        "Final prompt rendered in `en`."
+      ],
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\characters\\character_Debise.png"
+    },
+    {
+      "timestamp": "2026-04-16T08:49:02.496635+00:00",
+      "asset_type": "prop",
+      "asset_id": "prop_小排量摩托",
+      "asset_name": "小排量摩托",
+      "mode": "asset",
+      "style_target": "realism",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-9B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 1361890116,
+      "width": 512,
+      "height": 512,
+      "prompt": "motorcycle centered as a single prop reference image, with motorcycle as the main prop description. Clarify the overall silhouette, material behavior, and structural relationships first, then add wear, fabrication traces, or functional details while keeping the background clean. Use soft natural light so the light response across metal, plastic, fabric, or paper stays clear. Keep the narrative weight of the prop without turning it into a complex scene: 19 stormy mountain road motorcycle. Style: cinematic realism, convincing materials and believable lighting, avoid cartoon stylization.",
+      "final_rendered_prompt": "motorcycle centered as a single prop reference image, with motorcycle as the main prop description. Clarify the overall silhouette, material behavior, and structural relationships first, then add wear, fabrication traces, or functional details while keeping the background clean. Use soft natural light so the light response across metal, plastic, fabric, or paper stays clear. Keep the narrative weight of the prop without turning it into a complex scene: 19 stormy mountain road motorcycle. Style: cinematic realism, convincing materials and believable lighting, avoid cartoon stylization.",
+      "final_prompt_language": "en",
+      "source_structured_input": {
+        "asset_type": "prop",
+        "asset_id": "prop_小排量摩托",
+        "asset_name": "小排量摩托",
+        "core_feature": "",
+        "subject_content": "老旧小排量街车摩托，车身偏瘦小，机械结构外露，油箱与侧壳有磨损和旧漆痕迹，颜色以黑色和暗红色为主，轮胎带泥点，车把和排气管有使用痕迹，整体呈现长期奔波与维修后的状态",
+        "description": "张雪19岁时在暴雨山路上骑行追车的早期摩托，象征他最原始也最寒酸的起点。",
+        "style_lighting": "照片级写实，电影质感，柔和自然光",
+        "prompt_fields": {
+          "风格及光线": "照片级写实，电影质感，柔和自然光",
+          "输出要求": "高清4k，细节丰富，背景简洁，单个道具清晰居中，完整展示主体",
+          "主体内容": "老旧小排量街车摩托，车身偏瘦小，机械结构外露，油箱与侧壳有磨损和旧漆痕迹，颜色以黑色和暗红色为主，轮胎带泥点，车把和排气管有使用痕迹，整体呈现长期奔波与维修后的状态"
+        },
+        "fallback_visual_prompt": "风格及光线：照片级写实，电影质感，柔和自然光\n输出要求：高清4k，细节丰富，背景简洁，单个道具清晰居中，完整展示主体\n主体内容：老旧小排量街车摩托，车身偏瘦小，机械结构外露，油箱与侧壳有磨损和旧漆痕迹，颜色以黑色和暗红色为主，轮胎带泥点，车把和排气管有使用痕迹，整体呈现长期奔波与维修后的状态"
+      },
+      "prompt_source": "02_assets.json structured fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "Built from structured recap asset fields following the FLUX.2 klein prose-first prompt pattern.",
+        "Final prompt rendered in `en`."
+      ],
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\props\\prop_小排量摩托.png"
+    },
+    {
+      "timestamp": "2026-04-16T08:49:35.457827+00:00",
+      "asset_type": "prop",
+      "asset_id": "prop_旧账本",
+      "asset_name": "旧账本",
+      "mode": "asset",
+      "style_target": "realism",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-9B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 955039190,
+      "width": 512,
+      "height": 512,
+      "prompt": "the prop centered as a single prop reference image, with a functional story prop as the main prop description. Clarify the overall silhouette, material behavior, and structural relationships first, then add wear, fabrication traces, or functional details while keeping the background clean. Use soft natural light so the light response across metal, plastic, fabric, or paper stays clear. Keep the narrative weight of the prop without turning it into a complex scene: object. Style: cinematic realism, convincing materials and believable lighting, avoid cartoon stylization.",
+      "final_rendered_prompt": "the prop centered as a single prop reference image, with a functional story prop as the main prop description. Clarify the overall silhouette, material behavior, and structural relationships first, then add wear, fabrication traces, or functional details while keeping the background clean. Use soft natural light so the light response across metal, plastic, fabric, or paper stays clear. Keep the narrative weight of the prop without turning it into a complex scene: object. Style: cinematic realism, convincing materials and believable lighting, avoid cartoon stylization.",
+      "final_prompt_language": "en",
+      "source_structured_input": {
+        "asset_type": "prop",
+        "asset_id": "prop_旧账本",
+        "asset_name": "旧账本",
+        "core_feature": "",
+        "subject_content": "一本使用痕迹明显的纸质旧账本，封面磨损起毛边，边角卷曲发旧，内页密密麻麻写满手写数字、借款记录和备注，纸张泛黄，厚度中等，带有长期翻阅和油污沾染的细节",
+        "description": "记录借款与欠账的账本，是夫妻创业压力最具象的物件。",
+        "style_lighting": "照片级写实，电影质感，柔和自然光",
+        "prompt_fields": {
+          "风格及光线": "照片级写实，电影质感，柔和自然光",
+          "输出要求": "高清4k，细节丰富，背景简洁，单个道具清晰居中，完整展示主体",
+          "主体内容": "一本使用痕迹明显的纸质旧账本，封面磨损起毛边，边角卷曲发旧，内页密密麻麻写满手写数字、借款记录和备注，纸张泛黄，厚度中等，带有长期翻阅和油污沾染的细节"
+        },
+        "fallback_visual_prompt": "风格及光线：照片级写实，电影质感，柔和自然光\n输出要求：高清4k，细节丰富，背景简洁，单个道具清晰居中，完整展示主体\n主体内容：一本使用痕迹明显的纸质旧账本，封面磨损起毛边，边角卷曲发旧，内页密密麻麻写满手写数字、借款记录和备注，纸张泛黄，厚度中等，带有长期翻阅和油污沾染的细节"
+      },
+      "prompt_source": "02_assets.json structured fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "Built from structured recap asset fields following the FLUX.2 klein prose-first prompt pattern.",
+        "Final prompt rendered in `en`."
+      ],
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\props\\prop_旧账本.png"
+    },
+    {
+      "timestamp": "2026-04-16T08:50:08.080317+00:00",
+      "asset_type": "prop",
+      "asset_id": "prop_摩托车车架",
+      "asset_name": "摩托车车架",
+      "mode": "asset",
+      "style_target": "realism",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-9B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 561170070,
+      "width": 512,
+      "height": 512,
+      "prompt": "motorcycle centered as a single prop reference image, with motorcycle, engine as the main prop description. Clarify the overall silhouette, material behavior, and structural relationships first, then add wear, fabrication traces, or functional details while keeping the background clean. Use soft natural light so the light response across metal, plastic, fabric, or paper stays clear. Style: cinematic realism, convincing materials and believable lighting, avoid cartoon stylization.",
+      "final_rendered_prompt": "motorcycle centered as a single prop reference image, with motorcycle, engine as the main prop description. Clarify the overall silhouette, material behavior, and structural relationships first, then add wear, fabrication traces, or functional details while keeping the background clean. Use soft natural light so the light response across metal, plastic, fabric, or paper stays clear. Style: cinematic realism, convincing materials and believable lighting, avoid cartoon stylization.",
+      "final_prompt_language": "en",
+      "source_structured_input": {
+        "asset_type": "prop",
+        "asset_id": "prop_摩托车车架",
+        "asset_name": "摩托车车架",
+        "core_feature": "",
+        "subject_content": "未完全装配的高性能摩托车金属车架，银灰色焊接管件结构清晰，带有工业切削与焊点痕迹，整体呈骨架形态，中型尺寸，局部预留发动机与悬挂安装位，展现研发阶段的半成品质感",
+        "description": "车间中央那副还像骨架一样的车架，象征项目从零开始的雏形。",
+        "style_lighting": "照片级写实，电影质感，柔和自然光",
+        "prompt_fields": {
+          "风格及光线": "照片级写实，电影质感，柔和自然光",
+          "输出要求": "高清4k，细节丰富，背景简洁，单个道具清晰居中，完整展示主体",
+          "主体内容": "未完全装配的高性能摩托车金属车架，银灰色焊接管件结构清晰，带有工业切削与焊点痕迹，整体呈骨架形态，中型尺寸，局部预留发动机与悬挂安装位，展现研发阶段的半成品质感"
+        },
+        "fallback_visual_prompt": "风格及光线：照片级写实，电影质感，柔和自然光\n输出要求：高清4k，细节丰富，背景简洁，单个道具清晰居中，完整展示主体\n主体内容：未完全装配的高性能摩托车金属车架，银灰色焊接管件结构清晰，带有工业切削与焊点痕迹，整体呈骨架形态，中型尺寸，局部预留发动机与悬挂安装位，展现研发阶段的半成品质感"
+      },
+      "prompt_source": "02_assets.json structured fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "Built from structured recap asset fields following the FLUX.2 klein prose-first prompt pattern.",
+        "Final prompt rendered in `en`."
+      ],
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\props\\prop_摩托车车架.png"
+    },
+    {
+      "timestamp": "2026-04-16T08:50:40.616702+00:00",
+      "asset_type": "prop",
+      "asset_id": "prop_发动机壳体",
+      "asset_name": "发动机壳体",
+      "mode": "asset",
+      "style_target": "realism",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-9B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 2367113752,
+      "width": 512,
+      "height": 512,
+      "prompt": "engine centered as a single prop reference image, with motorcycleengine as the main prop description. Clarify the overall silhouette, material behavior, and structural relationships first, then add wear, fabrication traces, or functional details while keeping the background clean. Use soft natural light so the light response across metal, plastic, fabric, or paper stays clear. Keep the narrative weight of the prop without turning it into a complex scene: \" \". Style: cinematic realism, convincing materials and believable lighting, avoid cartoon stylization.",
+      "final_rendered_prompt": "engine centered as a single prop reference image, with motorcycleengine as the main prop description. Clarify the overall silhouette, material behavior, and structural relationships first, then add wear, fabrication traces, or functional details while keeping the background clean. Use soft natural light so the light response across metal, plastic, fabric, or paper stays clear. Keep the narrative weight of the prop without turning it into a complex scene: \" \". Style: cinematic realism, convincing materials and believable lighting, avoid cartoon stylization.",
+      "final_prompt_language": "en",
+      "source_structured_input": {
+        "asset_type": "prop",
+        "asset_id": "prop_发动机壳体",
+        "asset_name": "发动机壳体",
+        "core_feature": "",
+        "subject_content": "高性能摩托发动机壳体，金属材质，银灰色或深钛色表面，带有精密加工纹路、螺栓孔位和散热结构，体积中等偏重，工业感强，细节体现机械精度与核心动力部件特征",
+        "description": "张雪反复触摸和研究的核心零部件，承载“心脏”隐喻。",
+        "style_lighting": "照片级写实，电影质感，柔和自然光",
+        "prompt_fields": {
+          "风格及光线": "照片级写实，电影质感，柔和自然光",
+          "输出要求": "高清4k，细节丰富，背景简洁，单个道具清晰居中，完整展示主体",
+          "主体内容": "高性能摩托发动机壳体，金属材质，银灰色或深钛色表面，带有精密加工纹路、螺栓孔位和散热结构，体积中等偏重，工业感强，细节体现机械精度与核心动力部件特征"
+        },
+        "fallback_visual_prompt": "风格及光线：照片级写实，电影质感，柔和自然光\n输出要求：高清4k，细节丰富，背景简洁，单个道具清晰居中，完整展示主体\n主体内容：高性能摩托发动机壳体，金属材质，银灰色或深钛色表面，带有精密加工纹路、螺栓孔位和散热结构，体积中等偏重，工业感强，细节体现机械精度与核心动力部件特征"
+      },
+      "prompt_source": "02_assets.json structured fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "Built from structured recap asset fields following the FLUX.2 klein prose-first prompt pattern.",
+        "Final prompt rendered in `en`."
+      ],
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\props\\prop_发动机壳体.png"
+    },
+    {
+      "timestamp": "2026-04-16T08:51:13.014914+00:00",
+      "asset_type": "prop",
+      "asset_id": "prop_手机",
+      "asset_name": "手机",
+      "mode": "asset",
+      "style_target": "realism",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-9B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 1933300371,
+      "width": 512,
+      "height": 512,
+      "prompt": "the prop centered as a single prop reference image, with tools as the main prop description. Clarify the overall silhouette, material behavior, and structural relationships first, then add wear, fabrication traces, or functional details while keeping the background clean. Use soft natural light so the light response across metal, plastic, fabric, or paper stays clear. Keep the narrative weight of the prop without turning it into a complex scene: object. Style: cinematic realism, convincing materials and believable lighting, avoid cartoon stylization.",
+      "final_rendered_prompt": "the prop centered as a single prop reference image, with tools as the main prop description. Clarify the overall silhouette, material behavior, and structural relationships first, then add wear, fabrication traces, or functional details while keeping the background clean. Use soft natural light so the light response across metal, plastic, fabric, or paper stays clear. Keep the narrative weight of the prop without turning it into a complex scene: object. Style: cinematic realism, convincing materials and believable lighting, avoid cartoon stylization.",
+      "final_prompt_language": "en",
+      "source_structured_input": {
+        "asset_type": "prop",
+        "asset_id": "prop_手机",
+        "asset_name": "手机",
+        "core_feature": "",
+        "subject_content": "现代智能手机，黑色窄边框机身，直板设计，玻璃与金属材质结合，屏幕可呈现简洁文字输入界面，尺寸标准，外观低调商务，代表当代决策和个人表达工具",
+        "description": "张雪在决定再次出发时打下宣言的物件，承接其人生转折。",
+        "style_lighting": "照片级写实，电影质感，柔和自然光",
+        "prompt_fields": {
+          "风格及光线": "照片级写实，电影质感，柔和自然光",
+          "输出要求": "高清4k，细节丰富，背景简洁，单个道具清晰居中，完整展示主体",
+          "主体内容": "现代智能手机，黑色窄边框机身，直板设计，玻璃与金属材质结合，屏幕可呈现简洁文字输入界面，尺寸标准，外观低调商务，代表当代决策和个人表达工具"
+        },
+        "fallback_visual_prompt": "风格及光线：照片级写实，电影质感，柔和自然光\n输出要求：高清4k，细节丰富，背景简洁，单个道具清晰居中，完整展示主体\n主体内容：现代智能手机，黑色窄边框机身，直板设计，玻璃与金属材质结合，屏幕可呈现简洁文字输入界面，尺寸标准，外观低调商务，代表当代决策和个人表达工具"
+      },
+      "prompt_source": "02_assets.json structured fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "Built from structured recap asset fields following the FLUX.2 klein prose-first prompt pattern.",
+        "Final prompt rendered in `en`."
+      ],
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\props\\prop_手机.png"
+    },
+    {
+      "timestamp": "2026-04-16T08:51:45.578793+00:00",
+      "asset_type": "prop",
+      "asset_id": "prop_ZXMOTO_820RR-RS",
+      "asset_name": "ZXMOTO 820RR-RS",
+      "mode": "asset",
+      "style_target": "realism",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-9B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 3260041666,
+      "width": 512,
+      "height": 512,
+      "prompt": "ZXMOTO 820RR-RS centered as a single prop reference image, with trackmotorcyclerace bike as the main prop description. Clarify the overall silhouette, material behavior, and structural relationships first, then add wear, fabrication traces, or functional details while keeping the background clean. Use soft natural light so the light response across metal, plastic, fabric, or paper stays clear. Keep the narrative weight of the prop without turning it into a complex scene: track race bike. Style: cinematic realism, convincing materials and believable lighting, avoid cartoon stylization.",
+      "final_rendered_prompt": "ZXMOTO 820RR-RS centered as a single prop reference image, with trackmotorcyclerace bike as the main prop description. Clarify the overall silhouette, material behavior, and structural relationships first, then add wear, fabrication traces, or functional details while keeping the background clean. Use soft natural light so the light response across metal, plastic, fabric, or paper stays clear. Keep the narrative weight of the prop without turning it into a complex scene: track race bike. Style: cinematic realism, convincing materials and believable lighting, avoid cartoon stylization.",
+      "final_prompt_language": "en",
+      "source_structured_input": {
+        "asset_type": "prop",
+        "asset_id": "prop_ZXMOTO_820RR-RS",
+        "asset_name": "ZXMOTO 820RR-RS",
+        "core_feature": "",
+        "subject_content": "高性能赛道摩托赛车，整车采用红银相间涂装，整流罩锋利流线，低趴侵略性车身姿态，配备粗壮前减震、竞赛刹车系统、轻量化轮毂、低风阻风挡和高规格排气，整体呈现专业国际赛事级别性能机器形象",
+        "description": "夺得葡萄牙赛道冠军的中国赛车，是整部故事最核心的标志性资产。",
+        "style_lighting": "照片级写实，电影质感，柔和自然光",
+        "prompt_fields": {
+          "风格及光线": "照片级写实，电影质感，柔和自然光",
+          "输出要求": "高清4k，细节丰富，背景简洁，单个道具清晰居中，完整展示主体",
+          "主体内容": "高性能赛道摩托赛车，整车采用红银相间涂装，整流罩锋利流线，低趴侵略性车身姿态，配备粗壮前减震、竞赛刹车系统、轻量化轮毂、低风阻风挡和高规格排气，整体呈现专业国际赛事级别性能机器形象"
+        },
+        "fallback_visual_prompt": "风格及光线：照片级写实，电影质感，柔和自然光\n输出要求：高清4k，细节丰富，背景简洁，单个道具清晰居中，完整展示主体\n主体内容：高性能赛道摩托赛车，整车采用红银相间涂装，整流罩锋利流线，低趴侵略性车身姿态，配备粗壮前减震、竞赛刹车系统、轻量化轮毂、低风阻风挡和高规格排气，整体呈现专业国际赛事级别性能机器形象"
+      },
+      "prompt_source": "02_assets.json structured fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "Built from structured recap asset fields following the FLUX.2 klein prose-first prompt pattern.",
+        "Final prompt rendered in `en`."
+      ],
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\props\\prop_ZXMOTO_820RR-RS.png"
+    },
+    {
+      "timestamp": "2026-04-16T08:52:18.488814+00:00",
+      "asset_type": "prop",
+      "asset_id": "prop_全罩式赛车头盔",
+      "asset_name": "全罩式赛车头盔",
+      "mode": "asset",
+      "style_target": "realism",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-9B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 1175046559,
+      "width": 512,
+      "height": 512,
+      "prompt": "racing helmet centered as a single prop reference image, with racing helmet, emphasize as the main prop description. Clarify the overall silhouette, material behavior, and structural relationships first, then add wear, fabrication traces, or functional details while keeping the background clean. Use soft natural light so the light response across metal, plastic, fabric, or paper stays clear. Keep the narrative weight of the prop without turning it into a complex scene: track, Debise. Style: cinematic realism, convincing materials and believable lighting, avoid cartoon stylization.",
+      "final_rendered_prompt": "racing helmet centered as a single prop reference image, with racing helmet, emphasize as the main prop description. Clarify the overall silhouette, material behavior, and structural relationships first, then add wear, fabrication traces, or functional details while keeping the background clean. Use soft natural light so the light response across metal, plastic, fabric, or paper stays clear. Keep the narrative weight of the prop without turning it into a complex scene: track, Debise. Style: cinematic realism, convincing materials and believable lighting, avoid cartoon stylization.",
+      "final_prompt_language": "en",
+      "source_structured_input": {
+        "asset_type": "prop",
+        "asset_id": "prop_全罩式赛车头盔",
+        "asset_name": "全罩式赛车头盔",
+        "core_feature": "",
+        "subject_content": "专业全罩式赛车头盔，流线型外壳，红银黑配色，透明或轻微反光镜片，表面带有空气动力学导流结构和通风口，材质呈碳纤维或复合纤维质感，尺寸标准，安全竞技属性突出",
+        "description": "赛道竞速的重要标志性装备，与车手Debise和冠军时刻紧密相关。",
+        "style_lighting": "照片级写实，电影质感，柔和自然光",
+        "prompt_fields": {
+          "风格及光线": "照片级写实，电影质感，柔和自然光",
+          "输出要求": "高清4k，细节丰富，背景简洁，单个道具清晰居中，完整展示主体",
+          "主体内容": "专业全罩式赛车头盔，流线型外壳，红银黑配色，透明或轻微反光镜片，表面带有空气动力学导流结构和通风口，材质呈碳纤维或复合纤维质感，尺寸标准，安全竞技属性突出"
+        },
+        "fallback_visual_prompt": "风格及光线：照片级写实，电影质感，柔和自然光\n输出要求：高清4k，细节丰富，背景简洁，单个道具清晰居中，完整展示主体\n主体内容：专业全罩式赛车头盔，流线型外壳，红银黑配色，透明或轻微反光镜片，表面带有空气动力学导流结构和通风口，材质呈碳纤维或复合纤维质感，尺寸标准，安全竞技属性突出"
+      },
+      "prompt_source": "02_assets.json structured fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "Built from structured recap asset fields following the FLUX.2 klein prose-first prompt pattern.",
+        "Final prompt rendered in `en`."
+      ],
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\props\\prop_全罩式赛车头盔.png"
+    },
+    {
+      "timestamp": "2026-04-16T08:52:51.534108+00:00",
+      "asset_type": "scene",
+      "asset_id": "scene_湖南暴雨山路",
+      "asset_name": "湖南暴雨山路",
+      "mode": "asset",
+      "style_target": "realism",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-9B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 3370087208,
+      "width": 768,
+      "height": 512,
+      "prompt": "stormy mountain road presented as a single environment reference image, with road, ground as the main environment focus. Establish the environment first, then add spatial depth, ground texture, distant information, and reusable story detail, without introducing unrelated characters. Keep the atmosphere unified and aligned with the story function of this location: scene, 19 motorcycle press van. Style: cinematic realism, convincing materials and believable lighting, avoid cartoon stylization.",
+      "final_rendered_prompt": "stormy mountain road presented as a single environment reference image, with road, ground as the main environment focus. Establish the environment first, then add spatial depth, ground texture, distant information, and reusable story detail, without introducing unrelated characters. Keep the atmosphere unified and aligned with the story function of this location: scene, 19 motorcycle press van. Style: cinematic realism, convincing materials and believable lighting, avoid cartoon stylization.",
+      "final_prompt_language": "en",
+      "source_structured_input": {
+        "asset_type": "scene",
+        "asset_id": "scene_湖南暴雨山路",
+        "asset_name": "湖南暴雨山路",
+        "core_feature": "",
+        "subject_content": "湖南山区盘山公路，路面被暴雨打湿，橘红色泥浆覆盖边缘和低洼地带，山体植被浓密，远处被灰白雨雾笼罩，能见度较低，弯道路段明显，地面有车轮打滑痕迹，整体氛围压抑、湿冷、充满搏命感",
+        "description": "故事开端的重要场景，张雪19岁时骑小排量摩托追赶电视台采访车的地方。暴雨、泥泞和山路共同构成他命运起点的视觉记忆。",
+        "style_lighting": "照片级写实，电影质感，阴冷暴雨天光",
+        "prompt_fields": {
+          "风格及光线": "照片级写实，电影质感，阴冷暴雨天光",
+          "输出要求": "高清4k，细节丰富",
+          "主体内容": "湖南山区盘山公路，路面被暴雨打湿，橘红色泥浆覆盖边缘和低洼地带，山体植被浓密，远处被灰白雨雾笼罩，能见度较低，弯道路段明显，地面有车轮打滑痕迹，整体氛围压抑、湿冷、充满搏命感"
+        },
+        "fallback_visual_prompt": "风格及光线：照片级写实，电影质感，阴冷暴雨天光\n输出要求：高清4k，细节丰富\n主体内容：湖南山区盘山公路，路面被暴雨打湿，橘红色泥浆覆盖边缘和低洼地带，山体植被浓密，远处被灰白雨雾笼罩，能见度较低，弯道路段明显，地面有车轮打滑痕迹，整体氛围压抑、湿冷、充满搏命感"
+      },
+      "prompt_source": "02_assets.json structured fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "Built from structured recap asset fields following the FLUX.2 klein prose-first prompt pattern.",
+        "Final prompt rendered in `en`."
+      ],
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\scenes\\scene_湖南暴雨山路.png"
+    },
+    {
+      "timestamp": "2026-04-16T08:53:24.663542+00:00",
+      "asset_type": "scene",
+      "asset_id": "scene_电视台采访车旁岔路口",
+      "asset_name": "电视台采访车旁岔路口",
+      "mode": "asset",
+      "style_target": "realism",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-9B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 1460387514,
+      "width": 768,
+      "height": 512,
+      "prompt": "press van presented as a single environment reference image, with press van, press van, environment as the main environment focus. Establish the environment first, then add spatial depth, ground texture, distant information, and reusable story detail, without introducing unrelated characters. Keep the atmosphere unified and aligned with the story function of this location: press van scene. Style: cinematic realism, convincing materials and believable lighting, avoid cartoon stylization.",
+      "final_rendered_prompt": "press van presented as a single environment reference image, with press van, press van, environment as the main environment focus. Establish the environment first, then add spatial depth, ground texture, distant information, and reusable story detail, without introducing unrelated characters. Keep the atmosphere unified and aligned with the story function of this location: press van scene. Style: cinematic realism, convincing materials and believable lighting, avoid cartoon stylization.",
+      "final_prompt_language": "en",
+      "source_structured_input": {
+        "asset_type": "scene",
+        "asset_id": "scene_电视台采访车旁岔路口",
+        "asset_name": "电视台采访车旁岔路口",
+        "core_feature": "",
+        "subject_content": "山路上的狭窄岔路口，路边积水明显，泥浆飞溅，停靠或减速的白色采访车形成视觉焦点，车身带有媒体采访车辆特征，周围是潮湿山林、模糊路牌和雨幕，环境逼仄，具有命运转折感",
+        "description": "张雪追上采访车却被拒绝的关键节点场景，象征梦想第一次被现实当面推开。",
+        "style_lighting": "照片级写实，电影质感，雨雾冷光",
+        "prompt_fields": {
+          "风格及光线": "照片级写实，电影质感，雨雾冷光",
+          "输出要求": "高清4k，细节丰富",
+          "主体内容": "山路上的狭窄岔路口，路边积水明显，泥浆飞溅，停靠或减速的白色采访车形成视觉焦点，车身带有媒体采访车辆特征，周围是潮湿山林、模糊路牌和雨幕，环境逼仄，具有命运转折感"
+        },
+        "fallback_visual_prompt": "风格及光线：照片级写实，电影质感，雨雾冷光\n输出要求：高清4k，细节丰富\n主体内容：山路上的狭窄岔路口，路边积水明显，泥浆飞溅，停靠或减速的白色采访车形成视觉焦点，车身带有媒体采访车辆特征，周围是潮湿山林、模糊路牌和雨幕，环境逼仄，具有命运转折感"
+      },
+      "prompt_source": "02_assets.json structured fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "Built from structured recap asset fields following the FLUX.2 klein prose-first prompt pattern.",
+        "Final prompt rendered in `en`."
+      ],
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\scenes\\scene_电视台采访车旁岔路口.png"
+    },
+    {
+      "timestamp": "2026-04-16T08:53:57.895273+00:00",
+      "asset_type": "scene",
+      "asset_id": "scene_重庆狭小车间",
+      "asset_name": "重庆狭小车间",
+      "mode": "asset",
+      "style_target": "realism",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-9B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 4264986287,
+      "width": 768,
+      "height": 512,
+      "prompt": "the scene presented as a single environment reference image, with ground, workbench tools, engine, motorcycle as the main environment focus. Establish the environment first, then add spatial depth, ground texture, distant information, and reusable story detail, without introducing unrelated characters. Keep the atmosphere unified and aligned with the story function of this location: 2013 scene. Style: cinematic realism, convincing materials and believable lighting, avoid cartoon stylization.",
+      "final_rendered_prompt": "the scene presented as a single environment reference image, with ground, workbench tools, engine, motorcycle as the main environment focus. Establish the environment first, then add spatial depth, ground texture, distant information, and reusable story detail, without introducing unrelated characters. Keep the atmosphere unified and aligned with the story function of this location: 2013 scene. Style: cinematic realism, convincing materials and believable lighting, avoid cartoon stylization.",
+      "final_prompt_language": "en",
+      "source_structured_input": {
+        "asset_type": "scene",
+        "asset_id": "scene_重庆狭小车间",
+        "asset_name": "重庆狭小车间",
+        "core_feature": "",
+        "subject_content": "重庆老旧工业区内的狭小机修车间，空间低矮拥挤，水泥地面有油污痕迹，空气仿佛弥漫汽油和焊锡气息，工作台上散落工具、发动机零件、金属部件和记满数字的旧账本，中央摆放尚未完成的摩托车车架，墙面陈旧，灯光昏暗却聚焦在机械结构上",
+        "description": "2013年张雪与陈星熠借债创业的核心场景，承载早期研发、装配和夫妻共担风险的阶段。",
+        "style_lighting": "照片级写实，电影质感，昏黄工业灯光",
+        "prompt_fields": {
+          "风格及光线": "照片级写实，电影质感，昏黄工业灯光",
+          "输出要求": "高清4k，细节丰富",
+          "主体内容": "重庆老旧工业区内的狭小机修车间，空间低矮拥挤，水泥地面有油污痕迹，空气仿佛弥漫汽油和焊锡气息，工作台上散落工具、发动机零件、金属部件和记满数字的旧账本，中央摆放尚未完成的摩托车车架，墙面陈旧，灯光昏暗却聚焦在机械结构上"
+        },
+        "fallback_visual_prompt": "风格及光线：照片级写实，电影质感，昏黄工业灯光\n输出要求：高清4k，细节丰富\n主体内容：重庆老旧工业区内的狭小机修车间，空间低矮拥挤，水泥地面有油污痕迹，空气仿佛弥漫汽油和焊锡气息，工作台上散落工具、发动机零件、金属部件和记满数字的旧账本，中央摆放尚未完成的摩托车车架，墙面陈旧，灯光昏暗却聚焦在机械结构上"
+      },
+      "prompt_source": "02_assets.json structured fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "Built from structured recap asset fields following the FLUX.2 klein prose-first prompt pattern.",
+        "Final prompt rendered in `en`."
+      ],
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\scenes\\scene_重庆狭小车间.png"
+    },
+    {
+      "timestamp": "2026-04-16T08:54:30.698040+00:00",
+      "asset_type": "scene",
+      "asset_id": "scene_现代化会议室",
+      "asset_name": "现代化会议室",
+      "mode": "asset",
+      "style_target": "realism",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-9B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 3426569755,
+      "width": 768,
+      "height": 512,
+      "prompt": "the scene presented as a single environment reference image, with road as the main environment focus. Establish the environment first, then add spatial depth, ground texture, distant information, and reusable story detail, without introducing unrelated characters. Keep the atmosphere unified and aligned with the story function of this location: 2024 scene, engine. Style: cinematic realism, convincing materials and believable lighting, avoid cartoon stylization.",
+      "final_rendered_prompt": "the scene presented as a single environment reference image, with road as the main environment focus. Establish the environment first, then add spatial depth, ground texture, distant information, and reusable story detail, without introducing unrelated characters. Keep the atmosphere unified and aligned with the story function of this location: 2024 scene, engine. Style: cinematic realism, convincing materials and believable lighting, avoid cartoon stylization.",
+      "final_prompt_language": "en",
+      "source_structured_input": {
+        "asset_type": "scene",
+        "asset_id": "scene_现代化会议室",
+        "asset_name": "现代化会议室",
+        "core_feature": "",
+        "subject_content": "宽敞现代的企业会议室，长条会议桌表面整洁，玻璃幕墙外可见成片工厂建筑与园区道路，室内配有投影屏、商务座椅、文件资料和矿泉水，整体装修简洁高级，色调偏冷，氛围理性而压迫",
+        "description": "2024年理念冲突的核心场景，张雪与投资人、高管围绕发动机投入发生分歧。",
+        "style_lighting": "照片级写实，电影质感，冷白商务顶灯",
+        "prompt_fields": {
+          "风格及光线": "照片级写实，电影质感，冷白商务顶灯",
+          "输出要求": "高清4k，细节丰富",
+          "主体内容": "宽敞现代的企业会议室，长条会议桌表面整洁，玻璃幕墙外可见成片工厂建筑与园区道路，室内配有投影屏、商务座椅、文件资料和矿泉水，整体装修简洁高级，色调偏冷，氛围理性而压迫"
+        },
+        "fallback_visual_prompt": "风格及光线：照片级写实，电影质感，冷白商务顶灯\n输出要求：高清4k，细节丰富\n主体内容：宽敞现代的企业会议室，长条会议桌表面整洁，玻璃幕墙外可见成片工厂建筑与园区道路，室内配有投影屏、商务座椅、文件资料和矿泉水，整体装修简洁高级，色调偏冷，氛围理性而压迫"
+      },
+      "prompt_source": "02_assets.json structured fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "Built from structured recap asset fields following the FLUX.2 klein prose-first prompt pattern.",
+        "Final prompt rendered in `en`."
+      ],
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\scenes\\scene_现代化会议室.png"
+    },
+    {
+      "timestamp": "2026-04-16T08:55:03.617973+00:00",
+      "asset_type": "scene",
+      "asset_id": "scene_工厂外夜色空地",
+      "asset_name": "工厂外夜色空地",
+      "mode": "asset",
+      "style_target": "realism",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-9B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 1853514160,
+      "width": 768,
+      "height": 512,
+      "prompt": "the scene presented as a single environment reference image, with road, environment restrained, lonely as the main environment focus. Establish the environment first, then add spatial depth, ground texture, distant information, and reusable story detail, without introducing unrelated characters. Use environment to clarify spatial depth, material reflections, and atmosphere. Keep the atmosphere unified and aligned with the story function of this location: scene. Style: cinematic realism, convincing materials and believable lighting, avoid cartoon stylization.",
+      "final_rendered_prompt": "the scene presented as a single environment reference image, with road, environment restrained, lonely as the main environment focus. Establish the environment first, then add spatial depth, ground texture, distant information, and reusable story detail, without introducing unrelated characters. Use environment to clarify spatial depth, material reflections, and atmosphere. Keep the atmosphere unified and aligned with the story function of this location: scene. Style: cinematic realism, convincing materials and believable lighting, avoid cartoon stylization.",
+      "final_prompt_language": "en",
+      "source_structured_input": {
+        "asset_type": "scene",
+        "asset_id": "scene_工厂外夜色空地",
+        "asset_name": "工厂外夜色空地",
+        "core_feature": "",
+        "subject_content": "现代工厂大楼外的夜间空地，建筑外立面简洁明亮，局部路灯与楼体灯光投下冷色光影，远处可见厂区道路和停车区域，夜空开阔，环境安静克制，具有孤独和决断并存的气质",
+        "description": "张雪离开公司大楼后独自站在夜空下做出决定的场景，承接人生再次出走。",
+        "style_lighting": "照片级写实，电影质感，清冷夜间环境光",
+        "prompt_fields": {
+          "风格及光线": "照片级写实，电影质感，清冷夜间环境光",
+          "输出要求": "高清4k，细节丰富",
+          "主体内容": "现代工厂大楼外的夜间空地，建筑外立面简洁明亮，局部路灯与楼体灯光投下冷色光影，远处可见厂区道路和停车区域，夜空开阔，环境安静克制，具有孤独和决断并存的气质"
+        },
+        "fallback_visual_prompt": "风格及光线：照片级写实，电影质感，清冷夜间环境光\n输出要求：高清4k，细节丰富\n主体内容：现代工厂大楼外的夜间空地，建筑外立面简洁明亮，局部路灯与楼体灯光投下冷色光影，远处可见厂区道路和停车区域，夜空开阔，环境安静克制，具有孤独和决断并存的气质"
+      },
+      "prompt_source": "02_assets.json structured fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "Built from structured recap asset fields following the FLUX.2 klein prose-first prompt pattern.",
+        "Final prompt rendered in `en`."
+      ],
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\scenes\\scene_工厂外夜色空地.png"
+    },
+    {
+      "timestamp": "2026-04-16T08:55:36.809893+00:00",
+      "asset_type": "scene",
+      "asset_id": "scene_葡萄牙波尔蒂芒赛道",
+      "asset_name": "葡萄牙波尔蒂芒赛道",
+      "mode": "asset",
+      "style_target": "realism",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-9B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 3401376737,
+      "width": 768,
+      "height": 512,
+      "prompt": "track presented as a single environment reference image, with track, track, grandstand, guardrails as the main environment focus. Establish the environment first, then add spatial depth, ground texture, distant information, and reusable story detail, without introducing unrelated characters. Keep the atmosphere unified and aligned with the story function of this location: 2026 3 ZXMOTOrace bike trackscene. Style: cinematic realism, convincing materials and believable lighting, avoid cartoon stylization.",
+      "final_rendered_prompt": "track presented as a single environment reference image, with track, track, grandstand, guardrails as the main environment focus. Establish the environment first, then add spatial depth, ground texture, distant information, and reusable story detail, without introducing unrelated characters. Keep the atmosphere unified and aligned with the story function of this location: 2026 3 ZXMOTOrace bike trackscene. Style: cinematic realism, convincing materials and believable lighting, avoid cartoon stylization.",
+      "final_prompt_language": "en",
+      "source_structured_input": {
+        "asset_type": "scene",
+        "asset_id": "scene_葡萄牙波尔蒂芒赛道",
+        "asset_name": "葡萄牙波尔蒂芒赛道",
+        "core_feature": "",
+        "subject_content": "葡萄牙波尔蒂芒国际赛道，宽阔起伏的柏油赛道被阳光炙烤，地表带有热浪扭曲感，发车区标线清晰，远处看台、广告牌、维修区和护栏完整可见，整体空间开阔专业，充满高速竞技与国际赛事氛围",
+        "description": "2026年3月ZXMOTO赛车夺冠的标志性国际赛道场景，是故事高潮所在。",
+        "style_lighting": "照片级写实，电影质感，炽烈正午阳光",
+        "prompt_fields": {
+          "风格及光线": "照片级写实，电影质感，炽烈正午阳光",
+          "输出要求": "高清4k，细节丰富",
+          "主体内容": "葡萄牙波尔蒂芒国际赛道，宽阔起伏的柏油赛道被阳光炙烤，地表带有热浪扭曲感，发车区标线清晰，远处看台、广告牌、维修区和护栏完整可见，整体空间开阔专业，充满高速竞技与国际赛事氛围"
+        },
+        "fallback_visual_prompt": "风格及光线：照片级写实，电影质感，炽烈正午阳光\n输出要求：高清4k，细节丰富\n主体内容：葡萄牙波尔蒂芒国际赛道，宽阔起伏的柏油赛道被阳光炙烤，地表带有热浪扭曲感，发车区标线清晰，远处看台、广告牌、维修区和护栏完整可见，整体空间开阔专业，充满高速竞技与国际赛事氛围"
+      },
+      "prompt_source": "02_assets.json structured fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "Built from structured recap asset fields following the FLUX.2 klein prose-first prompt pattern.",
+        "Final prompt rendered in `en`."
+      ],
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\scenes\\scene_葡萄牙波尔蒂芒赛道.png"
+    },
+    {
+      "timestamp": "2026-04-16T08:56:09.745993+00:00",
+      "asset_type": "scene",
+      "asset_id": "scene_赛道维修区",
+      "asset_name": "赛道维修区",
+      "mode": "asset",
+      "style_target": "realism",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-9B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 3103592396,
+      "width": 768,
+      "height": 512,
+      "prompt": "track pit lane presented as a single environment reference image, with race bike, race bike, tools, ground, track, environmenttense as the main environment focus. Establish the environment first, then add spatial depth, ground texture, distant information, and reusable story detail, without introducing unrelated characters. Style: cinematic realism, convincing materials and believable lighting, avoid cartoon stylization.",
+      "final_rendered_prompt": "track pit lane presented as a single environment reference image, with race bike, race bike, tools, ground, track, environmenttense as the main environment focus. Establish the environment first, then add spatial depth, ground texture, distant information, and reusable story detail, without introducing unrelated characters. Style: cinematic realism, convincing materials and believable lighting, avoid cartoon stylization.",
+      "final_prompt_language": "en",
+      "source_structured_input": {
+        "asset_type": "scene",
+        "asset_id": "scene_赛道维修区",
+        "asset_name": "赛道维修区",
+        "core_feature": "",
+        "subject_content": "国际赛车场维修区，金属框架顶棚下排列着赛车工位、数据屏幕、轮胎车、工具柜和线缆设备，地面整洁有功能分区标识，赛道区域近在咫尺，整体环境紧张高效，充满机械与竞技交织的专业感",
+        "description": "张雪佩戴耳机盯数据的比赛后方空间，体现夺冠背后的技术与压力。",
+        "style_lighting": "照片级写实，电影质感，明亮赛场辅灯",
+        "prompt_fields": {
+          "风格及光线": "照片级写实，电影质感，明亮赛场辅灯",
+          "输出要求": "高清4k，细节丰富",
+          "主体内容": "国际赛车场维修区，金属框架顶棚下排列着赛车工位、数据屏幕、轮胎车、工具柜和线缆设备，地面整洁有功能分区标识，赛道区域近在咫尺，整体环境紧张高效，充满机械与竞技交织的专业感"
+        },
+        "fallback_visual_prompt": "风格及光线：照片级写实，电影质感，明亮赛场辅灯\n输出要求：高清4k，细节丰富\n主体内容：国际赛车场维修区，金属框架顶棚下排列着赛车工位、数据屏幕、轮胎车、工具柜和线缆设备，地面整洁有功能分区标识，赛道区域近在咫尺，整体环境紧张高效，充满机械与竞技交织的专业感"
+      },
+      "prompt_source": "02_assets.json structured fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "Built from structured recap asset fields following the FLUX.2 klein prose-first prompt pattern.",
+        "Final prompt rendered in `en`."
+      ],
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\scenes\\scene_赛道维修区.png"
+    },
+    {
+      "timestamp": "2026-04-16T08:56:42.982964+00:00",
+      "asset_type": "scene",
+      "asset_id": "scene_深夜工厂车间",
+      "asset_name": "深夜工厂车间",
+      "mode": "asset",
+      "style_target": "realism",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-9B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 2904535760,
+      "width": 768,
+      "height": 512,
+      "prompt": "factory workshop presented as a single environment reference image, with factory workshop, race bike, ground, tools, restrained as the main environment focus. Establish the environment first, then add spatial depth, ground texture, distant information, and reusable story detail, without introducing unrelated characters. Keep the atmosphere unified and aligned with the story function of this location: 2026 4 race bike, scene. Style: cinematic realism, convincing materials and believable lighting, avoid cartoon stylization.",
+      "final_rendered_prompt": "factory workshop presented as a single environment reference image, with factory workshop, race bike, ground, tools, restrained as the main environment focus. Establish the environment first, then add spatial depth, ground texture, distant information, and reusable story detail, without introducing unrelated characters. Keep the atmosphere unified and aligned with the story function of this location: 2026 4 race bike, scene. Style: cinematic realism, convincing materials and believable lighting, avoid cartoon stylization.",
+      "final_prompt_language": "en",
+      "source_structured_input": {
+        "asset_type": "scene",
+        "asset_id": "scene_深夜工厂车间",
+        "asset_name": "深夜工厂车间",
+        "core_feature": "",
+        "subject_content": "宽阔安静的现代工厂车间，大部分区域沉入阴影，仅有一束聚光打在展放中的冠军赛车上，地面整洁反光，周围可见生产线轮廓、工具设备和工业结构，空间空旷克制，带有回望来路的纪念感",
+        "description": "2026年4月张雪独自凝视冠军赛车、与少年自我形成精神对话的收束场景。",
+        "style_lighting": "照片级写实，电影质感，单束顶灯冷暖对比",
+        "prompt_fields": {
+          "风格及光线": "照片级写实，电影质感，单束顶灯冷暖对比",
+          "输出要求": "高清4k，细节丰富",
+          "主体内容": "宽阔安静的现代工厂车间，大部分区域沉入阴影，仅有一束聚光打在展放中的冠军赛车上，地面整洁反光，周围可见生产线轮廓、工具设备和工业结构，空间空旷克制，带有回望来路的纪念感"
+        },
+        "fallback_visual_prompt": "风格及光线：照片级写实，电影质感，单束顶灯冷暖对比\n输出要求：高清4k，细节丰富\n主体内容：宽阔安静的现代工厂车间，大部分区域沉入阴影，仅有一束聚光打在展放中的冠军赛车上，地面整洁反光，周围可见生产线轮廓、工具设备和工业结构，空间空旷克制，带有回望来路的纪念感"
+      },
+      "prompt_source": "02_assets.json structured fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "Built from structured recap asset fields following the FLUX.2 klein prose-first prompt pattern.",
+        "Final prompt rendered in `en`."
+      ],
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\scenes\\scene_深夜工厂车间.png"
+    }
+  ]
+}

@@ -1,0 +1,4697 @@
+{
+  "schema": "flux_keyscene_generation_manifest_v1",
+  "timestamp": "2026-04-15T08:25:45.777552+00:00",
+  "input_folder": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\02_recap_production",
+  "mode": "keyscene",
+  "style_target": "2d-anime-cartoon",
+  "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+  "backend": "klein_cli",
+  "generated_assets_root": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i",
+  "available_asset_counts": {
+    "characters": 3,
+    "props": 9,
+    "scenes": 9
+  },
+  "resume_enabled": true,
+  "resume_source": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_151832\\generated_keyscenes",
+  "scene_validation": "warn",
+  "debug_keyscene_output": false,
+  "batch_generation": {
+    "job_count": 11,
+    "requested_model_reuse": true
+  },
+  "output_root": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\02_recap_production\\generated_keyscenes",
+  "item_count": 35,
+  "items": [
+    {
+      "timestamp": "2026-04-15T08:22:45.299495+00:00",
+      "beat_id": "ep01_s01",
+      "episode_number": 1,
+      "mode": "keyscene",
+      "style_target": "2d-anime-cartoon",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 3540401194,
+      "width": 864,
+      "height": 1080,
+      "prompt": "暴雨中的山路上，张雪骑着破旧125摩托死追新闻车。 让张雪与旧款125摩托在暴雨山路里形成同一瞬间，空间关系清楚，动作关系直接。 宽构图，突出主体位置、场景层次和一个关键动作关系。 2D动漫质感。",
+      "prompt_source": "04_episode_scene_script.json beat fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "scene=exact_name_match",
+        "character=exact_name_match",
+        "prop=exact_name_match",
+        "shot_mode=staging_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance."
+      ],
+      "shot_mode": "staging_keyscene",
+      "reference_policy": "staging_keyscene: scene + character + prop",
+      "reference_count": 3,
+      "prompt_length": 81,
+      "legacy_prompt_length": 272,
+      "raw_source_description": "暴雨中的山路上，张雪骑着破旧125摩托死追新闻车，画面先声夺人 | 暴雨山路，冷灰色阴雨天，新闻车在泥泞山道前行，后方一名穿黄色雨衣的清瘦少年张雪骑着破旧旧款125摩托高速追赶，雨水和泥浆四溅，山体和雾气压迫感强，少年身体前倾死死控车，画面充满危险与执拗感 | 暴雨里，他追了新闻车一百公里 | urgent, raw | wide shot",
+      "summary": "暴雨中的山路上，张雪骑着破旧125摩托死追新闻车，画面先声夺人。",
+      "anchor_text": "暴雨里，他追了新闻车一百公里。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_暴雨山路",
+          "asset_name": "暴雨山路",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\scenes\\scene_暴雨山路.png"
+        },
+        "character": {
+          "asset_id": "character_张雪",
+          "asset_name": "张雪",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\characters\\character_张雪.png"
+        },
+        "prop": {
+          "asset_id": "prop_旧款125摩托",
+          "asset_name": "旧款125摩托",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\props\\prop_旧款125摩托.png"
+        }
+      },
+      "matching_notes": [
+        "Matched scene asset by explicit beat phrase: 暴雨山路.",
+        "Matched character asset by explicit beat phrase: 张雪.",
+        "Matched prop asset by explicit beat phrase: 旧款125摩托."
+      ],
+      "validation_warnings": [],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_暴雨山路",
+            "asset_name": "暴雨山路",
+            "score": 246,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "暴雨山路"
+            ]
+          },
+          {
+            "asset_id": "scene_加油站",
+            "asset_name": "加油站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_废品站",
+            "asset_name": "废品站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_沙漠赛地",
+            "asset_name": "沙漠赛地",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_波尔蒂芒赛道",
+            "asset_name": "波尔蒂芒赛道",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [
+          {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "score": 984,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_Valentin_Debise",
+            "asset_name": "Valentin_Debise",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "character_林",
+            "asset_name": "林",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "prop": [
+          {
+            "asset_id": "prop_旧款125摩托",
+            "asset_name": "旧款125摩托",
+            "score": 246,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "旧款125摩托"
+            ]
+          },
+          {
+            "asset_id": "prop_820RR-RS发动机",
+            "asset_name": "820RR-RS发动机",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_Kove摩托车",
+            "asset_name": "Kove摩托车",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_图纸",
+            "asset_name": "图纸",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_头盔",
+            "asset_name": "头盔",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ]
+      },
+      "limitations": [],
+      "debug_artifact": null,
+      "resume_status": "copied_from_resume_source",
+      "resumed_from": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_151832\\generated_keyscenes\\keyscenes\\ep01_s01.png",
+      "previous_output_path": null,
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\02_recap_production\\generated_keyscenes\\keyscenes\\ep01_s01.png"
+    },
+    {
+      "timestamp": "2026-04-15T08:22:45.300494+00:00",
+      "beat_id": "ep01_s02",
+      "episode_number": 1,
+      "mode": "keyscene",
+      "style_target": "2d-anime-cartoon",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 3338445147,
+      "width": 864,
+      "height": 1080,
+      "prompt": "林在新闻车内回头，看见雨幕中那道刺眼的黄色身影。 让张雪在加油站里成为视觉中心，只保留一个环境提示。 越肩构图，突出表情、姿态和一个支持性的场景线索。 2D动漫质感。",
+      "prompt_source": "04_episode_scene_script.json with asset fallback selection",
+      "prompt_confidence": "fallback",
+      "prompt_notes": [
+        "scene=first_available_fallback",
+        "character=exact_name_match",
+        "prop=missing",
+        "shot_mode=identity_emotion_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance.",
+        "Used at least one fallback-generated asset reference because no exact beat match was available."
+      ],
+      "shot_mode": "identity_emotion_keyscene",
+      "reference_policy": "identity_emotion_keyscene: scene + character",
+      "reference_count": 2,
+      "prompt_length": 71,
+      "legacy_prompt_length": 244,
+      "raw_source_description": "林在新闻车内回头，看见雨幕中那道刺眼的黄色身影 | 车内视角，林穿深色外套从新闻车后座回头望向后窗，玻璃上满是雨痕，远处雨幕中张雪的黄色雨衣格外刺眼，旧125摩托在积水与泥痕间顽强前冲，冷湿车厢与外部暴雨形成强对比，突出见证者第一次被震住的瞬间 | 雨幕里，冲出一道刺眼的黄色 | shocked, suspenseful | over-the-shoulder",
+      "summary": "林在新闻车内回头，看见雨幕中那道刺眼的黄色身影。",
+      "anchor_text": "雨幕里，冲出一道刺眼的黄色。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_加油站",
+          "asset_name": "加油站",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\scenes\\scene_加油站.png"
+        },
+        "character": {
+          "asset_id": "character_张雪",
+          "asset_name": "张雪",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\characters\\character_张雪.png"
+        },
+        "prop": null
+      },
+      "matching_notes": [
+        "No reliable scene asset match was found; using the first available generated asset as fallback.",
+        "Matched character asset by explicit beat phrase: 张雪.",
+        "Prop omitted by reference policy."
+      ],
+      "validation_warnings": [
+        "ep01_s02: scene selection has no semantic overlap with the beat; chosen scene `加油站` is low confidence."
+      ],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_加油站",
+            "asset_name": "加油站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_废品站",
+            "asset_name": "废品站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_暴雨山路",
+            "asset_name": "暴雨山路",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_沙漠赛地",
+            "asset_name": "沙漠赛地",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_波尔蒂芒赛道",
+            "asset_name": "波尔蒂芒赛道",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [
+          {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "score": 246,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_Valentin_Debise",
+            "asset_name": "Valentin_Debise",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "character_林",
+            "asset_name": "林",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "prop": []
+      },
+      "limitations": [
+        "No reliable scene asset match was found; using the first available generated asset as fallback.",
+        "ep01_s02: scene selection has no semantic overlap with the beat; chosen scene `加油站` is low confidence."
+      ],
+      "debug_artifact": null,
+      "resume_status": "copied_from_resume_source",
+      "resumed_from": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_151832\\generated_keyscenes\\keyscenes\\ep01_s02.png",
+      "previous_output_path": null,
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\02_recap_production\\generated_keyscenes\\keyscenes\\ep01_s02.png"
+    },
+    {
+      "timestamp": "2026-04-15T08:22:45.301495+00:00",
+      "beat_id": "ep01_s03",
+      "episode_number": 1,
+      "mode": "keyscene",
+      "style_target": "2d-anime-cartoon",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 3599714636,
+      "width": 864,
+      "height": 1080,
+      "prompt": "城边加油站停下后，张雪不肯歇车，满身泥水走向镜头。 让张雪与头盔在加油站里形成同一瞬间，空间关系清楚，动作关系直接。 中景，突出主体位置、场景层次和一个关键动作关系。 2D动漫质感。",
+      "prompt_source": "04_episode_scene_script.json beat fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "scene=exact_name_match",
+        "character=exact_name_match",
+        "prop=exact_name_match",
+        "shot_mode=staging_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance."
+      ],
+      "shot_mode": "staging_keyscene",
+      "reference_policy": "staging_keyscene: scene + character + prop",
+      "reference_count": 3,
+      "prompt_length": 77,
+      "legacy_prompt_length": 247,
+      "raw_source_description": "城边加油站停下后，张雪不肯歇车，满身泥水走向镜头 | 雨夜加油站冷白灯下，旧125摩托车轮和车身满是泥浆，张雪单脚撑车不放支架，摘下磨损头盔，脸色冻得发白，黄色雨衣贴在身上，林和摄像机在前景形成对峙感，地面反光明显，空气湿冷 | 他连支架都不肯放 | tense, exhausted | medium shot | static",
+      "summary": "城边加油站停下后，张雪不肯歇车，满身泥水走向镜头。",
+      "anchor_text": "他连支架都不肯放。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_加油站",
+          "asset_name": "加油站",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\scenes\\scene_加油站.png"
+        },
+        "character": {
+          "asset_id": "character_张雪",
+          "asset_name": "张雪",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\characters\\character_张雪.png"
+        },
+        "prop": {
+          "asset_id": "prop_头盔",
+          "asset_name": "头盔",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\props\\prop_头盔.png"
+        }
+      },
+      "matching_notes": [
+        "Matched scene asset by explicit beat phrase: 加油站, 城边加油站.",
+        "Matched character asset by explicit beat phrase: 张雪.",
+        "Matched prop asset by explicit beat phrase: 头盔."
+      ],
+      "validation_warnings": [],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_加油站",
+            "asset_name": "加油站",
+            "score": 1008,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "加油站",
+              "城边加油站"
+            ]
+          },
+          {
+            "asset_id": "scene_废品站",
+            "asset_name": "废品站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_暴雨山路",
+            "asset_name": "暴雨山路",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_沙漠赛地",
+            "asset_name": "沙漠赛地",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_波尔蒂芒赛道",
+            "asset_name": "波尔蒂芒赛道",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [
+          {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "score": 984,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_Valentin_Debise",
+            "asset_name": "Valentin_Debise",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "character_林",
+            "asset_name": "林",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "prop": [
+          {
+            "asset_id": "prop_头盔",
+            "asset_name": "头盔",
+            "score": 246,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "头盔"
+            ]
+          },
+          {
+            "asset_id": "prop_摄像机",
+            "asset_name": "摄像机",
+            "score": 246,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "摄像机"
+            ]
+          },
+          {
+            "asset_id": "prop_820RR-RS发动机",
+            "asset_name": "820RR-RS发动机",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_Kove摩托车",
+            "asset_name": "Kove摩托车",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_图纸",
+            "asset_name": "图纸",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ]
+      },
+      "limitations": [],
+      "debug_artifact": null,
+      "resume_status": "copied_from_resume_source",
+      "resumed_from": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_151832\\generated_keyscenes\\keyscenes\\ep01_s03.png",
+      "previous_output_path": null,
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\02_recap_production\\generated_keyscenes\\keyscenes\\ep01_s03.png"
+    },
+    {
+      "timestamp": "2026-04-15T08:22:45.302998+00:00",
+      "beat_id": "ep01_s04",
+      "episode_number": 1,
+      "mode": "keyscene",
+      "style_target": "2d-anime-cartoon",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 3314237803,
+      "width": 864,
+      "height": 1080,
+      "prompt": "张雪只要求镜头拍他的发动机六十秒，并说出惊人的宣言。 把关键物件压成画面主体，只保留必要的环境线索。 中近景，突出物件、手部接触和局部光线。 2D动漫质感。",
+      "prompt_source": "04_episode_scene_script.json beat fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "scene=exact_name_match",
+        "character=missing",
+        "prop=missing",
+        "shot_mode=insert_object_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance."
+      ],
+      "shot_mode": "insert_object_keyscene",
+      "reference_policy": "insert_object_keyscene: scene",
+      "reference_count": 1,
+      "prompt_length": 66,
+      "legacy_prompt_length": 216,
+      "raw_source_description": "张雪只要求镜头拍他的发动机六十秒，并说出惊人的宣言 | 张雪站在加油站灯下直视新闻摄像机镜头，近景中能看到专业摄像机和旧125摩托裸露的发动机细节，少年眼神灼热，嘴唇发白却语气坚定，黄色雨衣与黑色机械形成视觉反差，强调“向世界宣战”的强烈气场 | 他只要镜头对准发动机六十秒 | defiant, intense | medium close-up",
+      "summary": "张雪只要求镜头拍他的发动机六十秒，并说出惊人的宣言。",
+      "anchor_text": "他只要镜头对准发动机六十秒。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_加油站",
+          "asset_name": "加油站",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\scenes\\scene_加油站.png"
+        },
+        "character": null,
+        "prop": null
+      },
+      "matching_notes": [
+        "Matched scene asset by explicit beat phrase: 加油站.",
+        "Insert/object keyscenes default to scene + prop.",
+        "Prop omitted because it did not match the primary object beat."
+      ],
+      "validation_warnings": [
+        "ep01_s04: omitted prop `摄像机` because it only matched secondary visual text, not the primary object beat."
+      ],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_加油站",
+            "asset_name": "加油站",
+            "score": 246,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "加油站"
+            ]
+          },
+          {
+            "asset_id": "scene_废品站",
+            "asset_name": "废品站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_暴雨山路",
+            "asset_name": "暴雨山路",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_沙漠赛地",
+            "asset_name": "沙漠赛地",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_波尔蒂芒赛道",
+            "asset_name": "波尔蒂芒赛道",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [],
+        "prop": []
+      },
+      "limitations": [],
+      "debug_artifact": null,
+      "resume_status": "copied_from_resume_source",
+      "resumed_from": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_151832\\generated_keyscenes\\keyscenes\\ep01_s04.png",
+      "previous_output_path": null,
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\02_recap_production\\generated_keyscenes\\keyscenes\\ep01_s04.png"
+    },
+    {
+      "timestamp": "2026-04-15T08:22:45.304000+00:00",
+      "beat_id": "ep01_s05",
+      "episode_number": 1,
+      "mode": "keyscene",
+      "style_target": "2d-anime-cartoon",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 1799980080,
+      "width": 864,
+      "height": 1080,
+      "prompt": "林当晚将这段故事拍成短片，也第一次真正记住张雪这个名字。 把关键物件压成画面主体，只保留必要的环境线索。 插入镜头，突出物件、手部接触和局部光线。 2D动漫质感。",
+      "prompt_source": "04_episode_scene_script.json with asset fallback selection",
+      "prompt_confidence": "fallback",
+      "prompt_notes": [
+        "scene=first_available_fallback",
+        "character=missing",
+        "prop=missing",
+        "shot_mode=insert_object_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance.",
+        "Used at least one fallback-generated asset reference because no exact beat match was available."
+      ],
+      "shot_mode": "insert_object_keyscene",
+      "reference_policy": "insert_object_keyscene: scene",
+      "reference_count": 1,
+      "prompt_length": 69,
+      "legacy_prompt_length": 203,
+      "raw_source_description": "林当晚将这段故事拍成短片，也第一次真正记住张雪这个名字 | 新闻摄像机监视屏画面中出现张雪和旧发动机的采访片段，林的手在设备上回放素材，夜色与车内微光交织，屏幕冷光映在林沉稳的侧脸上，突出一个传奇被正式记录下来的起点 | 那晚，我第一次记住了张雪 | reflective, fateful | insert",
+      "summary": "林当晚将这段故事拍成短片，也第一次真正记住张雪这个名字。",
+      "anchor_text": "那晚，我第一次记住了张雪。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_加油站",
+          "asset_name": "加油站",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\scenes\\scene_加油站.png"
+        },
+        "character": null,
+        "prop": null
+      },
+      "matching_notes": [
+        "No reliable scene asset match was found; using the first available generated asset as fallback.",
+        "Insert/object keyscenes default to scene + prop.",
+        "Prop omitted because it did not match the primary object beat."
+      ],
+      "validation_warnings": [
+        "ep01_s05: omitted prop `摄像机` because it only matched secondary visual text, not the primary object beat.",
+        "ep01_s05: scene selection has no semantic overlap with the beat; chosen scene `加油站` is low confidence."
+      ],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_加油站",
+            "asset_name": "加油站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_废品站",
+            "asset_name": "废品站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_暴雨山路",
+            "asset_name": "暴雨山路",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_沙漠赛地",
+            "asset_name": "沙漠赛地",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_波尔蒂芒赛道",
+            "asset_name": "波尔蒂芒赛道",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [],
+        "prop": []
+      },
+      "limitations": [
+        "No reliable scene asset match was found; using the first available generated asset as fallback.",
+        "ep01_s05: scene selection has no semantic overlap with the beat; chosen scene `加油站` is low confidence."
+      ],
+      "debug_artifact": null,
+      "resume_status": "copied_from_resume_source",
+      "resumed_from": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_151832\\generated_keyscenes\\keyscenes\\ep01_s05.png",
+      "previous_output_path": null,
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\02_recap_production\\generated_keyscenes\\keyscenes\\ep01_s05.png"
+    },
+    {
+      "timestamp": "2026-04-15T08:22:45.305503+00:00",
+      "beat_id": "ep01_s06",
+      "episode_number": 1,
+      "mode": "keyscene",
+      "style_target": "2d-anime-cartoon",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 3924359467,
+      "width": 864,
+      "height": 1080,
+      "prompt": "几个月后，张雪带着木箱工具住进重庆高架桥下的简陋工坊。 让张雪落进高架桥下工坊的空间关系里，主体位置和环境压迫感清楚。 宽构图，突出主体位置、场景层次和一个关键动作关系。 2D动漫质感。",
+      "prompt_source": "04_episode_scene_script.json beat fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "scene=keyword_overlap",
+        "character=exact_name_match",
+        "prop=missing",
+        "shot_mode=staging_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance."
+      ],
+      "shot_mode": "staging_keyscene",
+      "reference_policy": "staging_keyscene: scene + character",
+      "reference_count": 2,
+      "prompt_length": 81,
+      "legacy_prompt_length": 241,
+      "raw_source_description": "几个月后，张雪带着木箱工具住进重庆高架桥下的简陋工坊 | 重庆高架桥下岩壁旁简陋工坊，夜间路灯从铁栅栏漏进来，狭小空间里有窄床、木箱工具、散乱零件和图纸，张雪穿旧团队衫站在拥挤工坊中央，身上残留机油痕迹，城市高架像巨型压迫结构悬在头顶 | 他住进了高架桥下的工坊 | bleak, stubborn | wide shot",
+      "summary": "几个月后，张雪带着木箱工具住进重庆高架桥下的简陋工坊。",
+      "anchor_text": "他住进了高架桥下的工坊。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_高架桥下工坊",
+          "asset_name": "高架桥下工坊",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\scenes\\scene_高架桥下工坊.png"
+        },
+        "character": {
+          "asset_id": "character_张雪",
+          "asset_name": "张雪",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\characters\\character_张雪.png"
+        },
+        "prop": null
+      },
+      "matching_notes": [
+        "Matched scene asset by keyword overlap: 窄床, 木箱, 工具, 零件和图纸.",
+        "Matched character asset by explicit beat phrase: 张雪, 图纸.",
+        "Prop omitted by reference policy."
+      ],
+      "validation_warnings": [
+        "ep01_s06: prop reference omitted to keep the prompt/edit set compact."
+      ],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_高架桥下工坊",
+            "asset_name": "高架桥下工坊",
+            "score": 60,
+            "strategy": "keyword_overlap",
+            "matched_terms": [
+              "窄床",
+              "木箱",
+              "工具",
+              "零件和图纸"
+            ]
+          },
+          {
+            "asset_id": "scene_加油站",
+            "asset_name": "加油站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_废品站",
+            "asset_name": "废品站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_暴雨山路",
+            "asset_name": "暴雨山路",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_沙漠赛地",
+            "asset_name": "沙漠赛地",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [
+          {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "score": 990,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪",
+              "图纸"
+            ]
+          },
+          {
+            "asset_id": "character_Valentin_Debise",
+            "asset_name": "Valentin_Debise",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "character_林",
+            "asset_name": "林",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "prop": []
+      },
+      "limitations": [],
+      "debug_artifact": null,
+      "resume_status": "copied_from_resume_source",
+      "resumed_from": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_151832\\generated_keyscenes\\keyscenes\\ep01_s06.png",
+      "previous_output_path": null,
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\02_recap_production\\generated_keyscenes\\keyscenes\\ep01_s06.png"
+    },
+    {
+      "timestamp": "2026-04-15T08:22:45.306504+00:00",
+      "beat_id": "ep01_s07",
+      "episode_number": 1,
+      "mode": "keyscene",
+      "style_target": "2d-anime-cartoon",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 851892141,
+      "width": 864,
+      "height": 1080,
+      "prompt": "他几乎只靠清汤面度日，把全部精力投入一张张发动机图纸。 让张雪在高架桥下工坊里成为视觉中心，只保留一个环境提示。 中景，突出表情、姿态和一个支持性的场景线索。 2D动漫质感。",
+      "prompt_source": "04_episode_scene_script.json beat fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "scene=exact_name_match",
+        "character=exact_name_match",
+        "prop=missing",
+        "shot_mode=identity_emotion_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance."
+      ],
+      "shot_mode": "identity_emotion_keyscene",
+      "reference_policy": "identity_emotion_keyscene: scene + character",
+      "reference_count": 2,
+      "prompt_length": 75,
+      "legacy_prompt_length": 238,
+      "raw_source_description": "他几乎只靠清汤面度日，把全部精力投入一张张发动机图纸 | 高架桥下工坊内部近景，窄桌上摊满卷边图纸和计算痕迹，一碗简单清汤面被冷落在一旁，张雪伏案盯着复杂结构图，眼下疲惫却高度专注，路灯与阴影切割空间，强化孤独但燃烧的状态 | 他把所有力气都砸进了图纸里 | obsessive, lonely | medium shot",
+      "summary": "他几乎只靠清汤面度日，把全部精力投入一张张发动机图纸。",
+      "anchor_text": "他把所有力气都砸进了图纸里。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_高架桥下工坊",
+          "asset_name": "高架桥下工坊",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\scenes\\scene_高架桥下工坊.png"
+        },
+        "character": {
+          "asset_id": "character_张雪",
+          "asset_name": "张雪",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\characters\\character_张雪.png"
+        },
+        "prop": null
+      },
+      "matching_notes": [
+        "Matched scene asset by explicit beat phrase: 高架桥下工坊.",
+        "Matched character asset by explicit beat phrase: 张雪, 图纸.",
+        "Prop omitted by reference policy."
+      ],
+      "validation_warnings": [
+        "ep01_s07: prop reference omitted to keep the prompt/edit set compact."
+      ],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_高架桥下工坊",
+            "asset_name": "高架桥下工坊",
+            "score": 246,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "高架桥下工坊"
+            ]
+          },
+          {
+            "asset_id": "scene_加油站",
+            "asset_name": "加油站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_废品站",
+            "asset_name": "废品站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_暴雨山路",
+            "asset_name": "暴雨山路",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_沙漠赛地",
+            "asset_name": "沙漠赛地",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [
+          {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "score": 270,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪",
+              "图纸"
+            ]
+          },
+          {
+            "asset_id": "character_Valentin_Debise",
+            "asset_name": "Valentin_Debise",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "character_林",
+            "asset_name": "林",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "prop": []
+      },
+      "limitations": [],
+      "debug_artifact": null,
+      "resume_status": "copied_from_resume_source",
+      "resumed_from": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_151832\\generated_keyscenes\\keyscenes\\ep01_s07.png",
+      "previous_output_path": null,
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\02_recap_production\\generated_keyscenes\\keyscenes\\ep01_s07.png"
+    },
+    {
+      "timestamp": "2026-04-15T08:22:45.307504+00:00",
+      "beat_id": "ep01_s08",
+      "episode_number": 1,
+      "mode": "keyscene",
+      "style_target": "2d-anime-cartoon",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 1352924732,
+      "width": 864,
+      "height": 1080,
+      "prompt": "没钱买新零件后，张雪在废品站像医生一样精准挑出可用部件。 让张雪与钛螺栓在废品站里形成同一瞬间，空间关系清楚，动作关系直接。 中景，突出主体位置、场景层次和一个关键动作关系。 2D动漫质感。",
+      "prompt_source": "04_episode_scene_script.json beat fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "scene=exact_name_match",
+        "character=exact_name_match",
+        "prop=exact_name_match",
+        "shot_mode=staging_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance."
+      ],
+      "shot_mode": "staging_keyscene",
+      "reference_policy": "staging_keyscene: scene + character + prop",
+      "reference_count": 3,
+      "prompt_length": 82,
+      "legacy_prompt_length": 258,
+      "raw_source_description": "没钱买新零件后，张雪在废品站像医生一样精准挑出可用部件 | 灰蒙蒙日光下的废品站，报废发动机、锈铁、机油桶和轮胎堆积如山，张雪蹲在金属废墟中翻找零件，手中捏起一枚擦净后的钛螺栓，神情像机械医生在尸堆里寻找器官，金属反光与油污细节丰富 | 废品站成了他的圣地 | gritty, focused | medium shot",
+      "summary": "没钱买新零件后，张雪在废品站像医生一样精准挑出可用部件。",
+      "anchor_text": "废品站成了他的圣地。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_废品站",
+          "asset_name": "废品站",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\scenes\\scene_废品站.png"
+        },
+        "character": {
+          "asset_id": "character_张雪",
+          "asset_name": "张雪",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\characters\\character_张雪.png"
+        },
+        "prop": {
+          "asset_id": "prop_钛螺栓",
+          "asset_name": "钛螺栓",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\props\\prop_钛螺栓.png"
+        }
+      },
+      "matching_notes": [
+        "Matched scene asset by explicit beat phrase: 废品站, 报废发动机, 机油桶.",
+        "Matched character asset by explicit beat phrase: 张雪.",
+        "Matched prop asset by explicit beat phrase: 钛螺栓."
+      ],
+      "validation_warnings": [],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_废品站",
+            "asset_name": "废品站",
+            "score": 996,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "废品站",
+              "报废发动机",
+              "机油桶"
+            ]
+          },
+          {
+            "asset_id": "scene_加油站",
+            "asset_name": "加油站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_暴雨山路",
+            "asset_name": "暴雨山路",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_沙漠赛地",
+            "asset_name": "沙漠赛地",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_波尔蒂芒赛道",
+            "asset_name": "波尔蒂芒赛道",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [
+          {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "score": 984,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_Valentin_Debise",
+            "asset_name": "Valentin_Debise",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "character_林",
+            "asset_name": "林",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "prop": [
+          {
+            "asset_id": "prop_钛螺栓",
+            "asset_name": "钛螺栓",
+            "score": 246,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "钛螺栓"
+            ]
+          },
+          {
+            "asset_id": "prop_820RR-RS发动机",
+            "asset_name": "820RR-RS发动机",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_Kove摩托车",
+            "asset_name": "Kove摩托车",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_图纸",
+            "asset_name": "图纸",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_头盔",
+            "asset_name": "头盔",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ]
+      },
+      "limitations": [],
+      "debug_artifact": null,
+      "resume_status": "copied_from_resume_source",
+      "resumed_from": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_151832\\generated_keyscenes\\keyscenes\\ep01_s08.png",
+      "previous_output_path": null,
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\02_recap_production\\generated_keyscenes\\keyscenes\\ep01_s08.png"
+    },
+    {
+      "timestamp": "2026-04-15T08:22:45.309504+00:00",
+      "beat_id": "ep01_s09",
+      "episode_number": 1,
+      "mode": "keyscene",
+      "style_target": "2d-anime-cartoon",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 2288774786,
+      "width": 864,
+      "height": 1080,
+      "prompt": "回到工棚后，他火焊车架、徒手打磨，手指磨破也不停下。 让张雪在高架桥下工坊里成为视觉中心，图纸只作为近景支撑线索。 特写，突出表情、姿态和一个支持性的场景线索。 2D动漫质感。",
+      "prompt_source": "04_episode_scene_script.json beat fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "scene=exact_name_match",
+        "character=exact_name_match",
+        "prop=exact_name_match",
+        "shot_mode=identity_emotion_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance."
+      ],
+      "shot_mode": "identity_emotion_keyscene",
+      "reference_policy": "identity_emotion_keyscene: scene + character + prop",
+      "reference_count": 3,
+      "prompt_length": 74,
+      "legacy_prompt_length": 257,
+      "raw_source_description": "回到工棚后，他火焊车架、徒手打磨，手指磨破也不停下 | 高架桥下工坊夜晚作业场景，焊枪火花四溅照亮张雪沾油的手和侧脸，他用扳手、焊枪和手工工具拼接车架、打磨外壳，手指破皮见血，周围零件、木箱工具和图纸散落，画面充满热度、疼痛与偏执创造力 | 他把手磨破也不停 | painful, relentless | close-up",
+      "summary": "回到工棚后，他火焊车架、徒手打磨，手指磨破也不停下。",
+      "anchor_text": "他把手磨破也不停。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_高架桥下工坊",
+          "asset_name": "高架桥下工坊",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\scenes\\scene_高架桥下工坊.png"
+        },
+        "character": {
+          "asset_id": "character_张雪",
+          "asset_name": "张雪",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\characters\\character_张雪.png"
+        },
+        "prop": {
+          "asset_id": "prop_图纸",
+          "asset_name": "图纸",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\props\\prop_图纸.png"
+        }
+      },
+      "matching_notes": [
+        "Matched scene asset by explicit beat phrase: 高架桥下工坊, 木箱, 工具.",
+        "Matched character asset by explicit beat phrase: 张雪, 图纸.",
+        "Matched prop asset by explicit beat phrase: 图纸."
+      ],
+      "validation_warnings": [],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_高架桥下工坊",
+            "asset_name": "高架桥下工坊",
+            "score": 258,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "高架桥下工坊",
+              "木箱",
+              "工具"
+            ]
+          },
+          {
+            "asset_id": "scene_加油站",
+            "asset_name": "加油站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_废品站",
+            "asset_name": "废品站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_暴雨山路",
+            "asset_name": "暴雨山路",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_沙漠赛地",
+            "asset_name": "沙漠赛地",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [
+          {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "score": 252,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪",
+              "图纸"
+            ]
+          },
+          {
+            "asset_id": "character_Valentin_Debise",
+            "asset_name": "Valentin_Debise",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "character_林",
+            "asset_name": "林",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "prop": [
+          {
+            "asset_id": "prop_图纸",
+            "asset_name": "图纸",
+            "score": 246,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "图纸"
+            ]
+          },
+          {
+            "asset_id": "prop_扳手",
+            "asset_name": "扳手",
+            "score": 246,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "扳手"
+            ]
+          },
+          {
+            "asset_id": "prop_木箱工具",
+            "asset_name": "木箱工具",
+            "score": 246,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "木箱工具"
+            ]
+          },
+          {
+            "asset_id": "prop_820RR-RS发动机",
+            "asset_name": "820RR-RS发动机",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_Kove摩托车",
+            "asset_name": "Kove摩托车",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ]
+      },
+      "limitations": [],
+      "debug_artifact": null,
+      "resume_status": "copied_from_resume_source",
+      "resumed_from": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_151832\\generated_keyscenes\\keyscenes\\ep01_s09.png",
+      "previous_output_path": null,
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\02_recap_production\\generated_keyscenes\\keyscenes\\ep01_s09.png"
+    },
+    {
+      "timestamp": "2026-04-15T08:22:45.310504+00:00",
+      "beat_id": "ep01_s10",
+      "episode_number": 1,
+      "mode": "keyscene",
+      "style_target": "2d-anime-cartoon",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 3855053990,
+      "width": 864,
+      "height": 1080,
+      "prompt": "第一辆拼出来的车冲上霓虹街，尖啸排气声震住整条街。 让张雪在霓虹街里成为视觉中心，只保留一个环境提示。 宽构图，突出表情、姿态和一个支持性的场景线索。 2D动漫质感。",
+      "prompt_source": "04_episode_scene_script.json beat fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "scene=exact_name_match",
+        "character=exact_name_match",
+        "prop=missing",
+        "shot_mode=identity_emotion_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance."
+      ],
+      "shot_mode": "identity_emotion_keyscene",
+      "reference_policy": "identity_emotion_keyscene: scene + character",
+      "reference_count": 2,
+      "prompt_length": 71,
+      "legacy_prompt_length": 239,
+      "raw_source_description": "第一辆拼出来的车冲上霓虹街，尖啸排气声震住整条街 | 夜晚霓虹街道，彩色招牌映在湿润路面上，张雪骑着亲手拼装的摩托高速掠过，车身粗粝却充满力量感，排气口喷出热浪与震动感，街边行人回头，城市霓虹被引擎尖啸切开，形成第一次真正被看见的爆发瞬间 | 第一辆车终于冲上了街头 | explosive, triumphant | wide shot",
+      "summary": "第一辆拼出来的车冲上霓虹街，尖啸排气声震住整条街。",
+      "anchor_text": "第一辆车终于冲上了街头。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_霓虹街",
+          "asset_name": "霓虹街",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\scenes\\scene_霓虹街.png"
+        },
+        "character": {
+          "asset_id": "character_张雪",
+          "asset_name": "张雪",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\characters\\character_张雪.png"
+        },
+        "prop": null
+      },
+      "matching_notes": [
+        "Matched scene asset by explicit beat phrase: 霓虹街.",
+        "Matched character asset by explicit beat phrase: 张雪.",
+        "Prop omitted by reference policy."
+      ],
+      "validation_warnings": [],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_霓虹街",
+            "asset_name": "霓虹街",
+            "score": 984,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "霓虹街"
+            ]
+          },
+          {
+            "asset_id": "scene_加油站",
+            "asset_name": "加油站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_废品站",
+            "asset_name": "废品站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_暴雨山路",
+            "asset_name": "暴雨山路",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_沙漠赛地",
+            "asset_name": "沙漠赛地",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [
+          {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "score": 246,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_Valentin_Debise",
+            "asset_name": "Valentin_Debise",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "character_林",
+            "asset_name": "林",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "prop": []
+      },
+      "limitations": [],
+      "debug_artifact": null,
+      "resume_status": "copied_from_resume_source",
+      "resumed_from": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_151832\\generated_keyscenes\\keyscenes\\ep01_s10.png",
+      "previous_output_path": null,
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\02_recap_production\\generated_keyscenes\\keyscenes\\ep01_s10.png"
+    },
+    {
+      "timestamp": "2026-04-15T08:22:45.311504+00:00",
+      "beat_id": "ep01_s11",
+      "episode_number": 1,
+      "mode": "keyscene",
+      "style_target": "2d-anime-cartoon",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 1578609954,
+      "width": 864,
+      "height": 1080,
+      "prompt": "人们开始叫他“废铁炼金术师”，合作的机会也第一次出现。 让张雪在霓虹街里成为视觉中心，只保留一个环境提示。 中景，突出表情、姿态和一个支持性的场景线索。 2D动漫质感。",
+      "prompt_source": "04_episode_scene_script.json beat fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "scene=exact_name_match",
+        "character=exact_name_match",
+        "prop=missing",
+        "shot_mode=identity_emotion_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance."
+      ],
+      "shot_mode": "identity_emotion_keyscene",
+      "reference_policy": "identity_emotion_keyscene: scene + character",
+      "reference_count": 2,
+      "prompt_length": 70,
+      "legacy_prompt_length": 237,
+      "raw_source_description": "人们开始叫他“废铁炼金术师”，合作的机会也第一次出现 | 霓虹街边或简陋工坊门口，张雪站在自制摩托旁，几位潜在合作人带着惊讶和兴趣围拢观察车辆结构，车身还带手工焊接痕迹，张雪仍显克制但眼神更亮，环境中保留工业粗粝与城市夜色的混合质感 | 真正愿意合作的人，出现了 | rising, electric | medium shot | slow dolly in",
+      "summary": "人们开始叫他“废铁炼金术师”，合作的机会也第一次出现。",
+      "anchor_text": "真正愿意合作的人，出现了。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_霓虹街",
+          "asset_name": "霓虹街",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\scenes\\scene_霓虹街.png"
+        },
+        "character": {
+          "asset_id": "character_张雪",
+          "asset_name": "张雪",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\characters\\character_张雪.png"
+        },
+        "prop": null
+      },
+      "matching_notes": [
+        "Matched scene asset by explicit beat phrase: 霓虹街.",
+        "Matched character asset by explicit beat phrase: 张雪.",
+        "Prop omitted by reference policy."
+      ],
+      "validation_warnings": [],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_霓虹街",
+            "asset_name": "霓虹街",
+            "score": 246,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "霓虹街"
+            ]
+          },
+          {
+            "asset_id": "scene_加油站",
+            "asset_name": "加油站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_废品站",
+            "asset_name": "废品站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_暴雨山路",
+            "asset_name": "暴雨山路",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_沙漠赛地",
+            "asset_name": "沙漠赛地",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [
+          {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "score": 246,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_Valentin_Debise",
+            "asset_name": "Valentin_Debise",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "character_林",
+            "asset_name": "林",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "prop": []
+      },
+      "limitations": [],
+      "debug_artifact": null,
+      "resume_status": "copied_from_resume_source",
+      "resumed_from": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_151832\\generated_keyscenes\\keyscenes\\ep01_s11.png",
+      "previous_output_path": null,
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\02_recap_production\\generated_keyscenes\\keyscenes\\ep01_s11.png"
+    },
+    {
+      "timestamp": "2026-04-15T08:22:45.313007+00:00",
+      "beat_id": "ep01_s12",
+      "episode_number": 1,
+      "mode": "keyscene",
+      "style_target": "2d-anime-cartoon",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 3567112232,
+      "width": 864,
+      "height": 1080,
+      "prompt": "但一个靠废铁和热血拼出来的人，未来究竟能走多远仍是未知。 让张雪在加油站里成为视觉中心，只保留一个环境提示。 特写，突出表情、姿态和一个支持性的场景线索。 2D动漫质感。",
+      "prompt_source": "04_episode_scene_script.json with asset fallback selection",
+      "prompt_confidence": "fallback",
+      "prompt_notes": [
+        "scene=first_available_fallback",
+        "character=exact_name_match",
+        "prop=missing",
+        "shot_mode=identity_emotion_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance.",
+        "Used at least one fallback-generated asset reference because no exact beat match was available."
+      ],
+      "shot_mode": "identity_emotion_keyscene",
+      "reference_policy": "identity_emotion_keyscene: scene + character",
+      "reference_count": 2,
+      "prompt_length": 73,
+      "legacy_prompt_length": 237,
+      "raw_source_description": "但一个靠废铁和热血拼出来的人，未来究竟能走多远仍是未知 | 夜色中张雪独自站在工坊门口，半张脸被路灯照亮，身后是零件堆和未完成的摩托轮廓，手上的机油和细小伤口清晰可见，眼神望向远处更大的世界，画面停在希望与危险并存的临界点 | 他真的能把这股疯狂坚持到底吗 | ominous, unresolved | close-up",
+      "summary": "但一个靠废铁和热血拼出来的人，未来究竟能走多远仍是未知。",
+      "anchor_text": "他真的能把这股疯狂坚持到底吗。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_加油站",
+          "asset_name": "加油站",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\scenes\\scene_加油站.png"
+        },
+        "character": {
+          "asset_id": "character_张雪",
+          "asset_name": "张雪",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\characters\\character_张雪.png"
+        },
+        "prop": null
+      },
+      "matching_notes": [
+        "No reliable scene asset match was found; using the first available generated asset as fallback.",
+        "Matched character asset by explicit beat phrase: 张雪.",
+        "Prop omitted by reference policy."
+      ],
+      "validation_warnings": [
+        "ep01_s12: scene selection has no semantic overlap with the beat; chosen scene `加油站` is low confidence."
+      ],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_加油站",
+            "asset_name": "加油站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_废品站",
+            "asset_name": "废品站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_暴雨山路",
+            "asset_name": "暴雨山路",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_沙漠赛地",
+            "asset_name": "沙漠赛地",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_波尔蒂芒赛道",
+            "asset_name": "波尔蒂芒赛道",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [
+          {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "score": 246,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_Valentin_Debise",
+            "asset_name": "Valentin_Debise",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "character_林",
+            "asset_name": "林",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "prop": []
+      },
+      "limitations": [
+        "No reliable scene asset match was found; using the first available generated asset as fallback.",
+        "ep01_s12: scene selection has no semantic overlap with the beat; chosen scene `加油站` is low confidence."
+      ],
+      "debug_artifact": null,
+      "resume_status": "copied_from_resume_source",
+      "resumed_from": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_151832\\generated_keyscenes\\keyscenes\\ep01_s12.png",
+      "previous_output_path": null,
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\02_recap_production\\generated_keyscenes\\keyscenes\\ep01_s12.png"
+    },
+    {
+      "timestamp": "2026-04-15T08:22:45.314518+00:00",
+      "beat_id": "ep02_s01",
+      "episode_number": 2,
+      "mode": "keyscene",
+      "style_target": "2d-anime-cartoon",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 3177942343,
+      "width": 864,
+      "height": 1080,
+      "prompt": "张雪从高架桥下的野路子改装者，变成坐进现代化工厂的品牌创始人。 让张雪落进现代化工厂的空间关系里，主体位置和环境压迫感清楚。 宽构图，突出主体位置、场景层次和一个关键动作关系。 2D动漫质感。",
+      "prompt_source": "04_episode_scene_script.json beat fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "scene=exact_name_match",
+        "character=exact_name_match",
+        "prop=missing",
+        "shot_mode=staging_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance."
+      ],
+      "shot_mode": "staging_keyscene",
+      "reference_policy": "staging_keyscene: scene + character",
+      "reference_count": 2,
+      "prompt_length": 84,
+      "legacy_prompt_length": 248,
+      "raw_source_description": "张雪从高架桥下的野路子改装者，变成坐进现代化工厂的品牌创始人 | 现代化工厂明亮厂房内，整齐流水线与机械设备延展开来，张雪穿旧团队衫站在厂房中央，和周围标准化工业环境形成鲜明反差，手上仍有洗不掉的黑油，视觉上突出“草根造梦者进入工业中心”的强烈跃迁 | 他终于把野路子变成了品牌 | dramatic, ascendant | wide shot | slow dolly in",
+      "summary": "张雪从高架桥下的野路子改装者，变成坐进现代化工厂的品牌创始人。",
+      "anchor_text": "他终于把野路子变成了品牌。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_现代化工厂",
+          "asset_name": "现代化工厂",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\scenes\\scene_现代化工厂.png"
+        },
+        "character": {
+          "asset_id": "character_张雪",
+          "asset_name": "张雪",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\characters\\character_张雪.png"
+        },
+        "prop": null
+      },
+      "matching_notes": [
+        "Matched scene asset by explicit beat phrase: 现代化工厂, 流水线.",
+        "Matched character asset by explicit beat phrase: 张雪.",
+        "Prop omitted by reference policy."
+      ],
+      "validation_warnings": [],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_现代化工厂",
+            "asset_name": "现代化工厂",
+            "score": 990,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "现代化工厂",
+              "流水线"
+            ]
+          },
+          {
+            "asset_id": "scene_加油站",
+            "asset_name": "加油站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_废品站",
+            "asset_name": "废品站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_暴雨山路",
+            "asset_name": "暴雨山路",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_沙漠赛地",
+            "asset_name": "沙漠赛地",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [
+          {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "score": 984,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_Valentin_Debise",
+            "asset_name": "Valentin_Debise",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "character_林",
+            "asset_name": "林",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "prop": []
+      },
+      "limitations": [],
+      "debug_artifact": null,
+      "resume_status": "copied_from_resume_source",
+      "resumed_from": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_151832\\generated_keyscenes\\keyscenes\\ep02_s01.png",
+      "previous_output_path": null,
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\02_recap_production\\generated_keyscenes\\keyscenes\\ep02_s01.png"
+    },
+    {
+      "timestamp": "2026-04-15T08:22:45.316027+00:00",
+      "beat_id": "ep02_s02",
+      "episode_number": 2,
+      "mode": "keyscene",
+      "style_target": "2d-anime-cartoon",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 2133745994,
+      "width": 864,
+      "height": 1080,
+      "prompt": "即使成了CEO，张雪仍像刚从修车间出来一样走在产线上。 让张雪在现代化工厂里成为视觉中心，只保留一个环境提示。 中景，突出表情、姿态和一个支持性的场景线索。 2D动漫质感。",
+      "prompt_source": "04_episode_scene_script.json beat fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "scene=exact_name_match",
+        "character=exact_name_match",
+        "prop=missing",
+        "shot_mode=identity_emotion_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance."
+      ],
+      "shot_mode": "identity_emotion_keyscene",
+      "reference_policy": "identity_emotion_keyscene: scene + character",
+      "reference_count": 2,
+      "prompt_length": 72,
+      "legacy_prompt_length": 231,
+      "raw_source_description": "即使成了CEO，张雪仍像刚从修车间出来一样走在产线上 | 现代化工厂产线通道，张雪穿团队衫边走边触碰车架与零件，手上黑油痕迹明显，工人和设备在背景中有序运行，工业灯光明亮均匀，人物气质不像老板更像首席技师，强调他的本色未变 | 他还是那个满手油污的人 | grounded, determined | medium shot | tracking",
+      "summary": "即使成了CEO，张雪仍像刚从修车间出来一样走在产线上。",
+      "anchor_text": "他还是那个满手油污的人。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_现代化工厂",
+          "asset_name": "现代化工厂",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\scenes\\scene_现代化工厂.png"
+        },
+        "character": {
+          "asset_id": "character_张雪",
+          "asset_name": "张雪",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\characters\\character_张雪.png"
+        },
+        "prop": null
+      },
+      "matching_notes": [
+        "Matched scene asset by explicit beat phrase: 现代化工厂.",
+        "Matched character asset by explicit beat phrase: 张雪.",
+        "Prop omitted by reference policy."
+      ],
+      "validation_warnings": [],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_现代化工厂",
+            "asset_name": "现代化工厂",
+            "score": 246,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "现代化工厂"
+            ]
+          },
+          {
+            "asset_id": "scene_加油站",
+            "asset_name": "加油站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_废品站",
+            "asset_name": "废品站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_暴雨山路",
+            "asset_name": "暴雨山路",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_沙漠赛地",
+            "asset_name": "沙漠赛地",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [
+          {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "score": 984,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_Valentin_Debise",
+            "asset_name": "Valentin_Debise",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "character_林",
+            "asset_name": "林",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "prop": []
+      },
+      "limitations": [],
+      "debug_artifact": null,
+      "resume_status": "copied_from_resume_source",
+      "resumed_from": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_151832\\generated_keyscenes\\keyscenes\\ep02_s02.png",
+      "previous_output_path": null,
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\02_recap_production\\generated_keyscenes\\keyscenes\\ep02_s02.png"
+    },
+    {
+      "timestamp": "2026-04-15T08:22:45.318032+00:00",
+      "beat_id": "ep02_s03",
+      "episode_number": 2,
+      "mode": "keyscene",
+      "style_target": "2d-anime-cartoon",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 2496199369,
+      "width": 864,
+      "height": 1080,
+      "prompt": "为了证明中国摩托的极限能力，他把Kove带进达喀尔拉力赛。 把关键物件压成画面主体，只保留必要的环境线索。 宽构图，突出物件、手部接触和局部光线。 2D动漫质感。",
+      "prompt_source": "04_episode_scene_script.json beat fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "scene=exact_name_match",
+        "character=missing",
+        "prop=missing",
+        "shot_mode=insert_object_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance."
+      ],
+      "shot_mode": "insert_object_keyscene",
+      "reference_policy": "insert_object_keyscene: scene",
+      "reference_count": 1,
+      "prompt_length": 66,
+      "legacy_prompt_length": 201,
+      "raw_source_description": "为了证明中国摩托的极限能力，他把Kove带进达喀尔拉力赛 | 沙漠赛地全景，烈日下的赛道、补给帐篷和带品牌涂装的Kove摩托形成强烈竞技氛围，张雪站在车旁眺望沙海，风沙翻涌，天空高亮，画面传达把中国品牌推向世界极限试炼场的决心 | 他把Kove推向了达喀尔 | ambitious, high-stakes | wide shot",
+      "summary": "为了证明中国摩托的极限能力，他把Kove带进达喀尔拉力赛。",
+      "anchor_text": "他把Kove推向了达喀尔。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_沙漠赛地",
+          "asset_name": "沙漠赛地",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\scenes\\scene_沙漠赛地.png"
+        },
+        "character": null,
+        "prop": null
+      },
+      "matching_notes": [
+        "Matched scene asset by explicit beat phrase: 沙漠赛地.",
+        "Insert/object keyscenes default to scene + prop.",
+        "No confident prop asset match was found, so this reference was omitted."
+      ],
+      "validation_warnings": [
+        "ep02_s03: insert/object beat did not find a confident prop match; generating with scene-only context."
+      ],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_沙漠赛地",
+            "asset_name": "沙漠赛地",
+            "score": 246,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "沙漠赛地"
+            ]
+          },
+          {
+            "asset_id": "scene_加油站",
+            "asset_name": "加油站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_废品站",
+            "asset_name": "废品站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_暴雨山路",
+            "asset_name": "暴雨山路",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_波尔蒂芒赛道",
+            "asset_name": "波尔蒂芒赛道",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [],
+        "prop": [
+          {
+            "asset_id": "prop_820RR-RS发动机",
+            "asset_name": "820RR-RS发动机",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_Kove摩托车",
+            "asset_name": "Kove摩托车",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_图纸",
+            "asset_name": "图纸",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_头盔",
+            "asset_name": "头盔",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_扳手",
+            "asset_name": "扳手",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ]
+      },
+      "limitations": [],
+      "debug_artifact": null,
+      "resume_status": "copied_from_resume_source",
+      "resumed_from": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_151832\\generated_keyscenes\\keyscenes\\ep02_s03.png",
+      "previous_output_path": null,
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\02_recap_production\\generated_keyscenes\\keyscenes\\ep02_s03.png"
+    },
+    {
+      "timestamp": "2026-04-15T08:22:45.319031+00:00",
+      "beat_id": "ep02_s04",
+      "episode_number": 2,
+      "mode": "keyscene",
+      "style_target": "2d-anime-cartoon",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 3544042602,
+      "width": 864,
+      "height": 1080,
+      "prompt": "在别人等成绩时，张雪直接扎进沙漠车边亲手修车。 让张雪在沙漠赛地里成为视觉中心，只保留一个环境提示。 中近景，突出表情、姿态和一个支持性的场景线索。 2D动漫质感。",
+      "prompt_source": "04_episode_scene_script.json beat fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "scene=exact_name_match",
+        "character=exact_name_match",
+        "prop=missing",
+        "shot_mode=identity_emotion_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance."
+      ],
+      "shot_mode": "identity_emotion_keyscene",
+      "reference_policy": "identity_emotion_keyscene: scene + character",
+      "reference_count": 2,
+      "prompt_length": 70,
+      "legacy_prompt_length": 229,
+      "raw_source_description": "在别人等成绩时，张雪直接扎进沙漠车边亲手修车 | 沙漠赛地近景，Kove摩托停在细沙中，张雪满脸风沙趴在传动系统旁检修，工具散在车边，炽烈阳光把沙粒和汗水照得刺眼，帐篷和远处赛道模糊在热浪中，突出极限条件下的亲力亲为 | 他不是看比赛，他是睡在车边 | harsh, relentless | medium close-up",
+      "summary": "在别人等成绩时，张雪直接扎进沙漠车边亲手修车。",
+      "anchor_text": "他不是看比赛，他是睡在车边。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_沙漠赛地",
+          "asset_name": "沙漠赛地",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\scenes\\scene_沙漠赛地.png"
+        },
+        "character": {
+          "asset_id": "character_张雪",
+          "asset_name": "张雪",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\characters\\character_张雪.png"
+        },
+        "prop": null
+      },
+      "matching_notes": [
+        "Matched scene asset by explicit beat phrase: 沙漠赛地.",
+        "Matched character asset by explicit beat phrase: 张雪.",
+        "Prop omitted by reference policy."
+      ],
+      "validation_warnings": [],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_沙漠赛地",
+            "asset_name": "沙漠赛地",
+            "score": 246,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "沙漠赛地"
+            ]
+          },
+          {
+            "asset_id": "scene_高架桥下工坊",
+            "asset_name": "高架桥下工坊",
+            "score": 6,
+            "strategy": "keyword_overlap",
+            "matched_terms": [
+              "工具"
+            ]
+          },
+          {
+            "asset_id": "scene_加油站",
+            "asset_name": "加油站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_废品站",
+            "asset_name": "废品站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_暴雨山路",
+            "asset_name": "暴雨山路",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [
+          {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "score": 984,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_Valentin_Debise",
+            "asset_name": "Valentin_Debise",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "character_林",
+            "asset_name": "林",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "prop": []
+      },
+      "limitations": [],
+      "debug_artifact": null,
+      "resume_status": "copied_from_resume_source",
+      "resumed_from": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_151832\\generated_keyscenes\\keyscenes\\ep02_s04.png",
+      "previous_output_path": null,
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\02_recap_production\\generated_keyscenes\\keyscenes\\ep02_s04.png"
+    },
+    {
+      "timestamp": "2026-04-15T08:22:45.320031+00:00",
+      "beat_id": "ep02_s05",
+      "episode_number": 2,
+      "mode": "keyscene",
+      "style_target": "2d-anime-cartoon",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 2127037991,
+      "width": 864,
+      "height": 1080,
+      "prompt": "他真正想证明的，不是能造车，而是中国制造也能与顶级对手硬碰硬。 让张雪在加油站里成为视觉中心，只保留一个环境提示。 特写，突出表情、姿态和一个支持性的场景线索。 2D动漫质感。",
+      "prompt_source": "04_episode_scene_script.json with asset fallback selection",
+      "prompt_confidence": "fallback",
+      "prompt_notes": [
+        "scene=first_available_fallback",
+        "character=exact_name_match",
+        "prop=missing",
+        "shot_mode=identity_emotion_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance.",
+        "Used at least one fallback-generated asset reference because no exact beat match was available."
+      ],
+      "shot_mode": "identity_emotion_keyscene",
+      "reference_policy": "identity_emotion_keyscene: scene + character",
+      "reference_count": 2,
+      "prompt_length": 75,
+      "legacy_prompt_length": 229,
+      "raw_source_description": "他真正想证明的，不是能造车，而是中国制造也能与顶级对手硬碰硬 | 张雪在沙漠烈光中抬头望向远方赛道，脸上有沙粒、晒痕和机油印记，背后是Kove摩托模糊轮廓与飞扬尘沙，构图集中于他坚硬的眼神和不退让的姿态，强化信念表达 | 他要证明中国制造也能硬碰硬 | resolute, proud | close-up",
+      "summary": "他真正想证明的，不是能造车，而是中国制造也能与顶级对手硬碰硬。",
+      "anchor_text": "他要证明中国制造也能硬碰硬。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_加油站",
+          "asset_name": "加油站",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\scenes\\scene_加油站.png"
+        },
+        "character": {
+          "asset_id": "character_张雪",
+          "asset_name": "张雪",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\characters\\character_张雪.png"
+        },
+        "prop": null
+      },
+      "matching_notes": [
+        "No reliable scene asset match was found; using the first available generated asset as fallback.",
+        "Matched character asset by explicit beat phrase: 张雪.",
+        "Prop omitted by reference policy."
+      ],
+      "validation_warnings": [
+        "ep02_s05: scene selection has no semantic overlap with the beat; chosen scene `加油站` is low confidence."
+      ],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_加油站",
+            "asset_name": "加油站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_废品站",
+            "asset_name": "废品站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_暴雨山路",
+            "asset_name": "暴雨山路",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_沙漠赛地",
+            "asset_name": "沙漠赛地",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_波尔蒂芒赛道",
+            "asset_name": "波尔蒂芒赛道",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [
+          {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "score": 246,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_Valentin_Debise",
+            "asset_name": "Valentin_Debise",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "character_林",
+            "asset_name": "林",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "prop": []
+      },
+      "limitations": [
+        "No reliable scene asset match was found; using the first available generated asset as fallback.",
+        "ep02_s05: scene selection has no semantic overlap with the beat; chosen scene `加油站` is low confidence."
+      ],
+      "debug_artifact": null,
+      "resume_status": "copied_from_resume_source",
+      "resumed_from": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_151832\\generated_keyscenes\\keyscenes\\ep02_s05.png",
+      "previous_output_path": null,
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\02_recap_production\\generated_keyscenes\\keyscenes\\ep02_s05.png"
+    },
+    {
+      "timestamp": "2026-04-15T08:22:45.321030+00:00",
+      "beat_id": "ep02_s06",
+      "episode_number": 2,
+      "mode": "keyscene",
+      "style_target": "2d-anime-cartoon",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 354612766,
+      "width": 864,
+      "height": 1080,
+      "prompt": "Kove在世界上打出名气，品牌终于被全球真正看见。 把参考内容整理成一个清楚的叙事瞬间。 宽构图，突出主体位置、场景层次和一个关键动作关系。 2D动漫质感。",
+      "prompt_source": "04_episode_scene_script.json with asset fallback selection",
+      "prompt_confidence": "fallback",
+      "prompt_notes": [
+        "scene=first_available_fallback",
+        "character=missing",
+        "prop=missing",
+        "shot_mode=staging_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance.",
+        "Used at least one fallback-generated asset reference because no exact beat match was available."
+      ],
+      "shot_mode": "staging_keyscene",
+      "reference_policy": "staging_keyscene: scene",
+      "reference_count": 1,
+      "prompt_length": 64,
+      "legacy_prompt_length": 192,
+      "raw_source_description": "Kove在世界上打出名气，品牌终于被全球真正看见 | 组合式画面：Kove摩托高速掠过赛地、工厂标识与成车线、国际关注视线和媒体镜头感交叠，整体保持统一工业与竞技风格，强调品牌从国内野生成长为全球注意对象的扩张感 | Kove开始被全世界看见 | triumphant, expanding | montage",
+      "summary": "Kove在世界上打出名气，品牌终于被全球真正看见。",
+      "anchor_text": "Kove开始被全世界看见。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_加油站",
+          "asset_name": "加油站",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\scenes\\scene_加油站.png"
+        },
+        "character": null,
+        "prop": null
+      },
+      "matching_notes": [
+        "No reliable scene asset match was found; using the first available generated asset as fallback.",
+        "No confident character asset match was found, so this reference was omitted.",
+        "Prop omitted by reference policy."
+      ],
+      "validation_warnings": [
+        "ep02_s06: no confident character match was found; keyscene will rely on scene context only.",
+        "ep02_s06: scene selection has no semantic overlap with the beat; chosen scene `加油站` is low confidence."
+      ],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_加油站",
+            "asset_name": "加油站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_废品站",
+            "asset_name": "废品站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_暴雨山路",
+            "asset_name": "暴雨山路",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_沙漠赛地",
+            "asset_name": "沙漠赛地",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_波尔蒂芒赛道",
+            "asset_name": "波尔蒂芒赛道",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [
+          {
+            "asset_id": "character_Valentin_Debise",
+            "asset_name": "Valentin_Debise",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "character_林",
+            "asset_name": "林",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "prop": []
+      },
+      "limitations": [
+        "No reliable scene asset match was found; using the first available generated asset as fallback.",
+        "ep02_s06: scene selection has no semantic overlap with the beat; chosen scene `加油站` is low confidence."
+      ],
+      "debug_artifact": null,
+      "resume_status": "copied_from_resume_source",
+      "resumed_from": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_151832\\generated_keyscenes\\keyscenes\\ep02_s06.png",
+      "previous_output_path": null,
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\02_recap_production\\generated_keyscenes\\keyscenes\\ep02_s06.png"
+    },
+    {
+      "timestamp": "2026-04-15T08:22:45.322031+00:00",
+      "beat_id": "ep02_s07",
+      "episode_number": 2,
+      "mode": "keyscene",
+      "style_target": "2d-anime-cartoon",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 4103356897,
+      "width": 864,
+      "height": 1080,
+      "prompt": "随着名气变大，工厂内部开始被利润、稳定和占有率主导。 让张雪落进加油站的空间关系里，主体位置和环境压迫感清楚。 宽构图，突出主体位置、场景层次和一个关键动作关系。 2D动漫质感。",
+      "prompt_source": "04_episode_scene_script.json with asset fallback selection",
+      "prompt_confidence": "fallback",
+      "prompt_notes": [
+        "scene=first_available_fallback",
+        "character=exact_name_match",
+        "prop=missing",
+        "shot_mode=staging_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance.",
+        "Used at least one fallback-generated asset reference because no exact beat match was available."
+      ],
+      "shot_mode": "staging_keyscene",
+      "reference_policy": "staging_keyscene: scene + character",
+      "reference_count": 2,
+      "prompt_length": 76,
+      "legacy_prompt_length": 224,
+      "raw_source_description": "随着名气变大，工厂内部开始被利润、稳定和占有率主导 | 现代化会议空间与厂区冷光环境，长桌、文件、玻璃隔断和整洁工业背景构成理性秩序感，张雪与模糊化的投资人坐在两端形成距离，画面氛围冷硬，突出资本逻辑开始压过热血逻辑 | 名气越大，分歧越大 | cold, uneasy | wide shot | static",
+      "summary": "随着名气变大，工厂内部开始被利润、稳定和占有率主导。",
+      "anchor_text": "名气越大，分歧越大。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_加油站",
+          "asset_name": "加油站",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\scenes\\scene_加油站.png"
+        },
+        "character": {
+          "asset_id": "character_张雪",
+          "asset_name": "张雪",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\characters\\character_张雪.png"
+        },
+        "prop": null
+      },
+      "matching_notes": [
+        "No reliable scene asset match was found; using the first available generated asset as fallback.",
+        "Matched character asset by explicit beat phrase: 张雪.",
+        "Prop omitted by reference policy."
+      ],
+      "validation_warnings": [
+        "ep02_s07: scene selection has no semantic overlap with the beat; chosen scene `加油站` is low confidence."
+      ],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_加油站",
+            "asset_name": "加油站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_废品站",
+            "asset_name": "废品站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_暴雨山路",
+            "asset_name": "暴雨山路",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_沙漠赛地",
+            "asset_name": "沙漠赛地",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_波尔蒂芒赛道",
+            "asset_name": "波尔蒂芒赛道",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [
+          {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "score": 246,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_Valentin_Debise",
+            "asset_name": "Valentin_Debise",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "character_林",
+            "asset_name": "林",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "prop": []
+      },
+      "limitations": [
+        "No reliable scene asset match was found; using the first available generated asset as fallback.",
+        "ep02_s07: scene selection has no semantic overlap with the beat; chosen scene `加油站` is low confidence."
+      ],
+      "debug_artifact": null,
+      "resume_status": "copied_from_resume_source",
+      "resumed_from": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_151832\\generated_keyscenes\\keyscenes\\ep02_s07.png",
+      "previous_output_path": null,
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\02_recap_production\\generated_keyscenes\\keyscenes\\ep02_s07.png"
+    },
+    {
+      "timestamp": "2026-04-15T08:22:45.323031+00:00",
+      "beat_id": "ep02_s08",
+      "episode_number": 2,
+      "mode": "keyscene",
+      "style_target": "2d-anime-cartoon",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 3981919567,
+      "width": 864,
+      "height": 1080,
+      "prompt": "投资人追求稳定赚钱，张雪却只想做让人闭嘴的极限机器。 让张雪在加油站里成为视觉中心，图纸只作为近景支撑线索。 越肩构图，突出表情、姿态和一个支持性的场景线索。 2D动漫质感。",
+      "prompt_source": "04_episode_scene_script.json with asset fallback selection",
+      "prompt_confidence": "fallback",
+      "prompt_notes": [
+        "scene=first_available_fallback",
+        "character=exact_name_match",
+        "prop=exact_name_match",
+        "shot_mode=identity_emotion_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance.",
+        "Used at least one fallback-generated asset reference because no exact beat match was available."
+      ],
+      "shot_mode": "identity_emotion_keyscene",
+      "reference_policy": "identity_emotion_keyscene: scene + character + prop",
+      "reference_count": 3,
+      "prompt_length": 75,
+      "legacy_prompt_length": 263,
+      "raw_source_description": "投资人追求稳定赚钱，张雪却只想做让人闭嘴的极限机器 | 会议桌对峙场景，从投资人肩后看向张雪，桌面摆着图纸、产品资料和量产方案，张雪身体前倾、目光锋利，团队衫与对面正式商务装形成冲突，室内冷白光压低情绪，突出理想主义与资本之间不可调和的裂缝 | 他要传奇，他们只要利润 | confrontational, bitter | over-the-shoulder",
+      "summary": "投资人追求稳定赚钱，张雪却只想做让人闭嘴的极限机器。",
+      "anchor_text": "他要传奇，他们只要利润。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_加油站",
+          "asset_name": "加油站",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\scenes\\scene_加油站.png"
+        },
+        "character": {
+          "asset_id": "character_张雪",
+          "asset_name": "张雪",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\characters\\character_张雪.png"
+        },
+        "prop": {
+          "asset_id": "prop_图纸",
+          "asset_name": "图纸",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\props\\prop_图纸.png"
+        }
+      },
+      "matching_notes": [
+        "No reliable scene asset match was found; using the first available generated asset as fallback.",
+        "Matched character asset by explicit beat phrase: 张雪, 图纸.",
+        "Matched prop asset by explicit beat phrase: 图纸."
+      ],
+      "validation_warnings": [
+        "ep02_s08: scene selection has no semantic overlap with the beat; chosen scene `加油站` is low confidence."
+      ],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_加油站",
+            "asset_name": "加油站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_废品站",
+            "asset_name": "废品站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_暴雨山路",
+            "asset_name": "暴雨山路",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_沙漠赛地",
+            "asset_name": "沙漠赛地",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_波尔蒂芒赛道",
+            "asset_name": "波尔蒂芒赛道",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [
+          {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "score": 990,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪",
+              "图纸"
+            ]
+          },
+          {
+            "asset_id": "character_Valentin_Debise",
+            "asset_name": "Valentin_Debise",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "character_林",
+            "asset_name": "林",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "prop": [
+          {
+            "asset_id": "prop_图纸",
+            "asset_name": "图纸",
+            "score": 246,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "图纸"
+            ]
+          },
+          {
+            "asset_id": "prop_820RR-RS发动机",
+            "asset_name": "820RR-RS发动机",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_Kove摩托车",
+            "asset_name": "Kove摩托车",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_头盔",
+            "asset_name": "头盔",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_扳手",
+            "asset_name": "扳手",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ]
+      },
+      "limitations": [
+        "No reliable scene asset match was found; using the first available generated asset as fallback.",
+        "ep02_s08: scene selection has no semantic overlap with the beat; chosen scene `加油站` is low confidence."
+      ],
+      "debug_artifact": null,
+      "resume_status": "copied_from_resume_source",
+      "resumed_from": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_151832\\generated_keyscenes\\keyscenes\\ep02_s08.png",
+      "previous_output_path": null,
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\02_recap_production\\generated_keyscenes\\keyscenes\\ep02_s08.png"
+    },
+    {
+      "timestamp": "2026-04-15T08:22:45.325031+00:00",
+      "beat_id": "ep02_s09",
+      "episode_number": 2,
+      "mode": "keyscene",
+      "style_target": "2d-anime-cartoon",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 1600163482,
+      "width": 864,
+      "height": 1080,
+      "prompt": "到了2024年，张雪做出震动行业的决定——离开自己创办的公司。 让张雪在加油站里成为视觉中心，只保留一个环境提示。 中景，突出表情、姿态和一个支持性的场景线索。 2D动漫质感。",
+      "prompt_source": "04_episode_scene_script.json with asset fallback selection",
+      "prompt_confidence": "fallback",
+      "prompt_notes": [
+        "scene=first_available_fallback",
+        "character=exact_name_match",
+        "prop=missing",
+        "shot_mode=identity_emotion_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance.",
+        "Used at least one fallback-generated asset reference because no exact beat match was available."
+      ],
+      "shot_mode": "identity_emotion_keyscene",
+      "reference_policy": "identity_emotion_keyscene: scene + character",
+      "reference_count": 2,
+      "prompt_length": 71,
+      "legacy_prompt_length": 222,
+      "raw_source_description": "到了2024年，张雪做出震动行业的决定——离开自己创办的公司 | 张雪独自站在现代工厂内部明亮通道中，背景是熟悉却逐渐疏离的产线与品牌环境，他神情冷静但压抑，像在做一刀切割自己过往的决定，工业灯光洁净却显得刺眼而陌生 | 2024年，他辞职了 | decisive, painful | medium shot",
+      "summary": "到了2024年，张雪做出震动行业的决定——离开自己创办的公司。",
+      "anchor_text": "2024年，他辞职了。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_加油站",
+          "asset_name": "加油站",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\scenes\\scene_加油站.png"
+        },
+        "character": {
+          "asset_id": "character_张雪",
+          "asset_name": "张雪",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\characters\\character_张雪.png"
+        },
+        "prop": null
+      },
+      "matching_notes": [
+        "No reliable scene asset match was found; using the first available generated asset as fallback.",
+        "Matched character asset by explicit beat phrase: 张雪.",
+        "Prop omitted by reference policy."
+      ],
+      "validation_warnings": [
+        "ep02_s09: scene selection has no semantic overlap with the beat; chosen scene `加油站` is low confidence."
+      ],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_加油站",
+            "asset_name": "加油站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_废品站",
+            "asset_name": "废品站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_暴雨山路",
+            "asset_name": "暴雨山路",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_沙漠赛地",
+            "asset_name": "沙漠赛地",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_波尔蒂芒赛道",
+            "asset_name": "波尔蒂芒赛道",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [
+          {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "score": 984,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_Valentin_Debise",
+            "asset_name": "Valentin_Debise",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "character_林",
+            "asset_name": "林",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "prop": []
+      },
+      "limitations": [
+        "No reliable scene asset match was found; using the first available generated asset as fallback.",
+        "ep02_s09: scene selection has no semantic overlap with the beat; chosen scene `加油站` is low confidence."
+      ],
+      "debug_artifact": null,
+      "resume_status": "copied_from_resume_source",
+      "resumed_from": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_151832\\generated_keyscenes\\keyscenes\\ep02_s09.png",
+      "previous_output_path": null,
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\02_recap_production\\generated_keyscenes\\keyscenes\\ep02_s09.png"
+    },
+    {
+      "timestamp": "2026-04-15T08:22:45.326030+00:00",
+      "beat_id": "ep02_s10",
+      "episode_number": 2,
+      "mode": "keyscene",
+      "style_target": "2d-anime-cartoon",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 2182961121,
+      "width": 864,
+      "height": 1080,
+      "prompt": "他走出总部大楼时，手里只拿着最初那套扳手。 把扳手压成画面主体，只保留高架桥下工坊的局部环境和受光关系。 插入镜头，突出物件、手部接触和局部光线。 2D动漫质感。",
+      "prompt_source": "04_episode_scene_script.json beat fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "scene=keyword_overlap",
+        "character=missing",
+        "prop=exact_name_match",
+        "shot_mode=insert_object_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance."
+      ],
+      "shot_mode": "insert_object_keyscene",
+      "reference_policy": "insert_object_keyscene: scene + prop",
+      "reference_count": 2,
+      "prompt_length": 69,
+      "legacy_prompt_length": 216,
+      "raw_source_description": "他走出总部大楼时，手里只拿着最初那套扳手 | 近景特写，一只带油痕和旧伤的手紧紧握着一把磨损扳手，背景虚化为现代总部大厅或玻璃门出口的强光，工具的粗粝质感与资本空间的冷净质感形成强烈对冲 | 他只带走了最初那套扳手 | stripped, fierce | insert",
+      "summary": "他走出总部大楼时，手里只拿着最初那套扳手。",
+      "anchor_text": "他只带走了最初那套扳手。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_高架桥下工坊",
+          "asset_name": "高架桥下工坊",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\scenes\\scene_高架桥下工坊.png"
+        },
+        "character": null,
+        "prop": {
+          "asset_id": "prop_扳手",
+          "asset_name": "扳手",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\props\\prop_扳手.png"
+        }
+      },
+      "matching_notes": [
+        "Matched scene asset by keyword overlap: 工具.",
+        "Insert/object keyscenes default to scene + prop.",
+        "Matched prop asset by explicit beat phrase: 扳手."
+      ],
+      "validation_warnings": [
+        "ep02_s10: scene selection for `高架桥下工坊` is only weakly matched to the beat intent."
+      ],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_高架桥下工坊",
+            "asset_name": "高架桥下工坊",
+            "score": 6,
+            "strategy": "keyword_overlap",
+            "matched_terms": [
+              "工具"
+            ]
+          },
+          {
+            "asset_id": "scene_加油站",
+            "asset_name": "加油站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_废品站",
+            "asset_name": "废品站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_暴雨山路",
+            "asset_name": "暴雨山路",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_沙漠赛地",
+            "asset_name": "沙漠赛地",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [],
+        "prop": [
+          {
+            "asset_id": "prop_扳手",
+            "asset_name": "扳手",
+            "score": 984,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "扳手"
+            ]
+          },
+          {
+            "asset_id": "prop_820RR-RS发动机",
+            "asset_name": "820RR-RS发动机",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_Kove摩托车",
+            "asset_name": "Kove摩托车",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_图纸",
+            "asset_name": "图纸",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_头盔",
+            "asset_name": "头盔",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ]
+      },
+      "limitations": [],
+      "debug_artifact": null,
+      "resume_status": "copied_from_resume_source",
+      "resumed_from": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_151832\\generated_keyscenes\\keyscenes\\ep02_s10.png",
+      "previous_output_path": null,
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\02_recap_production\\generated_keyscenes\\keyscenes\\ep02_s10.png"
+    },
+    {
+      "timestamp": "2026-04-15T08:22:45.327031+00:00",
+      "beat_id": "ep02_s11",
+      "episode_number": 2,
+      "mode": "keyscene",
+      "style_target": "2d-anime-cartoon",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 2297587316,
+      "width": 864,
+      "height": 1080,
+      "prompt": "没有头衔也没有位置的张雪，反而像重新回到最危险也最自由的起点。 让张雪在高架桥下工坊里成为视觉中心，只保留一个环境提示。 宽构图，突出表情、姿态和一个支持性的场景线索。 2D动漫质感。",
+      "prompt_source": "04_episode_scene_script.json beat fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "scene=keyword_overlap",
+        "character=exact_name_match",
+        "prop=missing",
+        "shot_mode=identity_emotion_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance."
+      ],
+      "shot_mode": "identity_emotion_keyscene",
+      "reference_policy": "identity_emotion_keyscene: scene + character",
+      "reference_count": 2,
+      "prompt_length": 80,
+      "legacy_prompt_length": 241,
+      "raw_source_description": "没有头衔也没有位置的张雪，反而像重新回到最危险也最自由的起点 | 总部大楼外的夜色或傍晚冷光中，张雪独自走下台阶，背影清瘦，手里拎着木箱工具或握着扳手，玻璃幕墙反射城市光线，人物离开体制化空间走向未知，画面既像失败者离场又像猛兽脱笼 | 没有束缚了，他也更危险了 | liberated, ominous | wide shot",
+      "summary": "没有头衔也没有位置的张雪，反而像重新回到最危险也最自由的起点。",
+      "anchor_text": "没有束缚了，他也更危险了。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_高架桥下工坊",
+          "asset_name": "高架桥下工坊",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\scenes\\scene_高架桥下工坊.png"
+        },
+        "character": {
+          "asset_id": "character_张雪",
+          "asset_name": "张雪",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\characters\\character_张雪.png"
+        },
+        "prop": null
+      },
+      "matching_notes": [
+        "Matched scene asset by keyword overlap: 木箱, 工具.",
+        "Matched character asset by explicit beat phrase: 张雪.",
+        "Prop omitted by reference policy."
+      ],
+      "validation_warnings": [
+        "ep02_s11: prop reference omitted to keep the prompt/edit set compact.",
+        "ep02_s11: scene selection for `高架桥下工坊` is only weakly matched to the beat intent."
+      ],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_高架桥下工坊",
+            "asset_name": "高架桥下工坊",
+            "score": 12,
+            "strategy": "keyword_overlap",
+            "matched_terms": [
+              "木箱",
+              "工具"
+            ]
+          },
+          {
+            "asset_id": "scene_加油站",
+            "asset_name": "加油站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_废品站",
+            "asset_name": "废品站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_暴雨山路",
+            "asset_name": "暴雨山路",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_沙漠赛地",
+            "asset_name": "沙漠赛地",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [
+          {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "score": 984,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_Valentin_Debise",
+            "asset_name": "Valentin_Debise",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "character_林",
+            "asset_name": "林",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "prop": []
+      },
+      "limitations": [],
+      "debug_artifact": null,
+      "resume_status": "copied_from_resume_source",
+      "resumed_from": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_151832\\generated_keyscenes\\keyscenes\\ep02_s11.png",
+      "previous_output_path": null,
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\02_recap_production\\generated_keyscenes\\keyscenes\\ep02_s11.png"
+    },
+    {
+      "timestamp": "2026-04-15T08:22:45.328534+00:00",
+      "beat_id": "ep03_s01",
+      "episode_number": 3,
+      "mode": "keyscene",
+      "style_target": "2d-anime-cartoon",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 3617126394,
+      "width": 864,
+      "height": 1080,
+      "prompt": "离开Kove后，张雪没有沉下去，而是转身创立ZXMOTO再次开赌。 让张雪在高架桥下工坊里成为视觉中心，只保留一个环境提示。 中景，突出表情、姿态和一个支持性的场景线索。 2D动漫质感。",
+      "prompt_source": "04_episode_scene_script.json beat fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "scene=keyword_overlap",
+        "character=exact_name_match",
+        "prop=missing",
+        "shot_mode=identity_emotion_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance."
+      ],
+      "shot_mode": "identity_emotion_keyscene",
+      "reference_policy": "identity_emotion_keyscene: scene + character",
+      "reference_count": 2,
+      "prompt_length": 72,
+      "legacy_prompt_length": 232,
+      "raw_source_description": "离开Kove后，张雪没有沉下去，而是转身创立ZXMOTO再次开赌 | 近似旧工坊气质的新创业空间，张雪站在简陋却充满零件与工具的环境中，穿旧团队衫、手带油污，背后是半成型机械结构和图纸，灯光冷暗但人物目光极亮，表现重启战局的危险感 | 他没有沉寂，而是又赌了一次 | dangerous, driven | medium shot",
+      "summary": "离开Kove后，张雪没有沉下去，而是转身创立ZXMOTO再次开赌。",
+      "anchor_text": "他没有沉寂，而是又赌了一次。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_高架桥下工坊",
+          "asset_name": "高架桥下工坊",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\scenes\\scene_高架桥下工坊.png"
+        },
+        "character": {
+          "asset_id": "character_张雪",
+          "asset_name": "张雪",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\characters\\character_张雪.png"
+        },
+        "prop": null
+      },
+      "matching_notes": [
+        "Matched scene asset by keyword overlap: 工具.",
+        "Matched character asset by explicit beat phrase: 张雪, 图纸.",
+        "Prop omitted by reference policy."
+      ],
+      "validation_warnings": [
+        "ep03_s01: prop reference omitted to keep the prompt/edit set compact.",
+        "ep03_s01: scene selection for `高架桥下工坊` is only weakly matched to the beat intent."
+      ],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_高架桥下工坊",
+            "asset_name": "高架桥下工坊",
+            "score": 6,
+            "strategy": "keyword_overlap",
+            "matched_terms": [
+              "工具"
+            ]
+          },
+          {
+            "asset_id": "scene_加油站",
+            "asset_name": "加油站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_废品站",
+            "asset_name": "废品站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_暴雨山路",
+            "asset_name": "暴雨山路",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_沙漠赛地",
+            "asset_name": "沙漠赛地",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [
+          {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "score": 990,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪",
+              "图纸"
+            ]
+          },
+          {
+            "asset_id": "character_Valentin_Debise",
+            "asset_name": "Valentin_Debise",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "character_林",
+            "asset_name": "林",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "prop": []
+      },
+      "limitations": [],
+      "debug_artifact": null,
+      "resume_status": "copied_from_resume_source",
+      "resumed_from": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_151832\\generated_keyscenes\\keyscenes\\ep03_s01.png",
+      "previous_output_path": null,
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\02_recap_production\\generated_keyscenes\\keyscenes\\ep03_s01.png"
+    },
+    {
+      "timestamp": "2026-04-15T08:22:45.328534+00:00",
+      "beat_id": "ep03_s02",
+      "episode_number": 3,
+      "mode": "keyscene",
+      "style_target": "2d-anime-cartoon",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 225903221,
+      "width": 864,
+      "height": 1080,
+      "prompt": "别人先求活下来，张雪却一上来就瞄准最难啃的三缸高性能发动机。 把关键物件压成画面主体，只保留必要的环境线索。 插入镜头，突出物件、手部接触和局部光线。 2D动漫质感。",
+      "prompt_source": "04_episode_scene_script.json with asset fallback selection",
+      "prompt_confidence": "fallback",
+      "prompt_notes": [
+        "scene=first_available_fallback",
+        "character=missing",
+        "prop=missing",
+        "shot_mode=insert_object_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance.",
+        "Used at least one fallback-generated asset reference because no exact beat match was available."
+      ],
+      "shot_mode": "insert_object_keyscene",
+      "reference_policy": "insert_object_keyscene: scene",
+      "reference_count": 1,
+      "prompt_length": 71,
+      "legacy_prompt_length": 200,
+      "raw_source_description": "别人先求活下来，张雪却一上来就瞄准最难啃的三缸高性能发动机 | 工程图纸与820RR-RS发动机结构草图铺满桌面，复杂线稿、尺寸标注、热力计算和修改痕迹密集可见，一只沾油的手压在图纸边缘，画面直接传达“选择最难路线”的疯狂决策 | 他上来就盯上了三缸发动机 | bold, obsessive | insert",
+      "summary": "别人先求活下来，张雪却一上来就瞄准最难啃的三缸高性能发动机。",
+      "anchor_text": "他上来就盯上了三缸发动机。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_加油站",
+          "asset_name": "加油站",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\scenes\\scene_加油站.png"
+        },
+        "character": null,
+        "prop": null
+      },
+      "matching_notes": [
+        "No reliable scene asset match was found; using the first available generated asset as fallback.",
+        "Insert/object keyscenes default to scene + prop.",
+        "Prop omitted because it did not match the primary object beat."
+      ],
+      "validation_warnings": [
+        "ep03_s02: omitted prop `820RR-RS发动机` because it only matched secondary visual text, not the primary object beat.",
+        "ep03_s02: scene selection has no semantic overlap with the beat; chosen scene `加油站` is low confidence."
+      ],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_加油站",
+            "asset_name": "加油站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_废品站",
+            "asset_name": "废品站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_暴雨山路",
+            "asset_name": "暴雨山路",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_沙漠赛地",
+            "asset_name": "沙漠赛地",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_波尔蒂芒赛道",
+            "asset_name": "波尔蒂芒赛道",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [],
+        "prop": []
+      },
+      "limitations": [
+        "No reliable scene asset match was found; using the first available generated asset as fallback.",
+        "ep03_s02: scene selection has no semantic overlap with the beat; chosen scene `加油站` is low confidence."
+      ],
+      "debug_artifact": null,
+      "resume_status": "queued",
+      "resumed_from": null,
+      "previous_output_path": null,
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\02_recap_production\\generated_keyscenes\\keyscenes\\ep03_s02.png"
+    },
+    {
+      "timestamp": "2026-04-15T08:22:45.328534+00:00",
+      "beat_id": "ep03_s03",
+      "episode_number": 3,
+      "mode": "keyscene",
+      "style_target": "2d-anime-cartoon",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 1942498747,
+      "width": 864,
+      "height": 1080,
+      "prompt": "820RR-RS成了他后半生的执念，所有积蓄都被砸进这台机器。 把820RR-RS发动机压成画面主体，只保留高架桥下工坊的局部环境和受光关系。 中近景，突出物件、手部接触和局部光线。 2D动漫质感。",
+      "prompt_source": "04_episode_scene_script.json beat fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "scene=keyword_overlap",
+        "character=missing",
+        "prop=exact_name_match",
+        "shot_mode=insert_object_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance."
+      ],
+      "shot_mode": "insert_object_keyscene",
+      "reference_policy": "insert_object_keyscene: scene + prop",
+      "reference_count": 2,
+      "prompt_length": 75,
+      "legacy_prompt_length": 231,
+      "raw_source_description": "820RR-RS成了他后半生的执念，所有积蓄都被砸进这台机器 | 820RR-RS发动机台架在工作间中央，复杂金属缸体、管路和散热部件清晰可见，张雪站在一旁凝视发动机，周围堆满工具、草稿和拆解件，工业冷光下机械像祭坛般成为画面中心 | 他把全部身家都压进了这台机器 | intense, sacrificial | medium close-up | slow dolly in",
+      "summary": "820RR-RS成了他后半生的执念，所有积蓄都被砸进这台机器。",
+      "anchor_text": "他把全部身家都压进了这台机器。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_高架桥下工坊",
+          "asset_name": "高架桥下工坊",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\scenes\\scene_高架桥下工坊.png"
+        },
+        "character": null,
+        "prop": {
+          "asset_id": "prop_820RR-RS发动机",
+          "asset_name": "820RR-RS发动机",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\props\\prop_820RR-RS发动机.png"
+        }
+      },
+      "matching_notes": [
+        "Matched scene asset by keyword overlap: 工具.",
+        "Insert/object keyscenes default to scene + prop.",
+        "Matched prop asset by explicit beat phrase: 820RR-RS发动机, 820RR, RS发动机, 缸体, 管路."
+      ],
+      "validation_warnings": [
+        "ep03_s03: scene selection for `高架桥下工坊` is only weakly matched to the beat intent."
+      ],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_高架桥下工坊",
+            "asset_name": "高架桥下工坊",
+            "score": 6,
+            "strategy": "keyword_overlap",
+            "matched_terms": [
+              "工具"
+            ]
+          },
+          {
+            "asset_id": "scene_加油站",
+            "asset_name": "加油站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_废品站",
+            "asset_name": "废品站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_暴雨山路",
+            "asset_name": "暴雨山路",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_沙漠赛地",
+            "asset_name": "沙漠赛地",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [],
+        "prop": [
+          {
+            "asset_id": "prop_820RR-RS发动机",
+            "asset_name": "820RR-RS发动机",
+            "score": 282,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "820RR-RS发动机",
+              "820RR",
+              "RS发动机",
+              "缸体",
+              "管路"
+            ]
+          },
+          {
+            "asset_id": "prop_Kove摩托车",
+            "asset_name": "Kove摩托车",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_图纸",
+            "asset_name": "图纸",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_头盔",
+            "asset_name": "头盔",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_扳手",
+            "asset_name": "扳手",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ]
+      },
+      "limitations": [],
+      "debug_artifact": null,
+      "resume_status": "queued",
+      "resumed_from": null,
+      "previous_output_path": null,
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\02_recap_production\\generated_keyscenes\\keyscenes\\ep03_s03.png"
+    },
+    {
+      "timestamp": "2026-04-15T08:22:45.328534+00:00",
+      "beat_id": "ep03_s04",
+      "episode_number": 3,
+      "mode": "keyscene",
+      "style_target": "2d-anime-cartoon",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 3220539157,
+      "width": 864,
+      "height": 1080,
+      "prompt": "在测功房里，他一待就是十八个小时，和热量、摩擦、啸叫死磕。 让张雪落进测功房的空间关系里，主体位置和环境压迫感清楚。 宽构图，突出主体位置、场景层次和一个关键动作关系。 2D动漫质感。",
+      "prompt_source": "04_episode_scene_script.json beat fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "scene=exact_name_match",
+        "character=exact_name_match",
+        "prop=missing",
+        "shot_mode=staging_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance."
+      ],
+      "shot_mode": "staging_keyscene",
+      "reference_policy": "staging_keyscene: scene + character",
+      "reference_count": 2,
+      "prompt_length": 77,
+      "legacy_prompt_length": 236,
+      "raw_source_description": "在测功房里，他一待就是十八个小时，和热量、摩擦、啸叫死磕 | 封闭测功房内部，厚重隔音墙、仪表盘、台架和金属管路排列紧密，820RR-RS发动机正在高负载运转，局部排气管烧成暗红色，张雪戴着耳罩俯身盯着数据，冷暗室内与金属热色形成剧烈对比，充满压迫和执念 | 他把自己关进了测功房 | punishing, obsessive | wide shot",
+      "summary": "在测功房里，他一待就是十八个小时，和热量、摩擦、啸叫死磕。",
+      "anchor_text": "他把自己关进了测功房。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_测功房",
+          "asset_name": "测功房",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\scenes\\scene_测功房.png"
+        },
+        "character": {
+          "asset_id": "character_张雪",
+          "asset_name": "张雪",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\characters\\character_张雪.png"
+        },
+        "prop": null
+      },
+      "matching_notes": [
+        "Matched scene asset by explicit beat phrase: 测功房, 隔音墙, 厚重隔音墙, 仪表盘.",
+        "Matched character asset by explicit beat phrase: 张雪.",
+        "Prop omitted by reference policy."
+      ],
+      "validation_warnings": [
+        "ep03_s04: prop reference omitted to keep the prompt/edit set compact."
+      ],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_测功房",
+            "asset_name": "测功房",
+            "score": 1002,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "测功房",
+              "隔音墙",
+              "厚重隔音墙",
+              "仪表盘"
+            ]
+          },
+          {
+            "asset_id": "scene_加油站",
+            "asset_name": "加油站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_废品站",
+            "asset_name": "废品站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_暴雨山路",
+            "asset_name": "暴雨山路",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_沙漠赛地",
+            "asset_name": "沙漠赛地",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [
+          {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "score": 246,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_Valentin_Debise",
+            "asset_name": "Valentin_Debise",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "character_林",
+            "asset_name": "林",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "prop": []
+      },
+      "limitations": [],
+      "debug_artifact": null,
+      "resume_status": "queued",
+      "resumed_from": null,
+      "previous_output_path": null,
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\02_recap_production\\generated_keyscenes\\keyscenes\\ep03_s04.png"
+    },
+    {
+      "timestamp": "2026-04-15T08:22:45.328534+00:00",
+      "beat_id": "ep03_s05",
+      "episode_number": 3,
+      "mode": "keyscene",
+      "style_target": "2d-anime-cartoon",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 2169988808,
+      "width": 864,
+      "height": 1080,
+      "prompt": "那台发红的排气和尖啸的三缸声，像他把所有“不可能”一起烧掉。 把关键物件压成画面主体，只保留必要的环境线索。 特写，突出物件、手部接触和局部光线。 2D动漫质感。",
+      "prompt_source": "04_episode_scene_script.json beat fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "scene=exact_name_match",
+        "character=missing",
+        "prop=missing",
+        "shot_mode=insert_object_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance."
+      ],
+      "shot_mode": "insert_object_keyscene",
+      "reference_policy": "insert_object_keyscene: scene",
+      "reference_count": 1,
+      "prompt_length": 67,
+      "legacy_prompt_length": 203,
+      "raw_source_description": "那台发红的排气和尖啸的三缸声，像他把所有“不可能”一起烧掉 | 测功房超近景，三缸发动机的排气管在黑暗中呈透明暗红，金属热浪扭曲空气，螺栓、焊点和机械纹理清晰锐利，火热机械细节具象化“偏执宣言”，画面极具工业美学与危险感 | 他要把所有不可能一次性烧掉 | ferocious, molten | close-up",
+      "summary": "那台发红的排气和尖啸的三缸声，像他把所有“不可能”一起烧掉。",
+      "anchor_text": "他要把所有不可能一次性烧掉。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_测功房",
+          "asset_name": "测功房",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\scenes\\scene_测功房.png"
+        },
+        "character": null,
+        "prop": null
+      },
+      "matching_notes": [
+        "Matched scene asset by explicit beat phrase: 测功房.",
+        "Insert/object keyscenes default to scene + prop.",
+        "No confident prop asset match was found, so this reference was omitted."
+      ],
+      "validation_warnings": [
+        "ep03_s05: insert/object beat did not find a confident prop match; generating with scene-only context."
+      ],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_测功房",
+            "asset_name": "测功房",
+            "score": 246,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "测功房"
+            ]
+          },
+          {
+            "asset_id": "scene_加油站",
+            "asset_name": "加油站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_废品站",
+            "asset_name": "废品站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_暴雨山路",
+            "asset_name": "暴雨山路",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_沙漠赛地",
+            "asset_name": "沙漠赛地",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [],
+        "prop": [
+          {
+            "asset_id": "prop_820RR-RS发动机",
+            "asset_name": "820RR-RS发动机",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_Kove摩托车",
+            "asset_name": "Kove摩托车",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_图纸",
+            "asset_name": "图纸",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_头盔",
+            "asset_name": "头盔",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_扳手",
+            "asset_name": "扳手",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ]
+      },
+      "limitations": [],
+      "debug_artifact": null,
+      "resume_status": "queued",
+      "resumed_from": null,
+      "previous_output_path": null,
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\02_recap_production\\generated_keyscenes\\keyscenes\\ep03_s05.png"
+    },
+    {
+      "timestamp": "2026-04-15T08:22:45.328534+00:00",
+      "beat_id": "ep03_s06",
+      "episode_number": 3,
+      "mode": "keyscene",
+      "style_target": "2d-anime-cartoon",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 415893878,
+      "width": 864,
+      "height": 1080,
+      "prompt": "对张雪而言，这台发动机已经不是产品，而是一份回应所有轻视者的宣言。 让张雪在测功房里成为视觉中心，只保留一个环境提示。 中景，突出表情、姿态和一个支持性的场景线索。 2D动漫质感。",
+      "prompt_source": "04_episode_scene_script.json beat fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "scene=exact_name_match",
+        "character=exact_name_match",
+        "prop=missing",
+        "shot_mode=identity_emotion_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance."
+      ],
+      "shot_mode": "identity_emotion_keyscene",
+      "reference_policy": "identity_emotion_keyscene: scene + character",
+      "reference_count": 2,
+      "prompt_length": 77,
+      "legacy_prompt_length": 227,
+      "raw_source_description": "对张雪而言，这台发动机已经不是产品，而是一份回应所有轻视者的宣言 | 张雪站在测功房或工作间内，身后是发动机台架和满墙图纸，他微微抬头、神色倔强，手上油污与疲惫都清晰可见，构图强调人物与机器之间像命运共同体般的绑定关系 | 这不是产品，这是宣言 | defiant, proud | medium shot | static",
+      "summary": "对张雪而言，这台发动机已经不是产品，而是一份回应所有轻视者的宣言。",
+      "anchor_text": "这不是产品，这是宣言。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_测功房",
+          "asset_name": "测功房",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\scenes\\scene_测功房.png"
+        },
+        "character": {
+          "asset_id": "character_张雪",
+          "asset_name": "张雪",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\characters\\character_张雪.png"
+        },
+        "prop": null
+      },
+      "matching_notes": [
+        "Matched scene asset by explicit beat phrase: 测功房.",
+        "Matched character asset by explicit beat phrase: 张雪, 图纸.",
+        "Prop omitted by reference policy."
+      ],
+      "validation_warnings": [
+        "ep03_s06: prop reference omitted to keep the prompt/edit set compact."
+      ],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_测功房",
+            "asset_name": "测功房",
+            "score": 246,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "测功房"
+            ]
+          },
+          {
+            "asset_id": "scene_加油站",
+            "asset_name": "加油站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_废品站",
+            "asset_name": "废品站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_暴雨山路",
+            "asset_name": "暴雨山路",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_沙漠赛地",
+            "asset_name": "沙漠赛地",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [
+          {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "score": 990,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪",
+              "图纸"
+            ]
+          },
+          {
+            "asset_id": "character_Valentin_Debise",
+            "asset_name": "Valentin_Debise",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "character_林",
+            "asset_name": "林",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "prop": []
+      },
+      "limitations": [],
+      "debug_artifact": null,
+      "resume_status": "queued",
+      "resumed_from": null,
+      "previous_output_path": null,
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\02_recap_production\\generated_keyscenes\\keyscenes\\ep03_s06.png"
+    },
+    {
+      "timestamp": "2026-04-15T08:22:45.330039+00:00",
+      "beat_id": "ep03_s07",
+      "episode_number": 3,
+      "mode": "keyscene",
+      "style_target": "2d-anime-cartoon",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 476154999,
+      "width": 864,
+      "height": 1080,
+      "prompt": "2026年3月，ZXMOTO的820RR-RS终于站上葡萄牙波尔蒂芒赛道。 把参考内容整理成一个清楚的叙事瞬间。 宽构图，突出主体位置、场景层次和一个关键动作关系。 2D动漫质感。",
+      "prompt_source": "04_episode_scene_script.json beat fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "scene=exact_name_match",
+        "character=missing",
+        "prop=missing",
+        "shot_mode=staging_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance."
+      ],
+      "shot_mode": "staging_keyscene",
+      "reference_policy": "staging_keyscene: scene",
+      "reference_count": 1,
+      "prompt_length": 65,
+      "legacy_prompt_length": 210,
+      "raw_source_description": "2026年3月，ZXMOTO的820RR-RS终于站上葡萄牙波尔蒂芒赛道 | 波尔蒂芒赛道晴朗强光下，ZXMOTO赛车停在赛道边或维修区，裸露碳纤维车身和金色前叉在阳光下闪耀，赛道护栏、计时牌、看台与赛事标识完整，空气里混有海盐味与燃油感，世界级竞技舞台压迫感十足 | 820RR-RS终于站到了世界面前 | epic, charged | wide shot | slow dolly in",
+      "summary": "2026年3月，ZXMOTO的820RR-RS终于站上葡萄牙波尔蒂芒赛道。",
+      "anchor_text": "820RR-RS终于站到了世界面前。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_波尔蒂芒赛道",
+          "asset_name": "波尔蒂芒赛道",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\scenes\\scene_波尔蒂芒赛道.png"
+        },
+        "character": null,
+        "prop": null
+      },
+      "matching_notes": [
+        "Matched scene asset by explicit beat phrase: 波尔蒂芒赛道, 计时牌.",
+        "No confident character asset match was found, so this reference was omitted.",
+        "Prop omitted by reference policy."
+      ],
+      "validation_warnings": [
+        "ep03_s07: no confident character match was found; keyscene will rely on scene context only.",
+        "ep03_s07: prop reference omitted to keep the prompt/edit set compact."
+      ],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_波尔蒂芒赛道",
+            "asset_name": "波尔蒂芒赛道",
+            "score": 990,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "波尔蒂芒赛道",
+              "计时牌"
+            ]
+          },
+          {
+            "asset_id": "scene_加油站",
+            "asset_name": "加油站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_废品站",
+            "asset_name": "废品站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_暴雨山路",
+            "asset_name": "暴雨山路",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_沙漠赛地",
+            "asset_name": "沙漠赛地",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [
+          {
+            "asset_id": "character_Valentin_Debise",
+            "asset_name": "Valentin_Debise",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "character_林",
+            "asset_name": "林",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "prop": []
+      },
+      "limitations": [],
+      "debug_artifact": null,
+      "resume_status": "queued",
+      "resumed_from": null,
+      "previous_output_path": null,
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\02_recap_production\\generated_keyscenes\\keyscenes\\ep03_s07.png"
+    },
+    {
+      "timestamp": "2026-04-15T08:22:45.330039+00:00",
+      "beat_id": "ep03_s08",
+      "episode_number": 3,
+      "mode": "keyscene",
+      "style_target": "2d-anime-cartoon",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 3243884095,
+      "width": 864,
+      "height": 1080,
+      "prompt": "三缸发动机一响，声音就与欧洲巨头完全不同，像劈开赛场的战歌。 把关键物件压成画面主体，只保留必要的环境线索。 插入镜头，突出物件、手部接触和局部光线。 2D动漫质感。",
+      "prompt_source": "04_episode_scene_script.json with asset fallback selection",
+      "prompt_confidence": "fallback",
+      "prompt_notes": [
+        "scene=first_available_fallback",
+        "character=missing",
+        "prop=missing",
+        "shot_mode=insert_object_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance.",
+        "Used at least one fallback-generated asset reference because no exact beat match was available."
+      ],
+      "shot_mode": "insert_object_keyscene",
+      "reference_policy": "insert_object_keyscene: scene",
+      "reference_count": 1,
+      "prompt_length": 70,
+      "legacy_prompt_length": 210,
+      "raw_source_description": "三缸发动机一响，声音就与欧洲巨头完全不同，像劈开赛场的战歌 | 赛道维修区或发车区域近景，ZXMOTO赛车发动机启动瞬间，车身碳纤维纹理、金色前叉、排气震动、机械结构细节清晰，强光下金属边缘锐利，周围人员被声浪吸引回头，视觉上要有“声音刺穿空气”的冲击感 | 那台三缸，一开声就不一样 | electrifying, aggressive | insert",
+      "summary": "三缸发动机一响，声音就与欧洲巨头完全不同，像劈开赛场的战歌。",
+      "anchor_text": "那台三缸，一开声就不一样。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_加油站",
+          "asset_name": "加油站",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\scenes\\scene_加油站.png"
+        },
+        "character": null,
+        "prop": null
+      },
+      "matching_notes": [
+        "No reliable scene asset match was found; using the first available generated asset as fallback.",
+        "Insert/object keyscenes default to scene + prop.",
+        "Prop omitted because it did not match the primary object beat."
+      ],
+      "validation_warnings": [
+        "ep03_s08: omitted prop `摄像机` because it only matched secondary visual text, not the primary object beat.",
+        "ep03_s08: scene selection has no semantic overlap with the beat; chosen scene `加油站` is low confidence."
+      ],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_加油站",
+            "asset_name": "加油站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_废品站",
+            "asset_name": "废品站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_暴雨山路",
+            "asset_name": "暴雨山路",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_沙漠赛地",
+            "asset_name": "沙漠赛地",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_波尔蒂芒赛道",
+            "asset_name": "波尔蒂芒赛道",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [],
+        "prop": []
+      },
+      "limitations": [
+        "No reliable scene asset match was found; using the first available generated asset as fallback.",
+        "ep03_s08: scene selection has no semantic overlap with the beat; chosen scene `加油站` is low confidence."
+      ],
+      "debug_artifact": null,
+      "resume_status": "queued",
+      "resumed_from": null,
+      "previous_output_path": null,
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\02_recap_production\\generated_keyscenes\\keyscenes\\ep03_s08.png"
+    },
+    {
+      "timestamp": "2026-04-15T08:22:45.330039+00:00",
+      "beat_id": "ep03_s09",
+      "episode_number": 3,
+      "mode": "keyscene",
+      "style_target": "2d-anime-cartoon",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 459878583,
+      "width": 864,
+      "height": 1080,
+      "prompt": "Valentin Debise率先冲线，ZXMOTO拿下双胜，整个国际车房都被震住。 让Valentin_Debise落进波尔蒂芒赛道的空间关系里，主体位置和环境压迫感清楚。 宽构图，突出主体位置、场景层次和一个关键动作关系。 2D动漫质感。",
+      "prompt_source": "04_episode_scene_script.json beat fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "scene=exact_name_match",
+        "character=exact_name_match",
+        "prop=missing",
+        "shot_mode=staging_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance."
+      ],
+      "shot_mode": "staging_keyscene",
+      "reference_policy": "staging_keyscene: scene + character",
+      "reference_count": 2,
+      "prompt_length": 77,
+      "legacy_prompt_length": 218,
+      "raw_source_description": "Valentin Debise率先冲线，ZXMOTO拿下双胜，整个国际车房都被震住 | 波尔蒂芒赛道高速竞技瞬间，Valentin Debise穿赛车服骑ZXMOTO赛车冲过终点线，车身倾角和速度感强烈，背景看台、护栏和计时牌拉出动态模糊，阳光高反差下胜利瞬间极具爆发力 | Valentin Debise率先冲线了 | triumphant, stunned | wide shot | tracking",
+      "summary": "Valentin Debise率先冲线，ZXMOTO拿下双胜，整个国际车房都被震住。",
+      "anchor_text": "Valentin Debise率先冲线了。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_波尔蒂芒赛道",
+          "asset_name": "波尔蒂芒赛道",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\scenes\\scene_波尔蒂芒赛道.png"
+        },
+        "character": {
+          "asset_id": "character_Valentin_Debise",
+          "asset_name": "Valentin_Debise",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\characters\\character_Valentin_Debise.png"
+        },
+        "prop": null
+      },
+      "matching_notes": [
+        "Matched scene asset by explicit beat phrase: 波尔蒂芒赛道, 计时牌.",
+        "Matched character asset by explicit beat phrase: Valentin_Debise, Valentin Debise, Valentin, Debise.",
+        "Prop omitted by reference policy."
+      ],
+      "validation_warnings": [],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_波尔蒂芒赛道",
+            "asset_name": "波尔蒂芒赛道",
+            "score": 252,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "波尔蒂芒赛道",
+              "计时牌"
+            ]
+          },
+          {
+            "asset_id": "scene_加油站",
+            "asset_name": "加油站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_废品站",
+            "asset_name": "废品站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_暴雨山路",
+            "asset_name": "暴雨山路",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_沙漠赛地",
+            "asset_name": "沙漠赛地",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [
+          {
+            "asset_id": "character_Valentin_Debise",
+            "asset_name": "Valentin_Debise",
+            "score": 800,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "Valentin_Debise",
+              "Valentin Debise",
+              "Valentin",
+              "Debise"
+            ]
+          },
+          {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "character_林",
+            "asset_name": "林",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "prop": []
+      },
+      "limitations": [],
+      "debug_artifact": null,
+      "resume_status": "queued",
+      "resumed_from": null,
+      "previous_output_path": null,
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\02_recap_production\\generated_keyscenes\\keyscenes\\ep03_s09.png"
+    },
+    {
+      "timestamp": "2026-04-15T08:22:45.330039+00:00",
+      "beat_id": "ep03_s10",
+      "episode_number": 3,
+      "mode": "keyscene",
+      "style_target": "2d-anime-cartoon",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 3332669658,
+      "width": 864,
+      "height": 1080,
+      "prompt": "镜头扫向张雪时，他没有先看媒体，而是在车房后方看见了林。 让张雪在加油站里成为视觉中心，只保留一个环境提示。 中景，突出表情、姿态和一个支持性的场景线索。 2D动漫质感。",
+      "prompt_source": "04_episode_scene_script.json with asset fallback selection",
+      "prompt_confidence": "fallback",
+      "prompt_notes": [
+        "scene=first_available_fallback",
+        "character=exact_name_match",
+        "prop=missing",
+        "shot_mode=identity_emotion_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance.",
+        "Used at least one fallback-generated asset reference because no exact beat match was available."
+      ],
+      "shot_mode": "identity_emotion_keyscene",
+      "reference_policy": "identity_emotion_keyscene: scene + character",
+      "reference_count": 2,
+      "prompt_length": 72,
+      "legacy_prompt_length": 231,
+      "raw_source_description": "镜头扫向张雪时，他没有先看媒体，而是在车房后方看见了林 | 国际车房与赛道后台，人群、缆线、摄像机和庆祝氛围混杂，张雪站在人群中间却突然停住，视线越过闪光灯看向后方的林，林穿深色外套、神情克制，喧闹与静止在同一画面内形成情绪落差 | 在人群最后，他看见了林 | stunned, emotional | medium shot",
+      "summary": "镜头扫向张雪时，他没有先看媒体，而是在车房后方看见了林。",
+      "anchor_text": "在人群最后，他看见了林。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_加油站",
+          "asset_name": "加油站",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\scenes\\scene_加油站.png"
+        },
+        "character": {
+          "asset_id": "character_张雪",
+          "asset_name": "张雪",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\characters\\character_张雪.png"
+        },
+        "prop": null
+      },
+      "matching_notes": [
+        "No reliable scene asset match was found; using the first available generated asset as fallback.",
+        "Matched character asset by explicit beat phrase: 张雪.",
+        "Prop omitted by reference policy."
+      ],
+      "validation_warnings": [
+        "ep03_s10: prop reference omitted to keep the prompt/edit set compact.",
+        "ep03_s10: scene selection has no semantic overlap with the beat; chosen scene `加油站` is low confidence."
+      ],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_加油站",
+            "asset_name": "加油站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_废品站",
+            "asset_name": "废品站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_暴雨山路",
+            "asset_name": "暴雨山路",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_沙漠赛地",
+            "asset_name": "沙漠赛地",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_波尔蒂芒赛道",
+            "asset_name": "波尔蒂芒赛道",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [
+          {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "score": 984,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_Valentin_Debise",
+            "asset_name": "Valentin_Debise",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "character_林",
+            "asset_name": "林",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "prop": []
+      },
+      "limitations": [
+        "No reliable scene asset match was found; using the first available generated asset as fallback.",
+        "ep03_s10: scene selection has no semantic overlap with the beat; chosen scene `加油站` is low confidence."
+      ],
+      "debug_artifact": null,
+      "resume_status": "queued",
+      "resumed_from": null,
+      "previous_output_path": null,
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\02_recap_production\\generated_keyscenes\\keyscenes\\ep03_s10.png"
+    },
+    {
+      "timestamp": "2026-04-15T08:22:45.331042+00:00",
+      "beat_id": "ep03_s11",
+      "episode_number": 3,
+      "mode": "keyscene",
+      "style_target": "2d-anime-cartoon",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 3575674260,
+      "width": 864,
+      "height": 1080,
+      "prompt": "张雪穿过缆线和摄像机，径直走向当年在暴雨里拍下他的老朋友。 让张雪在加油站里成为视觉中心，摄像机只作为近景支撑线索。 越肩构图，突出表情、姿态和一个支持性的场景线索。 2D动漫质感。",
+      "prompt_source": "04_episode_scene_script.json with asset fallback selection",
+      "prompt_confidence": "fallback",
+      "prompt_notes": [
+        "scene=first_available_fallback",
+        "character=exact_name_match",
+        "prop=exact_name_match",
+        "shot_mode=identity_emotion_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance.",
+        "Used at least one fallback-generated asset reference because no exact beat match was available."
+      ],
+      "shot_mode": "identity_emotion_keyscene",
+      "reference_policy": "identity_emotion_keyscene: scene + character + prop",
+      "reference_count": 3,
+      "prompt_length": 79,
+      "legacy_prompt_length": 255,
+      "raw_source_description": "张雪穿过缆线和摄像机，径直走向当年在暴雨里拍下他的老朋友 | 从林的肩后看向张雪穿过拥挤赛场后台走来，四周是记者、摄像机、缆线和欢呼人群，张雪脸上有胜利后的克制激动，像跨越二十年时间线一步步走近最初的见证者，情绪庄重而强烈 | 他没有先去找媒体 | cathartic, fateful | over-the-shoulder",
+      "summary": "张雪穿过缆线和摄像机，径直走向当年在暴雨里拍下他的老朋友。",
+      "anchor_text": "他没有先去找媒体。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_加油站",
+          "asset_name": "加油站",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\scenes\\scene_加油站.png"
+        },
+        "character": {
+          "asset_id": "character_张雪",
+          "asset_name": "张雪",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\characters\\character_张雪.png"
+        },
+        "prop": {
+          "asset_id": "prop_摄像机",
+          "asset_name": "摄像机",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\props\\prop_摄像机.png"
+        }
+      },
+      "matching_notes": [
+        "No reliable scene asset match was found; using the first available generated asset as fallback.",
+        "Matched character asset by explicit beat phrase: 张雪.",
+        "Matched prop asset by explicit beat phrase: 摄像机."
+      ],
+      "validation_warnings": [
+        "ep03_s11: scene selection has no semantic overlap with the beat; chosen scene `加油站` is low confidence."
+      ],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_加油站",
+            "asset_name": "加油站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_废品站",
+            "asset_name": "废品站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_暴雨山路",
+            "asset_name": "暴雨山路",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_沙漠赛地",
+            "asset_name": "沙漠赛地",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_波尔蒂芒赛道",
+            "asset_name": "波尔蒂芒赛道",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [
+          {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "score": 984,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_Valentin_Debise",
+            "asset_name": "Valentin_Debise",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "character_林",
+            "asset_name": "林",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "prop": [
+          {
+            "asset_id": "prop_摄像机",
+            "asset_name": "摄像机",
+            "score": 984,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "摄像机"
+            ]
+          },
+          {
+            "asset_id": "prop_820RR-RS发动机",
+            "asset_name": "820RR-RS发动机",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_Kove摩托车",
+            "asset_name": "Kove摩托车",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_图纸",
+            "asset_name": "图纸",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_头盔",
+            "asset_name": "头盔",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ]
+      },
+      "limitations": [
+        "No reliable scene asset match was found; using the first available generated asset as fallback.",
+        "ep03_s11: scene selection has no semantic overlap with the beat; chosen scene `加油站` is low confidence."
+      ],
+      "debug_artifact": null,
+      "resume_status": "queued",
+      "resumed_from": null,
+      "previous_output_path": null,
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\02_recap_production\\generated_keyscenes\\keyscenes\\ep03_s11.png"
+    },
+    {
+      "timestamp": "2026-04-15T08:22:45.331042+00:00",
+      "beat_id": "ep03_s12",
+      "episode_number": 3,
+      "mode": "keyscene",
+      "style_target": "2d-anime-cartoon",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 1860967099,
+      "width": 864,
+      "height": 1080,
+      "prompt": "二十年前的雨夜与今天的世界胜利在此刻重叠，而他即将说出的那句话成为终章悬念。 让张雪在波尔蒂芒赛道里成为视觉中心，摄像机只作为近景支撑线索。 特写，突出表情、姿态和一个支持性的场景线索。 2D动漫质感。",
+      "prompt_source": "04_episode_scene_script.json beat fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "scene=exact_name_match",
+        "character=exact_name_match",
+        "prop=exact_name_match",
+        "shot_mode=identity_emotion_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance."
+      ],
+      "shot_mode": "identity_emotion_keyscene",
+      "reference_policy": "identity_emotion_keyscene: scene + character + prop",
+      "reference_count": 3,
+      "prompt_length": 89,
+      "legacy_prompt_length": 288,
+      "raw_source_description": "二十年前的雨夜与今天的世界胜利在此刻重叠，而他即将说出的那句话成为终章悬念 | 张雪与林在赛道后台近距离对视，前景可见模糊的摄像机和缆线，背景是波尔蒂芒赛道庆祝后的强光与人群，张雪神情复杂，既像完成誓言又像还有更深的话未说出口，画面停在开口前的关键一秒，留下强烈终章悬念 | 他对林说的那句话，才是真正的终章 | emotional, unresolved | close-up",
+      "summary": "二十年前的雨夜与今天的世界胜利在此刻重叠，而他即将说出的那句话成为终章悬念。",
+      "anchor_text": "他对林说的那句话，才是真正的终章。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_波尔蒂芒赛道",
+          "asset_name": "波尔蒂芒赛道",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\scenes\\scene_波尔蒂芒赛道.png"
+        },
+        "character": {
+          "asset_id": "character_张雪",
+          "asset_name": "张雪",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\characters\\character_张雪.png"
+        },
+        "prop": {
+          "asset_id": "prop_摄像机",
+          "asset_name": "摄像机",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\05_assets_t2i\\props\\prop_摄像机.png"
+        }
+      },
+      "matching_notes": [
+        "Matched scene asset by explicit beat phrase: 波尔蒂芒赛道.",
+        "Matched character asset by explicit beat phrase: 张雪.",
+        "Matched prop asset by explicit beat phrase: 摄像机."
+      ],
+      "validation_warnings": [],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_波尔蒂芒赛道",
+            "asset_name": "波尔蒂芒赛道",
+            "score": 246,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "波尔蒂芒赛道"
+            ]
+          },
+          {
+            "asset_id": "scene_加油站",
+            "asset_name": "加油站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_废品站",
+            "asset_name": "废品站",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_暴雨山路",
+            "asset_name": "暴雨山路",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_沙漠赛地",
+            "asset_name": "沙漠赛地",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [
+          {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "score": 246,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_Valentin_Debise",
+            "asset_name": "Valentin_Debise",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "character_林",
+            "asset_name": "林",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "prop": [
+          {
+            "asset_id": "prop_摄像机",
+            "asset_name": "摄像机",
+            "score": 246,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "摄像机"
+            ]
+          },
+          {
+            "asset_id": "prop_820RR-RS发动机",
+            "asset_name": "820RR-RS发动机",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_Kove摩托车",
+            "asset_name": "Kove摩托车",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_图纸",
+            "asset_name": "图纸",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_头盔",
+            "asset_name": "头盔",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ]
+      },
+      "limitations": [],
+      "debug_artifact": null,
+      "resume_status": "queued",
+      "resumed_from": null,
+      "previous_output_path": null,
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\stories\\zxmoto\\20260414_140548\\02_recap_production\\generated_keyscenes\\keyscenes\\ep03_s12.png"
+    }
+  ]
+}

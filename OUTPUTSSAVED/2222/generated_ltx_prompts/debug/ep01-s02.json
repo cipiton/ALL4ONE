@@ -1,0 +1,84 @@
+{
+  "shot_id": "ep01_s02",
+  "episode_id": "ep01",
+  "request": {
+    "episode_id": "ep01",
+    "shot_id": "ep01_s02",
+    "shot_number": 2,
+    "total_shots": 3,
+    "summary": "少年在泥泞路上死咬采访车不放，狼狈却倔强地维持追逐",
+    "visual_prompt": "湖南乡道暴雨环境中，镜头更贴近黄雨衣少年张雪，半透明雨衣紧贴身体，黑发被雨水压在额前，旧白头盔布满磨痕，瘦高身形在破125小踏板上前倾发力，雨水顺着下巴和雨衣边缘不断流下，轮胎在泥浆积水里打滑却仍强行稳住，突出疲惫、执拗和近乎赌命的追赶状态",
+    "anchor_text": "他不是跟一段路，而是死咬着不放",
+    "shot_type": "medium shot",
+    "camera_motion": "轻微手持漂移",
+    "emotion": "desperate， stubborn",
+    "duration_hint": "3-5s",
+    "priority": "high",
+    "beat_role": "development",
+    "asset_focus": "character"
+  },
+  "result_status": "success",
+  "result_source": "gemini",
+  "warning": "",
+  "payload": {
+    "episode_id": "ep01",
+    "shot_id": "ep01_s02",
+    "shot_type": "medium shot",
+    "primary_action": "少年骑着小踏板摩托车在泥泞的乡道上追逐采访车",
+    "secondary_motion": "少年身体前倾发力，雨水顺着下巴和雨衣边缘流下，轮胎在泥浆积水里打滑",
+    "environment_motion": "暴雨持续砸下，路面积水和泥浆不断被带起",
+    "camera_motion": "轻微手持漂移",
+    "emotion": "绝望，倔强",
+    "duration_hint": "3-5s",
+    "final_prompt": "少年骑着小踏板摩托车在泥泞的乡道上追逐采访车，少年身体前倾发力，雨水顺着下巴和雨衣边缘流下，轮胎在泥浆积水里打滑，暴雨持续砸下，路面积水和泥浆不断被带起，轻微手持漂移。"
+  },
+  "validation_issues": [],
+  "raw_response_text": "{\n  \"episode_id\": \"ep01\",\n  \"shot_id\": \"ep01_s02\",\n  \"shot_type\": \"中景\",\n  \"primary_action\": \"少年骑着小踏板摩托车在泥泞的乡道上追逐采访车\",\n  \"secondary_motion\": \"少年身体前倾发力，雨水顺着下巴和雨衣边缘流下，轮胎在泥浆积水里打滑\",\n  \"environment_motion\": \"无\",\n  \"camera_motion\": \"轻微手持漂移\",\n  \"emotion\": \"绝望，倔强\",\n  \"duration_hint\": \"3-5s\",\n  \"final_prompt\": \"湖南乡道暴雨环境中，镜头更贴近黄雨衣少年张雪，半透明雨衣紧贴身体，黑发被雨水压在额前，旧白头盔布满磨痕，瘦高身形在破125小踏板上前倾发力，雨水顺着下巴和雨衣边缘不断流下，轮胎在泥浆积水里打滑却仍强行稳住，突出疲惫、执拗和近乎赌命的追赶状态\"\n}",
+  "raw_response_json": {
+    "id": "gen-1776248604-q4CKqIeBBGzCwXIXVcMb",
+    "object": "chat.completion",
+    "created": 1776248604,
+    "model": "google/gemini-2.5-flash",
+    "provider": "Google",
+    "system_fingerprint": null,
+    "choices": [
+      {
+        "index": 0,
+        "logprobs": null,
+        "finish_reason": "stop",
+        "native_finish_reason": "STOP",
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"episode_id\": \"ep01\",\n  \"shot_id\": \"ep01_s02\",\n  \"shot_type\": \"中景\",\n  \"primary_action\": \"少年骑着小踏板摩托车在泥泞的乡道上追逐采访车\",\n  \"secondary_motion\": \"少年身体前倾发力，雨水顺着下巴和雨衣边缘流下，轮胎在泥浆积水里打滑\",\n  \"environment_motion\": \"无\",\n  \"camera_motion\": \"轻微手持漂移\",\n  \"emotion\": \"绝望，倔强\",\n  \"duration_hint\": \"3-5s\",\n  \"final_prompt\": \"湖南乡道暴雨环境中，镜头更贴近黄雨衣少年张雪，半透明雨衣紧贴身体，黑发被雨水压在额前，旧白头盔布满磨痕，瘦高身形在破125小踏板上前倾发力，雨水顺着下巴和雨衣边缘不断流下，轮胎在泥浆积水里打滑却仍强行稳住，突出疲惫、执拗和近乎赌命的追赶状态\"\n}",
+          "refusal": null,
+          "reasoning": null
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 597,
+      "completion_tokens": 274,
+      "total_tokens": 871,
+      "cost": 0.0008641,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.0008641,
+        "upstream_inference_prompt_cost": 0.0001791,
+        "upstream_inference_completions_cost": 0.000685
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    }
+  },
+  "resolved_model": "google/gemini-2.5-flash",
+  "resolved_route": "global default: openrouter / google/gemini-2.5-flash (step override)"
+}

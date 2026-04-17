@@ -1,0 +1,84 @@
+{
+  "shot_id": "ep01_s01",
+  "episode_id": "ep01",
+  "request": {
+    "episode_id": "ep01",
+    "shot_id": "ep01_s01",
+    "shot_number": 1,
+    "total_shots": 3,
+    "summary": "暴雨中的采访车准备返程时，后方突然出现一个穿黄雨衣骑破摩托拼命追赶的少年",
+    "visual_prompt": "2006年湖南乡道暴雨路段，高精度3D CG风格，白色采访车行驶在被暴雨泡成深黄色泥浆的狭窄乡路上，密集雨幕中，一名19岁瘦高中国少年穿半透明黄色雨衣、戴发花的白色旧头盔，骑着破旧125cc小踏板摩托车从后方泥水中逼近，车轮甩起泥浆，天空阴沉压低，纪录片式强追逐感，画面重点是黄色雨衣在灰黄暴雨世界中格外刺眼",
+    "anchor_text": "暴雨里，有人追了我们一百公里",
+    "shot_type": "wide shot",
+    "camera_motion": "镜头缓慢向右平移",
+    "emotion": "urgent， stormy",
+    "duration_hint": "2-3s",
+    "priority": "high",
+    "beat_role": "hook",
+    "asset_focus": "interaction"
+  },
+  "result_status": "success",
+  "result_source": "gemini",
+  "warning": "",
+  "payload": {
+    "episode_id": "ep01",
+    "shot_id": "ep01_s01",
+    "shot_type": "wide shot",
+    "primary_action": "一辆白色采访车在被暴雨浸泡的狭窄乡路上行驶",
+    "secondary_motion": "一名穿黄色雨衣的少年骑着破旧摩托车从后方泥水中逼近，车轮甩起泥浆",
+    "environment_motion": "暴雨倾盆，雨水在路面形成深黄色泥浆",
+    "camera_motion": "镜头缓慢向右平移",
+    "emotion": "紧急，暴风雨",
+    "duration_hint": "2-3s",
+    "final_prompt": "一辆白色采访车在被暴雨浸泡的狭窄乡路上行驶，一名穿黄色雨衣的少年骑着破旧摩托车从后方泥水中逼近，车轮甩起泥浆，暴雨倾盆，雨水在路面形成深黄色泥浆，镜头缓慢向右平移。"
+  },
+  "validation_issues": [],
+  "raw_response_text": "{\n  \"episode_id\": \"ep01\",\n  \"shot_id\": \"ep01_s01\",\n  \"shot_type\": \"wide shot\",\n  \"primary_action\": \"一辆白色采访车在被暴雨浸泡的狭窄乡路上行驶\",\n  \"secondary_motion\": \"一名穿黄色雨衣的少年骑着破旧摩托车从后方泥水中逼近，车轮甩起泥浆\",\n  \"environment_motion\": \"暴雨倾盆，雨水在路面形成深黄色泥浆\",\n  \"camera_motion\": \"镜头缓慢向右平移\",\n  \"emotion\": \"紧急，暴风雨\",\n  \"duration_hint\": \"2-3s\",\n  \"final_prompt\": \"2006年湖南乡道暴雨路段，高精度3D CG风格，白色采访车行驶在被暴雨泡成深黄色泥浆的狭窄乡路上，密集雨幕中，一名19岁瘦高中国少年穿半透明黄色雨衣、戴发花的白色旧头盔，骑着破旧125cc小踏板摩托车从后方泥水中逼近，车轮甩起泥浆，天空阴沉压低，纪录片式强追逐感，画面重点是黄色雨衣在灰黄暴雨世界中格外刺眼，镜头缓慢向右平移。\"\n}",
+  "raw_response_json": {
+    "id": "gen-1776248602-lsPV4A06ljUj9W4JUrHn",
+    "object": "chat.completion",
+    "created": 1776248602,
+    "model": "google/gemini-2.5-flash",
+    "provider": "Google",
+    "system_fingerprint": null,
+    "choices": [
+      {
+        "index": 0,
+        "logprobs": null,
+        "finish_reason": "stop",
+        "native_finish_reason": "STOP",
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"episode_id\": \"ep01\",\n  \"shot_id\": \"ep01_s01\",\n  \"shot_type\": \"wide shot\",\n  \"primary_action\": \"一辆白色采访车在被暴雨浸泡的狭窄乡路上行驶\",\n  \"secondary_motion\": \"一名穿黄色雨衣的少年骑着破旧摩托车从后方泥水中逼近，车轮甩起泥浆\",\n  \"environment_motion\": \"暴雨倾盆，雨水在路面形成深黄色泥浆\",\n  \"camera_motion\": \"镜头缓慢向右平移\",\n  \"emotion\": \"紧急，暴风雨\",\n  \"duration_hint\": \"2-3s\",\n  \"final_prompt\": \"2006年湖南乡道暴雨路段，高精度3D CG风格，白色采访车行驶在被暴雨泡成深黄色泥浆的狭窄乡路上，密集雨幕中，一名19岁瘦高中国少年穿半透明黄色雨衣、戴发花的白色旧头盔，骑着破旧125cc小踏板摩托车从后方泥水中逼近，车轮甩起泥浆，天空阴沉压低，纪录片式强追逐感，画面重点是黄色雨衣在灰黄暴雨世界中格外刺眼，镜头缓慢向右平移。\"\n}",
+          "refusal": null,
+          "reasoning": null
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 620,
+      "completion_tokens": 310,
+      "total_tokens": 930,
+      "cost": 0.000961,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.000961,
+        "upstream_inference_prompt_cost": 0.000186,
+        "upstream_inference_completions_cost": 0.000775
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    }
+  },
+  "resolved_model": "google/gemini-2.5-flash",
+  "resolved_route": "global default: openrouter / google/gemini-2.5-flash (step override)"
+}

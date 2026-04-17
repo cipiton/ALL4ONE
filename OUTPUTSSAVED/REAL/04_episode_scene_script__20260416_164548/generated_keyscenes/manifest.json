@@ -1,0 +1,2254 @@
+{
+  "schema": "flux_keyscene_generation_manifest_v1",
+  "timestamp": "2026-04-16T09:03:09.370424+00:00",
+  "input_folder": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\OUTPUTSSAVED\\REAL\\02_recap_production",
+  "mode": "keyscene",
+  "style_target": "realism",
+  "final_prompt_language": "en",
+  "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+  "backend": "klein_cli",
+  "generated_assets_root": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets",
+  "available_asset_counts": {
+    "characters": 4,
+    "props": 7,
+    "scenes": 8
+  },
+  "resume_enabled": true,
+  "resume_source": null,
+  "scene_validation": "warn",
+  "debug_keyscene_output": false,
+  "batch_generation": {
+    "job_count": 12,
+    "requested_model_reuse": true
+  },
+  "output_root": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_keyscenes",
+  "item_count": 12,
+  "items": [
+    {
+      "timestamp": "2026-04-16T08:56:42.998499+00:00",
+      "beat_id": "ep01_s01",
+      "episode_number": 1,
+      "mode": "keyscene",
+      "style_target": "realism",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 3540401194,
+      "width": 864,
+      "height": 1080,
+      "prompt": "the character rides or controls motorcycle in this instant. Keep motorcycle at believable full-vehicle scale relative to the character, with normal proportions against the road or lane width. Keep the vehicle and character in the midground or lower mid-frame, clearly grounded in the road space of stormy mountain road, with the road receding into the background and visible surrounding space. wide shot, keep the vehicle in the lower mid-frame or midground, with the road receding clearly into the background. Cinematic realism.",
+      "final_rendered_prompt": "the character rides or controls motorcycle in this instant. Keep motorcycle at believable full-vehicle scale relative to the character, with normal proportions against the road or lane width. Keep the vehicle and character in the midground or lower mid-frame, clearly grounded in the road space of stormy mountain road, with the road receding into the background and visible surrounding space. wide shot, keep the vehicle in the lower mid-frame or midground, with the road receding clearly into the background. Cinematic realism.",
+      "final_prompt_language": "en",
+      "source_structured_input": {
+        "beat_id": "ep01_s01",
+        "summary": "暴雨中的19岁张雪骑着小排量摩托，在湖南山路拼命追赶一辆电视台采访车。",
+        "visual_prompt": "19岁的张雪穿着被暴雨浸透的旧款深色风衣，骑着老旧黑红色小排量摩托，在湖南山区盘山公路上高速追赶前方白色电视台采访车，橘红色泥浆被车轮甩起，灰白雨雾压低天空，山路弯道逼仄，尾灯在雨幕中忽明忽暗，画面充满搏命追逐感，照片级写实，电影质感，阴冷暴雨天光。",
+        "shot_type": "wide shot",
+        "camera_motion": "handheld drift",
+        "mood": "desperate, suspenseful",
+        "anchor_text": "暴雨里，他在追一辆电视台的车。",
+        "asset_focus": "interaction",
+        "selected_reference_assets": {
+          "scene": {
+            "asset_id": "scene_湖南暴雨山路",
+            "asset_name": "湖南暴雨山路",
+            "asset_type": "scene",
+            "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\scenes\\scene_湖南暴雨山路.png"
+          },
+          "character": {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "asset_type": "character",
+            "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\characters\\character_张雪.png"
+          },
+          "prop": null
+        }
+      },
+      "prompt_source": "04_episode_scene_script.json beat fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "scene=keyword_overlap",
+        "character=exact_name_match",
+        "prop=missing",
+        "shot_mode=vehicle_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance.",
+        "Final prompt rendered in `en`.",
+        "vehicle_preset=riding_on_road",
+        "Vehicle-shot template focuses on physical scale, blocking, and anti-oversize staging."
+      ],
+      "shot_mode": "vehicle_keyscene",
+      "prompt_template": "vehicle_keyscene",
+      "vehicle_shot": true,
+      "vehicle_preset": "riding_on_road",
+      "reference_policy": "vehicle_keyscene: scene + character",
+      "reference_count": 2,
+      "prompt_length": 84,
+      "legacy_prompt_length": 85,
+      "raw_source_description": "暴雨中的19岁张雪骑着小排量摩托，在湖南山路拼命追赶一辆电视台采访车 | 19岁的张雪穿着被暴雨浸透的旧款深色风衣，骑着老旧黑红色小排量摩托，在湖南山区盘山公路上高速追赶前方白色电视台采访车，橘红色泥浆被车轮甩起，灰白雨雾压低天空，山路弯道逼仄，尾灯在雨幕中忽明忽暗，画面充满搏命追逐感，照片级写实，电影质感，阴冷暴雨天光 | 暴雨里，他在追一辆电视台的车 | desperate, suspenseful | wide shot",
+      "anti_oversize_rules": [
+        "Keep the vehicle at believable full-vehicle scale relative to the rider",
+        "Keep the vehicle at realistic size and do not oversize it",
+        "Keep believable proportions between the vehicle and the road, lane, or track width",
+        "Keep a natural camera distance and do not let the vehicle fill the frame",
+        "Leave visible surrounding environment around the vehicle"
+      ],
+      "framing_clause": "wide shot, keep the vehicle in the lower mid-frame or midground, with the road receding clearly into the background.",
+      "summary": "暴雨中的19岁张雪骑着小排量摩托，在湖南山路拼命追赶一辆电视台采访车。",
+      "anchor_text": "暴雨里，他在追一辆电视台的车。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_湖南暴雨山路",
+          "asset_name": "湖南暴雨山路",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\scenes\\scene_湖南暴雨山路.png"
+        },
+        "character": {
+          "asset_id": "character_张雪",
+          "asset_name": "张雪",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\characters\\character_张雪.png"
+        },
+        "prop": null
+      },
+      "matching_notes": [
+        "Matched scene asset by keyword overlap: 暴雨, 湖南山区盘山公路.",
+        "Matched character asset by explicit beat phrase: 张雪.",
+        "Vehicle shot prefers scene + character to keep scale stable."
+      ],
+      "validation_warnings": [
+        "ep01_s01: dropped vehicle prop `小排量摩托` to keep scene + character and reduce oversized-bike risk."
+      ],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_湖南暴雨山路",
+            "asset_name": "湖南暴雨山路",
+            "score": 170,
+            "strategy": "keyword_overlap",
+            "matched_terms": [
+              "暴雨",
+              "湖南山区盘山公路"
+            ]
+          },
+          {
+            "asset_id": "scene_工厂外夜色空地",
+            "asset_name": "工厂外夜色空地",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_深夜工厂车间",
+            "asset_name": "深夜工厂车间",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_现代化会议室",
+            "asset_name": "现代化会议室",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_电视台采访车旁岔路口",
+            "asset_name": "电视台采访车旁岔路口",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [
+          {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "score": 984,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_张雪_19岁",
+            "asset_name": "张雪_19岁",
+            "score": 48,
+            "strategy": "keyword_overlap",
+            "matched_terms": [
+              "张雪",
+              "19岁"
+            ]
+          },
+          {
+            "asset_id": "character_Debise",
+            "asset_name": "Debise",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "character_陈星熠",
+            "asset_name": "陈星熠",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "prop": []
+      },
+      "limitations": [],
+      "debug_artifact": null,
+      "resume_status": "queued",
+      "resumed_from": null,
+      "previous_output_path": null,
+      "dropped_prop_reason": "scene_character_preferred",
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_keyscenes\\keyscenes\\ep01_s01.png"
+    },
+    {
+      "timestamp": "2026-04-16T08:56:43.001013+00:00",
+      "beat_id": "ep01_s02",
+      "episode_number": 1,
+      "mode": "keyscene",
+      "style_target": "realism",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 3338445147,
+      "width": 864,
+      "height": 1080,
+      "prompt": "press van. Make the character the visual center inside stormy mountain road, keeping only one environment cue. medium shot, emphasize expression, pose, and one supporting scene cue. Cinematic realism.",
+      "final_rendered_prompt": "press van. Make the character the visual center inside stormy mountain road, keeping only one environment cue. medium shot, emphasize expression, pose, and one supporting scene cue. Cinematic realism.",
+      "final_prompt_language": "en",
+      "source_structured_input": {
+        "beat_id": "ep01_s02",
+        "summary": "张雪在岔路口终于拦下采访车，冒雨大喊求一个进入圈子的机会。",
+        "visual_prompt": "山路狭窄岔路口，白色采访车减速停靠，车窗摇下，浑身湿透的19岁张雪站在泥水里拼命挥手，风衣紧贴身体，头发和雨水贴在额前，表情倔强又急切，对车内人物大喊请求，车窗内的人带着几分意外和轻微不以为然，路边积水、泥浆飞溅、模糊路牌和冷雨形成命运转折感，照片级写实，电影质感。",
+        "shot_type": "medium shot",
+        "camera_motion": "slow push in",
+        "mood": "raw, pleading",
+        "anchor_text": "我什么都能干，只求带我进这个圈子。",
+        "asset_focus": "interaction",
+        "selected_reference_assets": {
+          "scene": {
+            "asset_id": "scene_湖南暴雨山路",
+            "asset_name": "湖南暴雨山路",
+            "asset_type": "scene",
+            "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\scenes\\scene_湖南暴雨山路.png"
+          },
+          "character": {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "asset_type": "character",
+            "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\characters\\character_张雪.png"
+          },
+          "prop": null
+        }
+      },
+      "prompt_source": "04_episode_scene_script.json beat fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "scene=no_match",
+        "character=exact_name_match",
+        "prop=missing",
+        "shot_mode=identity_emotion_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance.",
+        "Final prompt rendered in `en`."
+      ],
+      "shot_mode": "identity_emotion_keyscene",
+      "prompt_template": "identity_emotion_keyscene",
+      "vehicle_shot": false,
+      "vehicle_preset": null,
+      "reference_policy": "identity_emotion_keyscene: scene + character",
+      "reference_count": 2,
+      "prompt_length": 29,
+      "legacy_prompt_length": 85,
+      "raw_source_description": "张雪在岔路口终于拦下采访车，冒雨大喊求一个进入圈子的机会 | 山路狭窄岔路口，白色采访车减速停靠，车窗摇下，浑身湿透的19岁张雪站在泥水里拼命挥手，风衣紧贴身体，头发和雨水贴在额前，表情倔强又急切，对车内人物大喊请求，车窗内的人带着几分意外和轻微不以为然，路边积水、泥浆飞溅、模糊路牌和冷雨形成命运转折感，照片级写实，电影质感 | 我什么都能干，只求带我进这个圈子 | raw, pleading | medium shot",
+      "anti_oversize_rules": [],
+      "framing_clause": "medium shot, emphasize expression, pose, and one supporting scene cue.",
+      "summary": "张雪在岔路口终于拦下采访车，冒雨大喊求一个进入圈子的机会。",
+      "anchor_text": "我什么都能干，只求带我进这个圈子。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_湖南暴雨山路",
+          "asset_name": "湖南暴雨山路",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\scenes\\scene_湖南暴雨山路.png"
+        },
+        "character": {
+          "asset_id": "character_张雪",
+          "asset_name": "张雪",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\characters\\character_张雪.png"
+        },
+        "prop": null
+      },
+      "matching_notes": [
+        "Matched scene asset by keyword overlap: .",
+        "Matched character asset by explicit beat phrase: 张雪.",
+        "Prop omitted by reference policy."
+      ],
+      "validation_warnings": [],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_湖南暴雨山路",
+            "asset_name": "湖南暴雨山路",
+            "score": 140,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_电视台采访车旁岔路口",
+            "asset_name": "电视台采访车旁岔路口",
+            "score": 6,
+            "strategy": "keyword_overlap",
+            "matched_terms": [
+              "泥浆飞溅"
+            ]
+          },
+          {
+            "asset_id": "scene_工厂外夜色空地",
+            "asset_name": "工厂外夜色空地",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_深夜工厂车间",
+            "asset_name": "深夜工厂车间",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_现代化会议室",
+            "asset_name": "现代化会议室",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [
+          {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "score": 984,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_张雪_19岁",
+            "asset_name": "张雪_19岁",
+            "score": 30,
+            "strategy": "keyword_overlap",
+            "matched_terms": [
+              "张雪",
+              "19岁"
+            ]
+          },
+          {
+            "asset_id": "character_Debise",
+            "asset_name": "Debise",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "character_陈星熠",
+            "asset_name": "陈星熠",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "prop": []
+      },
+      "limitations": [],
+      "debug_artifact": null,
+      "resume_status": "queued",
+      "resumed_from": null,
+      "previous_output_path": null,
+      "dropped_prop_reason": "compact_reference_policy",
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_keyscenes\\keyscenes\\ep01_s02.png"
+    },
+    {
+      "timestamp": "2026-04-16T08:56:43.002013+00:00",
+      "beat_id": "ep01_s03",
+      "episode_number": 1,
+      "mode": "keyscene",
+      "style_target": "realism",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 3599714636,
+      "width": 864,
+      "height": 1080,
+      "prompt": "the character rides or controls motorcycle in this instant. Keep motorcycle at believable full-vehicle scale relative to the character, with normal proportions against the road or lane width. Keep the vehicle and character in the midground or lower mid-frame, clearly grounded in the road space of stormy mountain road, with the road receding into the background and visible surrounding space. medium wide shot, keep the vehicle in the lower mid-frame or midground, with the road receding clearly into the background. Cinematic realism.",
+      "final_rendered_prompt": "the character rides or controls motorcycle in this instant. Keep motorcycle at believable full-vehicle scale relative to the character, with normal proportions against the road or lane width. Keep the vehicle and character in the midground or lower mid-frame, clearly grounded in the road space of stormy mountain road, with the road receding into the background and visible surrounding space. medium wide shot, keep the vehicle in the lower mid-frame or midground, with the road receding clearly into the background. Cinematic realism.",
+      "final_prompt_language": "en",
+      "source_structured_input": {
+        "beat_id": "ep01_s03",
+        "summary": "采访车离开后，张雪连人带车摔进泥里，却还是重新抓住车把站起来。",
+        "visual_prompt": "泥泞山路边，老旧小排量摩托侧翻在橘红色泥浆里，19岁张雪半身沾满泥水倒在地上，抬头望向灰白天空，胸口起伏，下一瞬又咬牙抓住车把把车扶起，手背和裤腿全是泥，雨水持续砸落，突出狼狈、屈辱和不肯认命的力量，照片级写实，电影质感，近距离情绪冲击。",
+        "shot_type": "close-up",
+        "camera_motion": "slow dolly out",
+        "mood": "bitter, stubborn",
+        "anchor_text": "他被拒绝了，但没有停下。",
+        "asset_focus": "character",
+        "selected_reference_assets": {
+          "scene": {
+            "asset_id": "scene_湖南暴雨山路",
+            "asset_name": "湖南暴雨山路",
+            "asset_type": "scene",
+            "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\scenes\\scene_湖南暴雨山路.png"
+          },
+          "character": {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "asset_type": "character",
+            "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\characters\\character_张雪.png"
+          },
+          "prop": null
+        }
+      },
+      "prompt_source": "04_episode_scene_script.json beat fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "scene=no_match",
+        "character=exact_name_match",
+        "prop=missing",
+        "shot_mode=vehicle_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance.",
+        "Final prompt rendered in `en`.",
+        "vehicle_preset=riding_on_road",
+        "Vehicle-shot template focuses on physical scale, blocking, and anti-oversize staging."
+      ],
+      "shot_mode": "vehicle_keyscene",
+      "prompt_template": "vehicle_keyscene",
+      "vehicle_shot": true,
+      "vehicle_preset": "riding_on_road",
+      "reference_policy": "vehicle_keyscene: scene + character",
+      "reference_count": 2,
+      "prompt_length": 85,
+      "legacy_prompt_length": 83,
+      "raw_source_description": "采访车离开后，张雪连人带车摔进泥里，却还是重新抓住车把站起来 | 泥泞山路边，老旧小排量摩托侧翻在橘红色泥浆里，19岁张雪半身沾满泥水倒在地上，抬头望向灰白天空，胸口起伏，下一瞬又咬牙抓住车把把车扶起，手背和裤腿全是泥，雨水持续砸落，突出狼狈、屈辱和不肯认命的力量，照片级写实，电影质感，近距离情绪冲击 | 他被拒绝了，但没有停下 | bitter, stubborn | close-up",
+      "anti_oversize_rules": [
+        "Keep the vehicle at believable full-vehicle scale relative to the rider",
+        "Keep the vehicle at realistic size and do not oversize it",
+        "Keep believable proportions between the vehicle and the road, lane, or track width",
+        "Keep a natural camera distance and do not let the vehicle fill the frame",
+        "Leave visible surrounding environment around the vehicle"
+      ],
+      "framing_clause": "medium wide shot, keep the vehicle in the lower mid-frame or midground, with the road receding clearly into the background.",
+      "summary": "采访车离开后，张雪连人带车摔进泥里，却还是重新抓住车把站起来。",
+      "anchor_text": "他被拒绝了，但没有停下。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_湖南暴雨山路",
+          "asset_name": "湖南暴雨山路",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\scenes\\scene_湖南暴雨山路.png"
+        },
+        "character": {
+          "asset_id": "character_张雪",
+          "asset_name": "张雪",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\characters\\character_张雪.png"
+        },
+        "prop": null
+      },
+      "matching_notes": [
+        "Matched scene asset by keyword overlap: .",
+        "Matched character asset by explicit beat phrase: 张雪.",
+        "Vehicle shot prefers scene + character to keep scale stable."
+      ],
+      "validation_warnings": [
+        "ep01_s03: dropped vehicle prop `小排量摩托` to keep scene + character and reduce oversized-bike risk."
+      ],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_湖南暴雨山路",
+            "asset_name": "湖南暴雨山路",
+            "score": 140,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_工厂外夜色空地",
+            "asset_name": "工厂外夜色空地",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_深夜工厂车间",
+            "asset_name": "深夜工厂车间",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_现代化会议室",
+            "asset_name": "现代化会议室",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_电视台采访车旁岔路口",
+            "asset_name": "电视台采访车旁岔路口",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [
+          {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "score": 984,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_张雪_19岁",
+            "asset_name": "张雪_19岁",
+            "score": 30,
+            "strategy": "keyword_overlap",
+            "matched_terms": [
+              "张雪",
+              "19岁"
+            ]
+          },
+          {
+            "asset_id": "character_Debise",
+            "asset_name": "Debise",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "character_陈星熠",
+            "asset_name": "陈星熠",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "prop": []
+      },
+      "limitations": [],
+      "debug_artifact": null,
+      "resume_status": "queued",
+      "resumed_from": null,
+      "previous_output_path": null,
+      "dropped_prop_reason": "scene_character_preferred",
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_keyscenes\\keyscenes\\ep01_s03.png"
+    },
+    {
+      "timestamp": "2026-04-16T08:56:43.004529+00:00",
+      "beat_id": "ep01_s04",
+      "episode_number": 1,
+      "mode": "keyscene",
+      "style_target": "realism",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 3314237803,
+      "width": 864,
+      "height": 1080,
+      "prompt": "the character works on or inspects the vehicle inside the scene. Keep the vehicle at believable scale and do not enlarge the full vehicle or machine into a face-filling giant object. Keep the vehicle in the midground of a workstation or work area, with tools, ground plane, and workspace still visible so the machine stays integrated with the environment. medium shot, keep the machine and work area relationship clear and preserve the ground plane and workstation edges. Cinematic realism.",
+      "final_rendered_prompt": "the character works on or inspects the vehicle inside the scene. Keep the vehicle at believable scale and do not enlarge the full vehicle or machine into a face-filling giant object. Keep the vehicle in the midground of a workstation or work area, with tools, ground plane, and workspace still visible so the machine stays integrated with the environment. medium shot, keep the machine and work area relationship clear and preserve the ground plane and workstation edges. Cinematic realism.",
+      "final_prompt_language": "en",
+      "source_structured_input": {
+        "beat_id": "ep01_s04",
+        "summary": "时间跳到2013年，张雪和陈星熠挤在重庆狭小车间里，对着旧账本和未完成车架继续砸钱研发。",
+        "visual_prompt": "重庆老旧工业区的狭小机修车间，昏黄工业灯下空间低矮拥挤，水泥地有油污，工作台散落工具和零件，中央是尚未完成的银灰色摩托车车架，桌上摊开一本起毛边旧账本，密密麻麻写着借款数字；39岁前期状态的张雪埋头工作，陈星熠穿深色外套站在一旁轻声说又借到钱了，两人都疲惫却没有退意，空气仿佛充满汽油和焊锡味，照片级写实，电影质感。",
+        "shot_type": "medium wide shot",
+        "camera_motion": "static",
+        "mood": "gritty, burdened",
+        "anchor_text": "他们手里只有两万，却还在继续造车。",
+        "asset_focus": "environment",
+        "selected_reference_assets": {
+          "scene": {
+            "asset_id": "scene_重庆狭小车间",
+            "asset_name": "重庆狭小车间",
+            "asset_type": "scene",
+            "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\scenes\\scene_重庆狭小车间.png"
+          },
+          "character": null,
+          "prop": {
+            "asset_id": "prop_旧账本",
+            "asset_name": "旧账本",
+            "asset_type": "prop",
+            "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\props\\prop_旧账本.png"
+          }
+        }
+      },
+      "prompt_source": "04_episode_scene_script.json beat fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "scene=exact_name_match",
+        "character=missing",
+        "prop=exact_name_match",
+        "shot_mode=vehicle_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance.",
+        "Final prompt rendered in `en`.",
+        "vehicle_preset=workshop_vehicle_interaction",
+        "Vehicle-shot template focuses on physical scale, blocking, and anti-oversize staging."
+      ],
+      "shot_mode": "vehicle_keyscene",
+      "prompt_template": "vehicle_keyscene",
+      "vehicle_shot": true,
+      "vehicle_preset": "workshop_vehicle_interaction",
+      "reference_policy": "vehicle_keyscene: scene + prop",
+      "reference_count": 2,
+      "prompt_length": 80,
+      "legacy_prompt_length": 80,
+      "raw_source_description": "时间跳到2013年，张雪和陈星熠挤在重庆狭小车间里，对着旧账本和未完成车架继续砸钱研发 | 重庆老旧工业区的狭小机修车间，昏黄工业灯下空间低矮拥挤，水泥地有油污，工作台散落工具和零件，中央是尚未完成的银灰色摩托车车架，桌上摊开一本起毛边旧账本，密密麻麻写着借款数字；39岁前期状态的张雪埋头工作，陈星熠穿深色外套站在一旁轻声说又借到钱了，两人都疲惫却没有退意，空气仿佛充满汽油和焊锡味，照片级写实，电影质感 | 他们手里只有两万，却还在继续造车 | gritty, burdened | medium wide shot | static",
+      "anti_oversize_rules": [
+        "Keep the vehicle at believable full-vehicle scale relative to the rider",
+        "Keep the vehicle at realistic size and do not oversize it",
+        "Keep believable proportions between the vehicle and the road, lane, or track width",
+        "Keep a natural camera distance and do not let the vehicle fill the frame",
+        "Leave visible surrounding environment around the vehicle"
+      ],
+      "framing_clause": "medium shot, keep the machine and work area relationship clear and preserve the ground plane and workstation edges.",
+      "summary": "时间跳到2013年，张雪和陈星熠挤在重庆狭小车间里，对着旧账本和未完成车架继续砸钱研发。",
+      "anchor_text": "他们手里只有两万，却还在继续造车。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_重庆狭小车间",
+          "asset_name": "重庆狭小车间",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\scenes\\scene_重庆狭小车间.png"
+        },
+        "character": null,
+        "prop": {
+          "asset_id": "prop_旧账本",
+          "asset_name": "旧账本",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\props\\prop_旧账本.png"
+        }
+      },
+      "matching_notes": [
+        "Matched scene asset by explicit beat phrase: 重庆狭小车间, 空间低矮拥挤.",
+        "Vehicle build prompt prioritizes scene + prop over scene + character.",
+        "Matched prop asset by explicit beat phrase: 旧账本."
+      ],
+      "validation_warnings": [
+        "ep01_s04: character reference omitted so the vehicle build stays physically dominant."
+      ],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_重庆狭小车间",
+            "asset_name": "重庆狭小车间",
+            "score": 990,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "重庆狭小车间",
+              "空间低矮拥挤"
+            ]
+          },
+          {
+            "asset_id": "scene_工厂外夜色空地",
+            "asset_name": "工厂外夜色空地",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_深夜工厂车间",
+            "asset_name": "深夜工厂车间",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_湖南暴雨山路",
+            "asset_name": "湖南暴雨山路",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_现代化会议室",
+            "asset_name": "现代化会议室",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [],
+        "prop": [
+          {
+            "asset_id": "prop_旧账本",
+            "asset_name": "旧账本",
+            "score": 904,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "旧账本"
+            ]
+          },
+          {
+            "asset_id": "prop_摩托车车架",
+            "asset_name": "摩托车车架",
+            "score": 386,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "摩托车车架"
+            ]
+          },
+          {
+            "asset_id": "prop_ZXMOTO_820RR-RS",
+            "asset_name": "ZXMOTO_820RR-RS",
+            "score": 140,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_全罩式赛车头盔",
+            "asset_name": "全罩式赛车头盔",
+            "score": 140,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_发动机壳体",
+            "asset_name": "发动机壳体",
+            "score": 140,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ]
+      },
+      "limitations": [],
+      "debug_artifact": null,
+      "resume_status": "queued",
+      "resumed_from": null,
+      "previous_output_path": null,
+      "dropped_prop_reason": null,
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_keyscenes\\keyscenes\\ep01_s04.png"
+    },
+    {
+      "timestamp": "2026-04-16T08:56:43.005529+00:00",
+      "beat_id": "ep01_s05",
+      "episode_number": 1,
+      "mode": "keyscene",
+      "style_target": "realism",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 1799980080,
+      "width": 864,
+      "height": 1080,
+      "prompt": "Emphasize the key mechanical detail of engine. Keep the local mechanism at believable size and thickness relationships, without exaggerating the parts into distorted giant objects. Keep the detail in close range while retaining some mounting context, support structure, or hand relationship so it does not become a floating poster close-up. insert shot, emphasize mechanical detail and localized light. Cinematic realism.",
+      "final_rendered_prompt": "Emphasize the key mechanical detail of engine. Keep the local mechanism at believable size and thickness relationships, without exaggerating the parts into distorted giant objects. Keep the detail in close range while retaining some mounting context, support structure, or hand relationship so it does not become a floating poster close-up. insert shot, emphasize mechanical detail and localized light. Cinematic realism.",
+      "final_prompt_language": "en",
+      "source_structured_input": {
+        "beat_id": "ep01_s05",
+        "summary": "张雪抚摸发动机壳体，认定自己赌的不是一台车，而是一颗中国制造的心脏。",
+        "visual_prompt": "重庆狭小车间内的工作台特写，精密加工纹路清晰的发动机壳体被张雪满是机械粗粝感的双手稳稳托住，旁边虚化可见未完成车架、工具、焊点和账本边角，昏黄灯光打在金属表面形成温热高光，强调“发动机即心脏”的象征，照片级写实，电影质感，机械细节丰富。",
+        "shot_type": "insert",
+        "camera_motion": "slow push in",
+        "mood": "focused, reverent",
+        "anchor_text": "他赌的是一颗属于自己的心脏。",
+        "asset_focus": "object",
+        "selected_reference_assets": {
+          "scene": {
+            "asset_id": "scene_重庆狭小车间",
+            "asset_name": "重庆狭小车间",
+            "asset_type": "scene",
+            "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\scenes\\scene_重庆狭小车间.png"
+          },
+          "character": null,
+          "prop": {
+            "asset_id": "prop_发动机壳体",
+            "asset_name": "发动机壳体",
+            "asset_type": "prop",
+            "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\props\\prop_发动机壳体.png"
+          }
+        }
+      },
+      "prompt_source": "04_episode_scene_script.json beat fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "scene=exact_name_match",
+        "character=missing",
+        "prop=exact_name_match",
+        "shot_mode=vehicle_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance.",
+        "Final prompt rendered in `en`.",
+        "vehicle_preset=vehicle_detail",
+        "Vehicle-shot template focuses on physical scale, blocking, and anti-oversize staging."
+      ],
+      "shot_mode": "vehicle_keyscene",
+      "prompt_template": "vehicle_keyscene",
+      "vehicle_shot": true,
+      "vehicle_preset": "vehicle_detail",
+      "reference_policy": "vehicle_keyscene: scene + prop",
+      "reference_count": 2,
+      "prompt_length": 61,
+      "legacy_prompt_length": 81,
+      "raw_source_description": "张雪抚摸发动机壳体，认定自己赌的不是一台车，而是一颗中国制造的心脏 | 重庆狭小车间内的工作台特写，精密加工纹路清晰的发动机壳体被张雪满是机械粗粝感的双手稳稳托住，旁边虚化可见未完成车架、工具、焊点和账本边角，昏黄灯光打在金属表面形成温热高光，强调“发动机即心脏”的象征，照片级写实，电影质感，机械细节丰富 | 他赌的是一颗属于自己的心脏 | focused, reverent | insert",
+      "anti_oversize_rules": [
+        "Keep the local detail at believable thickness and scale",
+        "Do not exaggerate parts into surreal giant objects",
+        "Retain some mounting context or support relationship"
+      ],
+      "framing_clause": "insert shot, emphasize mechanical detail and localized light.",
+      "summary": "张雪抚摸发动机壳体，认定自己赌的不是一台车，而是一颗中国制造的心脏。",
+      "anchor_text": "他赌的是一颗属于自己的心脏。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_重庆狭小车间",
+          "asset_name": "重庆狭小车间",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\scenes\\scene_重庆狭小车间.png"
+        },
+        "character": null,
+        "prop": {
+          "asset_id": "prop_发动机壳体",
+          "asset_name": "发动机壳体",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\props\\prop_发动机壳体.png"
+        }
+      },
+      "matching_notes": [
+        "Matched scene asset by explicit beat phrase: 重庆狭小车间.",
+        "Vehicle detail keyscenes default to scene + prop.",
+        "Matched prop asset by explicit beat phrase: 发动机壳体, 心脏."
+      ],
+      "validation_warnings": [],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_重庆狭小车间",
+            "asset_name": "重庆狭小车间",
+            "score": 246,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "重庆狭小车间"
+            ]
+          },
+          {
+            "asset_id": "scene_工厂外夜色空地",
+            "asset_name": "工厂外夜色空地",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_深夜工厂车间",
+            "asset_name": "深夜工厂车间",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_湖南暴雨山路",
+            "asset_name": "湖南暴雨山路",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_现代化会议室",
+            "asset_name": "现代化会议室",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [],
+        "prop": [
+          {
+            "asset_id": "prop_发动机壳体",
+            "asset_name": "发动机壳体",
+            "score": 1268,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "发动机壳体",
+              "心脏"
+            ]
+          },
+          {
+            "asset_id": "prop_ZXMOTO_820RR-RS",
+            "asset_name": "ZXMOTO_820RR-RS",
+            "score": 140,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_全罩式赛车头盔",
+            "asset_name": "全罩式赛车头盔",
+            "score": 140,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_小排量摩托",
+            "asset_name": "小排量摩托",
+            "score": 140,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_摩托车车架",
+            "asset_name": "摩托车车架",
+            "score": 140,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ]
+      },
+      "limitations": [],
+      "debug_artifact": null,
+      "resume_status": "queued",
+      "resumed_from": null,
+      "previous_output_path": null,
+      "dropped_prop_reason": null,
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_keyscenes\\keyscenes\\ep01_s05.png"
+    },
+    {
+      "timestamp": "2026-04-16T08:56:43.006529+00:00",
+      "beat_id": "ep01_s06",
+      "episode_number": 1,
+      "mode": "keyscene",
+      "style_target": "realism",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 3924359467,
+      "width": 864,
+      "height": 1080,
+      "prompt": "the character works on or inspects engine inside the scene. Keep engine at believable scale and do not enlarge the full vehicle or machine into a face-filling giant object. Keep engine in the midground of a workstation or work area, with tools, ground plane, and workspace still visible so the machine stays integrated with the environment. medium wide shot, keep the machine and work area relationship clear and preserve the ground plane and workstation edges. Cinematic realism.",
+      "final_rendered_prompt": "the character works on or inspects engine inside the scene. Keep engine at believable scale and do not enlarge the full vehicle or machine into a face-filling giant object. Keep engine in the midground of a workstation or work area, with tools, ground plane, and workspace still visible so the machine stays integrated with the environment. medium wide shot, keep the machine and work area relationship clear and preserve the ground plane and workstation edges. Cinematic realism.",
+      "final_prompt_language": "en",
+      "source_structured_input": {
+        "beat_id": "ep01_s06",
+        "summary": "多年后在现代化会议室里，张雪面对保守的投资人和高管，坚持必须研发自己的发动机。",
+        "visual_prompt": "冷白商务顶灯下的现代企业会议室，玻璃幕墙外能看见整片工厂园区，会议桌一侧坐着数名西装高管与投资人，文件和矿泉水整齐摆放；张雪穿深色夹克站在桌边，手掌压在桌面上，神情克制却坚定，画面形成明显对峙关系，冷色调、理性空间与人物理想主义发生冲撞，照片级写实，电影质感。",
+        "shot_type": "over-the-shoulder",
+        "camera_motion": "pan right",
+        "mood": "tense, confrontational",
+        "anchor_text": "不造自己的发动机，我们永远只是躯壳。",
+        "asset_focus": "interaction",
+        "selected_reference_assets": {
+          "scene": {
+            "asset_id": "scene_现代化会议室",
+            "asset_name": "现代化会议室",
+            "asset_type": "scene",
+            "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\scenes\\scene_现代化会议室.png"
+          },
+          "character": null,
+          "prop": {
+            "asset_id": "prop_发动机壳体",
+            "asset_name": "发动机壳体",
+            "asset_type": "prop",
+            "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\props\\prop_发动机壳体.png"
+          }
+        }
+      },
+      "prompt_source": "04_episode_scene_script.json beat fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "scene=exact_name_match",
+        "character=missing",
+        "prop=no_match",
+        "shot_mode=vehicle_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance.",
+        "Final prompt rendered in `en`.",
+        "vehicle_preset=workshop_vehicle_interaction",
+        "Vehicle-shot template focuses on physical scale, blocking, and anti-oversize staging."
+      ],
+      "shot_mode": "vehicle_keyscene",
+      "prompt_template": "vehicle_keyscene",
+      "vehicle_shot": true,
+      "vehicle_preset": "workshop_vehicle_interaction",
+      "reference_policy": "vehicle_keyscene: scene + prop",
+      "reference_count": 2,
+      "prompt_length": 78,
+      "legacy_prompt_length": 83,
+      "raw_source_description": "多年后在现代化会议室里，张雪面对保守的投资人和高管，坚持必须研发自己的发动机 | 冷白商务顶灯下的现代企业会议室，玻璃幕墙外能看见整片工厂园区，会议桌一侧坐着数名西装高管与投资人，文件和矿泉水整齐摆放；张雪穿深色夹克站在桌边，手掌压在桌面上，神情克制却坚定，画面形成明显对峙关系，冷色调、理性空间与人物理想主义发生冲撞，照片级写实，电影质感 | 不造自己的发动机，我们永远只是躯壳 | tense, confrontational | over-the-shoulder",
+      "anti_oversize_rules": [
+        "Keep the vehicle at believable full-vehicle scale relative to the rider",
+        "Keep the vehicle at realistic size and do not oversize it",
+        "Keep believable proportions between the vehicle and the road, lane, or track width",
+        "Keep a natural camera distance and do not let the vehicle fill the frame",
+        "Leave visible surrounding environment around the vehicle"
+      ],
+      "framing_clause": "medium wide shot, keep the machine and work area relationship clear and preserve the ground plane and workstation edges.",
+      "summary": "多年后在现代化会议室里，张雪面对保守的投资人和高管，坚持必须研发自己的发动机。",
+      "anchor_text": "不造自己的发动机，我们永远只是躯壳。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_现代化会议室",
+          "asset_name": "现代化会议室",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\scenes\\scene_现代化会议室.png"
+        },
+        "character": null,
+        "prop": {
+          "asset_id": "prop_发动机壳体",
+          "asset_name": "发动机壳体",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\props\\prop_发动机壳体.png"
+        }
+      },
+      "matching_notes": [
+        "Matched scene asset by explicit beat phrase: 现代化会议室.",
+        "Vehicle build prompt prioritizes scene + prop over scene + character.",
+        "Matched prop asset by keyword overlap: ."
+      ],
+      "validation_warnings": [
+        "ep01_s06: character reference omitted so the vehicle build stays physically dominant."
+      ],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_现代化会议室",
+            "asset_name": "现代化会议室",
+            "score": 984,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "现代化会议室"
+            ]
+          },
+          {
+            "asset_id": "scene_工厂外夜色空地",
+            "asset_name": "工厂外夜色空地",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_深夜工厂车间",
+            "asset_name": "深夜工厂车间",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_湖南暴雨山路",
+            "asset_name": "湖南暴雨山路",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_电视台采访车旁岔路口",
+            "asset_name": "电视台采访车旁岔路口",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [],
+        "prop": [
+          {
+            "asset_id": "prop_发动机壳体",
+            "asset_name": "发动机壳体",
+            "score": 260,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_ZXMOTO_820RR-RS",
+            "asset_name": "ZXMOTO_820RR-RS",
+            "score": 140,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_全罩式赛车头盔",
+            "asset_name": "全罩式赛车头盔",
+            "score": 140,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_小排量摩托",
+            "asset_name": "小排量摩托",
+            "score": 140,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_摩托车车架",
+            "asset_name": "摩托车车架",
+            "score": 140,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ]
+      },
+      "limitations": [],
+      "debug_artifact": null,
+      "resume_status": "queued",
+      "resumed_from": null,
+      "previous_output_path": null,
+      "dropped_prop_reason": null,
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_keyscenes\\keyscenes\\ep01_s06.png"
+    },
+    {
+      "timestamp": "2026-04-16T08:56:43.007528+00:00",
+      "beat_id": "ep01_s07",
+      "episode_number": 1,
+      "mode": "keyscene",
+      "style_target": "realism",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 851892141,
+      "width": 864,
+      "height": 1080,
+      "prompt": "Bring the references together into one coherent keyscene still. Make the character the visual center inside stormy mountain road, keeping only one environment cue. wide shot, emphasize expression, pose, and one supporting scene cue. Cinematic realism.",
+      "final_rendered_prompt": "Bring the references together into one coherent keyscene still. Make the character the visual center inside stormy mountain road, keeping only one environment cue. wide shot, emphasize expression, pose, and one supporting scene cue. Cinematic realism.",
+      "final_prompt_language": "en",
+      "source_structured_input": {
+        "beat_id": "ep01_s07",
+        "summary": "张雪清空桌面离开大楼，在工厂外夜色中独自停下，做出彻底出走的决定。",
+        "visual_prompt": "现代工厂大楼外的夜间空地，冷色路灯和楼体灯光拉出长长阴影，张雪独自从明亮门口走向开阔夜空，手里只拿着简单个人物品，脚步放慢后停住，身后是他参与建立的现代厂区，前方则是空旷黑夜和未知道路，环境安静克制，人物孤独感强烈，照片级写实，电影质感。",
+        "shot_type": "wide shot",
+        "camera_motion": "slow dolly out",
+        "mood": "lonely, resolute",
+        "anchor_text": "那天之后，他离开了自己亲手参与建立的大楼。",
+        "asset_focus": "character",
+        "selected_reference_assets": {
+          "scene": {
+            "asset_id": "scene_湖南暴雨山路",
+            "asset_name": "湖南暴雨山路",
+            "asset_type": "scene",
+            "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\scenes\\scene_湖南暴雨山路.png"
+          },
+          "character": {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "asset_type": "character",
+            "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\characters\\character_张雪.png"
+          },
+          "prop": null
+        }
+      },
+      "prompt_source": "04_episode_scene_script.json beat fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "scene=no_match",
+        "character=exact_name_match",
+        "prop=missing",
+        "shot_mode=identity_emotion_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance.",
+        "Final prompt rendered in `en`."
+      ],
+      "shot_mode": "identity_emotion_keyscene",
+      "prompt_template": "identity_emotion_keyscene",
+      "vehicle_shot": false,
+      "vehicle_preset": null,
+      "reference_policy": "identity_emotion_keyscene: scene + character",
+      "reference_count": 2,
+      "prompt_length": 36,
+      "legacy_prompt_length": 87,
+      "raw_source_description": "张雪清空桌面离开大楼，在工厂外夜色中独自停下，做出彻底出走的决定 | 现代工厂大楼外的夜间空地，冷色路灯和楼体灯光拉出长长阴影，张雪独自从明亮门口走向开阔夜空，手里只拿着简单个人物品，脚步放慢后停住，身后是他参与建立的现代厂区，前方则是空旷黑夜和未知道路，环境安静克制，人物孤独感强烈，照片级写实，电影质感 | 那天之后，他离开了自己亲手参与建立的大楼 | lonely, resolute | wide shot",
+      "anti_oversize_rules": [],
+      "framing_clause": "wide shot, emphasize expression, pose, and one supporting scene cue.",
+      "summary": "张雪清空桌面离开大楼，在工厂外夜色中独自停下，做出彻底出走的决定。",
+      "anchor_text": "那天之后，他离开了自己亲手参与建立的大楼。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_湖南暴雨山路",
+          "asset_name": "湖南暴雨山路",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\scenes\\scene_湖南暴雨山路.png"
+        },
+        "character": {
+          "asset_id": "character_张雪",
+          "asset_name": "张雪",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\characters\\character_张雪.png"
+        },
+        "prop": null
+      },
+      "matching_notes": [
+        "Matched scene asset by keyword overlap: .",
+        "Matched character asset by explicit beat phrase: 张雪.",
+        "Prop omitted by reference policy."
+      ],
+      "validation_warnings": [],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_湖南暴雨山路",
+            "asset_name": "湖南暴雨山路",
+            "score": 140,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_工厂外夜色空地",
+            "asset_name": "工厂外夜色空地",
+            "score": 12,
+            "strategy": "keyword_overlap",
+            "matched_terms": [
+              "现代工厂大楼外的夜间空地",
+              "环境安静克制"
+            ]
+          },
+          {
+            "asset_id": "scene_深夜工厂车间",
+            "asset_name": "深夜工厂车间",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_现代化会议室",
+            "asset_name": "现代化会议室",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_电视台采访车旁岔路口",
+            "asset_name": "电视台采访车旁岔路口",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [
+          {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "score": 984,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_张雪_19岁",
+            "asset_name": "张雪_19岁",
+            "score": 24,
+            "strategy": "keyword_overlap",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_Debise",
+            "asset_name": "Debise",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "character_陈星熠",
+            "asset_name": "陈星熠",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "prop": []
+      },
+      "limitations": [],
+      "debug_artifact": null,
+      "resume_status": "queued",
+      "resumed_from": null,
+      "previous_output_path": null,
+      "dropped_prop_reason": "compact_reference_policy",
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_keyscenes\\keyscenes\\ep01_s07.png"
+    },
+    {
+      "timestamp": "2026-04-16T08:56:43.010034+00:00",
+      "beat_id": "ep01_s08",
+      "episode_number": 1,
+      "mode": "keyscene",
+      "style_target": "realism",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 1352924732,
+      "width": 864,
+      "height": 1080,
+      "prompt": "\" \". Push the prop into the main subject position and keep only a partial environmental context and light relationship from the scene. insert shot, emphasize the object, hand contact, and localized light. Cinematic realism.",
+      "final_rendered_prompt": "\" \". Push the prop into the main subject position and keep only a partial environmental context and light relationship from the scene. insert shot, emphasize the object, hand contact, and localized light. Cinematic realism.",
+      "final_prompt_language": "en",
+      "source_structured_input": {
+        "beat_id": "ep01_s08",
+        "summary": "他拿出手机，在夜风里打下“我决定奔赴属于自己的星辰大海”。",
+        "visual_prompt": "夜色中的黑色智能手机近景，屏幕上是简洁文字输入界面，清晰显示“我决定奔赴属于自己的星辰大海”，手指停在发送或输入完成的瞬间，背景虚化为工厂外冷色灯光与夜空，玻璃屏幕反射出张雪模糊而坚定的轮廓，照片级写实，电影质感。",
+        "shot_type": "insert",
+        "camera_motion": "static",
+        "mood": "restrained, decisive",
+        "anchor_text": "我决定奔赴属于自己的星辰大海。",
+        "asset_focus": "object",
+        "selected_reference_assets": {
+          "scene": {
+            "asset_id": "scene_工厂外夜色空地",
+            "asset_name": "工厂外夜色空地",
+            "asset_type": "scene",
+            "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\scenes\\scene_工厂外夜色空地.png"
+          },
+          "character": null,
+          "prop": {
+            "asset_id": "prop_手机",
+            "asset_name": "手机",
+            "asset_type": "prop",
+            "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\props\\prop_手机.png"
+          }
+        }
+      },
+      "prompt_source": "04_episode_scene_script.json with asset fallback selection",
+      "prompt_confidence": "fallback",
+      "prompt_notes": [
+        "scene=first_available_fallback",
+        "character=missing",
+        "prop=exact_name_match",
+        "shot_mode=insert_object_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance.",
+        "Final prompt rendered in `en`.",
+        "Used at least one fallback-generated asset reference because no exact beat match was available."
+      ],
+      "shot_mode": "insert_object_keyscene",
+      "prompt_template": "insert_object_keyscene",
+      "vehicle_shot": false,
+      "vehicle_preset": null,
+      "reference_policy": "insert_object_keyscene: scene + prop",
+      "reference_count": 2,
+      "prompt_length": 33,
+      "legacy_prompt_length": 75,
+      "raw_source_description": "他拿出手机，在夜风里打下“我决定奔赴属于自己的星辰大海” | 夜色中的黑色智能手机近景，屏幕上是简洁文字输入界面，清晰显示“我决定奔赴属于自己的星辰大海”，手指停在发送或输入完成的瞬间，背景虚化为工厂外冷色灯光与夜空，玻璃屏幕反射出张雪模糊而坚定的轮廓，照片级写实，电影质感 | 我决定奔赴属于自己的星辰大海 | restrained, decisive | insert | static",
+      "anti_oversize_rules": [],
+      "framing_clause": "insert shot, emphasize the object, hand contact, and localized light.",
+      "summary": "他拿出手机，在夜风里打下“我决定奔赴属于自己的星辰大海”。",
+      "anchor_text": "我决定奔赴属于自己的星辰大海。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_工厂外夜色空地",
+          "asset_name": "工厂外夜色空地",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\scenes\\scene_工厂外夜色空地.png"
+        },
+        "character": null,
+        "prop": {
+          "asset_id": "prop_手机",
+          "asset_name": "手机",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\props\\prop_手机.png"
+        }
+      },
+      "matching_notes": [
+        "No reliable scene asset match was found; using the first available generated asset as fallback.",
+        "Insert/object keyscenes default to scene + prop.",
+        "Matched prop asset by explicit beat phrase: 手机."
+      ],
+      "validation_warnings": [
+        "ep01_s08: scene selection has no semantic overlap with the beat; chosen scene `工厂外夜色空地` is low confidence."
+      ],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_工厂外夜色空地",
+            "asset_name": "工厂外夜色空地",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_深夜工厂车间",
+            "asset_name": "深夜工厂车间",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_湖南暴雨山路",
+            "asset_name": "湖南暴雨山路",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_现代化会议室",
+            "asset_name": "现代化会议室",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_电视台采访车旁岔路口",
+            "asset_name": "电视台采访车旁岔路口",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [],
+        "prop": [
+          {
+            "asset_id": "prop_手机",
+            "asset_name": "手机",
+            "score": 984,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "手机"
+            ]
+          },
+          {
+            "asset_id": "prop_ZXMOTO_820RR-RS",
+            "asset_name": "ZXMOTO_820RR-RS",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_全罩式赛车头盔",
+            "asset_name": "全罩式赛车头盔",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_发动机壳体",
+            "asset_name": "发动机壳体",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_小排量摩托",
+            "asset_name": "小排量摩托",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ]
+      },
+      "limitations": [
+        "No reliable scene asset match was found; using the first available generated asset as fallback.",
+        "ep01_s08: scene selection has no semantic overlap with the beat; chosen scene `工厂外夜色空地` is low confidence."
+      ],
+      "debug_artifact": null,
+      "resume_status": "queued",
+      "resumed_from": null,
+      "previous_output_path": null,
+      "dropped_prop_reason": null,
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_keyscenes\\keyscenes\\ep01_s08.png"
+    },
+    {
+      "timestamp": "2026-04-16T08:56:43.011038+00:00",
+      "beat_id": "ep01_s09",
+      "episode_number": 1,
+      "mode": "keyscene",
+      "style_target": "realism",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 2288774786,
+      "width": 864,
+      "height": 1080,
+      "prompt": "820RR-RS completes the action instant on the track. Keep 820RR-RS at true track scale, with the full vehicle visible and believable relative to the rider and track width. Keep the vehicle in the midground or lower mid-frame, clearly inside one track space, with the track receding into the background and barriers or grandstand remaining visible. medium wide shot, let the track recede clearly into the background and keep the vehicle in the midground instead of a giant poster-like foreground. Cinematic realism.",
+      "final_rendered_prompt": "820RR-RS completes the action instant on the track. Keep 820RR-RS at true track scale, with the full vehicle visible and believable relative to the rider and track width. Keep the vehicle in the midground or lower mid-frame, clearly inside one track space, with the track receding into the background and barriers or grandstand remaining visible. medium wide shot, let the track recede clearly into the background and keep the vehicle in the midground instead of a giant poster-like foreground. Cinematic realism.",
+      "final_prompt_language": "en",
+      "source_structured_input": {
+        "beat_id": "ep01_s09",
+        "summary": "2026年葡萄牙波尔蒂芒赛道上，红银相间的ZXMOTO 820RR-RS在发车位蓄势待发。",
+        "visual_prompt": "葡萄牙波尔蒂芒国际赛道正午烈日下，红银相间的ZXMOTO 820RR-RS停在发车格内，整流罩锋利反光，热浪让柏油路轻微扭曲；Debise穿专业红银黑赛车皮衣跨坐车上，头盔镜片映出看台和护栏，发车线、广告牌与国际赛事氛围完整可见，画面强调机器锋芒与历史时刻来临前的压缩张力，照片级写实，电影质感。",
+        "shot_type": "low angle medium shot",
+        "camera_motion": "slow push in",
+        "mood": "charged, triumphant",
+        "anchor_text": "那台中国赛车，终于站上了欧洲赛道。",
+        "asset_focus": "object",
+        "selected_reference_assets": {
+          "scene": {
+            "asset_id": "scene_葡萄牙波尔蒂芒赛道",
+            "asset_name": "葡萄牙波尔蒂芒赛道",
+            "asset_type": "scene",
+            "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\scenes\\scene_葡萄牙波尔蒂芒赛道.png"
+          },
+          "character": {
+            "asset_id": "character_Debise",
+            "asset_name": "Debise",
+            "asset_type": "character",
+            "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\characters\\character_Debise.png"
+          },
+          "prop": null
+        }
+      },
+      "prompt_source": "04_episode_scene_script.json beat fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "scene=exact_name_match",
+        "character=exact_name_match",
+        "prop=missing",
+        "shot_mode=vehicle_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance.",
+        "Final prompt rendered in `en`.",
+        "vehicle_preset=bike_on_track",
+        "Vehicle-shot template focuses on physical scale, blocking, and anti-oversize staging."
+      ],
+      "shot_mode": "vehicle_keyscene",
+      "prompt_template": "vehicle_keyscene",
+      "vehicle_shot": true,
+      "vehicle_preset": "bike_on_track",
+      "reference_policy": "vehicle_keyscene: scene + character",
+      "reference_count": 2,
+      "prompt_length": 85,
+      "legacy_prompt_length": 100,
+      "raw_source_description": "2026年葡萄牙波尔蒂芒赛道上，红银相间的ZXMOTO 820RR-RS在发车位蓄势待发 | 葡萄牙波尔蒂芒国际赛道正午烈日下，红银相间的ZXMOTO 820RR-RS停在发车格内，整流罩锋利反光，热浪让柏油路轻微扭曲；Debise穿专业红银黑赛车皮衣跨坐车上，头盔镜片映出看台和护栏，发车线、广告牌与国际赛事氛围完整可见，画面强调机器锋芒与历史时刻来临前的压缩张力，照片级写实，电影质感 | 那台中国赛车，终于站上了欧洲赛道 | charged, triumphant | low angle medium shot",
+      "anti_oversize_rules": [
+        "Keep the vehicle and rider at believable track scale",
+        "Keep the vehicle grounded within one track width",
+        "Keep barriers, track edges, and background space visible"
+      ],
+      "framing_clause": "medium wide shot, let the track recede clearly into the background and keep the vehicle in the midground instead of a giant poster-like foreground.",
+      "summary": "2026年葡萄牙波尔蒂芒赛道上，红银相间的ZXMOTO 820RR-RS在发车位蓄势待发。",
+      "anchor_text": "那台中国赛车，终于站上了欧洲赛道。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_葡萄牙波尔蒂芒赛道",
+          "asset_name": "葡萄牙波尔蒂芒赛道",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\scenes\\scene_葡萄牙波尔蒂芒赛道.png"
+        },
+        "character": {
+          "asset_id": "character_Debise",
+          "asset_name": "Debise",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\characters\\character_Debise.png"
+        },
+        "prop": null
+      },
+      "matching_notes": [
+        "Matched scene asset by explicit beat phrase: 葡萄牙波尔蒂芒赛道, 葡萄牙波尔蒂芒国际赛道, 广告牌.",
+        "Matched character asset by explicit beat phrase: Debise, 820RR.",
+        "Track vehicle shot prefers scene + character for scale stability."
+      ],
+      "validation_warnings": [
+        "ep01_s09: dropped prop `ZXMOTO_820RR-RS` on track shot to avoid poster-scale vehicle behavior; exact design stays in prompt context."
+      ],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_葡萄牙波尔蒂芒赛道",
+            "asset_name": "葡萄牙波尔蒂芒赛道",
+            "score": 1176,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "葡萄牙波尔蒂芒赛道",
+              "葡萄牙波尔蒂芒国际赛道",
+              "广告牌"
+            ]
+          },
+          {
+            "asset_id": "scene_赛道维修区",
+            "asset_name": "赛道维修区",
+            "score": 150,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_工厂外夜色空地",
+            "asset_name": "工厂外夜色空地",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_深夜工厂车间",
+            "asset_name": "深夜工厂车间",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_湖南暴雨山路",
+            "asset_name": "湖南暴雨山路",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [
+          {
+            "asset_id": "character_Debise",
+            "asset_name": "Debise",
+            "score": 270,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "Debise",
+              "820RR"
+            ]
+          },
+          {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "character_张雪_19岁",
+            "asset_name": "张雪_19岁",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "character_陈星熠",
+            "asset_name": "陈星熠",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "prop": []
+      },
+      "limitations": [],
+      "debug_artifact": null,
+      "resume_status": "queued",
+      "resumed_from": null,
+      "previous_output_path": null,
+      "dropped_prop_reason": "track_scale_guardrail",
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_keyscenes\\keyscenes\\ep01_s09.png"
+    },
+    {
+      "timestamp": "2026-04-16T08:56:43.011038+00:00",
+      "beat_id": "ep01_s10",
+      "episode_number": 1,
+      "mode": "keyscene",
+      "style_target": "realism",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 3855053990,
+      "width": 864,
+      "height": 1080,
+      "prompt": "820RR-RS completes the action instant on the track. Keep 820RR-RS at true track scale, with the full vehicle visible and believable relative to the rider and track width. Keep the vehicle in the midground or lower mid-frame, clearly inside one track space, with the track receding into the background and barriers or grandstand remaining visible. medium wide shot, let the track recede clearly into the background and keep the vehicle in the midground instead of a giant poster-like foreground. Cinematic realism.",
+      "final_rendered_prompt": "820RR-RS completes the action instant on the track. Keep 820RR-RS at true track scale, with the full vehicle visible and believable relative to the rider and track width. Keep the vehicle in the midground or lower mid-frame, clearly inside one track space, with the track receding into the background and barriers or grandstand remaining visible. medium wide shot, let the track recede clearly into the background and keep the vehicle in the midground instead of a giant poster-like foreground. Cinematic realism.",
+      "final_prompt_language": "en",
+      "source_structured_input": {
+        "beat_id": "ep01_s10",
+        "summary": "最后一圈里Debise完成极限制动与连续超车，张雪在维修区盯着数据屏几乎屏住呼吸。",
+        "visual_prompt": "组合式高张力画面，一侧是葡萄牙波尔蒂芒赛道发卡弯，Debise驾驶红银ZXMOTO 820RR-RS在极限制动下压低车身，连续超越前方对手，轮胎贴地、车身倾角夸张；另一侧是赛道维修区内，张雪戴耳机死盯数据屏，身边工具柜、线缆和工位灯形成紧张工业氛围；热浪、速度残影、观众惊呼感与机械嘶吼共同构成胜负一瞬，照片级写实，电影质感。",
+        "shot_type": "montage",
+        "camera_motion": "handheld drift",
+        "mood": "explosive, tense",
+        "anchor_text": "最后一圈，他们冲到了最前面。",
+        "asset_focus": "montage",
+        "selected_reference_assets": {
+          "scene": {
+            "asset_id": "scene_葡萄牙波尔蒂芒赛道",
+            "asset_name": "葡萄牙波尔蒂芒赛道",
+            "asset_type": "scene",
+            "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\scenes\\scene_葡萄牙波尔蒂芒赛道.png"
+          },
+          "character": {
+            "asset_id": "character_Debise",
+            "asset_name": "Debise",
+            "asset_type": "character",
+            "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\characters\\character_Debise.png"
+          },
+          "prop": null
+        }
+      },
+      "prompt_source": "04_episode_scene_script.json beat fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "scene=exact_name_match",
+        "character=exact_name_match",
+        "prop=missing",
+        "shot_mode=vehicle_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance.",
+        "Final prompt rendered in `en`.",
+        "vehicle_preset=bike_on_track",
+        "Vehicle-shot template focuses on physical scale, blocking, and anti-oversize staging."
+      ],
+      "shot_mode": "vehicle_keyscene",
+      "prompt_template": "vehicle_keyscene",
+      "vehicle_shot": true,
+      "vehicle_preset": "bike_on_track",
+      "reference_policy": "vehicle_keyscene: scene + character",
+      "reference_count": 2,
+      "prompt_length": 85,
+      "legacy_prompt_length": 84,
+      "raw_source_description": "最后一圈里Debise完成极限制动与连续超车，张雪在维修区盯着数据屏几乎屏住呼吸 | 组合式高张力画面，一侧是葡萄牙波尔蒂芒赛道发卡弯，Debise驾驶红银ZXMOTO 820RR-RS在极限制动下压低车身，连续超越前方对手，轮胎贴地、车身倾角夸张；另一侧是赛道维修区内，张雪戴耳机死盯数据屏，身边工具柜、线缆和工位灯形成紧张工业氛围；热浪、速度残影、观众惊呼感与机械嘶吼共同构成胜负一瞬，照片级写实，电影质感 | 最后一圈，他们冲到了最前面 | explosive, tense | montage",
+      "anti_oversize_rules": [
+        "Keep the vehicle and rider at believable track scale",
+        "Keep the vehicle grounded within one track width",
+        "Keep barriers, track edges, and background space visible"
+      ],
+      "framing_clause": "medium wide shot, let the track recede clearly into the background and keep the vehicle in the midground instead of a giant poster-like foreground.",
+      "summary": "最后一圈里Debise完成极限制动与连续超车，张雪在维修区盯着数据屏几乎屏住呼吸。",
+      "anchor_text": "最后一圈，他们冲到了最前面。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_葡萄牙波尔蒂芒赛道",
+          "asset_name": "葡萄牙波尔蒂芒赛道",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\scenes\\scene_葡萄牙波尔蒂芒赛道.png"
+        },
+        "character": {
+          "asset_id": "character_Debise",
+          "asset_name": "Debise",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\characters\\character_Debise.png"
+        },
+        "prop": null
+      },
+      "matching_notes": [
+        "Matched scene asset by explicit beat phrase: 葡萄牙波尔蒂芒赛道.",
+        "Matched character asset by explicit beat phrase: Debise, 820RR.",
+        "Track vehicle shot prefers scene + character for scale stability."
+      ],
+      "validation_warnings": [
+        "ep01_s10: dropped prop `ZXMOTO_820RR-RS` on track shot to avoid poster-scale vehicle behavior; exact design stays in prompt context."
+      ],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_葡萄牙波尔蒂芒赛道",
+            "asset_name": "葡萄牙波尔蒂芒赛道",
+            "score": 426,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "葡萄牙波尔蒂芒赛道"
+            ]
+          },
+          {
+            "asset_id": "scene_赛道维修区",
+            "asset_name": "赛道维修区",
+            "score": 396,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "赛道维修区"
+            ]
+          },
+          {
+            "asset_id": "scene_工厂外夜色空地",
+            "asset_name": "工厂外夜色空地",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_深夜工厂车间",
+            "asset_name": "深夜工厂车间",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_湖南暴雨山路",
+            "asset_name": "湖南暴雨山路",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [
+          {
+            "asset_id": "character_Debise",
+            "asset_name": "Debise",
+            "score": 990,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "Debise",
+              "820RR"
+            ]
+          },
+          {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "score": 984,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_张雪_19岁",
+            "asset_name": "张雪_19岁",
+            "score": 24,
+            "strategy": "keyword_overlap",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_陈星熠",
+            "asset_name": "陈星熠",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "prop": []
+      },
+      "limitations": [],
+      "debug_artifact": null,
+      "resume_status": "queued",
+      "resumed_from": null,
+      "previous_output_path": null,
+      "dropped_prop_reason": "track_scale_guardrail",
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_keyscenes\\keyscenes\\ep01_s10.png"
+    },
+    {
+      "timestamp": "2026-04-16T08:56:43.012547+00:00",
+      "beat_id": "ep01_s11",
+      "episode_number": 1,
+      "mode": "keyscene",
+      "style_target": "realism",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 1578609954,
+      "width": 864,
+      "height": 1080,
+      "prompt": "the character rides or controls ZXMOTO_820RR-RS in this instant. Keep ZXMOTO_820RR-RS at believable full-vehicle scale relative to the character, with normal proportions against the road or lane width. Keep the vehicle and character in the midground or lower mid-frame, clearly grounded in the road space of factory workshop, with the road receding into the background and visible surrounding space. medium wide shot, keep the vehicle in the lower mid-frame or midground, with the road receding clearly into the background. Cinematic realism.",
+      "final_rendered_prompt": "the character rides or controls ZXMOTO_820RR-RS in this instant. Keep ZXMOTO_820RR-RS at believable full-vehicle scale relative to the character, with normal proportions against the road or lane width. Keep the vehicle and character in the midground or lower mid-frame, clearly grounded in the road space of factory workshop, with the road receding into the background and visible surrounding space. medium wide shot, keep the vehicle in the lower mid-frame or midground, with the road receding clearly into the background. Cinematic realism.",
+      "final_prompt_language": "en",
+      "source_structured_input": {
+        "beat_id": "ep01_s11",
+        "summary": "深夜工厂里，张雪独自站在冠军赛车前，仿佛看见19岁的自己隔着17年向他发问。",
+        "visual_prompt": "深夜工厂车间大部分区域沉入阴影，单束顶灯打在展放中的冠军版ZXMOTO 820RR-RS上，39岁的张雪穿深色夹克缓步走近赛车，神情复杂；在灯光边缘以写实电影方式呈现一个仿佛真实存在的19岁张雪，仍穿湿旧风衣、身上带着泥路记忆般的痕迹，两代自己隔着赛车相望，空间空旷安静，带有命运回声感，照片级写实，电影质感。",
+        "shot_type": "medium shot",
+        "camera_motion": "slow push in",
+        "mood": "reflective, haunting",
+        "anchor_text": "39岁的他，又看见了19岁的自己。",
+        "asset_focus": "interaction",
+        "selected_reference_assets": {
+          "scene": {
+            "asset_id": "scene_深夜工厂车间",
+            "asset_name": "深夜工厂车间",
+            "asset_type": "scene",
+            "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\scenes\\scene_深夜工厂车间.png"
+          },
+          "character": {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "asset_type": "character",
+            "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\characters\\character_张雪.png"
+          },
+          "prop": {
+            "asset_id": "prop_ZXMOTO_820RR-RS",
+            "asset_name": "ZXMOTO_820RR-RS",
+            "asset_type": "prop",
+            "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\props\\prop_ZXMOTO_820RR-RS.png"
+          }
+        }
+      },
+      "prompt_source": "04_episode_scene_script.json beat fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "scene=exact_name_match",
+        "character=exact_name_match",
+        "prop=exact_name_match",
+        "shot_mode=vehicle_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance.",
+        "Final prompt rendered in `en`.",
+        "vehicle_preset=riding_on_road",
+        "Vehicle-shot template focuses on physical scale, blocking, and anti-oversize staging."
+      ],
+      "shot_mode": "vehicle_keyscene",
+      "prompt_template": "vehicle_keyscene",
+      "vehicle_shot": true,
+      "vehicle_preset": "riding_on_road",
+      "reference_policy": "vehicle_keyscene: scene + character + prop",
+      "reference_count": 3,
+      "prompt_length": 88,
+      "legacy_prompt_length": 117,
+      "raw_source_description": "深夜工厂里，张雪独自站在冠军赛车前，仿佛看见19岁的自己隔着17年向他发问 | 深夜工厂车间大部分区域沉入阴影，单束顶灯打在展放中的冠军版ZXMOTO 820RR-RS上，39岁的张雪穿深色夹克缓步走近赛车，神情复杂；在灯光边缘以写实电影方式呈现一个仿佛真实存在的19岁张雪，仍穿湿旧风衣、身上带着泥路记忆般的痕迹，两代自己隔着赛车相望，空间空旷安静，带有命运回声感，照片级写实，电影质感 | 39岁的他，又看见了19岁的自己 | reflective, haunting | medium shot",
+      "anti_oversize_rules": [
+        "Keep the vehicle at believable full-vehicle scale relative to the rider",
+        "Keep the vehicle at realistic size and do not oversize it",
+        "Keep believable proportions between the vehicle and the road, lane, or track width",
+        "Keep a natural camera distance and do not let the vehicle fill the frame",
+        "Leave visible surrounding environment around the vehicle"
+      ],
+      "framing_clause": "medium wide shot, keep the vehicle in the lower mid-frame or midground, with the road receding clearly into the background.",
+      "summary": "深夜工厂里，张雪独自站在冠军赛车前，仿佛看见19岁的自己隔着17年向他发问。",
+      "anchor_text": "39岁的他，又看见了19岁的自己。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_深夜工厂车间",
+          "asset_name": "深夜工厂车间",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\scenes\\scene_深夜工厂车间.png"
+        },
+        "character": {
+          "asset_id": "character_张雪",
+          "asset_name": "张雪",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\characters\\character_张雪.png"
+        },
+        "prop": {
+          "asset_id": "prop_ZXMOTO_820RR-RS",
+          "asset_name": "ZXMOTO_820RR-RS",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\props\\prop_ZXMOTO_820RR-RS.png"
+        }
+      },
+      "matching_notes": [
+        "Matched scene asset by explicit beat phrase: 深夜工厂车间, 大部分区域沉入阴影.",
+        "Matched character asset by explicit beat phrase: 张雪.",
+        "Matched prop asset by explicit beat phrase: ZXMOTO_820RR-RS, ZXMOTO 820RR-RS, ZXMOTO, 820RR, RS."
+      ],
+      "validation_warnings": [],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_深夜工厂车间",
+            "asset_name": "深夜工厂车间",
+            "score": 252,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "深夜工厂车间",
+              "大部分区域沉入阴影"
+            ]
+          },
+          {
+            "asset_id": "scene_葡萄牙波尔蒂芒赛道",
+            "asset_name": "葡萄牙波尔蒂芒赛道",
+            "score": 150,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_赛道维修区",
+            "asset_name": "赛道维修区",
+            "score": 150,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_工厂外夜色空地",
+            "asset_name": "工厂外夜色空地",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_湖南暴雨山路",
+            "asset_name": "湖南暴雨山路",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [
+          {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "score": 984,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_张雪_19岁",
+            "asset_name": "张雪_19岁",
+            "score": 48,
+            "strategy": "keyword_overlap",
+            "matched_terms": [
+              "张雪",
+              "19岁"
+            ]
+          },
+          {
+            "asset_id": "character_Debise",
+            "asset_name": "Debise",
+            "score": 6,
+            "strategy": "keyword_overlap",
+            "matched_terms": [
+              "820RR"
+            ]
+          },
+          {
+            "asset_id": "character_陈星熠",
+            "asset_name": "陈星熠",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "prop": [
+          {
+            "asset_id": "prop_ZXMOTO_820RR-RS",
+            "asset_name": "ZXMOTO_820RR-RS",
+            "score": 344,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "ZXMOTO_820RR-RS",
+              "ZXMOTO 820RR-RS",
+              "ZXMOTO",
+              "820RR",
+              "RS"
+            ]
+          },
+          {
+            "asset_id": "prop_全罩式赛车头盔",
+            "asset_name": "全罩式赛车头盔",
+            "score": 140,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_发动机壳体",
+            "asset_name": "发动机壳体",
+            "score": 140,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_小排量摩托",
+            "asset_name": "小排量摩托",
+            "score": 140,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_摩托车车架",
+            "asset_name": "摩托车车架",
+            "score": 140,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ]
+      },
+      "limitations": [],
+      "debug_artifact": null,
+      "resume_status": "queued",
+      "resumed_from": null,
+      "previous_output_path": null,
+      "dropped_prop_reason": null,
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_keyscenes\\keyscenes\\ep01_s11.png"
+    },
+    {
+      "timestamp": "2026-04-16T08:56:43.013069+00:00",
+      "beat_id": "ep01_s12",
+      "episode_number": 1,
+      "mode": "keyscene",
+      "style_target": "realism",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 3567112232,
+      "width": 864,
+      "height": 1080,
+      "prompt": "the character stands beside ZXMOTO_820RR-RS in the same story instant. Keep ZXMOTO_820RR-RS at believable full-vehicle scale relative to the character, without oversizing it or letting it fill the frame. Place the character and ZXMOTO_820RR-RS in the midground of factory workshop, with the vehicle occupying a natural parked scale and visible ground and surrounding space. wide shot, keep the character and vehicle in the same frame with room for the full vehicle and surrounding space. Cinematic realism.",
+      "final_rendered_prompt": "the character stands beside ZXMOTO_820RR-RS in the same story instant. Keep ZXMOTO_820RR-RS at believable full-vehicle scale relative to the character, without oversizing it or letting it fill the frame. Place the character and ZXMOTO_820RR-RS in the midground of factory workshop, with the vehicle occupying a natural parked scale and visible ground and surrounding space. wide shot, keep the character and vehicle in the same frame with room for the full vehicle and surrounding space. Cinematic realism.",
+      "final_prompt_language": "en",
+      "source_structured_input": {
+        "beat_id": "ep01_s12",
+        "summary": "张雪轻声告诉过去的自己“继续走”，而冠军赛车也成为属于ZXMOTO未来的开端而非终点。",
+        "visual_prompt": "深夜工厂车间的宽阔空间中，冠军ZXMOTO 820RR-RS在聚光下如纪念碑般停放，39岁的张雪站在车旁微微侧身，视线从赛车望向更深处黑暗的生产线与未来方向，19岁的自己身影逐渐融入阴影，地面反光、工业结构轮廓和远处未亮起的区域共同暗示故事尚未结束，画面安静却带有强烈后劲，照片级写实，电影质感。",
+        "shot_type": "wide shot",
+        "camera_motion": "slow dolly out",
+        "mood": "hopeful, unresolved",
+        "anchor_text": "这场冠军，也许只是开始。",
+        "asset_focus": "environment",
+        "selected_reference_assets": {
+          "scene": {
+            "asset_id": "scene_深夜工厂车间",
+            "asset_name": "深夜工厂车间",
+            "asset_type": "scene",
+            "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\scenes\\scene_深夜工厂车间.png"
+          },
+          "character": {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "asset_type": "character",
+            "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\characters\\character_张雪.png"
+          },
+          "prop": {
+            "asset_id": "prop_ZXMOTO_820RR-RS",
+            "asset_name": "ZXMOTO_820RR-RS",
+            "asset_type": "prop",
+            "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\props\\prop_ZXMOTO_820RR-RS.png"
+          }
+        }
+      },
+      "prompt_source": "04_episode_scene_script.json beat fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "scene=exact_name_match",
+        "character=exact_name_match",
+        "prop=exact_name_match",
+        "shot_mode=vehicle_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance.",
+        "Final prompt rendered in `en`.",
+        "vehicle_preset=standing_beside_vehicle",
+        "Vehicle-shot template focuses on physical scale, blocking, and anti-oversize staging."
+      ],
+      "shot_mode": "vehicle_keyscene",
+      "prompt_template": "vehicle_keyscene",
+      "vehicle_shot": true,
+      "vehicle_preset": "standing_beside_vehicle",
+      "reference_policy": "vehicle_keyscene: scene + character + prop",
+      "reference_count": 3,
+      "prompt_length": 83,
+      "legacy_prompt_length": 107,
+      "raw_source_description": "张雪轻声告诉过去的自己“继续走”，而冠军赛车也成为属于ZXMOTO未来的开端而非终点 | 深夜工厂车间的宽阔空间中，冠军ZXMOTO 820RR-RS在聚光下如纪念碑般停放，39岁的张雪站在车旁微微侧身，视线从赛车望向更深处黑暗的生产线与未来方向，19岁的自己身影逐渐融入阴影，地面反光、工业结构轮廓和远处未亮起的区域共同暗示故事尚未结束，画面安静却带有强烈后劲，照片级写实，电影质感 | 这场冠军，也许只是开始 | hopeful, unresolved | wide shot",
+      "anti_oversize_rules": [
+        "Keep the vehicle at believable full-vehicle scale relative to the rider",
+        "Keep the vehicle at realistic size and do not oversize it",
+        "Keep believable proportions between the vehicle and the road, lane, or track width",
+        "Keep a natural camera distance and do not let the vehicle fill the frame",
+        "Leave visible surrounding environment around the vehicle"
+      ],
+      "framing_clause": "wide shot, keep the character and vehicle in the same frame with room for the full vehicle and surrounding space.",
+      "summary": "张雪轻声告诉过去的自己“继续走”，而冠军赛车也成为属于ZXMOTO未来的开端而非终点。",
+      "anchor_text": "这场冠军，也许只是开始。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_深夜工厂车间",
+          "asset_name": "深夜工厂车间",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\scenes\\scene_深夜工厂车间.png"
+        },
+        "character": {
+          "asset_id": "character_张雪",
+          "asset_name": "张雪",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\characters\\character_张雪.png"
+        },
+        "prop": {
+          "asset_id": "prop_ZXMOTO_820RR-RS",
+          "asset_name": "ZXMOTO_820RR-RS",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\props\\prop_ZXMOTO_820RR-RS.png"
+        }
+      },
+      "matching_notes": [
+        "Matched scene asset by explicit beat phrase: 深夜工厂车间.",
+        "Matched character asset by explicit beat phrase: 张雪.",
+        "Matched prop asset by explicit beat phrase: ZXMOTO_820RR-RS, ZXMOTO 820RR-RS, ZXMOTO, 820RR, RS."
+      ],
+      "validation_warnings": [],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_深夜工厂车间",
+            "asset_name": "深夜工厂车间",
+            "score": 246,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "深夜工厂车间"
+            ]
+          },
+          {
+            "asset_id": "scene_葡萄牙波尔蒂芒赛道",
+            "asset_name": "葡萄牙波尔蒂芒赛道",
+            "score": 150,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_赛道维修区",
+            "asset_name": "赛道维修区",
+            "score": 150,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_工厂外夜色空地",
+            "asset_name": "工厂外夜色空地",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_湖南暴雨山路",
+            "asset_name": "湖南暴雨山路",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [
+          {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "score": 984,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_张雪_19岁",
+            "asset_name": "张雪_19岁",
+            "score": 30,
+            "strategy": "keyword_overlap",
+            "matched_terms": [
+              "张雪",
+              "19岁"
+            ]
+          },
+          {
+            "asset_id": "character_Debise",
+            "asset_name": "Debise",
+            "score": 6,
+            "strategy": "keyword_overlap",
+            "matched_terms": [
+              "820RR"
+            ]
+          },
+          {
+            "asset_id": "character_陈星熠",
+            "asset_name": "陈星熠",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "prop": [
+          {
+            "asset_id": "prop_ZXMOTO_820RR-RS",
+            "asset_name": "ZXMOTO_820RR-RS",
+            "score": 362,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "ZXMOTO_820RR-RS",
+              "ZXMOTO 820RR-RS",
+              "ZXMOTO",
+              "820RR",
+              "RS"
+            ]
+          },
+          {
+            "asset_id": "prop_全罩式赛车头盔",
+            "asset_name": "全罩式赛车头盔",
+            "score": 140,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_发动机壳体",
+            "asset_name": "发动机壳体",
+            "score": 140,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_小排量摩托",
+            "asset_name": "小排量摩托",
+            "score": 140,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_摩托车车架",
+            "asset_name": "摩托车车架",
+            "score": 140,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ]
+      },
+      "limitations": [],
+      "debug_artifact": null,
+      "resume_status": "queued",
+      "resumed_from": null,
+      "previous_output_path": null,
+      "dropped_prop_reason": null,
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_keyscenes\\keyscenes\\ep01_s12.png"
+    }
+  ]
+}

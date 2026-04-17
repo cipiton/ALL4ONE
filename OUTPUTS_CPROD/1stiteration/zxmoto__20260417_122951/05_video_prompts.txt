@@ -1,0 +1,411 @@
+# 视频提示词
+
+## beat_001
+- Linked Anchor Prompt: a001
+- Linked Assets: char_zhangxue_young, env_hunan_rain_road, prop_small_displacement_motorcycle, prop_white_tv_van, wardrobe_young_zhangxue_rain, state_variant_zhangxue_young_muddy
+- Motion Focus: 雨夜追车起步
+- Environment Motion: 暴雨斜打路面，泥水在后轮边炸开，远处白色电视制作车尾灯继续被雨雾吞没
+- Character Action: 张雪从僵站中猛地回神，拧动油门，扶正并骑上小排量摩托，带着发抖的身体硬冲出去
+- Camera Movement: slow push in 转为低位跟随
+- Pacing: 先压住再突然爆发
+- Video Prompt: From the anchor frame, Zhang Xue snaps into action, twists the throttle, drags the small-displacement motorcycle straight, and launches into the rain after the van. Mud splashes from the rear wheel while the tiny red tail light keeps sinking deeper into the haze. The camera slowly pushes in, then drops into a low follow as the chase begins. Keep his muddy soaked windbreaker, the 2006 mountain road, the white TV production van, and the motorcycle scale and direction stable.
+
+## beat_002
+- Linked Anchor Prompt: a002
+- Linked Assets: char_zhangxue_young, env_hunan_rain_road, prop_small_displacement_motorcycle, prop_white_tv_van, wardrobe_young_zhangxue_rain, state_variant_zhangxue_young_muddy
+- Motion Focus: 拒绝后的离开
+- Environment Motion: 电视制作车重新起步，车轮卷起泥水，雨线持续砸在车窗和路面上
+- Character Action: 张雪的手还举着不放，身体被逼得后退半步，扶车的手收紧却追不上车门离开的速度
+- Camera Movement: handheld follow with brief hold, then drift with the van leaving him behind
+- Pacing: 短促、尴尬、带刺
+- Video Prompt: From the anchor frame, the white TV production van pulls away, its wheels throwing muddy water across Zhang Xue as he keeps his hand raised for one beat too long. He falters back a half step, still gripping the small motorcycle, while the rain smears the faces behind the window and the crossroads empties around him. Use a handheld follow that stays with the van for a moment, then lets him fall alone in frame. Keep the same muddy rain-soaked road, white van, soaked windbreaker, and small motorcycle unchanged.
+
+## beat_003
+- Linked Anchor Prompt: a003
+- Linked Assets: char_zhangxue_young, env_hunan_rain_road, prop_small_displacement_motorcycle, wardrobe_young_zhangxue_rain, state_variant_zhangxue_young_muddy
+- Motion Focus: 从失败里重新把自己拽起
+- Environment Motion: 雨滴不断砸进泥坑，侧翻车身微微滑动，泥水顺着车把和袖口往下淌
+- Character Action: 张雪收紧手指，撑起上身，把侧翻的小排量摩托一点点拖回自己身边
+- Camera Movement: static frame, then slight push in
+- Pacing: 沉重而顽固
+- Video Prompt: From the anchor frame, his fingers lock tighter on the handlebar, then Zhang Xue heaves his shoulders up out of the mud and drags the fallen motorcycle back toward himself. Rain keeps punching the puddles and sliding off the wet metal as the bike shifts through the sludge. Hold the frame almost still, then add a slight push in on the effort. Keep the same road, same small motorcycle, same soaked muddy clothing, and fallen orientation continuous.
+
+## beat_004
+- Linked Anchor Prompt: a004
+- Linked Assets: char_chenxingyi, char_zhangxue_adult, env_repair_room_chongqing, prop_old_ledger, prop_motorcycle_frame, prop_tools_set, wardrobe_adult_zhangxue_workwear, wardrobe_chenxingyi_workwear
+- Motion Focus: 紧预算下的持续装配
+- Environment Motion: 昏暗修理间里只有手电暖光轻晃，工具轻微碰撞，阴影随着横移慢慢扫过车架和账本
+- Character Action: 陈星仪划完账目后停笔，张雪不抬头，继续把零件往摩托车架上稳稳装去
+- Camera Movement: slow lateral move
+- Pacing: 克制、压缩、持续
+- Video Prompt: From the anchor frame, Chen Xingyi finishes a mark in the old ledger and stills for a breath while Zhang Xue keeps working without looking up, fitting another part onto the motorcycle frame with slow, practiced precision. Small tool shifts and moving shadows tighten the room as the camera makes a restrained lateral move across ledger, cash pressure, and frame. Keep the same cramped Chongqing repair room, the same old ledger, and the structure clearly as a motorcycle frame, not any other vehicle type.
+
+## beat_005
+- Linked Anchor Prompt: a005
+- Linked Assets: char_zhangxue_adult, char_chenxingyi, env_repair_room_chongqing, prop_engine_case, prop_old_ledger, prop_tools_set, wardrobe_adult_zhangxue_workwear, wardrobe_chenxingyi_workwear
+- Motion Focus: 信念压过债务
+- Environment Motion: 暖灯微微闪动，背景阴影更深，账本合上的动作打断屋内的细碎装配声
+- Character Action: 张雪重新低头继续装配发动机壳附近零件，陈星仪在旁边把账本轻轻合上
+- Camera Movement: slow push in
+- Pacing: 低声、紧绷、向内收
+- Video Prompt: From the anchor frame, Zhang Xue drops his gaze back to the engine case and resumes assembling, his hands moving with stubborn calm while Chen Xingyi quietly closes the ledger beside him. The room darkens around the warm work light, and the unfinished machine starts to feel heavier than the words. Use a slow push in toward his hands and eyes. Keep the same repair room, same ledger, same engine case, and their restrained partnership stable.
+
+## beat_006
+- Linked Anchor Prompt: a006
+- Linked Assets: char_zhangxue_adult, env_repair_room_chongqing, prop_engine_case, prop_tools_set, wardrobe_adult_zhangxue_workwear
+- Motion Focus: 肌肉记忆式装配推进
+- Environment Motion: 螺丝轻响落位，金属边缘反光微微变化，桌面工具只在局部被碰动
+- Character Action: 张雪几乎不看，下一枚零件被准确压入孔位，手指顺势拧紧固定
+- Camera Movement: mostly static with subtle insert emphasis
+- Pacing: 精准、安静、 relentless
+- Video Prompt: From the anchor frame, the next engine piece slides cleanly into place under Zhang Xue’s oil-stained hands, followed by a precise tightening motion without hesitation. Tiny metal clicks, shifting reflections, and slight tool nudges carry the movement while the camera stays mostly still, only favoring the exact point of contact. Keep the same late-night repair room, the same engine assembly, the same greasy hands, and the same warm light direction stable.
+
+## beat_007
+- Linked Anchor Prompt: a007
+- Linked Assets: char_zhangxue_adult, env_modern_boardroom, wardrobe_adult_zhangxue_workwear
+- Motion Focus: 拍桌后的强压发言
+- Environment Motion: 桌上文件被震得轻颤，玻璃外工厂静止压着背景，会议室空气像突然凝住
+- Character Action: 张雪压住桌面的手不收，身体前倾继续说下去，坐着的人没有打断，只在沉默中承受他的逼问
+- Camera Movement: slow push in
+- Pacing: 冷硬、持续施压
+- Video Prompt: From the anchor frame, Zhang Xue keeps his palm pressed into the table and leans forward as he continues speaking, forcing the room to sit inside his argument. Papers tremble from the impact, but the executives stay still, making the silence sharper. Use a slow push in that isolates him from the row across the table. Keep the same boardroom, the same factory outside the glass, his workwear, and the power balance of the room stable.
+
+## beat_008
+- Linked Anchor Prompt: a008
+- Linked Assets: char_zhangxue_adult, env_zxmoto_office_exit, prop_phone_message, wardrobe_adult_zhangxue_workwear
+- Motion Focus: 写下决定后继续离开
+- Environment Motion: 门外夜色不动，室内冷光留在身后，手机屏幕微微亮起又暗下
+- Character Action: 张雪低头在手机上写完一句话，收起视线，抱稳手里的物品，转身继续往外走
+- Camera Movement: follow, then slow pull back
+- Pacing: 安静、决绝
+- Video Prompt: From the anchor frame, Zhang Xue lowers his gaze, finishes the message on his phone, steadies the box of belongings against his body, and walks on without looking back. The doorway light stays behind him as the night takes over. Follow him for a step, then slowly pull back so the act of leaving becomes the image. Keep the same office exit, night setting, phone, carried desk items, and his clean workwear unchanged.
+
+## beat_009
+- Linked Anchor Prompt: a009
+- Linked Assets: char_debise, env_portimao_track, veh_zxmoto_820rr_rs, wardrobe_debise_racing_suit, state_variant_820rr_rs_launch
+- Motion Focus: 820RR-RS弹射起步
+- Environment Motion: 绿灯点亮，热浪抖动，后轮抓地后把赛道纹理迅速向后抽走
+- Character Action: Debise瞬间松离合开油，身体压低，820RR-RS前轮轻轻抬起后立刻向前猛冲
+- Camera Movement: low tracking follow
+- Pacing: explosive
+- Video Prompt: From the anchor frame, the start light flips green and Debise snaps the 820RR-RS off the line, throttle open, body low, the front wheel lifting slightly before settling as the sportbike surges forward. Heat haze shimmers and the grid markings streak backward under a low tracking follow. Keep the red and silver 820RR-RS, rider position, two-wheel motorcycle proportions, track direction, and launch-state continuity stable.
+
+## beat_010
+- Linked Anchor Prompt: a010
+- Linked Assets: char_zhangxue_adult, prop_telemetry_screen, veh_zxmoto_820rr_rs, env_portimao_track, wardrobe_adult_zhangxue_workwear
+- Motion Focus: 数据与赛道同步逼近结果
+- Environment Motion: 遥测曲线快速跳动，屏幕冷光闪动，赛道切片里的820RR-RS高速掠过
+- Character Action: 张雪戴着耳机微微前倾，眼睛跟着数字变化，几乎不眨眼
+- Camera Movement: cut between pit and track
+- Pacing: 紧绷、敏锐
+- Video Prompt: From the anchor frame, telemetry values climb and flicker across the screen as Zhang Xue leans closer under the headphones, tracking every change without blinking. In the adjacent race view, the 820RR-RS flashes through frame at speed, turning the sharp mechanical note into visible pressure. Cut between pit screen and track pass, keeping the rhythm tight and controlled. Keep the same Portimão race, the same 820RR-RS motorcycle, the same telemetry station, and Zhang Xue’s pit-side position stable.
+
+## beat_011
+- Linked Anchor Prompt: a011
+- Linked Assets: char_debise, env_portimao_track, veh_zxmoto_820rr_rs, wardrobe_debise_racing_suit, state_variant_820rr_rs_win
+- Motion Focus: 晚刹超越后冲线
+- Environment Motion: 820RR-RS在弯心后迅速直立，后轮抓地加速，护栏与观众席被长焦压成高速滑移的背景
+- Character Action: Debise守住内线，抬车、开油、拉开半个车位后直冲终点线
+- Camera Movement: panning follow
+- Pacing: escalating to triumphant burst
+- Video Prompt: From the anchor frame, Debise picks the 820RR-RS up out of the hairpin, opens the throttle hard, and drives the bike off the inside line into a clean advantage before charging the finish. The rear wheel hooks up, the rival falls back to the outside, and the compressed background tears sideways in a fast pan. Keep the same red and silver sportbike, same rider, same final-lap race direction, and motorcycle racing geometry stable through exit and finish.
+
+## beat_012
+- Linked Anchor Prompt: a012
+- Linked Assets: char_zhangxue_adult, char_zhangxue_young, env_zxmoto_factory_night, veh_zxmoto_820rr_rs, prop_spotlight, wardrobe_adult_zhangxue_workwear, wardrobe_young_zhangxue_rain, state_variant_zhangxue_young_muddy, state_variant_820rr_rs_display
+- Motion Focus: 两个时间的自己开始相认
+- Environment Motion: 聚光灯里的尘埃微微漂浮，黑暗工厂保持静止，少年身上的雨痕与泥水像刚从过去带进来
+- Character Action: 少年张雪缓缓抬头，成年张雪的脚步彻底停住，呼吸和视线都被对方钉住
+- Camera Movement: slow pull in
+- Pacing: 克制、诡异、绷紧
+- Video Prompt: From the anchor frame, the younger Zhang Xue slowly lifts his head beside the spotlighted 820RR-RS, and the older Zhang Xue stops completely, unable to take another step. Dust hangs in the light while the factory stays silent around them, making the small movement feel immense. Use a slow pull in toward the space between their gazes. Keep the champion motorcycle, spotlight circle, adult workwear, and the younger muddy rain-soaked state unchanged.
+
+## beat_013
+- Linked Anchor Prompt: a013
+- Linked Assets: char_zhangxue_adult, char_zhangxue_young, env_zxmoto_factory_night, veh_zxmoto_820rr_rs, prop_spotlight, wardrobe_adult_zhangxue_workwear, wardrobe_young_zhangxue_rain, state_variant_zhangxue_young_muddy, state_variant_820rr_rs_display
+- Motion Focus: 接住过去的回答落下
+- Environment Motion: 背景保持极静，聚光灯边缘微微呼吸般颤动，冠军车只作为稳定存在留在后方
+- Character Action: 成年张雪轻声说完后放松眼神，少年张雪微微点头，肩膀慢慢松下来
+- Camera Movement: static with slight push in
+- Pacing: 轻、稳、落地
+- Video Prompt: From the anchor frame, older Zhang Xue finishes the line softly, his guarded expression easing as the younger Zhang Xue gives the smallest nod and lets his shoulders release. The factory remains almost motionless, with only the spotlight edge and their breathing carrying the change. Hold close and add only a slight push in. Keep their positions, the muddy younger appearance, the clean adult workwear, and the spotlighted 820RR-RS stable.
+
+## beat_014
+- Linked Anchor Prompt: a014
+- Linked Assets: env_zxmoto_factory_night, prop_spotlight
+- Motion Focus: 从工厂抽离到城市与星空
+- Environment Motion: 城市灯火逐渐铺开，工厂光点缩小，地平线和星群在上升视角里慢慢接成一线
+- Character Action: 无人物主动作，人物与工厂一起被空间吞没
+- Camera Movement: slow pull back and rise
+- Pacing: 缓慢、扩展、释然
+- Video Prompt: From the anchor frame, the camera keeps pulling back and rising, letting the factory and its spotlight shrink into the Chongqing night while more city lights spread outward below and the stars open above. The horizon gradually links the urban glow to the sky until the human story is absorbed into a larger field of darkness. Keep the same night setting, factory location, light continuity, and upward ending tone stable.
+
+```json
+{
+  "project_title": "The Sound of the Stars and the Sea",
+  "video_prompts": [
+    {
+      "prompt_id": "v001",
+      "beat_id": "beat_001",
+      "linked_anchor_prompt_id": "a001",
+      "linked_assets": [
+        "char_zhangxue_young",
+        "env_hunan_rain_road",
+        "prop_small_displacement_motorcycle",
+        "prop_white_tv_van",
+        "wardrobe_young_zhangxue_rain",
+        "state_variant_zhangxue_young_muddy"
+      ],
+      "motion_focus": "雨夜追车起步",
+      "environment_motion": "暴雨斜打路面，泥水在后轮边炸开，远处白色电视制作车尾灯继续被雨雾吞没",
+      "character_action": "张雪从僵站中猛地回神，拧动油门，扶正并骑上小排量摩托，带着发抖的身体硬冲出去",
+      "camera_movement": "slow push in 转为低位跟随",
+      "pacing": "先压住再突然爆发",
+      "video_prompt": "From the anchor frame, Zhang Xue snaps into action, twists the throttle, drags the small-displacement motorcycle straight, and launches into the rain after the van. Mud splashes from the rear wheel while the tiny red tail light keeps sinking deeper into the haze. The camera slowly pushes in, then drops into a low follow as the chase begins. Keep his muddy soaked windbreaker, the 2006 mountain road, the white TV production van, and the motorcycle scale and direction stable."
+    },
+    {
+      "prompt_id": "v002",
+      "beat_id": "beat_002",
+      "linked_anchor_prompt_id": "a002",
+      "linked_assets": [
+        "char_zhangxue_young",
+        "env_hunan_rain_road",
+        "prop_small_displacement_motorcycle",
+        "prop_white_tv_van",
+        "wardrobe_young_zhangxue_rain",
+        "state_variant_zhangxue_young_muddy"
+      ],
+      "motion_focus": "拒绝后的离开",
+      "environment_motion": "电视制作车重新起步，车轮卷起泥水，雨线持续砸在车窗和路面上",
+      "character_action": "张雪的手还举着不放，身体被逼得后退半步，扶车的手收紧却追不上车门离开的速度",
+      "camera_movement": "handheld follow with brief hold, then drift with the van leaving him behind",
+      "pacing": "短促、尴尬、带刺",
+      "video_prompt": "From the anchor frame, the white TV production van pulls away, its wheels throwing muddy water across Zhang Xue as he keeps his hand raised for one beat too long. He falters back a half step, still gripping the small motorcycle, while the rain smears the faces behind the window and the crossroads empties around him. Use a handheld follow that stays with the van for a moment, then lets him fall alone in frame. Keep the same muddy rain-soaked road, white van, soaked windbreaker, and small motorcycle unchanged."
+    },
+    {
+      "prompt_id": "v003",
+      "beat_id": "beat_003",
+      "linked_anchor_prompt_id": "a003",
+      "linked_assets": [
+        "char_zhangxue_young",
+        "env_hunan_rain_road",
+        "prop_small_displacement_motorcycle",
+        "wardrobe_young_zhangxue_rain",
+        "state_variant_zhangxue_young_muddy"
+      ],
+      "motion_focus": "从失败里重新把自己拽起",
+      "environment_motion": "雨滴不断砸进泥坑，侧翻车身微微滑动，泥水顺着车把和袖口往下淌",
+      "character_action": "张雪收紧手指，撑起上身，把侧翻的小排量摩托一点点拖回自己身边",
+      "camera_movement": "static frame, then slight push in",
+      "pacing": "沉重而顽固",
+      "video_prompt": "From the anchor frame, his fingers lock tighter on the handlebar, then Zhang Xue heaves his shoulders up out of the mud and drags the fallen motorcycle back toward himself. Rain keeps punching the puddles and sliding off the wet metal as the bike shifts through the sludge. Hold the frame almost still, then add a slight push in on the effort. Keep the same road, same small motorcycle, same soaked muddy clothing, and fallen orientation continuous."
+    },
+    {
+      "prompt_id": "v004",
+      "beat_id": "beat_004",
+      "linked_anchor_prompt_id": "a004",
+      "linked_assets": [
+        "char_chenxingyi",
+        "char_zhangxue_adult",
+        "env_repair_room_chongqing",
+        "prop_old_ledger",
+        "prop_motorcycle_frame",
+        "prop_tools_set",
+        "wardrobe_adult_zhangxue_workwear",
+        "wardrobe_chenxingyi_workwear"
+      ],
+      "motion_focus": "紧预算下的持续装配",
+      "environment_motion": "昏暗修理间里只有手电暖光轻晃，工具轻微碰撞，阴影随着横移慢慢扫过车架和账本",
+      "character_action": "陈星仪划完账目后停笔，张雪不抬头，继续把零件往摩托车架上稳稳装去",
+      "camera_movement": "slow lateral move",
+      "pacing": "克制、压缩、持续",
+      "video_prompt": "From the anchor frame, Chen Xingyi finishes a mark in the old ledger and stills for a breath while Zhang Xue keeps working without looking up, fitting another part onto the motorcycle frame with slow, practiced precision. Small tool shifts and moving shadows tighten the room as the camera makes a restrained lateral move across ledger, cash pressure, and frame. Keep the same cramped Chongqing repair room, the same old ledger, and the structure clearly as a motorcycle frame, not any other vehicle type."
+    },
+    {
+      "prompt_id": "v005",
+      "beat_id": "beat_005",
+      "linked_anchor_prompt_id": "a005",
+      "linked_assets": [
+        "char_zhangxue_adult",
+        "char_chenxingyi",
+        "env_repair_room_chongqing",
+        "prop_engine_case",
+        "prop_old_ledger",
+        "prop_tools_set",
+        "wardrobe_adult_zhangxue_workwear",
+        "wardrobe_chenxingyi_workwear"
+      ],
+      "motion_focus": "信念压过债务",
+      "environment_motion": "暖灯微微闪动，背景阴影更深，账本合上的动作打断屋内的细碎装配声",
+      "character_action": "张雪重新低头继续装配发动机壳附近零件，陈星仪在旁边把账本轻轻合上",
+      "camera_movement": "slow push in",
+      "pacing": "低声、紧绷、向内收",
+      "video_prompt": "From the anchor frame, Zhang Xue drops his gaze back to the engine case and resumes assembling, his hands moving with stubborn calm while Chen Xingyi quietly closes the ledger beside him. The room darkens around the warm work light, and the unfinished machine starts to feel heavier than the words. Use a slow push in toward his hands and eyes. Keep the same repair room, same ledger, same engine case, and their restrained partnership stable."
+    },
+    {
+      "prompt_id": "v006",
+      "beat_id": "beat_006",
+      "linked_anchor_prompt_id": "a006",
+      "linked_assets": [
+        "char_zhangxue_adult",
+        "env_repair_room_chongqing",
+        "prop_engine_case",
+        "prop_tools_set",
+        "wardrobe_adult_zhangxue_workwear"
+      ],
+      "motion_focus": "肌肉记忆式装配推进",
+      "environment_motion": "螺丝轻响落位，金属边缘反光微微变化，桌面工具只在局部被碰动",
+      "character_action": "张雪几乎不看，下一枚零件被准确压入孔位，手指顺势拧紧固定",
+      "camera_movement": "mostly static with subtle insert emphasis",
+      "pacing": "精准、安静、relentless",
+      "video_prompt": "From the anchor frame, the next engine piece slides cleanly into place under Zhang Xue’s oil-stained hands, followed by a precise tightening motion without hesitation. Tiny metal clicks, shifting reflections, and slight tool nudges carry the movement while the camera stays mostly still, only favoring the exact point of contact. Keep the same late-night repair room, the same engine assembly, the same greasy hands, and the same warm light direction stable."
+    },
+    {
+      "prompt_id": "v007",
+      "beat_id": "beat_007",
+      "linked_anchor_prompt_id": "a007",
+      "linked_assets": [
+        "char_zhangxue_adult",
+        "env_modern_boardroom",
+        "wardrobe_adult_zhangxue_workwear"
+      ],
+      "motion_focus": "拍桌后的强压发言",
+      "environment_motion": "桌上文件被震得轻颤，玻璃外工厂静止压着背景，会议室空气像突然凝住",
+      "character_action": "张雪压住桌面的手不收，身体前倾继续说下去，坐着的人没有打断，只在沉默中承受他的逼问",
+      "camera_movement": "slow push in",
+      "pacing": "冷硬、持续施压",
+      "video_prompt": "From the anchor frame, Zhang Xue keeps his palm pressed into the table and leans forward as he continues speaking, forcing the room to sit inside his argument. Papers tremble from the impact, but the executives stay still, making the silence sharper. Use a slow push in that isolates him from the row across the table. Keep the same boardroom, the same factory outside the glass, his workwear, and the power balance of the room stable."
+    },
+    {
+      "prompt_id": "v008",
+      "beat_id": "beat_008",
+      "linked_anchor_prompt_id": "a008",
+      "linked_assets": [
+        "char_zhangxue_adult",
+        "env_zxmoto_office_exit",
+        "prop_phone_message",
+        "wardrobe_adult_zhangxue_workwear"
+      ],
+      "motion_focus": "写下决定后继续离开",
+      "environment_motion": "门外夜色不动，室内冷光留在身后，手机屏幕微微亮起又暗下",
+      "character_action": "张雪低头在手机上写完一句话，收起视线，抱稳手里的物品，转身继续往外走",
+      "camera_movement": "follow, then slow pull back",
+      "pacing": "安静、决绝",
+      "video_prompt": "From the anchor frame, Zhang Xue lowers his gaze, finishes the message on his phone, steadies the box of belongings against his body, and walks on without looking back. The doorway light stays behind him as the night takes over. Follow him for a step, then slowly pull back so the act of leaving becomes the image. Keep the same office exit, night setting, phone, carried desk items, and his clean workwear unchanged."
+    },
+    {
+      "prompt_id": "v009",
+      "beat_id": "beat_009",
+      "linked_anchor_prompt_id": "a009",
+      "linked_assets": [
+        "char_debise",
+        "env_portimao_track",
+        "veh_zxmoto_820rr_rs",
+        "wardrobe_debise_racing_suit",
+        "state_variant_820rr_rs_launch"
+      ],
+      "motion_focus": "820RR-RS弹射起步",
+      "environment_motion": "绿灯点亮，热浪抖动，后轮抓地后把赛道纹理迅速向后抽走",
+      "character_action": "Debise瞬间松离合开油，身体压低，820RR-RS前轮轻轻抬起后立刻向前猛冲",
+      "camera_movement": "low tracking follow",
+      "pacing": "explosive",
+      "video_prompt": "From the anchor frame, the start light flips green and Debise snaps the 820RR-RS off the line, throttle open, body low, the front wheel lifting slightly before settling as the sportbike surges forward. Heat haze shimmers and the grid markings streak backward under a low tracking follow. Keep the red and silver 820RR-RS, rider position, two-wheel motorcycle proportions, track direction, and launch-state continuity stable."
+    },
+    {
+      "prompt_id": "v010",
+      "beat_id": "beat_010",
+      "linked_anchor_prompt_id": "a010",
+      "linked_assets": [
+        "char_zhangxue_adult",
+        "prop_telemetry_screen",
+        "veh_zxmoto_820rr_rs",
+        "env_portimao_track",
+        "wardrobe_adult_zhangxue_workwear"
+      ],
+      "motion_focus": "数据与赛道同步逼近结果",
+      "environment_motion": "遥测曲线快速跳动，屏幕冷光闪动，赛道切片里的820RR-RS高速掠过",
+      "character_action": "张雪戴着耳机微微前倾，眼睛跟着数字变化，几乎不眨眼",
+      "camera_movement": "cut between pit and track",
+      "pacing": "紧绷、敏锐",
+      "video_prompt": "From the anchor frame, telemetry values climb and flicker across the screen as Zhang Xue leans closer under the headphones, tracking every change without blinking. In the adjacent race view, the 820RR-RS flashes through frame at speed, turning the sharp mechanical note into visible pressure. Cut between pit screen and track pass, keeping the rhythm tight and controlled. Keep the same Portimão race, the same 820RR-RS motorcycle, the same telemetry station, and Zhang Xue’s pit-side position stable."
+    },
+    {
+      "prompt_id": "v011",
+      "beat_id": "beat_011",
+      "linked_anchor_prompt_id": "a011",
+      "linked_assets": [
+        "char_debise",
+        "env_portimao_track",
+        "veh_zxmoto_820rr_rs",
+        "wardrobe_debise_racing_suit",
+        "state_variant_820rr_rs_win"
+      ],
+      "motion_focus": "晚刹超越后冲线",
+      "environment_motion": "820RR-RS在弯心后迅速直立，后轮抓地加速，护栏与观众席被长焦压成高速滑移的背景",
+      "character_action": "Debise守住内线，抬车、开油、拉开半个车位后直冲终点线",
+      "camera_movement": "panning follow",
+      "pacing": "escalating to triumphant burst",
+      "video_prompt": "From the anchor frame, Debise picks the 820RR-RS up out of the hairpin, opens the throttle hard, and drives the bike off the inside line into a clean advantage before charging the finish. The rear wheel hooks up, the rival falls back to the outside, and the compressed background tears sideways in a fast pan. Keep the same red and silver sportbike, same rider, same final-lap race direction, and motorcycle racing geometry stable through exit and finish."
+    },
+    {
+      "prompt_id": "v012",
+      "beat_id": "beat_012",
+      "linked_anchor_prompt_id": "a012",
+      "linked_assets": [
+        "char_zhangxue_adult",
+        "char_zhangxue_young",
+        "env_zxmoto_factory_night",
+        "veh_zxmoto_820rr_rs",
+        "prop_spotlight",
+        "wardrobe_adult_zhangxue_workwear",
+        "wardrobe_young_zhangxue_rain",
+        "state_variant_zhangxue_young_muddy",
+        "state_variant_820rr_rs_display"
+      ],
+      "motion_focus": "两个时间的自己开始相认",
+      "environment_motion": "聚光灯里的尘埃微微漂浮，黑暗工厂保持静止，少年身上的雨痕与泥水像刚从过去带进来",
+      "character_action": "少年张雪缓缓抬头，成年张雪的脚步彻底停住，呼吸和视线都被对方钉住",
+      "camera_movement": "slow pull in",
+      "pacing": "克制、诡异、绷紧",
+      "video_prompt": "From the anchor frame, the younger Zhang Xue slowly lifts his head beside the spotlighted 820RR-RS, and the older Zhang Xue stops completely, unable to take another step. Dust hangs in the light while the factory stays silent around them, making the small movement feel immense. Use a slow pull in toward the space between their gazes. Keep the champion motorcycle, spotlight circle, adult workwear, and the younger muddy rain-soaked state unchanged."
+    },
+    {
+      "prompt_id": "v013",
+      "beat_id": "beat_013",
+      "linked_anchor_prompt_id": "a013",
+      "linked_assets": [
+        "char_zhangxue_adult",
+        "char_zhangxue_young",
+        "env_zxmoto_factory_night",
+        "veh_zxmoto_820rr_rs",
+        "prop_spotlight",
+        "wardrobe_adult_zhangxue_workwear",
+        "wardrobe_young_zhangxue_rain",
+        "state_variant_zhangxue_young_muddy",
+        "state_variant_820rr_rs_display"
+      ],
+      "motion_focus": "接住过去的回答落下",
+      "environment_motion": "背景保持极静，聚光灯边缘微微呼吸般颤动，冠军车只作为稳定存在留在后方",
+      "character_action": "成年张雪轻声说完后放松眼神，少年张雪微微点头，肩膀慢慢松下来",
+      "camera_movement": "static with slight push in",
+      "pacing": "轻、稳、落地",
+      "video_prompt": "From the anchor frame, older Zhang Xue finishes the line softly, his guarded expression easing as the younger Zhang Xue gives the smallest nod and lets his shoulders release. The factory remains almost motionless, with only the spotlight edge and their breathing carrying the change. Hold close and add only a slight push in. Keep their positions, the muddy younger appearance, the clean adult workwear, and the spotlighted 820RR-RS stable."
+    },
+    {
+      "prompt_id": "v014",
+      "beat_id": "beat_014",
+      "linked_anchor_prompt_id": "a014",
+      "linked_assets": [
+        "env_zxmoto_factory_night",
+        "prop_spotlight"
+      ],
+      "motion_focus": "从工厂抽离到城市与星空",
+      "environment_motion": "城市灯火逐渐铺开，工厂光点缩小，地平线和星群在上升视角里慢慢接成一线",
+      "character_action": "无人物主动作，人物与工厂一起被空间吞没",
+      "camera_movement": "slow pull back and rise",
+      "pacing": "缓慢、扩展、释然",
+      "video_prompt": "From the anchor frame, the camera keeps pulling back and rising, letting the factory and its spotlight shrink into the Chongqing night while more city lights spread outward below and the stars open above. The horizon gradually links the urban glow to the sky until the human story is absorbed into a larger field of darkness. Keep the same night setting, factory location, light continuity, and upward ending tone stable."
+    }
+  ]
+}
+```

@@ -27,8 +27,22 @@ from .llm_client import (
 )
 from .runtime_config import load_runtime_config
 from .models import DocumentResult, PromptMessage, RunState, SkillDefinition, StructuredStage
+from .output_paths import resolve_run_id_from_output_dir
+from .recap_structured_outputs import (
+    build_recap_step_json_payload,
+    normalize_image_config_guidance_payload,
+    normalize_recap_structured_step_payload,
+    recap_structured_step_objective,
+    recap_structured_step_schema,
+    render_recap_step_text,
+    uses_structured_recap_step_generation,
+)
 from .planner import build_execution_plan
-from .prompts import build_step_prompt_messages, build_structured_stage_messages
+from .prompts import (
+    build_recap_structured_step_messages,
+    build_step_prompt_messages,
+    build_structured_stage_messages,
+)
 from .project_ingestion import execute_project_ingestion, should_use_project_ingestion
 from .rewriting_project import execute_rewriting_project, should_offer_rewriting_project_mode
 from .skill_loader import load_reference_texts
@@ -221,7 +235,7 @@ def execute_document(
         runtime_values.update(resume_state.runtime_inputs)
 
     state = RunState(
-        timestamp=Path(output_dir).name,
+        timestamp=resolve_run_id_from_output_dir(Path(output_dir)),
         skill_name=skill.name,
         input_path=str(document.path),
         working_input_path=str(document.path),
@@ -504,7 +518,9 @@ def _run_step_prompt(
         step_number=step_number,
     )
     output_path = _write_step_output_artifacts(
+        skill,
         step,
+        document,
         output_dir,
         output_filename,
         response.text,
@@ -525,6 +541,19 @@ def _run_step_prompt(
 
 def _generate_step_draft(skill, document, step_number: int, runtime_values: dict[str, Any], state: RunState, config, *, resume_state=None, draft_text=None, revision_request=None, user_instruction=None):
     step = skill.get_step(step_number)
+    if uses_structured_recap_step_generation(skill.name, step_number):
+        return _generate_recap_structured_step_draft(
+            skill,
+            document,
+            step_number,
+            runtime_values,
+            state,
+            config,
+            resume_state=resume_state,
+            draft_payload=draft_text if isinstance(draft_text, dict) else None,
+            revision_request=revision_request,
+            user_instruction=user_instruction,
+        )
     reference_ids = []
     if step.prompt_reference_id:
         reference_ids.append(step.prompt_reference_id)
@@ -554,8 +583,112 @@ def _generate_step_draft(skill, document, step_number: int, runtime_values: dict
         "messages": [message.to_dict() for message in messages],
         "raw_response": response.raw_response,
     }
-    return response.text, prompt_payload
-def _persist_accepted_step_output(skill, document, output_dir: Path, step_number: int, output_text: str, state: RunState, runtime_config, prompt_payload=None) -> Path:
+    return response.text, prompt_payload, None
+
+
+def _generate_recap_structured_step_draft(
+    skill,
+    document,
+    step_number: int,
+    runtime_values: dict[str, Any],
+    state: RunState,
+    config,
+    *,
+    resume_state=None,
+    draft_payload: dict[str, Any] | None = None,
+    revision_request: str | None = None,
+    user_instruction: str | None = None,
+):
+    step = skill.get_step(step_number)
+    reference_ids = []
+    if step.prompt_reference_id:
+        reference_ids.append(step.prompt_reference_id)
+    for reference in skill.references.values():
+        if reference.reference_id in reference_ids:
+            continue
+        if reference.load == "always" or (reference.step_numbers and step_number in reference.step_numbers):
+            reference_ids.append(reference.reference_id)
+
+    reference_texts = load_reference_texts(skill, reference_ids)
+    input_blocks = _resolve_step_input_blocks(skill, step, document, state)
+    structured_inputs = _resolve_recap_structured_inputs(step_number, document, state, runtime_values, output_dir=Path(state.output_directory))
+    objective = recap_structured_step_objective(step_number, runtime_values)
+    schema = recap_structured_step_schema(step_number)
+    messages = build_recap_structured_step_messages(
+        skill,
+        step,
+        document,
+        reference_texts,
+        runtime_values,
+        schema,
+        objective,
+        input_blocks=input_blocks,
+        structured_inputs=structured_inputs,
+        resume_state=resume_state,
+        draft_payload=draft_payload,
+        revision_request=revision_request,
+        user_instruction=user_instruction,
+    )
+    response = call_chat_completion(config, messages, json_mode=True)
+    raw_payload = parse_json_response(response)
+    if step_number == 3:
+        raw_payload = normalize_image_config_guidance_payload(raw_payload)
+    normalized_payload = normalize_recap_structured_step_payload(
+        step_number=step_number,
+        raw_payload=raw_payload,
+        document_path=document.path,
+        output_dir=Path(state.output_directory),
+        runtime_inputs=runtime_values,
+        structured_inputs=structured_inputs,
+    )
+    prompt_payload = {
+        "model": response.model,
+        "messages": [message.to_dict() for message in messages],
+        "raw_response": response.raw_response,
+        "structured_output": normalized_payload,
+    }
+    return render_recap_step_text(step_number, normalized_payload), prompt_payload, normalized_payload
+
+
+def _resolve_recap_structured_inputs(
+    step_number: int,
+    document,
+    state: RunState,
+    runtime_values: dict[str, Any],
+    *,
+    output_dir: Path,
+) -> dict[str, Any] | None:
+    if step_number != 3:
+        return None
+
+    assets_json_path = state.output_files.get("extracted_assets_json")
+    if assets_json_path:
+        candidate = Path(assets_json_path)
+        if candidate.exists():
+            try:
+                payload = json.loads(read_resource_text(candidate))
+            except json.JSONDecodeError as exc:
+                raise ExecutionError(f"Invalid extracted_assets_json payload: {candidate}") from exc
+            if isinstance(payload, dict):
+                return payload
+
+    assets_text_path = state.output_files.get("extracted_assets")
+    if assets_text_path:
+        candidate = Path(assets_text_path)
+        if candidate.exists():
+            payload = build_recap_step_json_payload(
+                step_number=2,
+                output_text=read_resource_text(candidate),
+                document_path=document.path,
+                output_dir=output_dir,
+                runtime_inputs=runtime_values,
+            )
+            if isinstance(payload, dict):
+                return payload
+    return None
+
+
+def _persist_accepted_step_output(skill, document, output_dir: Path, step_number: int, output_text: str, state: RunState, runtime_config, prompt_payload=None, structured_payload: Any | None = None) -> Path:
     step = skill.get_step(step_number)
     output_filename = step.output_filename or render_output_filename(
         skill.output_config.filename_template,
@@ -563,11 +696,14 @@ def _persist_accepted_step_output(skill, document, output_dir: Path, step_number
         step_number=step_number,
     )
     output_path = _write_step_output_artifacts(
+        skill,
         step,
+        document,
         output_dir,
         output_filename,
         output_text,
         state=state,
+        structured_payload=structured_payload,
     )
     if prompt_payload and skill.output_config.include_prompt_dump and runtime_config.should_write_prompt_dump:
         _write_prompt_dump_files(output_dir, prompt_payload, step_number=step_number)
@@ -576,13 +712,32 @@ def _persist_accepted_step_output(skill, document, output_dir: Path, step_number
     return output_path
 
 
-def _write_step_output_artifacts(step, output_dir: Path, output_filename: str, output_text: str, *, state: RunState) -> Path:
+def _write_step_output_artifacts(
+    skill,
+    step,
+    document,
+    output_dir: Path,
+    output_filename: str,
+    output_text: str,
+    *,
+    state: RunState,
+    structured_payload: Any | None = None,
+) -> Path:
     output_path = write_text_file(output_dir, output_filename, output_text)
     resolved_outputs = {"primary": str(output_path)}
     if step.output_key:
         resolved_outputs[step.output_key] = str(output_path)
     if step.json_output_filename:
-        json_payload = _extract_step_json_payload(step, output_text)
+        json_payload = structured_payload
+        if json_payload is None:
+            json_payload = _build_step_json_payload(
+                skill,
+                step,
+                output_text,
+                document,
+                output_dir,
+                state,
+            )
         json_path = write_json_file(output_dir, step.json_output_filename, json_payload)
         if step.json_output_key:
             resolved_outputs[step.json_output_key] = str(json_path)
@@ -596,6 +751,9 @@ def _extract_step_json_payload(step, output_text: str) -> Any:
 
     matches = list(re.finditer(r"```json\s*(.*?)\s*```", output_text, flags=re.IGNORECASE | re.DOTALL))
     if not matches:
+        fallback_payload = _extract_trailing_raw_json_payload(output_text)
+        if fallback_payload is not None:
+            return fallback_payload
         raise ExecutionError(
             f"Step {step.number} requires a fenced JSON code block so '{step.json_output_filename}' can be written."
         )
@@ -607,6 +765,59 @@ def _extract_step_json_payload(step, output_text: str) -> Any:
         raise ExecutionError(
             f"Step {step.number} produced invalid JSON for '{step.json_output_filename}': {exc}"
         ) from exc
+
+
+def _extract_trailing_raw_json_payload(output_text: str) -> Any | None:
+    """Best-effort compatibility fallback for model outputs that omit fences.
+
+    Prompt references still require fenced JSON. This accepts only a complete JSON
+    object/array that runs to the end of the response, preserving the existing
+    fenced-block path while avoiding failed sidecars for otherwise valid output.
+    """
+    stripped = output_text.strip()
+    if not stripped or stripped[-1] not in "}]":
+        return None
+
+    starts = [index for index, char in enumerate(stripped) if char in "[{"]
+    decoder = json.JSONDecoder()
+    for start in reversed(starts):
+        candidate = stripped[start:].strip()
+        try:
+            payload, end = decoder.raw_decode(candidate)
+        except json.JSONDecodeError:
+            continue
+        if candidate[end:].strip():
+            continue
+        return payload
+    return None
+
+
+def _build_step_json_payload(skill, step, output_text: str, document, output_dir: Path, state: RunState) -> Any:
+    extracted_payload: Any | None = None
+    if step.number == 4 and skill.name == "recap_production":
+        extracted_payload = _extract_step_json_payload(step, output_text)
+    elif step.number != 4:
+        try:
+            extracted_payload = _extract_step_json_payload(step, output_text)
+        except ExecutionError:
+            extracted_payload = None
+    else:
+        extracted_payload = _extract_step_json_payload(step, output_text)
+
+    if skill.name == "recap_production":
+        return build_recap_step_json_payload(
+            step_number=step.number,
+            output_text=output_text,
+            document_path=document.path,
+            output_dir=output_dir,
+            runtime_inputs=state.runtime_inputs,
+            extracted_payload=extracted_payload,
+        )
+    if extracted_payload is None:
+        raise ExecutionError(
+            f"Step {step.number} requires a structured JSON payload so '{step.json_output_filename}' can be written."
+        )
+    return extracted_payload
 
 
  
@@ -655,10 +866,11 @@ def _run_step_prompt_review_sequence(repo_root: Path, skill, document, output_di
             )
   
         draft_text = None  
+        draft_payload = None
         revision_request = None  
         user_instruction = None  
         while True:  
-            draft_text, prompt_payload = _generate_step_draft(  
+            draft_text, prompt_payload, structured_payload = _generate_step_draft(  
                 skill,  
                 current_document,  
                 step.number,  
@@ -666,10 +878,11 @@ def _run_step_prompt_review_sequence(repo_root: Path, skill, document, output_di
                 state,  
                 step_config,  
                 resume_state=current_resume_state,  
-                draft_text=draft_text,  
+                draft_text=draft_payload if draft_payload is not None else draft_text,  
                 revision_request=revision_request,  
                 user_instruction=user_instruction,  
             ) 
+            draft_payload = structured_payload
             current_resume_state = None  
             revision_request = None  
             user_instruction = None  
@@ -694,6 +907,7 @@ def _run_step_prompt_review_sequence(repo_root: Path, skill, document, output_di
                 if action == "restart":  
                     restart_request = terminal_ui.prompt_for_restart_request()  
                     draft_text = None  
+                    draft_payload = None
                     user_instruction = _build_restart_instruction(restart_request)  
                     break  
                 if action == "cancel":  
@@ -708,6 +922,7 @@ def _run_step_prompt_review_sequence(repo_root: Path, skill, document, output_di
                     state,  
                     runtime_config,  
                     prompt_payload=prompt_payload,  
+                    structured_payload=structured_payload,
                 )  
                 state.detected_step = step.number  
                 state.step_title = step.title  
@@ -738,6 +953,7 @@ def _run_step_prompt_review_sequence(repo_root: Path, skill, document, output_di
                     terminal_ui.print_progress(f"advancing to step {next_step_number}: {next_title}")
                 current_step_number = next_step_number  
                 draft_text = None  
+                draft_payload = None
                 break  
   
             if action in {"improve", "restart"}:  

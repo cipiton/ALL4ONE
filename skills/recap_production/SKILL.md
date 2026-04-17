@@ -18,14 +18,14 @@ metadata:
       en: "This workflow runs step by step: recap script, asset extraction, image config, then episode scene planning."
       zh: "此流程按步骤运行：先生成解说剧剧本，再提炼资产、输出生图配置，最后生成分集视频场景规划。"
     input_hint:
-      en: "Send a `.txt` synopsis or script file, then reply with the step number or menu choice the workflow asks for."
-      zh: "请提供一个 `.txt` 梗概或剧本文件，然后按流程提示回复步骤编号或选项编号。"
+      en: "Skill 2 input: send a source `.txt` synopsis, novel excerpt, or script file to build the `02_recap_production/` bundle."
+      zh: "第 2 个技能输入：请提供源 `.txt` 梗概、小说片段或剧本文件，用于生成 `02_recap_production/` 产物包。"
     output_hint:
-      en: "Writes accepted recap-production outputs, including the final episode scene-plan markdown and JSON package, into the project output folder."
-      zh: "会把已接受的解说剧步骤结果写入当前项目输出文件夹，包括最终的分集场景规划 Markdown 和 JSON 包。"
+      en: "Writes accepted recap-production outputs into `02_recap_production/`, keeping readable txt/md companions and canonical machine-readable JSON sidecars."
+      zh: "会把已接受的解说剧步骤结果写入 `02_recap_production/`，同时保留便于阅读的 txt/md 文件，并生成规范的机器可读 JSON sidecar。"
     starter_prompt:
-      en: "Send the synopsis or script source for recap production."
-      zh: "请提供用于解说剧制作的梗概或剧本源文件。"
+      en: "Send the source `.txt` synopsis, novel excerpt, or script for recap production."
+      zh: "请提供用于解说剧制作的源 `.txt` 梗概、小说片段或剧本。"
   startup:
     mode: explicit_step_selection
     default_step: 1
@@ -63,6 +63,8 @@ steps:
     prompt_reference: step2_prompt
     write_to: extracted_assets
     output_filename: 02_assets.txt
+    json_write_to: extracted_assets_json
+    json_output_filename: 02_assets.json
     route_keywords_any:
       - 旁白
       - 对白
@@ -81,6 +83,8 @@ steps:
     prompt_reference: step3_prompt
     write_to: image_config
     output_filename: 03_image_config.txt
+    json_write_to: image_config_json
+    json_output_filename: 03_image_config.json
     route_keywords_any:
       - 角色
       - 场景
@@ -186,9 +190,9 @@ output:
 - 只有用户接受的结果才会保存为当前步骤输出；一旦接受，共享运行时会自动继续到下一步，直到流程结束或用户取消。
 - 如果运行被中断，共享引擎可基于最近一次已接受的步骤进行 resume。
 - 步骤一输出解说剧剧本。
-- 步骤二基于剧本输出角色、场景、道具等资产及提示词。
-- 步骤三基于资产结果输出生图配置文本。
-- 步骤四基于剧本、资产和生图配置输出分集视频场景脚本，并额外保存 JSON 场景规划包。
+- 步骤二基于剧本先生成结构化资产对象，再渲染 `02_assets.txt`，并保存 `02_assets.json` 作为机器可读资产清单。
+- 步骤三基于结构化资产对象生成结构化生图配置，再渲染 `03_image_config.txt`，并保存 `03_image_config.json` 作为机器可读生图配置。
+- 步骤四基于剧本、资产和生图配置输出分集视频场景脚本，并额外保存 `04_episode_scene_script.json` 作为结构化场景规划包。
 
 ## Step Rules
 
@@ -201,13 +205,13 @@ output:
 ### 步骤二
 
 - 基于剧本进行资产提炼。
-- 需要先确认资产风格：写实、2D、或 3D。
-- 输出资产总清单和资产详情，等待共享评审流程中的接受、改进或重来决定。
+- 需要先确认资产风格：写实、2D、或 3D；如果共享运行时已提供 `style`，则直接执行，不要再次询问。
+- 先生成结构化资产数据，再输出资产总清单和资产详情文本，等待共享评审流程中的接受、改进或重来决定。
 
 ### 步骤三
 
-- 基于资产清单输出生图配置文本。
-- 直接输出可保存的 txt 内容。
+- 基于结构化资产结果生成结构化生图配置。
+- 输出可保存的 txt 内容时，应与对应 JSON 中的角色/场景/道具条目保持一致。
 - 在共享评审流程中被接受后自动进入步骤四。
 
 ### 步骤四

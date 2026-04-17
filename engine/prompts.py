@@ -132,6 +132,175 @@ def build_step_prompt_messages(
             PromptMessage(role='user', content=user_instruction),
         )
     return messages  
+
+
+def build_recap_structured_step_messages(
+    skill: SkillDefinition,
+    step: SkillStep,
+    document: InputDocument,
+    reference_texts: dict[str, str],
+    runtime_values: dict[str, Any],
+    schema: dict[str, Any],
+    objective: str,
+    *,
+    input_blocks: list[tuple[str, str]] | None = None,
+    structured_inputs: dict[str, Any] | None = None,
+    resume_state: RunState | None = None,
+    draft_payload: dict[str, Any] | None = None,
+    revision_request: str | None = None,
+    user_instruction: str | None = None,
+) -> list[PromptMessage]:
+    prompt_reference = ''
+    auxiliary_references: dict[str, str] = {}
+    for reference_id, text in reference_texts.items():
+        reference = skill.get_reference(reference_id)
+        if reference.kind == 'prompt' and reference_id == step.prompt_reference_id:
+            prompt_reference = text
+        else:
+            auxiliary_references[reference.relative_path] = text
+
+    messages = [
+        PromptMessage(
+            role='system',
+            content=(
+                'You are a precise workflow runner. Return only one valid JSON object with no markdown, '
+                'no fenced code blocks, and no extra commentary.\n'
+                'Do not ask follow-up questions when runtime inputs already provide the required choices.\n'
+                'Do not output placeholders, empty shells, or headings without populated content when the source '
+                'material supports specific extraction.'
+            ),
+        ),
+        PromptMessage(
+            role='system',
+            content=(
+                f'Skill: {skill.display_name}\n'
+                f'Description: {skill.description}\n'
+                f'Step: {step.number} - {step.title}\n'
+                'Execution rules:\n'
+                '- Treat SKILL.md as the source of truth.\n'
+                '- Execute only the selected step for this run.\n'
+                '- Preserve the workflow\'s required output structure.\n'
+                '- JSON is the machine-readable source of truth; companion txt/md files will be rendered separately.'
+            ),
+        ),
+        PromptMessage(role='system', content=f'Skill instructions excerpt:\n{distill_skill_body(skill)}'),
+    ]
+
+    source_context = dict(document.context_metadata or {})
+    if source_context:
+        messages.append(
+            PromptMessage(
+                role='system',
+                content=f'Source context metadata:\n{format_source_context(source_context)}',
+            )
+        )
+        if source_context.get('source_mode') == 'project_ingested':
+            messages.append(
+                PromptMessage(
+                    role='system',
+                    content=(
+                        'Project-ingested execution policy:\n'
+                        '- Treat the synthesized master outline/dossier as the working source of truth.\n'
+                        '- Shared continuity state is available upstream; do not ask the user to reconfirm the dossier.\n'
+                        '- Use best-effort generation and make conservative assumptions where details are missing.\n'
+                        '- Do not turn the deliverable into a questionnaire, checklist, or request-for-more-input note unless generation is genuinely impossible.'
+                    ),
+                )
+            )
+
+    if skill.system_instructions:
+        messages.append(PromptMessage(role='system', content=skill.system_instructions))
+
+    if prompt_reference:
+        messages.append(PromptMessage(role='system', content=prompt_reference))
+
+    if auxiliary_references:
+        messages.append(
+            PromptMessage(
+                role='system',
+                content=f'Additional references:\n{format_reference_texts(auxiliary_references)}',
+            )
+        )
+
+    if input_blocks:
+        block_text = '\n\n'.join(f'{label}\n{text}' for label, text in input_blocks if text.strip())
+        messages.append(
+            PromptMessage(
+                role='user',
+                content=f'Source document ({document.path.name}) with resolved workflow inputs:\n\n{block_text}',
+            )
+        )
+    else:
+        messages.append(
+            PromptMessage(
+                role='user',
+                content=f'Input document ({document.path.name}):\n{document.text}',
+            )
+        )
+
+    if structured_inputs:
+        messages.append(
+            PromptMessage(
+                role='user',
+                content=(
+                    'Structured upstream inputs:\n'
+                    f'{json.dumps(structured_inputs, ensure_ascii=False, indent=2)}'
+                ),
+            )
+        )
+
+    if runtime_values:
+        runtime_lines = '\n'.join(f'- {key}: {value}' for key, value in runtime_values.items())
+        messages.append(PromptMessage(role='user', content=f'Runtime inputs:\n{runtime_lines}'))
+
+    if resume_state is not None:
+        messages.append(
+            PromptMessage(
+                role='user',
+                content=(
+                    'Resume context:\n'
+                    f'- Previous step: {resume_state.detected_step}\n'
+                    f'- Previous status: {resume_state.status}\n'
+                    f"- Previous output: {resume_state.primary_output_path or 'N/A'}"
+                ),
+            ),
+        )
+
+    if draft_payload is not None:
+        messages.append(
+            PromptMessage(
+                role='user',
+                content=(
+                    'Current structured draft JSON:\n'
+                    f'{json.dumps(draft_payload, ensure_ascii=False, indent=2)}'
+                ),
+            )
+        )
+
+    if revision_request:
+        messages.append(
+            PromptMessage(
+                role='user',
+                content=(
+                    'Revise the structured draft for the same workflow step.\n'
+                    f'Revision request: {revision_request}'
+                ),
+            )
+        )
+
+    if user_instruction:
+        messages.append(PromptMessage(role='user', content=user_instruction))
+
+    messages.append(
+        PromptMessage(
+            role='user',
+            content=(
+                f'Objective:\n{objective}\n\n'
+                f'Expected JSON schema:\n{json.dumps(schema, ensure_ascii=False, indent=2)}'
+            ),
+        )
+    )
+    return messages
   
   
 def build_structured_stage_messages(  

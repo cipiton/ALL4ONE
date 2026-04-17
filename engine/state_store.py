@@ -4,6 +4,7 @@ import json
 from pathlib import Path  
   
 from .models import RunState, SkillDefinition  
+from .output_paths import find_story_stage_state_paths, sync_story_run_manifest_from_state
 from .runtime_config import RuntimeConfig  
 from .writer import create_internal_directory, write_json_file  
   
@@ -16,6 +17,7 @@ def save_state(state: RunState, output_dir: Path = None, runtime_config: Runtime
     state_path.write_text(json.dumps(state.to_dict(), ensure_ascii=False, indent=2), encoding="utf-8")  
     if config.should_write_visible_state:  
         write_json_file(target_dir, "state.json", state.to_dict())  
+    sync_story_run_manifest_from_state(state, target_dir)
     return state_path  
   
   
@@ -42,6 +44,7 @@ def find_latest_resumable_state(outputs_root: Path, skill: SkillDefinition):
         skill_root = outputs_root / skill_name
         if skill_root.exists():
             candidate_paths.extend(skill_root.rglob("state.json"))
+        candidate_paths.extend(find_story_stage_state_paths(outputs_root, skill_name))
     if not candidate_paths:
         return None
 

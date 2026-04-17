@@ -18,14 +18,14 @@ metadata:
       en: "This preprocessing workflow does not call the LLM. It only splits large novel files into reusable project inputs."
       zh: "这是预处理流程，不调用大模型，只负责把长篇小说拆分成后续可复用的项目输入。"
     input_hint:
-      en: "Send one large `.txt` novel file with visible chapter headings, including standalone numeric chapter lines if the novel uses them."
-      zh: "请提供一个带有明显章节标题的长篇 `.txt` 小说文件；如果原文使用独立数字行作为章节标题，也支持。"
+      en: "Large Novel Processor input: send one large `.txt` novel file with visible chapter headings, including standalone numeric chapter lines if the novel uses them."
+      zh: "长篇小说预处理输入：请提供一个带有明显章节标题的长篇 `.txt` 小说文件；如果原文使用独立数字行作为章节标题，也支持。"
     output_hint:
       en: "Writes an index plus chapter files or grouped chunk files into the project output folder."
       zh: "会在项目输出目录中生成索引，以及章节文件或分块文件。"
     starter_prompt:
-      en: "Send the large novel `.txt` file you want to split."
-      zh: "请提供需要拆分的长篇小说 `.txt` 文件。"
+      en: "Send the single large novel `.txt` file you want to split."
+      zh: "请提供需要拆分的单个长篇小说 `.txt` 文件。"
 
 steps:
   - number: 1

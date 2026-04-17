@@ -1,0 +1,350 @@
+# 资产注册表  
+**项目名：The Sound of the Stars and the Sea**  
+**源文件：01_narration_script.txt / 02_beat_sheet.md**
+
+## 资产总览
+本次提炼以可复用、可跨 beat 保持一致的实体为主，重点锁定：
+- 核心角色：张雪、陈星仪、Debise
+- 关键环境：湖南荒凉山路、重庆狭小修理间、现代公司会议室、波尔蒂芒赛道维修区、Z XMOTO 工厂夜景
+- 核心道具/车辆：小排量摩托车、白色电视制作车、摩托车架、发动机壳、旧账本、820RR-RS
+- 必要状态变体：19岁雨夜泥泞张雪、39岁整洁工装张雪、冠军后的820RR-RS、发车状态、夺冠状态
+
+## 按类别分组
+
+### 角色
+- 张雪：少年期与成年期是同一人物的不同状态，需统一面貌识别并通过年龄感、服装与姿态区分。
+- 陈星仪：修理间内负责记账与资金管理的搭档角色，强调冷静、务实、与张雪并肩但紧绷。
+- Debise：2026赛道上的法国车手，骑乘820RR-RS冲线，头盔与赛车服需稳定统一。
+
+### 场景/环境
+- 湖南荒凉山路雨夜：2006年暴雨、泥水、低能见度、远处白色电视制作车尾灯。
+- 重庆狭小修理间：2013年昏暗、拥挤、汽油与焊锡味、工具密集、空间压缩。
+- 现代公司会议室：2024年冷峻、长桌、落地玻璃、窗外可见工厂。
+- Z XMOTO 工厂夜景：2026年4月夜晚安静，聚光灯下停放冠军车，空间空旷。
+- 波尔蒂芒赛道：2026年3月热浪、发车区、发卡弯、终点线、维修区双场景。
+
+### 道具
+- 旧账本：陈星仪在修理间记录借款与支出使用的手写账本。
+- 发动机壳：2013年修理间内的核心装配件，承载“更轻更快”的技术愿景。
+- 工具组：扳手、螺丝、零件等修理/装配工具，主要用于修理间与深夜装配段落。
+- 手机：2024年离开办公楼时写下决定的关键道具。
+- 遥测屏/数据屏：赛道维修区内张雪观察比赛数据的视觉锚点。
+- 聚光灯：2026年工厂夜里照亮冠军车与幽灵少年的关键光源。
+
+### 车辆
+- 小排量摩托车：2006年张雪雨夜追车的个人座驾，必须保持为小排量摩托，不可误写为汽车。
+- 白色电视制作车：2006年雨夜前方消失的目标车辆，始终是电视制作车/制作车。
+- 摩托车架：2013年修理间内几乎空壳的主体结构，必须维持摩托车架语义。
+- Z XMOTO 820RR-RS 摩托赛车：2026年波尔蒂芒赛道上的主赛车，必须锁定为 racing motorcycle / sportbike / 摩托赛车，不能转写为汽车或赛车跑车。
+
+### 服装/造型
+- 张雪19岁雨夜造型：湿透风衣、全身泥水、冷得发抖、头发与脸部被雨打湿。
+- 张雪39岁工装造型：整洁工装、成熟感更强、在工厂夜景中与少年期形成明确对照。
+- 陈星仪修理间造型：日常工作服、低饱和、适合在昏暗灯光下做账与协作。
+- Debise赛道造型：头盔、赛车服、跨坐姿态，必须与820RR-RS骑乘关系稳定一致。
+
+### 状态变体
+- 张雪_19岁_雨夜泥泞：2006年暴雨山路状态，强调发抖、湿泥、执拗与追车欲望。
+- 张雪_39岁_整洁工装：2026年工厂夜景状态，强调成熟、克制、与过去的自我对视。
+- 820RR-RS_发车状态：起步前静止绷紧，绿灯后弹射起步。
+- 820RR-RS_夺冠状态：最后一圈发卡弯超车后冲线的胜利状态。
+- 820RR-RS_聚光灯展示状态：工厂夜里静置展陈，作为“成功具象化”的核心视觉资产。
+
+```json
+{
+  "project_title": "The Sound of the Stars and the Sea",
+  "source_file": "01_narration_script.txt",
+  "assets": [
+    {
+      "asset_id": "char_zhangxue_young",
+      "asset_type": "character",
+      "asset_name": "张雪（19岁）",
+      "short_description": "19岁的湖南修车小伙，雨夜里浑身泥水，穿湿透风衣，倔强而急迫。",
+      "recurrence_importance": "core",
+      "linked_beats": ["b001", "b002", "b003", "b012"],
+      "generation_priority": "high",
+      "consistency_notes": "脸部需保持年轻但不稚嫩，身形偏瘦，表情常带紧张与执拗；雨夜状态必须有湿发、泥点、发抖和狼狈感。与2006年山路、摩托车和白色电视制作车相关时，始终维持同一人物识别。"
+    },
+    {
+      "asset_id": "char_zhangxue_adult",
+      "asset_type": "character",
+      "asset_name": "张雪（39岁）",
+      "short_description": "39岁的Z XMOTO创始人，成熟、克制，穿整洁工装或深色工作服。",
+      "recurrence_importance": "core",
+      "linked_beats": ["b004", "b005", "b006", "b007", "b008", "b010", "b012", "b013"],
+      "generation_priority": "high",
+      "consistency_notes": "面部更成熟，眼神坚定，体型与少年期一致但更沉稳；在修理间、会议室、工厂夜景和维修区都要保持同一身份。与少年张雪同框时，成年版应明显更整洁、干净、轮廓更硬朗。"
+    },
+    {
+      "asset_id": "char_chenxingyi",
+      "asset_type": "character",
+      "asset_name": "陈星仪",
+      "short_description": "张雪的搭档，负责记账与资金管理，冷静务实，常在昏暗修理间内出现。",
+      "recurrence_importance": "recurring",
+      "linked_beats": ["b004", "b005", "b006"],
+      "generation_priority": "medium",
+      "consistency_notes": "保持干练、克制、低情绪外放；常与旧账本、现金、修理间工作台一起出现。服装应朴素实用，不抢夺张雪视觉中心。"
+    },
+    {
+      "asset_id": "char_debise",
+      "asset_type": "character",
+      "asset_name": "Debise",
+      "short_description": "法国车手，骑乘Z XMOTO 820RR-RS参加波尔蒂芒比赛。",
+      "recurrence_importance": "recurring",
+      "linked_beats": ["b009", "b010", "b011"],
+      "generation_priority": "high",
+      "consistency_notes": "必须与摩托赛车骑乘关系明确绑定，头盔、赛车服与车身姿态保持一致；不要将其表现成汽车驾驶员或普通路人。"
+    },
+    {
+      "asset_id": "env_hunan_rain_road",
+      "asset_type": "environment",
+      "asset_name": "湖南荒凉山路雨夜",
+      "short_description": "2006年暴雨中的偏僻山路，泥地、雨幕、低能见度，远处车灯被雾吞没。",
+      "recurrence_importance": "core",
+      "linked_beats": ["b001", "b002", "b003"],
+      "generation_priority": "high",
+      "consistency_notes": "保持灰暗天色、强降雨、泥水地面、远景被雨雾遮蔽的空间感；道路应狭长荒凉，十字路口是后续拦车关键位置。"
+    },
+    {
+      "asset_id": "env_repair_room_chongqing",
+      "asset_type": "environment",
+      "asset_name": "重庆狭小修理间",
+      "short_description": "2013年昏暗拥挤的修理间，空气里有汽油和焊锡味，工具与零件密集堆放。",
+      "recurrence_importance": "core",
+      "linked_beats": ["b004", "b005", "b006"],
+      "generation_priority": "high",
+      "consistency_notes": "空间必须狭小、压缩、低照度；桌面、地面与墙边堆满工具、零件和工作痕迹。灯光偏暖但不足以消除阴影，强调预算和空间双重压迫。"
+    },
+    {
+      "asset_id": "env_modern_boardroom",
+      "asset_type": "environment",
+      "asset_name": "现代公司会议室",
+      "short_description": "2024年冷峻的长桌会议室，落地玻璃外可见Z XMOTO工厂。",
+      "recurrence_importance": "recurring",
+      "linked_beats": ["b007"],
+      "generation_priority": "high",
+      "consistency_notes": "会议室要有冷光、长桌、文件、保守而压抑的商务氛围；窗外工厂必须作为巨大背景存在，形成室内外权力对照。"
+    },
+    {
+      "asset_id": "env_zxmoto_office_exit",
+      "asset_type": "environment",
+      "asset_name": "Z XMOTO办公楼门口夜景",
+      "short_description": "2024年张雪离开办公楼的门口与夜空，室内冷光与室外黑夜形成强对比。",
+      "recurrence_importance": "supporting",
+      "linked_beats": ["b008"],
+      "generation_priority": "medium",
+      "consistency_notes": "门框、空掉的办公桌、夜色和远处工厂要连贯；画面应突出“离开”与“空置”的负空间。"
+    },
+    {
+      "asset_id": "env_portimao_track",
+      "asset_type": "environment",
+      "asset_name": "波尔蒂芒赛道",
+      "short_description": "2026年3月葡萄牙波尔蒂芒赛道，热浪扭曲柏油，包含发车区、发卡弯、终点线与维修区。",
+      "recurrence_importance": "core",
+      "linked_beats": ["b009", "b010", "b011"],
+      "generation_priority": "high",
+      "consistency_notes": "必须保持热浪、强烈日照、赛道透视、弯角与终点结构；比赛语境清晰，赛道元素要稳定服务同一场赛事。"
+    },
+    {
+      "asset_id": "env_zxmoto_factory_night",
+      "asset_type": "environment",
+      "asset_name": "Z XMOTO工厂夜景",
+      "short_description": "2026年4月安静的工厂夜晚，聚光灯照着夺冠后的820RR-RS。",
+      "recurrence_importance": "core",
+      "linked_beats": ["b012", "b013", "b014"],
+      "generation_priority": "high",
+      "consistency_notes": "工厂内部或外部夜景必须安静、空旷、带有工业感；聚光灯是核心视觉装置，必须持续照亮冠军车和人物对视空间。"
+    },
+    {
+      "asset_id": "prop_small_displacement_motorcycle",
+      "asset_type": "vehicle",
+      "asset_name": "小排量摩托车",
+      "short_description": "2006年张雪骑乘的个人摩托，轻小、旧、在泥地里容易打滑。",
+      "recurrence_importance": "core",
+      "linked_beats": ["b001", "b002", "b003"],
+      "generation_priority": "high",
+      "consistency_notes": "必须明确是小排量摩托，不可误写成汽车或大排量赛道车；轮胎、车把、车身都应显示在泥水中受阻的状态。"
+    },
+    {
+      "asset_id": "prop_white_tv_van",
+      "asset_type": "vehicle",
+      "asset_name": "白色电视制作车",
+      "short_description": "2006年雨夜前方离开的电视制作车，尾灯是张雪追逐的目标。",
+      "recurrence_importance": "core",
+      "linked_beats": ["b001", "b002"],
+      "generation_priority": "high",
+      "consistency_notes": "必须保持白色车身、制作车/电视制作车语义，不能泛化成普通货车或救护车；尾灯在雨雾中清晰可辨，是远景视觉锚点。"
+    },
+    {
+      "asset_id": "prop_motorcycle_frame",
+      "asset_type": "vehicle",
+      "asset_name": "摩托车架",
+      "short_description": "2013年修理间内几乎空壳的摩托车车架，是项目核心结构件。",
+      "recurrence_importance": "core",
+      "linked_beats": ["b004", "b005"],
+      "generation_priority": "high",
+      "consistency_notes": "必须明确为摩托车架 / motorcycle frame，不能写成汽车底盘或车壳；结构应半成品、裸露、周围有零件和工具。"
+    },
+    {
+      "asset_id": "prop_engine_case",
+      "asset_type": "prop",
+      "asset_name": "发动机壳",
+      "short_description": "2013年修理间里承载新设计的发动机壳体与装配核心。",
+      "recurrence_importance": "recurring",
+      "linked_beats": ["b005", "b006"],
+      "generation_priority": "medium",
+      "consistency_notes": "表面应有油污、金属反光和装配痕迹；作为技术愿景的承载物，外观要真实、未完成、带手工装配感。"
+    },
+    {
+      "asset_id": "prop_old_ledger",
+      "asset_type": "prop",
+      "asset_name": "旧账本",
+      "short_description": "陈星仪用于记录借款与支出的旧笔记本。",
+      "recurrence_importance": "recurring",
+      "linked_beats": ["b004", "b005"],
+      "generation_priority": "medium",
+      "consistency_notes": "纸张应泛黄、边角磨损、手写痕迹明显；常与对勾、借款记录、现金压力同框。"
+    },
+    {
+      "asset_id": "prop_tools_set",
+      "asset_type": "prop",
+      "asset_name": "修理工具组",
+      "short_description": "修理间和深夜装配中使用的扳手、螺丝、零件等工具集合。",
+      "recurrence_importance": "supporting",
+      "linked_beats": ["b004", "b005", "b006"],
+      "generation_priority": "low",
+      "consistency_notes": "工具应有油污、磨损和长期使用痕迹，分布在工作台、地面和发动机周围，体现手工修理感。"
+    },
+    {
+      "asset_id": "prop_phone_message",
+      "asset_type": "prop",
+      "asset_name": "手机",
+      "short_description": "张雪在离开办公楼时用来写下决定的手机。",
+      "recurrence_importance": "supporting",
+      "linked_beats": ["b008"],
+      "generation_priority": "low",
+      "consistency_notes": "作为离开的收束道具，需可见屏幕操作动作，但不需过度强调品牌或细节。"
+    },
+    {
+      "asset_id": "prop_telemetry_screen",
+      "asset_type": "prop",
+      "asset_name": "遥测屏",
+      "short_description": "维修区内显示赛道数据的监控屏幕。",
+      "recurrence_importance": "recurring",
+      "linked_beats": ["b010"],
+      "generation_priority": "medium",
+      "consistency_notes": "屏幕冷光应照亮张雪面部，数据曲线或数字需具有赛车工程监控感；不得表现为普通办公显示器。"
+    },
+    {
+      "asset_id": "prop_spotlight",
+      "asset_type": "prop",
+      "asset_name": "聚光灯",
+      "short_description": "工厂夜景中照亮冠军车与人物的单束强光。",
+      "recurrence_importance": "recurring",
+      "linked_beats": ["b012", "b013", "b014"],
+      "generation_priority": "high",
+      "consistency_notes": "聚光灯应形成明确光圈，背景大面积压黑，服务于相认与结尾拉远的视觉统一。"
+    },
+    {
+      "asset_id": "veh_zxmoto_820rr_rs",
+      "asset_type": "vehicle",
+      "asset_name": "Z XMOTO 820RR-RS 摩托赛车",
+      "short_description": "红银配色的高性能 racing motorcycle / sportbike / 摩托赛车，波尔蒂芒赛道上的核心冠军车。",
+      "recurrence_importance": "core",
+      "linked_beats": ["b009", "b010", "b011", "b012", "b013"],
+      "generation_priority": "high",
+      "consistency_notes": "本项目必须始终视为摩托赛车，不可写成汽车、race car、automobile 或 driver cockpit。保持两轮、前后轮比例、骑乘关系、低趴赛道姿态、红银涂装和 Z XMOTO 820RR-RS 标识逻辑一致。发车、压弯、超车和工厂展示状态都必须围绕同一台车。"
+    },
+    {
+      "asset_id": "wardrobe_young_zhangxue_rain",
+      "asset_type": "wardrobe",
+      "asset_name": "张雪19岁雨夜湿透风衣",
+      "short_description": "湿透、沾满机油和泥水的风衣，是少年张雪在山路暴雨中的关键服装状态。",
+      "recurrence_importance": "core",
+      "linked_beats": ["b001", "b002", "b003", "b012"],
+      "generation_priority": "high",
+      "consistency_notes": "颜色与材质需偏旧、受雨浸透后贴身发皱；泥点和油渍必须明显。作为少年张雪的身份标识，不能与成年工装混淆。"
+    },
+    {
+      "asset_id": "wardrobe_adult_zhangxue_workwear",
+      "asset_type": "wardrobe",
+      "asset_name": "张雪成年工装",
+      "short_description": "成年张雪在工厂、修理与会议场景中的整洁工作服或深色工装。",
+      "recurrence_importance": "core",
+      "linked_beats": ["b004", "b005", "b006", "b007", "b008", "b010", "b012", "b013"],
+      "generation_priority": "high",
+      "consistency_notes": "服装应干净、利落、功能性强；与少年雨夜风衣形成强对照。工厂夜景中保持整洁，在维修区可略带工作痕迹但不要脏乱。"
+    },
+    {
+      "asset_id": "wardrobe_chenxingyi_workwear",
+      "asset_type": "wardrobe",
+      "asset_name": "陈星仪工作服",
+      "short_description": "适合修理间工作的朴素实用衣着，便于记账与协作。",
+      "recurrence_importance": "supporting",
+      "linked_beats": ["b004", "b005", "b006"],
+      "generation_priority": "low",
+      "consistency_notes": "低饱和、实用、不过度时髦；应与昏暗修理间气质一致，避免抢夺主角视觉重心。"
+    },
+    {
+      "asset_id": "wardrobe_debise_racing_suit",
+      "asset_type": "wardrobe",
+      "asset_name": "Debise赛车服与头盔",
+      "short_description": "赛道比赛用赛车服、头盔和面罩，与820RR-RS骑乘关系绑定。",
+      "recurrence_importance": "recurring",
+      "linked_beats": ["b009", "b011"],
+      "generation_priority": "medium",
+      "consistency_notes": "头盔反光与面罩内的环境映像要一致；赛车服需紧贴骑乘姿态，颜色与赛事感明确，不能出现日常服装感。"
+    },
+    {
+      "asset_id": "state_variant_zhangxue_young_muddy",
+      "asset_type": "state_variant",
+      "asset_name": "张雪少年雨夜泥泞状态",
+      "short_description": "19岁张雪在暴雨、泥地和失败后仍不放弃的状态变体。",
+      "recurrence_importance": "core",
+      "linked_beats": ["b001", "b002", "b003", "b012"],
+      "generation_priority": "high",
+      "consistency_notes": "保持湿透风衣、泥水覆盖、发抖、疲惫但执拗的状态；与成年版同框时必须清楚区分年龄与精神状态。"
+    },
+    {
+      "asset_id": "state_variant_zhangxue_adult_resolved",
+      "asset_type": "state_variant",
+      "asset_name": "张雪成年笃定状态",
+      "short_description": "39岁张雪在会议、离职、工厂夜景与赛道技术判断中的笃定姿态。",
+      "recurrence_importance": "core",
+      "linked_beats": ["b007", "b008", "b010", "b012", "b013"],
+      "generation_priority": "high",
+      "consistency_notes": "表情应坚定、克制、少废话；即便情绪强烈也不应显得浮夸。适合拍桌、转身离开、凝视冠军车与面对少年自己。"
+    },
+    {
+      "asset_id": "state_variant_820rr_rs_launch",
+      "asset_type": "state_variant",
+      "asset_name": "820RR-RS发车状态",
+      "short_description": "绿灯亮起前后，820RR-RS在发车区绷紧并瞬间弹射起步的状态。",
+      "recurrence_importance": "recurring",
+      "linked_beats": ["b009"],
+      "generation_priority": "high",
+      "consistency_notes": "前轮、车身和骑手姿态要体现起步压缩与爆发；保持赛道两轮摩托的速度线和热浪背景，不可弱化成静态展示。"
+    },
+    {
+      "asset_id": "state_variant_820rr_rs_win",
+      "asset_type": "state_variant",
+      "asset_name": "820RR-RS夺冠状态",
+      "short_description": "最后一圈发卡弯超越并冲线的冠军状态。",
+      "recurrence_importance": "core",
+      "linked_beats": ["b011"],
+      "generation_priority": "high",
+      "consistency_notes": "必须强调压弯、内线超越、轮胎抓地与冲线动作；同一台红银820RR-RS，不能改成其他车型或四轮赛车。"
+    },
+    {
+      "asset_id": "state_variant_820rr_rs_display",
+      "asset_type": "state_variant",
+      "asset_name": "820RR-RS工厂展示状态",
+      "short_description": "冠军车停在工厂聚光灯下的静置展示状态。",
+      "recurrence_importance": "recurring",
+      "linked_beats": ["b012", "b013"],
+      "generation_priority": "high",
+      "consistency_notes": "车身应干净、完整、带冠军后静置感；必须与夜晚工厂、聚光灯和人物对视空间连用，体现成功已具象化。"
+    }
+  ]
+}
+```

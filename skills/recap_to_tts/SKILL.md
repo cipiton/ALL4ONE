@@ -17,17 +17,17 @@ metadata:
       en: "Split a recap script into episode narration clips, infer one narrator style per episode, and generate one WAV per episode with local Qwen TTS."
       zh: "将解说剧脚本拆成分集旁白，先为每集推断单一旁白风格，再用本地 Qwen TTS 生成每集一个 WAV。"
     workflow_hint:
-      en: "This workflow keeps local deterministic orchestration: it parses the recap script, runs constrained episode-level narrator analysis, then shells out to the isolated Qwen TTS runner for each episode."
-      zh: "此流程保持本地确定性编排：先解析解说稿，再做受约束的分集旁白分析，最后逐集调用隔离的 Qwen TTS 运行器。"
+      en: "Stage 03 TTS. Preferred input is the Skill 2 `02_recap_production` folder; the runtime resolves `01_recap_script.txt` before running narrator analysis and the isolated Qwen TTS runner."
+      zh: "第 03 阶段配音。首选输入为第 2 个技能产出的 `02_recap_production` 文件夹；运行时会解析其中的 `01_recap_script.txt`，再执行旁白分析并调用隔离的 Qwen TTS 运行器。"
     input_hint:
-      en: "Send one recap-script `.txt` file that uses episode markers like `第 1 集` and sections like `前置钩子` / `核心剧情` / `结尾悬念`."
-      zh: "请提供一个解说稿 `.txt` 文件，格式需包含 `第 1 集` 这类分集标记，以及 `前置钩子` / `核心剧情` / `结尾悬念` 这类分段标签。"
+      en: "Skill 3 input: send the Skill 2 `02_recap_production/` folder. Fallback: `02_recap_production/01_recap_script.txt`."
+      zh: "第 3 个技能输入：请提供第 2 个技能产出的 `02_recap_production/` 文件夹。回退输入：`02_recap_production/01_recap_script.txt`。"
     output_hint:
-      en: "Writes one WAV per episode plus `manifest.json` under the current project output folder."
-      zh: "会在当前项目输出目录下写出每集一个 WAV，以及一个 `manifest.json`。"
+      en: "Writes one WAV per episode plus `manifest.json` under the story-first `03_recap_to_tts` stage folder."
+      zh: "会在故事优先输出结构的 `03_recap_to_tts` 阶段目录下写出每集一个 WAV，以及一个 `manifest.json`。"
     starter_prompt:
-      en: "Send the recap script `.txt` file you want to convert into narration audio."
-      zh: "请提供要转成旁白音频的解说稿 `.txt` 文件。"
+      en: "Send the `02_recap_production` folder from Skill 2, or its `01_recap_script.txt` file."
+      zh: "请提供第 2 个技能产出的 `02_recap_production` 文件夹，或其中的 `01_recap_script.txt` 文件。"
 
 steps:
   - number: 1
@@ -50,9 +50,17 @@ output:
 
 # Recap To TTS
 
-Convert a recap script `.txt` into episode-level narration audio by combining constrained episode analysis with the isolated `TTS_qwen/tts_runner.py` runner.
+Convert a Skill 2 recap-production bundle into episode-level narration audio by combining constrained episode analysis with the isolated `TTS_qwen/tts_runner.py` runner.
 
 ## Expected Input Format
+
+Preferred input:
+
+- `outputs/stories/<story_slug>/<run_id>/02_recap_production/`
+
+Fallback input:
+
+- `outputs/stories/<story_slug>/<run_id>/02_recap_production/01_recap_script.txt`
 
 The source file should contain episode markers like:
 
@@ -70,9 +78,9 @@ Inside each episode, the parser strips these labels from spoken narration while 
 
 For an input file such as `01_recap_script.txt`, the skill writes:
 
-- `outputs/recap_to_tts/<run>__/01_recap_script/01_recap_script_ep01.wav`
-- `outputs/recap_to_tts/<run>__/01_recap_script/01_recap_script_ep02.wav`
-- `outputs/recap_to_tts/<run>__/01_recap_script/manifest.json`
+- `outputs/stories/<story_slug>/<run_id>/03_recap_to_tts/<story_title>_ep01.wav`
+- `outputs/stories/<story_slug>/<run_id>/03_recap_to_tts/<story_title>_ep02.wav`
+- `outputs/stories/<story_slug>/<run_id>/03_recap_to_tts/manifest.json`
 
 `manifest.json` records the source file, episode numbers, output filenames, durations as `mm:ss`, per-episode success status, and narrator-analysis debug fields such as the selected preset voice and `prompt_text`.
 

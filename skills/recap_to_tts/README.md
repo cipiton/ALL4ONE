@@ -1,13 +1,29 @@
 # Recap To TTS
 
-This ONE4ALL skill converts one recap-script `.txt` file into episode-level narration WAV files by first running constrained episode-level narrator analysis, then calling the isolated local Qwen TTS runner in `TTS_qwen/`.
+This ONE4ALL skill converts the Skill 2 `02_recap_production/` bundle into episode-level narration WAV files by first running constrained episode-level narrator analysis, then calling the isolated local Qwen TTS runner in `TTS_qwen/`.
+
+## Input Contract
+
+Preferred input:
+
+```text
+outputs/stories/<story_slug>/<run_id>/02_recap_production/
+```
+
+Fallback input:
+
+```text
+outputs/stories/<story_slug>/<run_id>/02_recap_production/01_recap_script.txt
+```
+
+The runtime resolves the folder to `01_recap_script.txt`. Legacy `01_recap_production/` folders are still accepted for older runs.
 
 ## What It Does
 
 1. parses episodes marked by `第 N 集`
 2. removes narration labels such as `前置钩子：`, `核心剧情：`, and `结尾悬念：`
 3. merges each episode into one narration text block
-4. writes a temp text file per episode under `temp\<series_title>\`
+4. writes a temp text file per episode under `temp\`
 5. asks the shared LLM route for one structured narrator analysis per episode:
    - `narrator_gender`
    - `tone`
@@ -35,18 +51,16 @@ pip install -r requirements.txt
 
 ## Output Layout
 
-Within the normal ONE4ALL skill output run folder, the skill creates:
+Within the story-first run folder, the skill creates:
 
 ```text
-<run_output>\
-  <series_title>\
-    <series_title>_ep01.wav
-    <series_title>_ep02.wav
-    manifest.json
-  temp\
-    <series_title>\
-      <series_title>_ep01.txt
-      <series_title>_ep02.txt
+outputs/stories/<story_slug>/<run_id>/03_recap_to_tts/
+  <series_title>_ep01.wav
+  <series_title>_ep02.wav
+  manifest.json
+  temp/
+    <series_title>_ep01.txt
+    <series_title>_ep02.txt
 ```
 
 ## v1 Limits

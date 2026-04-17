@@ -1,0 +1,295 @@
+{
+  "project_title": "The Sound of the Stars and the Sea",
+  "anchor_prompts": [
+    {
+      "prompt_id": "a001",
+      "beat_id": "beat_001",
+      "linked_assets": [
+        "char_zhangxue_young",
+        "env_hunan_rain_road",
+        "prop_small_displacement_motorcycle",
+        "prop_white_tv_van",
+        "wardrobe_young_zhangxue_rain",
+        "state_variant_zhangxue_young_muddy"
+      ],
+      "shot_size": "wide to medium",
+      "subject": "19岁的张雪站在小排量摩托车旁，盯着远处消失的白色电视制作车",
+      "environment": "2006年湖南荒凉山路雨夜，暴雨、泥地、雨雾吞没远景",
+      "main_object": "远处雨雾里只剩一点红的白色电视制作车尾灯",
+      "composition": "张雪和摩托放在前景，远处车灯压在画面深处，大片空路和雨幕制造孤立感",
+      "lighting": "冷雨夜自然光，远处尾灯提供唯一明确色点，整体低能见度",
+      "visible_state": "少年浑身泥水、湿透风衣、冷得发抖，但身体站稳，目光死盯远车",
+      "style": "grounded cinematic realism",
+      "anchor_image_prompt": "Wide-to-medium cinematic realism shot of 19-year-old Zhang Xue standing beside a small-displacement motorcycle on a deserted Hunan mountain road in a violent rainstorm, his soaked windbreaker plastered to his body and his face and hair covered in rain and mud. The white TV production van is far ahead in the rain haze, only one tiny red tail light still visible in the distance. Place Zhang Xue and the motorcycle in the foreground, with the empty wet road and heavy rain filling most of the frame as negative space. Cold, desperate mood, low visibility, realistic wet reflections, strong sense of pressure as the opportunity disappears."
+    },
+    {
+      "prompt_id": "a002",
+      "beat_id": "beat_002",
+      "linked_assets": [
+        "char_zhangxue_young",
+        "env_hunan_rain_road",
+        "prop_small_displacement_motorcycle",
+        "prop_white_tv_van",
+        "wardrobe_young_zhangxue_rain",
+        "state_variant_zhangxue_young_muddy"
+      ],
+      "shot_size": "medium shot",
+      "subject": "张雪在暴雨十字路口拦车，隔着车窗向摄制组求助",
+      "environment": "雨中的山路十字路口，泥水飞溅，白色电视制作车停在路边",
+      "main_object": "白色电视制作车的车窗与车门，成为张雪尊严受审的边界",
+      "composition": "前景是举手的张雪与摩托，中景是车窗里冷静带笑的面孔，背景是被雨打散的十字路口",
+      "lighting": "冷灰雨光，车窗反射压低表情，尾灯与路面反光形成强对比",
+      "visible_state": "张雪满身湿泥，手扶车、另一只手高举求援，姿态急切但倔强",
+      "style": "grounded cinematic realism",
+      "anchor_image_prompt": "Medium cinematic realism shot at a rain-soaked crossroads in 2006 Hunan, with Zhang Xue standing in mud beside his small-displacement motorcycle, one hand on the bike and the other raised toward the white TV production van. Show the van’s window clearly, with calm, faintly amused faces inside looking down at him. Zhang Xue’s windbreaker is heavier with mud and rain than before, his posture desperate but stubborn. Put him in the foreground, the van window and faces in the middle, and the rain-swallowed crossroads behind them. Cold, humiliating atmosphere, wet reflections, realistic rain streaks, a single-frame moment of rejection."
+    },
+    {
+      "prompt_id": "a003",
+      "beat_id": "beat_003",
+      "linked_assets": [
+        "char_zhangxue_young",
+        "env_hunan_rain_road",
+        "prop_small_displacement_motorcycle",
+        "wardrobe_young_zhangxue_rain",
+        "state_variant_zhangxue_young_muddy"
+      ],
+      "shot_size": "low angle close-up",
+      "subject": "张雪倒在泥里，重新伸手抓住侧翻的摩托车把手",
+      "environment": "同一条暴雨山路的泥地近景，地面被雨水冲成烂泥",
+      "main_object": "沾满泥水的摩托车把手与张雪的手",
+      "composition": "机位贴近泥面，让手、车把和半埋车身占据画面中心，天空只留一条窄窄的冷缝",
+      "lighting": "冷硬雨夜光，泥水反光微弱，金属与湿泥的质感要清晰",
+      "visible_state": "少年仰躺在泥里，短暂停顿后仍把手重新扣上车把，拒绝放弃",
+      "style": "grounded cinematic realism",
+      "anchor_image_prompt": "Low-angle cinematic realism close-up from near the muddy ground, showing Zhang Xue lying in the rain on the same Hunan roadside with his small motorcycle half-buried beside him. His mud-covered hand has just re-gripped the handlebar, fingers clenched around the wet metal. The frame should center on the hand, handlebar, and thick mud, with only a narrow strip of cold sky visible above. Zhang Xue’s soaked windbreaker and the bike’s fallen body must clearly show the defeat before the stubborn recovery, in a single still frame."
+    },
+    {
+      "prompt_id": "a004",
+      "beat_id": "beat_004",
+      "linked_assets": [
+        "char_chenxingyi",
+        "char_zhangxue_adult",
+        "env_repair_room_chongqing",
+        "prop_old_ledger",
+        "prop_motorcycle_frame",
+        "prop_tools_set",
+        "wardrobe_adult_zhangxue_workwear",
+        "wardrobe_chenxingyi_workwear"
+      ],
+      "shot_size": "medium wide",
+      "subject": "陈星仪记账，张雪蹲在半成品摩托车架旁工作",
+      "environment": "2013年重庆狭小修理间，昏暗拥挤，工具与零件堆满空间",
+      "main_object": "旧账本与空壳摩托车架并置，象征资金与技术同时被压缩",
+      "composition": "账本放前景，车架居中，人物分置两侧形成夹压，四周用工具和阴影封住空间",
+      "lighting": "暖黄低照度，桌面和脸部被窄窄高光切开，四周阴影浓重",
+      "visible_state": "陈星仪低头在账本上画勾，张雪沉默蹲着，空间和预算都紧到发紧",
+      "style": "grounded cinematic realism",
+      "anchor_image_prompt": "Medium wide grounded cinematic realism shot inside a cramped 2013 Chongqing repair room, with Chen Xingyi leaning over an old ledger in the foreground and Zhang Xue crouched beside a nearly bare motorcycle frame in the middle of the room. The frame should feel tight and compressed, with tools, parts, and shadows sealing the space on all sides. Keep the motorcycle frame clearly identifiable as a motorcycle frame, not a car chassis. Warm dim practical light cuts narrow highlights across the ledger, metal frame, and their faces, emphasizing a room and a budget both running out."
+    },
+    {
+      "prompt_id": "a005",
+      "beat_id": "beat_005",
+      "linked_assets": [
+        "char_zhangxue_adult",
+        "char_chenxingyi",
+        "env_repair_room_chongqing",
+        "prop_engine_case",
+        "prop_old_ledger",
+        "prop_tools_set",
+        "wardrobe_adult_zhangxue_workwear",
+        "wardrobe_chenxingyi_workwear"
+      ],
+      "shot_size": "medium close-up",
+      "subject": "张雪盯着发动机壳解释设计，陈星仪在旁边提醒借款压力",
+      "environment": "同一间昏暗修理间，工作台、零件、账本和阴影共同挤压画面",
+      "main_object": "发动机壳，作为“更轻更快”愿景的视觉锚点",
+      "composition": "工作台把前后景切开，发动机壳位于画面中心，张雪的手与脸被暖灯切出窄高光",
+      "lighting": "局部暖灯照明，背景更暗，金属表面有真实反光",
+      "visible_state": "张雪的手停在发动机壳上，目光越过工作台看向未完成的机器，陈星仪在旁边合上账本",
+      "style": "grounded cinematic realism",
+      "anchor_image_prompt": "Medium close-up grounded cinematic realism shot in the same dim Chongqing repair room, with Zhang Xue’s hand resting on an unfinished engine case as he studies it intently across the workbench. Chen Xingyi stands nearby with the old ledger, her presence suggesting the burden of another loan. Use the workbench to divide foreground and background, keep the engine case as the visual anchor, and let warm practical light carve narrow highlights across Zhang Xue’s face, hand, and the metal edges. The mood should feel intimate but stubborn, with visible financial pressure hanging over the unfinished machine."
+    },
+    {
+      "prompt_id": "a006",
+      "beat_id": "beat_006",
+      "linked_assets": [
+        "char_zhangxue_adult",
+        "env_repair_room_chongqing",
+        "prop_engine_case",
+        "prop_tools_set",
+        "wardrobe_adult_zhangxue_workwear"
+      ],
+      "shot_size": "close-up",
+      "subject": "张雪的双手在深夜里装配发动机",
+      "environment": "同一夜晚的修理间，背景压暗，只留工作台与少量暖光",
+      "main_object": "发动机零件、螺丝和油污覆盖的手",
+      "composition": "以手部特写和零件微距为主，发动机孔位处于画面焦点，背景退成黑影",
+      "lighting": "暖灯微弱照明，金属边缘与油污有清晰反光",
+      "visible_state": "张雪闭着或半闭着眼，手却精准对位，靠肌肉记忆完成装配",
+      "style": "grounded cinematic realism",
+      "anchor_image_prompt": "Close-up grounded cinematic realism shot of Zhang Xue’s oil-stained hands assembling an engine late at night in the same cramped repair room. The frame should focus on the engine’s open mounting points, a screw hovering just above place, and the precise, practiced movement of his fingers. Background details should fall into darkness, leaving only a few warm reflections on tools, metal edges, and greasy knuckles. Zhang Xue’s fatigue is visible only in the softened eyelids and the relentless steadiness of his hands."
+    },
+    {
+      "prompt_id": "a007",
+      "beat_id": "beat_007",
+      "linked_assets": [
+        "char_zhangxue_adult",
+        "env_modern_boardroom",
+        "wardrobe_adult_zhangxue_workwear"
+      ],
+      "shot_size": "wide shot",
+      "subject": "张雪拍桌站立，与投资人和高管正面对峙",
+      "environment": "2024年现代会议室，长桌、冷光、窗外巨大工厂压在背景",
+      "main_object": "会议桌、文件和落地玻璃后的工厂",
+      "composition": "长桌形成强透视线，人物左右分裂，张雪单独立在桌端，工厂在窗外压住整个会议空间",
+      "lighting": "冷峻商务白光，玻璃外景更亮，室内更压抑",
+      "visible_state": "张雪掌心压桌，身后是一排沉默的高管，空气像被他的话切开",
+      "style": "grounded cinematic realism",
+      "anchor_image_prompt": "Wide grounded cinematic realism shot in a cold 2024 boardroom, with Zhang Xue standing and slamming one palm on the conference table while investors and executives sit in a rigid row opposite him. The long table should create strong perspective lines leading to him, and the glass wall behind the room must show the massive Z XMOTO factory outside as an imposing backdrop. Keep the tone confrontational and controlled, with papers, reflections, and hard office light emphasizing the pressure of a high-stakes technical gamble."
+    },
+    {
+      "prompt_id": "a008",
+      "beat_id": "beat_008",
+      "linked_assets": [
+        "char_zhangxue_adult",
+        "env_zxmoto_office_exit",
+        "prop_phone_message",
+        "wardrobe_adult_zhangxue_workwear"
+      ],
+      "shot_size": "medium shot",
+      "subject": "张雪抱着清空的物品站在门口，抬头看星星并低头写信息",
+      "environment": "2024年办公楼门口夜景，室内冷光与室外黑夜对比鲜明",
+      "main_object": "清空的办公桌遗物、手机、门框与夜空",
+      "composition": "门框把张雪框住，室内留出空掉的负空间，远处夜色与工厂背景收束画面",
+      "lighting": "室内冷光从后方溢出，门外夜色更深，手机屏幕提供一点微光",
+      "visible_state": "张雪抱着收走的东西，表情安静，抬头看星空后低头在手机上写下决定",
+      "style": "grounded cinematic realism",
+      "anchor_image_prompt": "Medium grounded cinematic realism shot of Zhang Xue standing in the doorway of a modern office building at night, carrying the emptied contents of his desk in one arm while holding a phone in the other. Frame him inside the doorframe so the empty office behind him becomes visible negative space, and let the cold interior light contrast sharply with the deep outdoor night and the distant factory beyond. His face should be calm and resolved, caught between looking up at the stars and typing one final message on the phone."
+    },
+    {
+      "prompt_id": "a009",
+      "beat_id": "beat_009",
+      "linked_assets": [
+        "char_debise",
+        "env_portimao_track",
+        "veh_zxmoto_820rr_rs",
+        "wardrobe_debise_racing_suit",
+        "state_variant_820rr_rs_launch"
+      ],
+      "shot_size": "wide tracking shot",
+      "subject": "Debise跨坐在红银820RR-RS上，等待发车灯变化",
+      "environment": "2026年波尔蒂芒赛道发车区，热浪扭曲柏油与远景",
+      "main_object": "红银色Z XMOTO 820RR-RS摩托赛车与发车灯",
+      "composition": "低位侧前方构图，车身线条被透视拉长，前轮与起跑格清晰可见，热浪压扭背景",
+      "lighting": "炽热日照与赛道反光，绿灯将成为唯一强烈色点",
+      "visible_state": "车身静止但绷紧，Debise跨坐稳定，整车像一张拉满的弓",
+      "style": "premium stylized East Asian CG / cinematic donghua-inspired 3D",
+      "anchor_image_prompt": "Wide low side-front keyframe of a red and silver Z XMOTO 820RR-RS racing motorcycle on the Portimão starting grid in 2026, with French rider Debise seated and ready to launch. Keep the motorcycle clearly as a two-wheeled sportbike, not a car, with visible front wheel, rear wheel, fairing, rider posture, and the start light in frame. Heat haze should distort the asphalt and distant background, while the bike feels compressed and tense, like a bow drawn back before release. Render as premium stylized East Asian CG / cinematic donghua-inspired 3D, with sharp silhouettes, refined materials, and dramatic racing lighting, not Pixar-like or toy-like."
+    },
+    {
+      "prompt_id": "a010",
+      "beat_id": "beat_010",
+      "linked_assets": [
+        "char_zhangxue_adult",
+        "prop_telemetry_screen",
+        "veh_zxmoto_820rr_rs",
+        "env_portimao_track",
+        "wardrobe_adult_zhangxue_workwear"
+      ],
+      "shot_size": "split focus / cutaway",
+      "subject": "张雪在维修区紧盯遥测屏，赛道上的820RR-RS在旁侧切片中疾驰",
+      "environment": "波尔蒂芒赛道与维修区并置，冷光屏幕和赛道高光形成双重压力",
+      "main_object": "遥测屏与屏幕上的数据曲线",
+      "composition": "屏幕冷光占前景，张雪脸部被照亮，赛道车影作为背景或切片并列出现",
+      "lighting": "维修区冷光主导，屏幕发出蓝白色反射，赛道画面更亮更锐",
+      "visible_state": "张雪戴耳机，神情绷紧，盯着数据变化，听见声音压过对手",
+      "style": "premium stylized East Asian CG / cinematic donghua-inspired 3D",
+      "anchor_image_prompt": "Cutaway-style keyframe in premium stylized East Asian CG / cinematic donghua-inspired 3D, showing Zhang Xue seated in a dim pit wall or telemetry station at Portimão, his face lit by a cold telemetry screen while the racing scene of the red and silver Z XMOTO 820RR-RS appears as a bright slice beside him. Keep the screen readable as race telemetry, not an office monitor, and make his expression tense and focused under the headphone band. The composition should contrast the cool data glow with the speed and heat of the track, turning mechanical sound into a visible pressure on his face and posture."
+    },
+    {
+      "prompt_id": "a011",
+      "beat_id": "beat_011",
+      "linked_assets": [
+        "char_debise",
+        "env_portimao_track",
+        "veh_zxmoto_820rr_rs",
+        "wardrobe_debise_racing_suit",
+        "state_variant_820rr_rs_win"
+      ],
+      "shot_size": "racing telephoto",
+      "subject": "Debise与820RR-RS在最后一圈发卡弯前完成超车",
+      "environment": "波尔蒂芒赛道发卡弯、护栏、观众席与终点线连续排布",
+      "main_object": "红银820RR-RS压弯后的车身与内线",
+      "composition": "弯角内外线形成强对比，车身压低切入内线，对手被挤在外侧，护栏与观众席压缩速度通道",
+      "lighting": "强烈赛道日光，轮胎和金属有锐利高光，速度感清晰",
+      "visible_state": "车身压下、前轮指向内线，胜负几乎贴着弯心发生",
+      "style": "premium stylized East Asian CG / cinematic donghua-inspired 3D",
+      "anchor_image_prompt": "Telephoto racing keyframe in premium stylized East Asian CG / cinematic donghua-inspired 3D, showing the red and silver Z XMOTO 820RR-RS leaned hard into a Portimão hairpin on the final lap, Debise tight behind the windscreen as the bike slices the inside line and forces the rival wide. Keep the motorcycle and rider fully readable as a two-wheel racing bike, with the front wheel pointed into the apex, the rear tire loaded, and the guardrails and crowd compressing the speed channel around them. The moment should feel like a decisive, razor-sharp overtake frozen at maximum tension before the bike stands up and exits."
+    },
+    {
+      "prompt_id": "a012",
+      "beat_id": "beat_012",
+      "linked_assets": [
+        "char_zhangxue_adult",
+        "char_zhangxue_young",
+        "env_zxmoto_factory_night",
+        "veh_zxmoto_820rr_rs",
+        "prop_spotlight",
+        "wardrobe_adult_zhangxue_workwear",
+        "wardrobe_young_zhangxue_rain",
+        "state_variant_zhangxue_young_muddy",
+        "state_variant_820rr_rs_display"
+      ],
+      "shot_size": "medium wide",
+      "subject": "39岁的张雪停步，与19岁的泥泞少年自己隔空对视",
+      "environment": "2026年4月的Z XMOTO工厂夜景，空旷黑暗，聚光灯圈住冠军车",
+      "main_object": "夺冠后的820RR-RS与聚光灯形成的光圈",
+      "composition": "成年张雪在一侧停下，少年幽灵站在冠军车旁，两个时间的自己被大面积黑暗分隔并对望",
+      "lighting": "单束聚光灯照亮摩托车和两人之间的空隙，其余空间压黑",
+      "visible_state": "成年张雪整洁工装，少年张雪依旧雨夜泥泞、湿透发抖，时间差一眼可辨",
+      "style": "premium stylized East Asian CG / cinematic donghua-inspired 3D",
+      "anchor_image_prompt": "Medium wide keyframe in premium stylized East Asian CG / cinematic donghua-inspired 3D, set inside a quiet Z XMOTO factory at night. A bright spotlight isolates the champion red and silver 820RR-RS in the center, while 39-year-old Zhang Xue in clean workwear stops on one side and faces his 19-year-old muddy self, who appears as a faint, rain-soaked figure near the bike. Keep the younger Zhang Xue visibly drenched, trembling, and covered in mud, while the older version remains calm and composed. Use large areas of black negative space to separate the two versions of him and make the reunion feel uncanny and emotionally charged."
+    },
+    {
+      "prompt_id": "a013",
+      "beat_id": "beat_013",
+      "linked_assets": [
+        "char_zhangxue_adult",
+        "char_zhangxue_young",
+        "env_zxmoto_factory_night",
+        "veh_zxmoto_820rr_rs",
+        "prop_spotlight",
+        "wardrobe_adult_zhangxue_workwear",
+        "wardrobe_young_zhangxue_rain",
+        "state_variant_zhangxue_young_muddy",
+        "state_variant_820rr_rs_display"
+      ],
+      "shot_size": "close-up",
+      "subject": "成年张雪低声对少年自己说“继续走下去”",
+      "environment": "同一座工厂夜景，聚光灯仍照着冠军车，背景保持黑暗空旷",
+      "main_object": "成年张雪的侧脸与少年张雪安静聆听的神情",
+      "composition": "近景压缩两人距离，焦点落在成年张雪的口型和少年张雪的眼神上，背景保持虚空",
+      "lighting": "聚光灯边缘光勾出轮廓，面部只保留克制的高光",
+      "visible_state": "成年张雪神情轻但稳定，少年张雪肩膀略微放松，像终于被接住",
+      "style": "premium stylized East Asian CG / cinematic donghua-inspired 3D",
+      "anchor_image_prompt": "Close-up keyframe in premium stylized East Asian CG / cinematic donghua-inspired 3D, with older Zhang Xue in clean workwear speaking softly to his younger muddy self inside the dark factory. Keep the focus on the older Zhang Xue’s side profile and mouth as he says the line, while the younger Zhang Xue listens quietly in the foreground with softened shoulders. The spotlight should still rim the champion 820RR-RS behind them, but the background must remain mostly black and empty so the emotional weight sits entirely on their faces and the narrow space between them."
+    },
+    {
+      "prompt_id": "a014",
+      "beat_id": "beat_014",
+      "linked_assets": [
+        "env_zxmoto_factory_night",
+        "prop_spotlight"
+      ],
+      "shot_size": "aerial wide",
+      "subject": "重庆城市灯火与夜空的纵深连接",
+      "environment": "工厂、重庆夜景、地平线与星空逐渐连成一体",
+      "main_object": "城市灯点与星光在同一条斜线上的交汇",
+      "composition": "以大面积黑夜为底，城市灯海在下，星光在上，镜头抽离后形成稀疏而明确的纵深线条",
+      "lighting": "夜色主导，城市点光与星点形成两端呼应",
+      "visible_state": "工厂和人物已经缩小融入城市，画面从事件收束成余韵",
+      "style": "premium stylized East Asian CG / cinematic donghua-inspired 3D",
+      "anchor_image_prompt": "Aerial wide keyframe in premium stylized East Asian CG / cinematic donghua-inspired 3D, pulled far back above the Z XMOTO factory and the Chongqing nightscape so that the city lights and the starry sky align along a single gentle diagonal. The factory, people, and champion motorcycle should feel tiny and absorbed into the larger field of darkness, while scattered city lights below and stars above create a quiet visual bridge. Keep the night overwhelmingly black, with only sparse but distinct points of light leading the eye from the industrial ground up to the horizon and into the sky, ending on an expansive, transcendental note."
+    }
+  ]
+}

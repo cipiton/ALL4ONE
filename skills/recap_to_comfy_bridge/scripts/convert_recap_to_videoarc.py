@@ -1,30 +1,67 @@
 from __future__ import annotations
 
 import json
+import os
 import re
 from pathlib import Path
 from typing import Any
 
-from engine.input_loader import read_text_with_fallbacks
-from engine.writer import safe_stem, write_json_file
-
-
-REQUIRED_SOURCE_FILES = (
-    "02_assets.txt",
-    "03_image_config.txt",
-    "04_episode_scene_script.json",
+from engine.llm_client import (
+    call_chat_completion,
+    describe_model_route,
+    load_config_from_env,
+    parse_json_response,
 )
-SECTION_LABELS = {
-    "角色": "characters",
-    "场景": "scenes",
-    "道具": "props",
+from engine.input_loader import read_text_with_fallbacks
+from engine.models import PromptMessage
+from engine.recap_structured_outputs import (
+    assets_payload_to_bridge_summary,
+    image_config_payload_to_bridge_entries,
+    parse_asset_summary,
+    parse_image_config_text,
+)
+from engine.writer import write_json_file
+
+
+BAD_ASSET_LAYOUT_PATTERNS = (
+    r"头部正面特写布局在左边[，,、\s]*",
+    r"正面/侧面/背面全身三视图布局在右边[，,、\s]*",
+    r"全部集中在一张图片输出",
+    r"全部集中在一张图输出",
+    r"集中放在同一张图输出",
+    r"2-4不同角度展示并标注好角度[，,、\s]*",
+    r"正面和背面两个角度展示并标注好角度[，,、\s]*",
+    r"标注好角度",
+    r"标注角度",
+    r"三视图",
+    r"多视图",
+    r"多角度",
+    r"同一张图",
+    r"拼贴",
+    r"分格",
+    r"转面图",
+    r"转身图",
+    r"角色设定图",
+    r"character\s+sheet",
+    r"model\s+sheet",
+    r"turnaround\s+sheet",
+    r"contact[-\s]+sheet",
+    r"multi[-\s]+angle",
+    r"multi[-\s]+view",
+    r"three[-\s]+view",
+    r"split\s+panels?",
+    r"collage",
+    r"inset\s+poses?",
+    r"labeled\s+angles?",
+)
+QWEN_PROMPT_COMPILER_MODEL_ALIAS = "qwen"
+QWEN_PROMPT_COMPILER_VERSION = "qwen_asset_prompt_compiler_v1"
+ASSET_GROUPS = ("characters", "scenes", "props")
+ASSET_TYPE_BY_GROUP = {
+    "characters": "character",
+    "scenes": "scene",
+    "props": "prop",
 }
-ASSET_SUMMARY_PATTERNS = {
-    "characters": re.compile(r"^\s*角色[:：]\s*(.+)\s*$"),
-    "scenes": re.compile(r"^\s*场景[:：]\s*(.+)\s*$"),
-    "props": re.compile(r"^\s*道具[:：]\s*(.+)\s*$"),
-}
-COMMA_SPLIT_RE = re.compile(r"[，,、]\s*")
 
 
 def run(
@@ -37,20 +74,36 @@ def run(
     runtime_values: dict[str, Any],
     state,
 ) -> dict[str, Any]:
-    del repo_root, skill, step_number, runtime_values, state
+    del step_number, runtime_values, state
 
     source_bundle = resolve_source_bundle(document.path)
-    assets_text = read_text_with_fallbacks(source_bundle["assets"])
-    image_config_text = read_text_with_fallbacks(source_bundle["image_config"])
     storyboard_payload = json.loads(read_text_with_fallbacks(source_bundle["scene_script_json"]))
+    assets_payload = _load_optional_json(source_bundle.get("assets_json"))
+    image_config_payload = _load_optional_json(source_bundle.get("image_config_json"))
 
-    asset_summary = parse_asset_summary(assets_text)
-    image_config = parse_image_config(image_config_text)
+    if assets_payload is not None:
+        asset_summary = assets_payload_to_bridge_summary(assets_payload)
+    else:
+        assets_text = read_text_with_fallbacks(source_bundle["assets"])
+        asset_summary = parse_asset_summary(assets_text)
+
+    if image_config_payload is not None:
+        image_config = image_config_payload_to_bridge_entries(image_config_payload)
+    else:
+        image_config_text = read_text_with_fallbacks(source_bundle["image_config"])
+        image_config = parse_image_config_text(image_config_text)
+
     asset_catalog = build_videoarc_assets_payload(
         source_bundle=source_bundle,
         asset_summary=asset_summary,
         image_config=image_config,
         storyboard_payload=storyboard_payload,
+        assets_payload=assets_payload,
+    )
+    compiler_summary = compile_asset_prompts_with_qwen(
+        repo_root=repo_root,
+        skill=skill,
+        asset_catalog=asset_catalog,
     )
     storyboard = build_videoarc_storyboard_payload(
         source_bundle=source_bundle,
@@ -61,8 +114,10 @@ def run(
         source_bundle=source_bundle,
         asset_catalog=asset_catalog,
         storyboard=storyboard,
+        compiler_summary=compiler_summary,
     )
 
+    canonical_assets_path = write_json_file(output_dir, "assets.json", asset_catalog)
     assets_path = write_json_file(output_dir, "videoarc_assets.json", asset_catalog)
     storyboard_path = write_json_file(output_dir, "videoarc_storyboard.json", storyboard)
     summary_path = write_json_file(output_dir, "bridge_summary.json", summary)
@@ -71,14 +126,16 @@ def run(
         "primary_output": summary_path,
         "output_files": {
             "primary": summary_path,
+            "assets": canonical_assets_path,
             "bridge_summary": summary_path,
             "videoarc_assets": assets_path,
             "videoarc_storyboard": storyboard_path,
         },
         "notes": [
             f"Source recap folder: {source_bundle['source_dir']}",
-            f"Generated {assets_path.name}, {storyboard_path.name}, and {summary_path.name}.",
+            f"Generated {canonical_assets_path.name}, {assets_path.name}, {storyboard_path.name}, and {summary_path.name}.",
             f"Episodes: {summary['episode_count']} | Scene beats: {summary['scene_beat_count']}",
+            compiler_summary.get("note", ""),
         ],
         "status": "completed",
     }
@@ -88,128 +145,36 @@ def resolve_source_bundle(input_path: Path) -> dict[str, Path]:
     candidate = input_path.resolve()
     if candidate.name != "04_episode_scene_script.json":
         raise ValueError(
-            "This bridge skill expects the recap bundle's top-level "
-            "`04_episode_scene_script.json` as the resolved input. "
-            f"Received: {candidate.name}"
+            "Recap To Comfy Bridge expects either the `02_recap_production` folder "
+            "(resolved by the shared runtime) or the file `02_recap_production/04_episode_scene_script.json`. "
+            f"Received unsupported file: {candidate.name}"
         )
 
     source_dir = candidate.parent
     resolved = {
         "source_dir": source_dir,
         "assets": source_dir / "02_assets.txt",
+        "assets_json": source_dir / "02_assets.json",
         "image_config": source_dir / "03_image_config.txt",
+        "image_config_json": source_dir / "03_image_config.json",
         "scene_script_json": source_dir / "04_episode_scene_script.json",
     }
-    missing = [name for name, path in resolved.items() if name != "source_dir" and not path.exists()]
+    missing: list[str] = []
+    if not resolved["scene_script_json"].exists():
+        missing.append("scene_script_json")
+    if not resolved["assets"].exists() and not resolved["assets_json"].exists():
+        missing.append("assets")
+    if not resolved["image_config"].exists() and not resolved["image_config_json"].exists():
+        missing.append("image_config")
     if missing:
         missing_labels = ", ".join(sorted(missing))
         raise ValueError(
-            "Required recap_production files are missing from "
-            f"{source_dir}: {missing_labels}"
+            "The recap bundle is incomplete. "
+            "Please provide the `02_recap_production` folder or its "
+            "`04_episode_scene_script.json` file, and make sure the sibling recap files exist. "
+            f"Missing from {source_dir}: {missing_labels}"
         )
     return resolved
-
-
-def parse_asset_summary(text: str) -> dict[str, list[str]]:
-    summary = {"characters": [], "scenes": [], "props": []}
-    for raw_line in text.replace("\r\n", "\n").split("\n"):
-        line = raw_line.strip()
-        if not line:
-            continue
-        for key, pattern in ASSET_SUMMARY_PATTERNS.items():
-            match = pattern.match(line)
-            if not match:
-                continue
-            summary[key] = [
-                item.strip()
-                for item in COMMA_SPLIT_RE.split(match.group(1).strip())
-                if item.strip()
-            ]
-    return summary
-
-
-def parse_image_config(text: str) -> dict[str, list[dict[str, Any]]]:
-    normalized_lines = [line.strip() for line in text.replace("\r\n", "\n").split("\n") if line.strip()]
-    parsed = {"characters": [], "scenes": [], "props": []}
-    current_section: str | None = None
-    index = 0
-
-    while index < len(normalized_lines):
-        line = normalized_lines[index]
-        if line in SECTION_LABELS:
-            current_section = SECTION_LABELS[line]
-            index += 1
-            continue
-
-        if current_section is None:
-            index += 1
-            continue
-
-        if not re.fullmatch(r"\d+", line):
-            index += 1
-            continue
-
-        order = int(line)
-        index += 1
-        if index >= len(normalized_lines):
-            break
-        name = normalized_lines[index]
-        index += 1
-
-        body_lines: list[str] = []
-        while index < len(normalized_lines):
-            candidate = normalized_lines[index]
-            if candidate in SECTION_LABELS:
-                break
-            if re.fullmatch(r"\d+", candidate):
-                break
-            body_lines.append(candidate)
-            index += 1
-
-        parsed[current_section].append(parse_image_config_entry(current_section, order, name, body_lines))
-
-    return parsed
-
-
-def parse_image_config_entry(section: str, order: int, name: str, body_lines: list[str]) -> dict[str, Any]:
-    prompt_fields: dict[str, str] = {}
-    voice_label = ""
-    voice_text = ""
-    prompt_lines: list[str] = []
-
-    index = 0
-    while index < len(body_lines):
-        line = body_lines[index]
-        if line.endswith("音色") and index + 1 < len(body_lines):
-            voice_label = line
-            voice_text = body_lines[index + 1]
-            index += 2
-            continue
-
-        key, value = split_field_line(line)
-        if key is not None:
-            prompt_fields[key] = value
-        prompt_lines.append(line)
-        index += 1
-
-    prompt_text = "\n".join(prompt_lines).strip()
-    return {
-        "order": order,
-        "name": name,
-        "asset_id": f"{section[:-1]}_{safe_stem(name)}",
-        "prompt_text": prompt_text,
-        "prompt_fields": prompt_fields,
-        "voice_label": voice_label,
-        "voice_text": voice_text,
-        "raw_lines": list(body_lines),
-    }
-
-
-def split_field_line(line: str) -> tuple[str | None, str]:
-    match = re.match(r"^([^:：]+)[:：]\s*(.*)$", line)
-    if not match:
-        return None, line
-    return match.group(1).strip(), match.group(2).strip()
 
 
 def build_videoarc_assets_payload(
@@ -218,22 +183,31 @@ def build_videoarc_assets_payload(
     asset_summary: dict[str, list[str]],
     image_config: dict[str, list[dict[str, Any]]],
     storyboard_payload: dict[str, Any],
+    assets_payload: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     ordered_characters = order_assets(image_config["characters"], asset_summary["characters"])
     ordered_scenes = order_assets(image_config["scenes"], asset_summary["scenes"])
     ordered_props = order_assets(image_config["props"], asset_summary["props"])
+    enriched_lookup = _build_enriched_asset_lookup(assets_payload)
 
     style_hint = detect_style_hint(ordered_characters, ordered_scenes, ordered_props)
-    series_title = str(storyboard_payload.get("series_title") or source_bundle["source_dir"].name)
+    series_title = str(
+        storyboard_payload.get("series_title")
+        or (assets_payload or {}).get("series_title")
+        or source_bundle["source_dir"].name
+    )
 
     return {
         "schema": "videoarc_assets_v1",
         "bridge_source": "recap_production",
         "series_title": series_title,
         "source_folder": str(source_bundle["source_dir"]),
+        "style_preset": (assets_payload or {}).get("style_preset"),
         "source_files": {
             "assets": str(source_bundle["assets"]),
+            "assets_json": str(source_bundle["assets_json"]) if source_bundle["assets_json"].exists() else None,
             "image_config": str(source_bundle["image_config"]),
+            "image_config_json": str(source_bundle["image_config_json"]) if source_bundle["image_config_json"].exists() else None,
             "scene_script_json": str(source_bundle["scene_script_json"]),
         },
         "style_hint": style_hint,
@@ -242,9 +216,9 @@ def build_videoarc_assets_payload(
             "scenes": len(ordered_scenes),
             "props": len(ordered_props),
         },
-        "characters": [build_asset_record("character", entry) for entry in ordered_characters],
-        "scenes": [build_asset_record("scene", entry) for entry in ordered_scenes],
-        "props": [build_asset_record("prop", entry) for entry in ordered_props],
+        "characters": [build_asset_record("character", entry, enriched_lookup=enriched_lookup) for entry in ordered_characters],
+        "scenes": [build_asset_record("scene", entry, enriched_lookup=enriched_lookup) for entry in ordered_scenes],
+        "props": [build_asset_record("prop", entry, enriched_lookup=enriched_lookup) for entry in ordered_props],
     }
 
 
@@ -280,24 +254,265 @@ def detect_style_hint(*groups: list[dict[str, Any]]) -> str:
     return ""
 
 
-def build_asset_record(kind: str, entry: dict[str, Any]) -> dict[str, Any]:
-    prompt_fields = dict(entry.get("prompt_fields", {}))
+def build_asset_record(kind: str, entry: dict[str, Any], *, enriched_lookup: dict[str, dict[str, Any]]) -> dict[str, Any]:
+    prompt_fields = _sanitize_prompt_fields(dict(entry.get("prompt_fields", {})))
+    enriched_entry = _match_enriched_asset(enriched_lookup, entry)
+    raw_lines = entry.get("source_text_lines") or entry.get("raw_lines", [])
     return {
         "asset_id": entry.get("asset_id"),
         "name": entry.get("name"),
         "kind": kind,
         "order": entry.get("order"),
-        "prompt": entry.get("prompt_text", ""),
+        "prompt": _sanitize_layout_text(entry.get("prompt") or entry.get("prompt_text", "")),
+        "prompt_fields": prompt_fields,
         "style_lighting": prompt_fields.get("风格及光线", ""),
         "output_requirements": prompt_fields.get("输出要求", ""),
         "subject_content": prompt_fields.get("主体内容", ""),
         "core_feature": prompt_fields.get("核心特征", ""),
         "voice": entry.get("voice_text", ""),
+        "description": enriched_entry.get("description") if enriched_entry else "",
+        "role": enriched_entry.get("role") if enriched_entry else None,
+        "personality_traits": enriched_entry.get("personality_traits") if enriched_entry else None,
         "source": {
-            "type": "03_image_config.txt",
-            "raw_lines": entry.get("raw_lines", []),
+            "type": "03_image_config.json" if entry.get("source_text_lines") else "03_image_config.txt",
+            "raw_lines": [_sanitize_layout_text(line) for line in raw_lines if _sanitize_layout_text(line)],
         },
     }
+
+
+def compile_asset_prompts_with_qwen(
+    *,
+    repo_root: Path,
+    skill,
+    asset_catalog: dict[str, Any],
+) -> dict[str, Any]:
+    if _env_flag_disabled("ONE4ALL_QWEN_ASSET_PROMPT_COMPILER"):
+        return {
+            "enabled": False,
+            "model_alias": QWEN_PROMPT_COMPILER_MODEL_ALIAS,
+            "version": QWEN_PROMPT_COMPILER_VERSION,
+            "success_count": 0,
+            "failure_count": 0,
+            "note": "Qwen prompt compiler disabled by ONE4ALL_QWEN_ASSET_PROMPT_COMPILER=0.",
+        }
+
+    try:
+        config = load_config_from_env(
+            repo_root,
+            skill=skill,
+            model_override=QWEN_PROMPT_COMPILER_MODEL_ALIAS,
+        )
+        route_description = describe_model_route(
+            repo_root,
+            skill=skill,
+            model_override=QWEN_PROMPT_COMPILER_MODEL_ALIAS,
+        )
+    except Exception as exc:  # noqa: BLE001
+        detail = str(exc).strip() or exc.__class__.__name__
+        return {
+            "enabled": False,
+            "model_alias": QWEN_PROMPT_COMPILER_MODEL_ALIAS,
+            "version": QWEN_PROMPT_COMPILER_VERSION,
+            "success_count": 0,
+            "failure_count": _asset_count(asset_catalog),
+            "note": f"Qwen prompt compiler unavailable; deterministic bridge fields retained. {detail}",
+            "error": detail,
+        }
+
+    success_count = 0
+    failure_count = 0
+    errors: list[dict[str, str]] = []
+    compiled_model = config.model
+
+    for group_name in ASSET_GROUPS:
+        for asset in asset_catalog.get(group_name, []) or []:
+            if not isinstance(asset, dict):
+                continue
+            asset_type = ASSET_TYPE_BY_GROUP[group_name]
+            try:
+                compiled = compile_single_asset_prompt_with_qwen(
+                    config=config,
+                    asset=asset,
+                    asset_type=asset_type,
+                    asset_catalog=asset_catalog,
+                )
+            except Exception as exc:  # noqa: BLE001
+                failure_count += 1
+                detail = str(exc).strip() or exc.__class__.__name__
+                errors.append(
+                    {
+                        "asset_id": str(asset.get("asset_id") or ""),
+                        "name": str(asset.get("name") or ""),
+                        "error": detail,
+                    }
+                )
+                continue
+
+            asset["compiled_prompt"] = compiled["compiled_prompt"]
+            asset["compiled_prompt_model"] = compiled.get("model") or compiled_model
+            asset["compiled_prompt_version"] = QWEN_PROMPT_COMPILER_VERSION
+            asset["compiled_prompt_source"] = "qwen_prompt_compiler"
+            asset["compiled_from_fields"] = compiled["compiled_from_fields"]
+            if compiled.get("rationale"):
+                asset["compiled_prompt_rationale"] = compiled["rationale"]
+            success_count += 1
+
+    note = (
+        f"Qwen prompt compiler route: {route_description}; "
+        f"compiled {success_count} asset prompt(s), {failure_count} fallback(s)."
+    )
+    return {
+        "enabled": True,
+        "model_alias": QWEN_PROMPT_COMPILER_MODEL_ALIAS,
+        "model": compiled_model,
+        "route": route_description,
+        "version": QWEN_PROMPT_COMPILER_VERSION,
+        "success_count": success_count,
+        "failure_count": failure_count,
+        "errors": errors[:10],
+        "note": note,
+    }
+
+
+def compile_single_asset_prompt_with_qwen(
+    *,
+    config,
+    asset: dict[str, Any],
+    asset_type: str,
+    asset_catalog: dict[str, Any],
+) -> dict[str, Any]:
+    fields = _asset_prompt_compiler_fields(asset, asset_type, asset_catalog)
+    response = call_chat_completion(
+        config,
+        build_prompt_compiler_messages(fields),
+        json_mode=True,
+        temperature=0.0,
+    )
+    payload = parse_json_response(response)
+    compiled_prompt = _sanitize_layout_text(payload.get("compiled_prompt"))
+    if len(compiled_prompt) < 40:
+        raise ValueError("Qwen compiler returned an empty or too-short compiled_prompt.")
+    return {
+        "compiled_prompt": compiled_prompt,
+        "rationale": _sanitize_layout_text(payload.get("rationale")),
+        "compiled_from_fields": fields["compiled_from_fields"],
+        "model": response.model,
+    }
+
+
+def build_prompt_compiler_messages(fields: dict[str, Any]) -> list[PromptMessage]:
+    schema = {
+        "compiled_prompt": "single final Z-Image prompt string",
+        "rationale": "optional short debug note, 1 sentence max",
+    }
+    return [
+        PromptMessage(
+            role="system",
+            content=(
+                "You are the ONE4ALL recap_to_comfy_bridge asset prompt compiler. "
+                "Compile one final image generation prompt for Z-Image from the provided structured asset data. "
+                "You are not a story writer. Preserve the asset identity, age, role, object category, scene meaning, "
+                "and all important visual facts. Do not invent story facts, new people, new brands, new locations, "
+                "or new props. Return only a JSON object matching the requested schema.\n\n"
+                "Hard layout rules: generate a single clean asset image prompt. Forbid and omit multi-angle sheets, "
+                "three-view layouts, contact sheets, collages, split panels, inset poses, turnaround sheets, "
+                "labeled angles, diagrams, and all-in-one board layouts. Also omit these phrases if they appear in "
+                "legacy source data: 三视图, 正面/侧面/背面, 2-4不同角度, 多角度展示, 集中放在同一张图输出.\n\n"
+                "Style rules: strongly follow style_preset and style_hint. For 2D, explicitly use high-quality "
+                "anime style / 动漫风格 2D animated illustration language, refined anime linework, controlled clean "
+                "line art, polished cel-shaded or painterly animated coloring, stylized illustrated design, and "
+                "non-photorealistic wording. Avoid photorealistic render, realistic 3D render, product render, "
+                "studio product photo, glossy catalog shot, and live-action photography. For 3D, use stylized 3D CG "
+                "animated render language. Tailor the prompt to asset_type: character, scene, or prop."
+            ),
+        ),
+        PromptMessage(
+            role="user",
+            content=(
+                "Compile the following structured asset into one final Z-Image prompt.\n"
+                "Output JSON schema:\n"
+                f"{json.dumps(schema, ensure_ascii=False, indent=2)}\n\n"
+                "Structured asset data:\n"
+                f"{json.dumps(fields, ensure_ascii=False, indent=2)}"
+            ),
+        ),
+    ]
+
+
+def _asset_prompt_compiler_fields(
+    asset: dict[str, Any],
+    asset_type: str,
+    asset_catalog: dict[str, Any],
+) -> dict[str, Any]:
+    source = asset.get("source") if isinstance(asset.get("source"), dict) else {}
+    prompt_fields = asset.get("prompt_fields") if isinstance(asset.get("prompt_fields"), dict) else {}
+    fields = {
+        "asset_type": asset_type,
+        "asset_id": asset.get("asset_id"),
+        "name": asset.get("name"),
+        "style_preset": _first_non_empty(asset.get("style_preset"), asset_catalog.get("style_preset")),
+        "style_hint": _first_non_empty(asset.get("style_hint"), asset_catalog.get("style_hint")),
+        "style_lighting": asset.get("style_lighting"),
+        "core_feature": asset.get("core_feature"),
+        "subject_content": asset.get("subject_content"),
+        "description": asset.get("description"),
+        "role": asset.get("role"),
+        "personality_traits": asset.get("personality_traits"),
+        "prompt_fields": prompt_fields,
+        "source_raw_lines": source.get("raw_lines") if isinstance(source.get("raw_lines"), list) else [],
+        "fallback_prompt": asset.get("prompt"),
+    }
+    fields["compiled_from_fields"] = [
+        key
+        for key, value in fields.items()
+        if key != "compiled_from_fields" and value not in (None, "", [], {})
+    ]
+    return fields
+
+
+def _asset_count(asset_catalog: dict[str, Any]) -> int:
+    return sum(
+        len(asset_catalog.get(group_name, []) or [])
+        for group_name in ASSET_GROUPS
+        if isinstance(asset_catalog.get(group_name, []) or [], list)
+    )
+
+
+def _env_flag_disabled(name: str) -> bool:
+    value = str(os.environ.get(name) or "").strip().lower()
+    return value in {"0", "false", "no", "off", "disabled"}
+
+
+def _first_non_empty(*values: Any) -> str:
+    for value in values:
+        if value in (None, "", [], {}):
+            continue
+        text = str(value).strip()
+        if text:
+            return text
+    return ""
+
+
+def _sanitize_prompt_fields(prompt_fields: dict[str, Any]) -> dict[str, str]:
+    sanitized: dict[str, str] = {}
+    for key, value in prompt_fields.items():
+        text = _sanitize_layout_text(value)
+        if text:
+            sanitized[str(key)] = text
+    return sanitized
+
+
+def _sanitize_layout_text(value: Any) -> str:
+    if value in (None, ""):
+        return ""
+    text = str(value).strip()
+    for pattern in BAD_ASSET_LAYOUT_PATTERNS:
+        text = re.sub(pattern, "", text, flags=re.IGNORECASE)
+    text = re.sub(r"\b(no|without)\s+([.,;])", r"\2", text, flags=re.IGNORECASE)
+    text = re.sub(r"\s{2,}", " ", text)
+    text = re.sub(r"\s*([，,、;；])\s*([.。])", r"\2", text)
+    text = re.sub(r"([，,、;；]){2,}", r"\1", text)
+    return text.strip(" ，,、;；")
 
 
 def build_videoarc_storyboard_payload(
@@ -428,6 +643,7 @@ def build_bridge_summary(
     source_bundle: dict[str, Path],
     asset_catalog: dict[str, Any],
     storyboard: dict[str, Any],
+    compiler_summary: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     return {
         "schema": "videoarc_bridge_summary_v1",
@@ -435,10 +651,13 @@ def build_bridge_summary(
         "source_folder": str(source_bundle["source_dir"]),
         "files_found": {
             "02_assets.txt": str(source_bundle["assets"]),
+            "02_assets.json": str(source_bundle["assets_json"]) if source_bundle["assets_json"].exists() else None,
             "03_image_config.txt": str(source_bundle["image_config"]),
+            "03_image_config.json": str(source_bundle["image_config_json"]) if source_bundle["image_config_json"].exists() else None,
             "04_episode_scene_script.json": str(source_bundle["scene_script_json"]),
         },
         "files_generated": [
+            "assets.json",
             "videoarc_assets.json",
             "videoarc_storyboard.json",
             "bridge_summary.json",
@@ -447,4 +666,38 @@ def build_bridge_summary(
         "episode_count": storyboard.get("episode_count", 0),
         "scene_beat_count": storyboard.get("scene_beat_count", 0),
         "asset_counts": dict(asset_catalog.get("counts", {})),
+        "qwen_prompt_compiler": compiler_summary or {},
     }
+
+
+def _load_optional_json(path: Path | None) -> dict[str, Any] | None:
+    if path is None or not path.exists():
+        return None
+    return json.loads(read_text_with_fallbacks(path))
+
+
+def _build_enriched_asset_lookup(payload: dict[str, Any] | None) -> dict[str, dict[str, Any]]:
+    lookup: dict[str, dict[str, Any]] = {}
+    if not isinstance(payload, dict):
+        return lookup
+    for group_name in ("characters", "scenes", "props"):
+        for item in payload.get(group_name, []) or []:
+            if not isinstance(item, dict):
+                continue
+            asset_id = str(item.get("asset_id") or "").strip()
+            name = str(item.get("name") or "").strip()
+            if asset_id:
+                lookup[f"id:{asset_id}"] = item
+            if name:
+                lookup[f"name:{name}"] = item
+    return lookup
+
+
+def _match_enriched_asset(lookup: dict[str, dict[str, Any]], entry: dict[str, Any]) -> dict[str, Any] | None:
+    asset_id = str(entry.get("asset_id") or "").strip()
+    name = str(entry.get("name") or "").strip()
+    if asset_id and f"id:{asset_id}" in lookup:
+        return lookup[f"id:{asset_id}"]
+    if name and f"name:{name}" in lookup:
+        return lookup[f"name:{name}"]
+    return None

@@ -1,0 +1,12 @@
+{
+  "schema": "flux_asset_then_keyscene_manifest_v1",
+  "timestamp": "2026-04-16T09:03:09.372423+00:00",
+  "input_folder": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\OUTPUTSSAVED\\REAL\\02_recap_production",
+  "mode": "asset_then_keyscene",
+  "style_target": "realism",
+  "final_prompt_language": "en",
+  "asset_manifest": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets\\manifest.json",
+  "keyscene_manifest": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_keyscenes\\manifest.json",
+  "asset_output_root": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_assets",
+  "keyscene_output_root": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260416_164548\\generated_keyscenes"
+}

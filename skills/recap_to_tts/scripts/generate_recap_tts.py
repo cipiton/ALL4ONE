@@ -13,6 +13,7 @@ from typing import Any
 
 from engine.llm_client import call_chat_completion, describe_model_route, load_config_from_env, parse_json_response
 from engine.models import PromptMessage
+from engine.output_paths import resolve_story_title_from_path
 from engine.writer import safe_stem
 
 
@@ -172,10 +173,10 @@ def run(
     tts_python = resolve_tts_python_executable(repo_root)
     runner_script = resolve_tts_runner_script(repo_root)
     analysis_config, analysis_notes = initialize_episode_analysis(repo_root, skill)
-    analysis_cache_dir = output_dir.parent / "_analysis_cache"
+    analysis_cache_dir = output_dir / "_analysis_cache"
 
-    series_output_dir = output_dir / series_title
-    temp_text_dir = output_dir / "temp" / series_title
+    series_output_dir = output_dir
+    temp_text_dir = output_dir / "temp"
     series_output_dir.mkdir(parents=True, exist_ok=True)
     temp_text_dir.mkdir(parents=True, exist_ok=True)
 
@@ -244,8 +245,8 @@ def run(
 
     notes = [
         f"Parsed {len(episodes)} episode(s) from {document.path.name}.",
-        f"Generated {len(manifest_episodes)} WAV file(s) under {series_output_dir.name}/.",
-        f"Wrote per-episode text files under temp/{series_title}/.",
+        f"Generated {len(manifest_episodes)} WAV file(s) under {series_output_dir}.",
+        f"Wrote per-episode text files under {temp_text_dir}.",
         f"Qwen runner: {runner_script}",
     ]
     notes.extend(analysis_notes)
@@ -264,6 +265,12 @@ def run(
 
 
 def derive_series_title(document_path: Path) -> str:
+    story_title = resolve_story_title_from_path(document_path)
+    if story_title:
+        sanitized = safe_stem(story_title)
+        if sanitized:
+            return sanitized
+
     parent_name = document_path.parent.name.strip()
     if parent_name:
         match = TIMESTAMPED_FOLDER_RE.match(parent_name)

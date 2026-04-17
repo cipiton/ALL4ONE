@@ -1,0 +1,4 @@
+interface:
+  display_name: "LTX Video Skill"
+  short_description: "Generate LTX-ready shot prompts from recap beats."
+  default_prompt: "Use $ltx-video-skill to read a recap production folder, extract episode beats, and save structured LTX-ready video prompts with the configured Gemini alias."

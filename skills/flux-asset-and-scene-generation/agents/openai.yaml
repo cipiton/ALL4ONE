@@ -1,0 +1,4 @@
+interface:
+  display_name: "FLUX Asset and Scene Generation"
+  short_description: "Agentic FLUX workflow for recap-production and cp-production bundles."
+  default_prompt: "Use $flux-asset-and-scene-generation to normalize the recap-production or cp-production bundle, decide whether the safest run is assets, keyscenes, or assets then keyscenes, author the final FLUX klein prose prompt from the skill references, preserve continuity, and execute the local FLUX generation workflow."

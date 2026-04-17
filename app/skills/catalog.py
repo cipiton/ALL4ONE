@@ -6,6 +6,7 @@ from typing import Any
 import yaml
 
 from engine.app_paths import get_app_root, get_bundle_root, get_runtime_context
+from engine.config_loader import get_config_value, load_repo_config
 from engine.models import SkillRegistryEntry, resolve_localized_text
 from engine.skill_loader import discover_skills
 
@@ -46,6 +47,7 @@ class SkillCatalog:
             entries = _load_registry_entries(resource_root, registry_path)
         else:
             entries = _build_legacy_entries(resource_root)
+        entries = _apply_skill_visibility_filters(repo_root, entries)
 
         adapters: list[SkillAdapter] = []
         seen_ids: set[str] = set()
@@ -170,6 +172,28 @@ def _build_legacy_entries(repo_root: Path) -> list[SkillRegistryEntry]:
     return entries
 
 
+def _apply_skill_visibility_filters(repo_root: Path, entries: list[SkillRegistryEntry]) -> list[SkillRegistryEntry]:
+    parser = load_repo_config(get_app_root(repo_root))
+    visible_ids = _parse_skill_id_list(get_config_value(parser, "skills", "visible_skill_ids", ""))
+    hidden_ids = _parse_skill_id_list(get_config_value(parser, "skills", "hidden_skill_ids", ""))
+
+    if not visible_ids and not hidden_ids:
+        return entries
+
+    visible_lookup = {item.casefold() for item in visible_ids}
+    hidden_lookup = {item.casefold() for item in hidden_ids}
+    filtered: list[SkillRegistryEntry] = []
+
+    for entry in entries:
+        names = {entry.id.casefold(), *(alias.casefold() for alias in entry.aliases)}
+        if visible_lookup and not names.intersection(visible_lookup):
+            continue
+        if hidden_lookup and names.intersection(hidden_lookup):
+            continue
+        filtered.append(entry)
+    return filtered
+
+
 def _require_string(
     raw_entry: dict[str, Any],
     field_name: str,
@@ -182,6 +206,21 @@ def _require_string(
             f"Registry entry #{index} in {registry_path} is missing required field '{field_name}'."
         )
     return str(value)
+
+
+def _parse_skill_id_list(raw_value: str) -> list[str]:
+    cleaned = str(raw_value or "").replace("\r", "\n")
+    values: list[str] = []
+    seen: set[str] = set()
+    for chunk in cleaned.split("\n"):
+        for item in chunk.split(","):
+            token = str(item).strip()
+            lowered = token.casefold()
+            if not token or lowered in seen:
+                continue
+            seen.add(lowered)
+            values.append(token)
+    return values
 
 
 def _resolve_repo_path(repo_root: Path, raw_path: str, *, description: str) -> Path:

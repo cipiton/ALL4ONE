@@ -69,27 +69,47 @@ Run a resumable recap-production workflow.
 Run a broader multi-step novel-to-script production pipeline.  
 运行更宽泛的多步骤小说转剧本生产流水线。
 
-### 4. Novel Adaptation Plan
+### 4. Recap To TTS
+### 解说转配音
+Convert recap scripts into episode-level narration WAV files with the isolated local Qwen TTS runner.  
+将解说稿转换为分集旁白 WAV，并调用隔离的本地 Qwen TTS 运行器。
+
+### 5. Recap To Comfy Bridge
+### 解说桥接到 Comfy
+Stage 04 bridge: convert a `02_recap_production` bundle into canonical `assets.json`, legacy VideoArc-style assets, and storyboard JSON.  
+第 04 阶段桥接：将 `02_recap_production` 产物包转换为规范 `assets.json`、兼容旧链路的 VideoArc 资产 JSON 和 storyboard JSON。  
+
+### 6. Recap To Assets Z-Image
+### 解说资产生图 Z-Image
+Generate character, scene, and prop images from `assets.json` by calling the local Z-Image-Turbo backend.  
+通过调用本地 Z-Image-Turbo，根据 `assets.json` 生成角色、场景和道具图片。
+
+### 7. Recap To Keyscene Kontext
+### 解说关键帧 Kontext
+Generate one keyscene I2I image per storyboard beat by injecting stage-04 storyboard data and stage-05 T2I assets into a ComfyUI Flux Kontext API workflow.  
+通过将第 04 阶段分镜数据与第 05 阶段 T2I 资产注入 ComfyUI Flux Kontext API 工作流，为每个 storyboard beat 生成一张 I2I 关键帧。
+
+### 8. Novel Adaptation Plan
 ### 小说改编计划
 Turn long-form source material into a structured short-drama adaptation plan.  
 将长篇源素材转化为结构化的短剧改编计划。
 
-### 5. Novel-to-Drama Script
+### 9. Novel-to-Drama Script
 ### 小说转短剧脚本
 Generate short-drama episode scripts from the adaptation plan.  
 根据改编计划生成短剧单集脚本。
 
-### 6. Rewriting
+### 10. Rewriting
 ### 重写
 Create a refresh bible and rewrite script text with consistent refreshed characters, objects, and terms.  
 创建刷新设定集并在重写剧本时保持人物、物品和术语的一致性。
 
-### 7. Story Creation
+### 11. Story Creation
 ### 故事创作
 Generate an original microseries story package from a short brief.  
 根据简短的创意梗概生成原创微短剧故事包。
 
-### 8. Large Novel Processor
+### 12. Large Novel Processor
 ### 大体量小说处理器
 Split oversized novel `.txt` files into chapter/chunk outputs plus an index for downstream workflows.  
 将超大容量的小说 `.txt` 文件拆分为章节 / 块，并为下游工作流生成索引。
@@ -240,11 +260,29 @@ The shared runtime handles:
 ### Output roots
 ### 输出根目录
 
-Outputs are usually written under:  
-输出内容通常写入以下路径：
+Outputs are usually written under one of these patterns:  
+输出内容通常写入以下两类路径之一：
 
 ```text
 outputs/<skill>/<job_or_project>/
+outputs/stories/<story_slug>/<run_id>/<stage_folder>/
+```
+
+The recap pipeline now uses the story-first structure so related stages for one story share the same run root.  
+解说流水线现在使用故事优先结构，因此同一故事的相关阶段会共享同一个运行根目录。  
+
+Current recap pipeline stages:  
+当前解说流水线阶段：  
+
+```text
+01_recap_analysis
+02_recap_production
+03_recap_to_tts
+04_recap_to_comfy_bridge
+05_assets_t2i
+06_keyscene_i2i
+07_clips_flf2v
+08_final
 ```
 
 ---
@@ -370,4 +408,3 @@ Rule of thumb:
 
 For long-novel work, the most stable serious workflow is: plan first, generate scripts second, rewrite with a project-scoped refresh bible third.  
 对于严肃的长篇小说任务，最稳健的工作流是：先规划，后生成脚本，最后使用项目级刷新设定集进行重写。
-

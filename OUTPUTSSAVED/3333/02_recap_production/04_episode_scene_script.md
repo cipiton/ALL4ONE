@@ -1,0 +1,639 @@
+# 《泥路到冠军》分集视频场景脚本
+
+## 系列概览
+这是一部围绕张雪创业成长线展开的解说型剧情短片，从湖南山路雨夜里追逐机会的落魄青年，到重庆狭小修理铺里死磕自研发动机，再到现代企业会议室里的商业对抗，最终抵达葡萄牙 Portimão 赛道的国际夺冠时刻。整体视觉基调采用高精度 3D CG 风格，前段偏冷湿、压迫、粗粝，中段转为机油与账本交织的现实硬撑，后段进入冷峻商务与高热赛道的强反差，结尾以夜晚工厂车间的静默回望收束，形成“从泥泞到荣耀”的完整情绪弧线。
+
+## 第1集
+
+节奏说明：本集以前两拍建立强钩子，用雨夜追车和泥路困境迅速抓住注意力；中段进入修理铺与账本生活，完成人物关系和创业动机铺垫；后段通过发动机研发执念形成转折，最后以“能不能赌上全部”作为悬念收口。
+
+### ep01_s01
+- Summary: 暴雨中的湖南山路上，张雪骑着旧摩托车拼命追赶远处的电视制作车。
+- Shot Type: wide shot
+- Camera Motion: slow push in
+- Mood: desperate, suspenseful
+- Anchor Text: 雨夜里，他拼命追着那辆电视车。
+- Priority: high
+- Beat Role: hook
+- Pace Weight: short
+- Asset Focus: interaction
+- Visual Prompt: 高精度3D CG风格，湖南山路雨夜，阴灰天空压低，暴雨倾泻，厚重橙色泥浆覆盖山路，远处白色电视制作车尾灯在雨雾中若隐若现，年轻张雪穿着被雨水浸透且沾满机油的灰绿色风衣，骑着满是泥点的旧摩托车在泥路上艰难前冲，冷雨打在镜头前景，画面强调追逐感、寒意与命运转折前的狼狈感。
+
+### ep01_s02
+- Summary: 旧摩托车在泥浆中打滑失控，张雪几乎连人带车摔进山沟。
+- Shot Type: medium shot
+- Camera Motion: handheld drift
+- Mood: chaotic, tense
+- Anchor Text: 可这辆破车，差点把他甩进泥沟。
+- Priority: high
+- Beat Role: hook
+- Pace Weight: short
+- Asset Focus: object
+- Visual Prompt: 高精度3D CG风格，湖南山路雨夜近景，旧摩托车前轮深陷橙色泥浆、车身横摆，泥水飞溅，张雪双手死死抓住车把，湿透黑发贴在额前，灰绿色风衣和旧裤子沾满泥与机油，山路边缘危险狭窄，画面带轻微晃动感，突出失控瞬间、机械无力与生存边缘感。
+
+### ep01_s03
+- Summary: 张雪在冷雨里望着远去的车尾灯，第一次意识到自己不能永远困在这条泥路上。
+- Shot Type: medium close-up
+- Camera Motion: static
+- Mood: bitter, resolute
+- Anchor Text: 那一刻，他不想再被烂路困住。
+- Priority: medium
+- Beat Role: development
+- Pace Weight: medium
+- Asset Focus: character
+- Visual Prompt: 高精度3D CG风格，湖南山路雨夜，张雪站在泥泞公路边，浑身湿透、手上机油和泥水混在一起，脸部线条坚硬，眼神盯着远去的白色电视车尾灯，背景是被雨雾吞没的山体，冷色自然光与暴雨气氛强化年轻人被现实压住却不甘低头的情绪。
+
+### ep01_s04
+- Summary: 画面切到重庆狭小修理铺，张雪在拥挤工作间里拆解发动机零件。
+- Shot Type: wide shot
+- Camera Motion: pan right
+- Mood: gritty, focused
+- Anchor Text: 回到重庆，他把命压进了修理铺。
+- Priority: medium
+- Beat Role: development
+- Pace Weight: medium
+- Asset Focus: environment
+- Visual Prompt: 高精度3D CG风格，重庆狭小修理铺全景，斑驳墙面、散落工具零件、账本和半成品摩托车骨架挤满空间，暖黄工作灯照在张雪身上，他穿着旧工装俯身拆装摩托车发动机，手上机油厚重，空气里有金属与机油质感，整体呈现狭窄、真实、长期鏖战的创业起点。
+
+### ep01_s05
+- Summary: 陈星怡坐在一旁整理账目，用那本磨损严重的账本把生活勉强撑住。
+- Shot Type: over-the-shoulder
+- Camera Motion: slow push in
+- Mood: restrained, weary
+- Anchor Text: 她用一本旧账本，守住两个人的日子。
+- Priority: medium
+- Beat Role: development
+- Pace Weight: medium
+- Asset Focus: interaction
+- Visual Prompt: 高精度3D CG风格，重庆狭小修理铺一角，陈星怡穿浅色针织衫、短发利落，坐在简陋桌旁翻开磨损严重的天气账本，纸页上密密麻麻的数字、姓名和勾选痕迹清晰可见，前景可带张雪模糊身影和散落工具，暖黄工作灯打在她平静却疲惫的侧脸上，表现她是创业生活的稳定支点。
+
+### ep01_s06
+- Summary: 张雪盯着拆开的发动机核心部件，开始下定决心不再只做维修，而要做自己的机器。
+- Shot Type: insert
+- Camera Motion: static
+- Mood: intent, charged
+- Anchor Text: 他想修的，不只是别人的车。
+- Priority: high
+- Beat Role: turn
+- Pace Weight: short
+- Asset Focus: object
+- Visual Prompt: 高精度3D CG风格，重庆狭小修理铺内发动机特写，银灰与深金属色的摩托车发动机组件被拆开摆在油污工作台上，机加工纹理、螺栓孔位、散热鳍片细节清晰，张雪带老茧与机油的双手停在核心部件上方，暖黄工作灯形成聚焦式照明，画面突出技术野心萌生的瞬间。
+
+### ep01_s07
+- Summary: 陈星怡听完张雪的决定后没有劝退，只是继续低头记下要借的钱。
+- Shot Type: medium shot
+- Camera Motion: slow dolly in
+- Mood: quiet, committed
+- Anchor Text: 她没拦，只是把债一笔笔记下。
+- Priority: high
+- Beat Role: turn
+- Pace Weight: medium
+- Asset Focus: interaction
+- Visual Prompt: 高精度3D CG风格，重庆狭小修理铺内，陈星怡坐在桌前握笔写账，天气账本摊开，数字与借款记录密集，张雪站在桌旁神情紧绷却带着决绝，狭窄空间里工具、零件和半成品骨架构成压迫背景，暖黄灯光下两人没有激烈动作却形成坚定联盟的情绪张力。
+
+### ep01_s08
+- Summary: 夜深后，张雪独自守着发动机与半成品车架，真正的豪赌才刚开始。
+- Shot Type: wide shot
+- Camera Motion: slow dolly out
+- Mood: lonely, ominous
+- Anchor Text: 这场赌局，才刚刚开始。
+- Priority: high
+- Beat Role: cliffhanger
+- Pace Weight: long
+- Asset Focus: montage
+- Visual Prompt: 高精度3D CG风格，重庆狭小修理铺深夜氛围，暖黄工作灯仅照亮中央工作台与半成品摩托车骨架，张雪独自站在发动机和车架之间，地面散落工具与废纸，四周空间昏暗逼仄，空气里浮着机油与金属冷感，画面强调长期鏖战前夜的孤独、压力与不退后姿态。
+
+## 第2集
+
+节奏说明：本集以“多年苦熬后终于走到企业会议室”形成对比式 hook；中段通过商务对抗和技术孤注一掷推进；后段将视角推向国际赛道，形成从车间到世界舞台的跃迁；结尾用发车前的凝固瞬间制造最大悬念。
+
+### ep02_s01
+- Summary: 多年后，成熟的张雪走进冷峻的现代企业会议室，身份已经从修理工变成创业者。
+- Shot Type: wide shot
+- Camera Motion: slow push in
+- Mood: tense, ascendant
+- Anchor Text: 多年后，他终于坐进了谈判桌。
+- Priority: high
+- Beat Role: hook
+- Pace Weight: short
+- Asset Focus: character
+- Visual Prompt: 高精度3D CG风格，现代企业会议室，玻璃幕墙外可见大型工厂园区，冷白办公光洒在长桌和真皮座椅上，成熟阶段的张雪穿干净深色工装或浅色企业制服，神情沉稳克制，手上仍带机械工作者的粗粝痕迹，整体画面展现身份跃迁后的压迫式商务氛围。
+
+### ep02_s02
+- Summary: 冷白灯光下的谈判桌两侧气氛对立，张雪要为自研技术争一次不被卡脖子的机会。
+- Shot Type: over-the-shoulder
+- Camera Motion: static
+- Mood: confrontational, cold
+- Anchor Text: 他争的，是不再受制于人的机会。
+- Priority: high
+- Beat Role: development
+- Pace Weight: medium
+- Asset Focus: interaction
+- Visual Prompt: 高精度3D CG风格，现代企业会议室对峙构图，长桌两侧坐着商务人员轮廓，张雪位于前景一侧，身前摊着技术资料与方案文件，大屏幕冷光映在金属边框和玻璃表面上，画面强调谈判张力、产业壁垒和一线创业者孤身顶住压力的气场。
+
+### ep02_s03
+- Summary: 画面插入精密发动机组件，显示张雪这些年真正押注的是核心技术。
+- Shot Type: insert
+- Camera Motion: slow push in
+- Mood: precise, determined
+- Anchor Text: 真正值钱的，是他咬牙做出的发动机。
+- Priority: medium
+- Beat Role: development
+- Pace Weight: short
+- Asset Focus: object
+- Visual Prompt: 高精度3D CG风格，摩托车发动机组件特写，银灰金属外壳、散热鳍片、机加工纹理和紧凑结构被冷白光精确勾勒，背景虚化为会议室或研发环境，突出这是一项经过长期投入才形成的硬核工业成果，画面要有技术自信与工业美感。
+
+### ep02_s04
+- Summary: 陈星怡在工作与家庭夹缝中继续整理账目，成为公司熬到今天的无声后盾。
+- Shot Type: medium close-up
+- Camera Motion: static
+- Mood: steady, sacrificial
+- Anchor Text: 公司能熬到今天，也靠她一页页撑着。
+- Priority: medium
+- Beat Role: development
+- Pace Weight: medium
+- Asset Focus: character
+- Visual Prompt: 高精度3D CG风格，陈星怡坐在简洁桌边翻看那本磨损旧账本与新资料，浅色针织衫、克制短发、神情平稳，手边有计算器、票据与手机，柔和自然光与局部室内灯光共同勾勒她的安静力量，强调长期承担、精细管理与现实压力。
+
+### ep02_s05
+- Summary: 手机屏幕亮起，来自海外赛场的信息让局势突然转向国际竞争。
+- Shot Type: insert
+- Camera Motion: static
+- Mood: urgent, anticipatory
+- Anchor Text: 一条消息，把他们推向了海外赛道。
+- Priority: high
+- Beat Role: turn
+- Pace Weight: short
+- Asset Focus: object
+- Visual Prompt: 高精度3D CG风格，现代智能手机特写，黑色边框与发亮屏幕清晰可见，消息界面正在显示与海外比赛、测试或车队相关的关键文字，玻璃屏反射微弱光线，背景可虚化为办公桌与资料，强调一个日常沟通工具如何成为命运转折点。
+
+### ep02_s06
+- Summary: Portimão 赛道在烈日下展开，红银冠军赛车进入国际视野。
+- Shot Type: wide shot
+- Camera Motion: pan left
+- Mood: exhilarating, high-stakes
+- Anchor Text: 他们第一次，把车开上了国际赛道。
+- Priority: high
+- Beat Role: turn
+- Pace Weight: medium
+- Asset Focus: environment
+- Visual Prompt: 高精度3D CG风格，Portimão赛道全景，烈日照射下沥青路面泛着热浪，大型弯道与长直道延伸向远方，观众看台密集，赛道护栏、计时牌和维修区完整可见，红银配色的冠军赛车820RR-RS处于画面焦点，整体充满高速竞逐与世界舞台的开阔感。
+
+### ep02_s07
+- Summary: 法国车手 Debise 穿着红白赛车服进入赛前准备区，与赛车形成专业而冷静的匹配。
+- Shot Type: medium shot
+- Camera Motion: slow push in
+- Mood: focused, controlled
+- Anchor Text: 为他们冲线的人，叫 Debise。
+- Priority: medium
+- Beat Role: development
+- Pace Weight: medium
+- Asset Focus: character
+- Visual Prompt: 高精度3D CG风格，Portimão赛道维修区或发车准备区，Debise穿红白赛车服站在红银冠军赛车旁，西方面孔、短发、身形精瘦结实，表情冷静专注，强烈日照打在赛车整流罩与头盔边缘上，背景是热浪、维修设备与赛道护栏，展现职业赛手的稳定执行力。
+
+### ep02_s08
+- Summary: 发车前的最后一刻，张雪站在场边盯着赛车，所有年头都压在这一次测试里。
+- Shot Type: medium close-up
+- Camera Motion: slow dolly in
+- Mood: anxious, charged
+- Anchor Text: 成不成，就看这一圈了。
+- Priority: high
+- Beat Role: cliffhanger
+- Pace Weight: long
+- Asset Focus: interaction
+- Visual Prompt: 高精度3D CG风格，Portimão赛道发车前紧张时刻，前景可见红银冠军赛车820RR-RS局部车身与轮胎，背景虚焦为看台和计时牌，张雪穿成熟工装站在护栏后，双手紧握、神情克制却压着巨大情绪，强日照与赛道热浪让空气都显得绷紧，突出命运决战前的屏息感。
+
+## 第3集
+
+节奏说明：本集直接以赛道冲刺作 hook，快速进入结果争夺；中段通过超车、压线和观赛反应层层推高；随后转入夺冠后的静默回望；结尾不止停在胜利，而是回到夜晚工厂车间，让冠军与来路形成反照，留下余韵型 cliffhanger。
+
+### ep03_s01
+- Summary: Debise 驾驶 820RR-RS 在 Portimão 赛道高速过弯，比赛进入最激烈阶段。
+- Shot Type: wide shot
+- Camera Motion: pan right
+- Mood: explosive, thrilling
+- Anchor Text: 最后一战，他们真的冲到了最前面。
+- Priority: high
+- Beat Role: hook
+- Pace Weight: short
+- Asset Focus: interaction
+- Visual Prompt: 高精度3D CG风格，Portimão赛道高速过弯画面，红银冠军赛车820RR-RS压着弯心切线高速倾倒，轮胎抓地，沥青表面热浪翻涌，观众看台与护栏高速掠过，Debise伏低身体完成极限操控，整体强调速度感、竞技性与夺冠边缘的爆发力。
+
+### ep03_s02
+- Summary: 计时牌与赛车交替闪现，胜负差距被压缩到极其危险的边缘。
+- Shot Type: insert
+- Camera Motion: static
+- Mood: razor-tight, urgent
+- Anchor Text: 胜负，只差最后一点点。
+- Priority: high
+- Beat Role: development
+- Pace Weight: short
+- Asset Focus: object
+- Visual Prompt: 高精度3D CG风格，Portimão赛道计时牌与赛道元素特写，电子计时数字清晰、冷硬，背景可虚化为高速掠过的红银赛车和赛道护栏，阳光灼热、空气紧张，画面用强对比强调比赛结果悬而未决的压迫感。
+
+### ep03_s03
+- Summary: Debise 在长直道上稳定输出，把赛车性能全部逼到极限。
+- Shot Type: medium shot
+- Camera Motion: slow tracking
+- Mood: focused, dominant
+- Anchor Text: Debise把这台车，逼出了全部性能。
+- Priority: medium
+- Beat Role: development
+- Pace Weight: medium
+- Asset Focus: character
+- Visual Prompt: 高精度3D CG风格，Portimão赛道长直道中景，Debise驾驶红银冠军赛车高速前冲，车身低伏锐利、反光漆面在烈日下闪烁，背景看台和护栏形成高速拉伸感，画面强调赛手冷静执行和赛车性能释放到极限的状态。
+
+### ep03_s04
+- Summary: 场边的张雪和团队在沉默中盯着赛况，谁都不敢提前庆祝。
+- Shot Type: over-the-shoulder
+- Camera Motion: handheld drift
+- Mood: tense, breathless
+- Anchor Text: 场边的人，比车上还紧张。
+- Priority: medium
+- Beat Role: development
+- Pace Weight: medium
+- Asset Focus: interaction
+- Visual Prompt: 高精度3D CG风格，Portimão赛道场边观赛区，张雪与团队成员站在护栏后紧盯赛道或屏幕，前景可见模糊护栏与手势细节，张雪神情极度克制，成熟工装在阳光下显得硬朗，背景是赛道与观众区，画面突出等待结果时的集体屏息。
+
+### ep03_s05
+- Summary: 赛车冲线瞬间，冠军结果终于落定，张雪多年坚持有了答案。
+- Shot Type: wide shot
+- Camera Motion: slow push in
+- Mood: triumphant, cathartic
+- Anchor Text: 这一回，他们拿到了冠军。
+- Priority: high
+- Beat Role: turn
+- Pace Weight: medium
+- Asset Focus: interaction
+- Visual Prompt: 高精度3D CG风格，Portimão赛道冲线时刻，红银冠军赛车820RR-RS掠过终点线，计时牌、护栏、看台、烈日与热浪共同构成胜利爆点，Debise保持冲线姿态，赛道视觉张力达到顶点，画面要有明确的夺冠释放感与国际舞台的荣耀感。
+
+### ep03_s06
+- Summary: 胜利后，张雪没有立刻狂喜，而是像突然被多年重压抽空一样安静下来。
+- Shot Type: close-up
+- Camera Motion: static
+- Mood: stunned, relieved
+- Anchor Text: 真到赢了，他反而先沉默了。
+- Priority: high
+- Beat Role: turn
+- Pace Weight: medium
+- Asset Focus: character
+- Visual Prompt: 高精度3D CG风格，张雪面部近景，赛道背景虚化成炽热明亮色块，他穿成熟工装，脸上有克制的松动与难以置信的松弛感，双眼湿润但不夸张，手上的老茧和机械工作者痕迹仍清晰，突出多年执念终于兑现后的复杂情绪。
+
+### ep03_s07
+- Summary: 夜晚工厂车间里，冠军赛车被单点聚光照亮，像是给过去所有苦日子一个答案。
+- Shot Type: wide shot
+- Camera Motion: slow dolly out
+- Mood: solemn, reflective
+- Anchor Text: 回头看，那些苦日子都落在了这台车上。
+- Priority: medium
+- Beat Role: development
+- Pace Weight: long
+- Asset Focus: environment
+- Visual Prompt: 高精度3D CG风格，夜晚工厂车间宽阔安静，冷调空间里只有中央聚光灯照亮红银冠军赛车820RR-RS，地面反射微弱光泽，周围设备和工位隐没在阴影中，画面庄重克制，像纪念碑般承载从修理铺到冠军的全部历程。
+
+### ep03_s08
+- Summary: 张雪独自站在赛车前，像又看见当年雨夜追车的自己，故事停在新的起点上。
+- Shot Type: medium shot
+- Camera Motion: slow push in
+- Mood: reflective, unresolved
+- Anchor Text: 从泥路到冠军，他还没打算停下。
+- Priority: high
+- Beat Role: cliffhanger
+- Pace Weight: long
+- Asset Focus: character
+- Visual Prompt: 高精度3D CG风格，夜晚工厂车间内，成熟的张雪独自站在红银冠军赛车前，聚光灯勾勒他深色工装与坚硬轮廓，身后大面积阴影安静铺开，地面微弱反光，画面气质沉静而有余波，像是胜利后的停顿，也像更大征程开始前的再一次凝视。
+
+```json
+{
+  "series_title": "泥路到冠军",
+  "episodes": [
+    {
+      "episode_number": 1,
+      "scene_beats": [
+        {
+          "scene_id": "ep01_s01",
+          "summary": "暴雨中的湖南山路上，张雪骑着旧摩托车拼命追赶远处的电视制作车。",
+          "visual_prompt": "高精度3D CG风格，湖南山路雨夜，阴灰天空压低，暴雨倾泻，厚重橙色泥浆覆盖山路，远处白色电视制作车尾灯在雨雾中若隐若现，年轻张雪穿着被雨水浸透且沾满机油的灰绿色风衣，骑着满是泥点的旧摩托车在泥路上艰难前冲，冷雨打在镜头前景，画面强调追逐感、寒意与命运转折前的狼狈感。",
+          "shot_type": "wide shot",
+          "camera_motion": "slow push in",
+          "mood": "desperate, suspenseful",
+          "anchor_text": "雨夜里，他拼命追着那辆电视车。",
+          "priority": "high",
+          "beat_role": "hook",
+          "pace_weight": "short",
+          "asset_focus": "interaction"
+        },
+        {
+          "scene_id": "ep01_s02",
+          "summary": "旧摩托车在泥浆中打滑失控，张雪几乎连人带车摔进山沟。",
+          "visual_prompt": "高精度3D CG风格，湖南山路雨夜近景，旧摩托车前轮深陷橙色泥浆、车身横摆，泥水飞溅，张雪双手死死抓住车把，湿透黑发贴在额前，灰绿色风衣和旧裤子沾满泥与机油，山路边缘危险狭窄，画面带轻微晃动感，突出失控瞬间、机械无力与生存边缘感。",
+          "shot_type": "medium shot",
+          "camera_motion": "handheld drift",
+          "mood": "chaotic, tense",
+          "anchor_text": "可这辆破车，差点把他甩进泥沟。",
+          "priority": "high",
+          "beat_role": "hook",
+          "pace_weight": "short",
+          "asset_focus": "object"
+        },
+        {
+          "scene_id": "ep01_s03",
+          "summary": "张雪在冷雨里望着远去的车尾灯，第一次意识到自己不能永远困在这条泥路上。",
+          "visual_prompt": "高精度3D CG风格，湖南山路雨夜，张雪站在泥泞公路边，浑身湿透、手上机油和泥水混在一起，脸部线条坚硬，眼神盯着远去的白色电视制作车尾灯，背景是被雨雾吞没的山体，冷色自然光与暴雨气氛强化年轻人被现实压住却不甘低头的情绪。",
+          "shot_type": "medium close-up",
+          "camera_motion": "static",
+          "mood": "bitter, resolute",
+          "anchor_text": "那一刻，他不想再被烂路困住。",
+          "priority": "medium",
+          "beat_role": "development",
+          "pace_weight": "medium",
+          "asset_focus": "character"
+        },
+        {
+          "scene_id": "ep01_s04",
+          "summary": "画面切到重庆狭小修理铺，张雪在拥挤工作间里拆解发动机零件。",
+          "visual_prompt": "高精度3D CG风格，重庆狭小修理铺全景，斑驳墙面、散落工具零件、账本和半成品摩托车骨架挤满空间，暖黄工作灯照在张雪身上，他穿着旧工装俯身拆装摩托车发动机，手上机油厚重，空气里有金属与机油质感，整体呈现狭窄、真实、长期鏖战的创业起点。",
+          "shot_type": "wide shot",
+          "camera_motion": "pan right",
+          "mood": "gritty, focused",
+          "anchor_text": "回到重庆，他把命压进了修理铺。",
+          "priority": "medium",
+          "beat_role": "development",
+          "pace_weight": "medium",
+          "asset_focus": "environment"
+        },
+        {
+          "scene_id": "ep01_s05",
+          "summary": "陈星怡坐在一旁整理账目，用那本磨损严重的账本把生活勉强撑住。",
+          "visual_prompt": "高精度3D CG风格，重庆狭小修理铺一角，陈星怡穿浅色针织衫、短发利落，坐在简陋桌旁翻开磨损严重的天气账本，纸页上密密麻麻的数字、姓名和勾选痕迹清晰可见，前景可带张雪模糊身影和散落工具，暖黄工作灯打在她平静却疲惫的侧脸上，表现她是创业生活的稳定支点。",
+          "shot_type": "over-the-shoulder",
+          "camera_motion": "slow push in",
+          "mood": "restrained, weary",
+          "anchor_text": "她用一本旧账本，守住两个人的日子。",
+          "priority": "medium",
+          "beat_role": "development",
+          "pace_weight": "medium",
+          "asset_focus": "interaction"
+        },
+        {
+          "scene_id": "ep01_s06",
+          "summary": "张雪盯着拆开的发动机核心部件，开始下定决心不再只做维修，而要做自己的机器。",
+          "visual_prompt": "高精度3D CG风格，重庆狭小修理铺内发动机特写，银灰与深金属色的摩托车发动机组件被拆开摆在油污工作台上，机加工纹理、螺栓孔位、散热鳍片细节清晰，张雪带老茧与机油的双手停在核心部件上方，暖黄工作灯形成聚焦式照明，画面突出技术野心萌生的瞬间。",
+          "shot_type": "insert",
+          "camera_motion": "static",
+          "mood": "intent, charged",
+          "anchor_text": "他想修的，不只是别人的车。",
+          "priority": "high",
+          "beat_role": "turn",
+          "pace_weight": "short",
+          "asset_focus": "object"
+        },
+        {
+          "scene_id": "ep01_s07",
+          "summary": "陈星怡听完张雪的决定后没有劝退，只是继续低头记下要借的钱。",
+          "visual_prompt": "高精度3D CG风格，重庆狭小修理铺内，陈星怡坐在桌前握笔写账，天气账本摊开，数字与借款记录密集，张雪站在桌旁神情紧绷却带着决绝，狭窄空间里工具、零件和半成品骨架构成压迫背景，暖黄灯光下两人没有激烈动作却形成坚定联盟的情绪张力。",
+          "shot_type": "medium shot",
+          "camera_motion": "slow dolly in",
+          "mood": "quiet, committed",
+          "anchor_text": "她没拦，只是把债一笔笔记下。",
+          "priority": "high",
+          "beat_role": "turn",
+          "pace_weight": "medium",
+          "asset_focus": "interaction"
+        },
+        {
+          "scene_id": "ep01_s08",
+          "summary": "夜深后，张雪独自守着发动机与半成品车架，真正的豪赌才刚开始。",
+          "visual_prompt": "高精度3D CG风格，重庆狭小修理铺深夜氛围，暖黄工作灯仅照亮中央工作台与半成品摩托车骨架，张雪独自站在发动机和车架之间，地面散落工具与废纸，四周空间昏暗逼仄，空气里浮着机油与金属冷感，画面强调长期鏖战前夜的孤独、压力与不退后姿态。",
+          "shot_type": "wide shot",
+          "camera_motion": "slow dolly out",
+          "mood": "lonely, ominous",
+          "anchor_text": "这场赌局，才刚刚开始。",
+          "priority": "high",
+          "beat_role": "cliffhanger",
+          "pace_weight": "long",
+          "asset_focus": "montage"
+        }
+      ]
+    },
+    {
+      "episode_number": 2,
+      "scene_beats": [
+        {
+          "scene_id": "ep02_s01",
+          "summary": "多年后，成熟的张雪走进冷峻的现代企业会议室，身份已经从修理工变成创业者。",
+          "visual_prompt": "高精度3D CG风格，现代企业会议室，玻璃幕墙外可见大型工厂园区，冷白办公光洒在长桌和真皮座椅上，成熟阶段的张雪穿干净深色工装或浅色企业制服，神情沉稳克制，手上仍带机械工作者的粗粝痕迹，整体画面展现身份跃迁后的压迫式商务氛围。",
+          "shot_type": "wide shot",
+          "camera_motion": "slow push in",
+          "mood": "tense, ascendant",
+          "anchor_text": "多年后，他终于坐进了谈判桌。",
+          "priority": "high",
+          "beat_role": "hook",
+          "pace_weight": "short",
+          "asset_focus": "character"
+        },
+        {
+          "scene_id": "ep02_s02",
+          "summary": "冷白灯光下的谈判桌两侧气氛对立，张雪要为自研技术争一次不被卡脖子的机会。",
+          "visual_prompt": "高精度3D CG风格，现代企业会议室对峙构图，长桌两侧坐着商务人员轮廓，张雪位于前景一侧，身前摊着技术资料与方案文件，大屏幕冷光映在金属边框和玻璃表面上，画面强调谈判张力、产业壁垒和一线创业者孤身顶住压力的气场。",
+          "shot_type": "over-the-shoulder",
+          "camera_motion": "static",
+          "mood": "confrontational, cold",
+          "anchor_text": "他争的，是不再受制于人的机会。",
+          "priority": "high",
+          "beat_role": "development",
+          "pace_weight": "medium",
+          "asset_focus": "interaction"
+        },
+        {
+          "scene_id": "ep02_s03",
+          "summary": "画面插入精密发动机组件，显示张雪这些年真正押注的是核心技术。",
+          "visual_prompt": "高精度3D CG风格，摩托车发动机组件特写，银灰金属外壳、散热鳍片、机加工纹理和紧凑结构被冷白光精确勾勒，背景虚化为会议室或研发环境，突出这是一项经过长期投入才形成的硬核工业成果，画面要有技术自信与工业美感。",
+          "shot_type": "insert",
+          "camera_motion": "slow push in",
+          "mood": "precise, determined",
+          "anchor_text": "真正值钱的，是他咬牙做出的发动机。",
+          "priority": "medium",
+          "beat_role": "development",
+          "pace_weight": "short",
+          "asset_focus": "object"
+        },
+        {
+          "scene_id": "ep02_s04",
+          "summary": "陈星怡在工作与家庭夹缝中继续整理账目，成为公司熬到今天的无声后盾。",
+          "visual_prompt": "高精度3D CG风格，陈星怡坐在简洁桌边翻看那本磨损旧账本与新资料，浅色针织衫、克制短发、神情平稳，手边有计算器、票据与手机，柔和自然光与局部室内灯光共同勾勒她的安静力量，强调长期承担、精细管理与现实压力。",
+          "shot_type": "medium close-up",
+          "camera_motion": "static",
+          "mood": "steady, sacrificial",
+          "anchor_text": "公司能熬到今天，也靠她一页页撑着。",
+          "priority": "medium",
+          "beat_role": "development",
+          "pace_weight": "medium",
+          "asset_focus": "character"
+        },
+        {
+          "scene_id": "ep02_s05",
+          "summary": "手机屏幕亮起，来自海外赛场的信息让局势突然转向国际竞争。",
+          "visual_prompt": "高精度3D CG风格，现代智能手机特写，黑色边框与发亮屏幕清晰可见，消息界面正在显示与海外比赛、测试或车队相关的关键文字，玻璃屏反射微弱光线，背景可虚化为办公桌与资料，强调一个日常沟通工具如何成为命运转折点。",
+          "shot_type": "insert",
+          "camera_motion": "static",
+          "mood": "urgent, anticipatory",
+          "anchor_text": "一条消息，把他们推向了海外赛道。",
+          "priority": "high",
+          "beat_role": "turn",
+          "pace_weight": "short",
+          "asset_focus": "object"
+        },
+        {
+          "scene_id": "ep02_s06",
+          "summary": "Portimão 赛道在烈日下展开，红银冠军赛车进入国际视野。",
+          "visual_prompt": "高精度3D CG风格，Portimão赛道全景，烈日照射下沥青路面泛着热浪，大型弯道与长直道延伸向远方，观众看台密集，赛道护栏、计时牌和维修区完整可见，红银配色的冠军赛车820RR-RS处于画面焦点，整体充满高速竞逐与世界舞台的开阔感。",
+          "shot_type": "wide shot",
+          "camera_motion": "pan left",
+          "mood": "exhilarating, high-stakes",
+          "anchor_text": "他们第一次，把车开上了国际赛道。",
+          "priority": "high",
+          "beat_role": "turn",
+          "pace_weight": "medium",
+          "asset_focus": "environment"
+        },
+        {
+          "scene_id": "ep02_s07",
+          "summary": "法国车手 Debise 穿着红白赛车服进入赛前准备区，与赛车形成专业而冷静的匹配。",
+          "visual_prompt": "高精度3D CG风格，Portimão赛道维修区或发车准备区，Debise穿红白赛车服站在红银冠军赛车旁，西方面孔、短发、身形精瘦结实，表情冷静专注，强烈日照打在赛车整流罩与头盔边缘上，背景是热浪、维修设备与赛道护栏，展现职业赛手的稳定执行力。",
+          "shot_type": "medium shot",
+          "camera_motion": "slow push in",
+          "mood": "focused, controlled",
+          "anchor_text": "为他们冲线的人，叫 Debise。",
+          "priority": "medium",
+          "beat_role": "development",
+          "pace_weight": "medium",
+          "asset_focus": "character"
+        },
+        {
+          "scene_id": "ep02_s08",
+          "summary": "发车前的最后一刻，张雪站在场边盯着赛车，所有年头都压在这一次测试里。",
+          "visual_prompt": "高精度3D CG风格，Portimão赛道发车前紧张时刻，前景可见红银冠军赛车820RR-RS局部车身与轮胎，背景虚焦为看台和计时牌，张雪穿成熟工装站在护栏后，双手紧握、神情克制却压着巨大情绪，强日照与赛道热浪让空气都显得绷紧，突出命运决战前的屏息感。",
+          "shot_type": "medium close-up",
+          "camera_motion": "slow dolly in",
+          "mood": "anxious, charged",
+          "anchor_text": "成不成，就看这一圈了。",
+          "priority": "high",
+          "beat_role": "cliffhanger",
+          "pace_weight": "long",
+          "asset_focus": "interaction"
+        }
+      ]
+    },
+    {
+      "episode_number": 3,
+      "scene_beats": [
+        {
+          "scene_id": "ep03_s01",
+          "summary": "Debise 驾驶 820RR-RS 在 Portimão 赛道高速过弯，比赛进入最激烈阶段。",
+          "visual_prompt": "高精度3D CG风格，Portimão赛道高速过弯画面，红银冠军赛车820RR-RS压着弯心切线高速倾倒，轮胎抓地，沥青表面热浪翻涌，观众看台与护栏高速掠过，Debise伏低身体完成极限操控，整体强调速度感、竞技性与夺冠边缘的爆发力。",
+          "shot_type": "wide shot",
+          "camera_motion": "pan right",
+          "mood": "explosive, thrilling",
+          "anchor_text": "最后一战，他们真的冲到了最前面。",
+          "priority": "high",
+          "beat_role": "hook",
+          "pace_weight": "short",
+          "asset_focus": "interaction"
+        },
+        {
+          "scene_id": "ep03_s02",
+          "summary": "计时牌与赛车交替闪现，胜负差距被压缩到极其危险的边缘。",
+          "visual_prompt": "高精度3D CG风格，Portimão赛道计时牌与赛道元素特写，电子计时数字清晰、冷硬，背景可虚化为高速掠过的红银赛车和赛道护栏，阳光灼热、空气紧张，画面用强对比强调比赛结果悬而未决的压迫感。",
+          "shot_type": "insert",
+          "camera_motion": "static",
+          "mood": "razor-tight, urgent",
+          "anchor_text": "胜负，只差最后一点点。",
+          "priority": "high",
+          "beat_role": "development",
+          "pace_weight": "short",
+          "asset_focus": "object"
+        },
+        {
+          "scene_id": "ep03_s03",
+          "summary": "Debise 在长直道上稳定输出，把赛车性能全部逼到极限。",
+          "visual_prompt": "高精度3D CG风格，Portimão赛道长直道中景，Debise驾驶红银冠军赛车高速前冲，车身低伏锐利、反光漆面在烈日下闪烁，背景看台和护栏形成高速拉伸感，画面强调赛手冷静执行和赛车性能释放到极限的状态。",
+          "shot_type": "medium shot",
+          "camera_motion": "slow tracking",
+          "mood": "focused, dominant",
+          "anchor_text": "Debise把这台车，逼出了全部性能。",
+          "priority": "medium",
+          "beat_role": "development",
+          "pace_weight": "medium",
+          "asset_focus": "character"
+        },
+        {
+          "scene_id": "ep03_s04",
+          "summary": "场边的张雪和团队在沉默中盯着赛况，谁都不敢提前庆祝。",
+          "visual_prompt": "高精度3D CG风格，Portimão赛道场边观赛区，张雪与团队成员站在护栏后紧盯赛道或屏幕，前景可见模糊护栏与手势细节，张雪神情极度克制，成熟工装在阳光下显得硬朗，背景是赛道与观众区，画面突出等待结果时的集体屏息。",
+          "shot_type": "over-the-shoulder",
+          "camera_motion": "handheld drift",
+          "mood": "tense, breathless",
+          "anchor_text": "场边的人，比车上还紧张。",
+          "priority": "medium",
+          "beat_role": "development",
+          "pace_weight": "medium",
+          "asset_focus": "interaction"
+        },
+        {
+          "scene_id": "ep03_s05",
+          "summary": "赛车冲线瞬间，冠军结果终于落定，张雪多年坚持有了答案。",
+          "visual_prompt": "高精度3D CG风格，Portimão赛道冲线时刻，红银冠军赛车820RR-RS掠过终点线，计时牌、护栏、看台、烈日与热浪共同构成胜利爆点，Debise保持冲线姿态，赛道视觉张力达到顶点，画面要有明确的夺冠释放感与国际舞台的荣耀感。",
+          "shot_type": "wide shot",
+          "camera_motion": "slow push in",
+          "mood": "triumphant, cathartic",
+          "anchor_text": "这一回，他们拿到了冠军。",
+          "priority": "high",
+          "beat_role": "turn",
+          "pace_weight": "medium",
+          "asset_focus": "interaction"
+        },
+        {
+          "scene_id": "ep03_s06",
+          "summary": "胜利后，张雪没有立刻狂喜，而是像突然被多年重压抽空一样安静下来。",
+          "visual_prompt": "高精度3D CG风格，张雪面部近景，赛道背景虚化成炽热明亮色块，他穿成熟工装，脸上有克制的松动与难以置信的松弛感，双眼湿润但不夸张，手上的老茧和机械工作者痕迹仍清晰，突出多年执念终于兑现后的复杂情绪。",
+          "shot_type": "close-up",
+          "camera_motion": "static",
+          "mood": "stunned, relieved",
+          "anchor_text": "真到赢了，他反而先沉默了。",
+          "priority": "high",
+          "beat_role": "turn",
+          "pace_weight": "medium",
+          "asset_focus": "character"
+        },
+        {
+          "scene_id": "ep03_s07",
+          "summary": "夜晚工厂车间里，冠军赛车被单点聚光照亮，像是给过去所有苦日子一个答案。",
+          "visual_prompt": "高精度3D CG风格，夜晚工厂车间宽阔安静，冷调空间里只有中央聚光灯照亮红银冠军赛车820RR-RS，地面反射微弱光泽，周围设备和工位隐没在阴影中，画面庄重克制，像纪念碑般承载从修理铺到冠军的全部历程。",
+          "shot_type": "wide shot",
+          "camera_motion": "slow dolly out",
+          "mood": "solemn, reflective",
+          "anchor_text": "回头看，那些苦日子都落在了这台车上。",
+          "priority": "medium",
+          "beat_role": "development",
+          "pace_weight": "long",
+          "asset_focus": "environment"
+        },
+        {
+          "scene_id": "ep03_s08",
+          "summary": "张雪独自站在赛车前，像又看见当年雨夜追车的自己，故事停在新的起点上。",
+          "visual_prompt": "高精度3D CG风格，夜晚工厂车间内，成熟的张雪独自站在红银冠军赛车前，聚光灯勾勒他深色工装与坚硬轮廓，身后大面积阴影安静铺开，地面微弱反光，画面气质沉静而有余波，像是胜利后的停顿，也像更大征程开始前的再一次凝视。",
+          "shot_type": "medium shot",
+          "camera_motion": "slow push in",
+          "mood": "reflective, unresolved",
+          "anchor_text": "从泥路到冠军，他还没打算停下。",
+          "priority": "high",
+          "beat_role": "cliffhanger",
+          "pace_weight": "long",
+          "asset_focus": "character"
+        }
+      ]
+    }
+  ]
+}
+```

@@ -1,0 +1,321 @@
+# 《ZXMOTO：从泥路到领奖台》分集视频场景脚本
+
+系列概览：  
+这是一部以张雪17年造车历程为主线的写实向解说剧场景规划。整集从湖南暴雨中的少年追车开场，穿过重庆负债创业、公司理念决裂，再冲进葡萄牙赛道夺冠与深夜工厂自我对望的终点时刻。视觉上强调雨、油、金属、夜色、热浪与机械细节的对照，让“心脏”这一发动机意象贯穿人物命运与品牌成长。
+
+## 第1集
+
+节奏说明：本集采用“强钩子开场—苦熬创业推进—会议室理念决裂形成转折—赛道胜利爆发—深夜回望与未来留钩”的结构。前两拍先用暴雨追车和跌入泥地建立人物底色；中段用车间、账本、发动机推进理想成本；第7至8拍完成“离开既有平台、奔赴自己道路”的关键turn；第9至10拍把前面积压的情绪在国际赛道上释放；结尾两拍回到安静空间，用“19岁的自己”形成情感升维，并以品牌未来作为悬念收束。
+
+### ep01_s01
+- Summary: 暴雨中的19岁张雪骑着小排量摩托，在湖南山路拼命追赶一辆电视台采访车。
+- Shot Type: wide shot
+- Camera Motion: handheld drift
+- Mood: desperate, suspenseful
+- Anchor Text: 暴雨里，他在追一辆电视台的车。
+- Priority: high
+- Beat Role: hook
+- Pace Weight: medium
+- Asset Focus: interaction
+- Visual Prompt: 19岁的张雪穿着被暴雨浸透的旧款深色风衣，骑着老旧黑红色小排量摩托，在湖南山区盘山公路上高速追赶前方白色电视台采访车，橘红色泥浆被车轮甩起，灰白雨雾压低天空，山路弯道逼仄，尾灯在雨幕中忽明忽暗，画面充满搏命追逐感，照片级写实，电影质感，阴冷暴雨天光。
+
+### ep01_s02
+- Summary: 张雪在岔路口终于拦下采访车，冒雨大喊求一个进入圈子的机会。
+- Shot Type: medium shot
+- Camera Motion: slow push in
+- Mood: raw, pleading
+- Anchor Text: 我什么都能干，只求带我进这个圈子。
+- Priority: high
+- Beat Role: hook
+- Pace Weight: long
+- Asset Focus: interaction
+- Visual Prompt: 山路狭窄岔路口，白色采访车减速停靠，车窗摇下，浑身湿透的19岁张雪站在泥水里拼命挥手，风衣紧贴身体，头发和雨水贴在额前，表情倔强又急切，对车内人物大喊请求，车窗内的人带着几分意外和轻微不以为然，路边积水、泥浆飞溅、模糊路牌和冷雨形成命运转折感，照片级写实，电影质感。
+
+### ep01_s03
+- Summary: 采访车离开后，张雪连人带车摔进泥里，却还是重新抓住车把站起来。
+- Shot Type: close-up
+- Camera Motion: slow dolly out
+- Mood: bitter, stubborn
+- Anchor Text: 他被拒绝了，但没有停下。
+- Priority: high
+- Beat Role: development
+- Pace Weight: medium
+- Asset Focus: character
+- Visual Prompt: 泥泞山路边，老旧小排量摩托侧翻在橘红色泥浆里，19岁张雪半身沾满泥水倒在地上，抬头望向灰白天空，胸口起伏，下一瞬又咬牙抓住车把把车扶起，手背和裤腿全是泥，雨水持续砸落，突出狼狈、屈辱和不肯认命的力量，照片级写实，电影质感，近距离情绪冲击。
+
+### ep01_s04
+- Summary: 时间跳到2013年，张雪和陈星熠挤在重庆狭小车间里，对着旧账本和未完成车架继续砸钱研发。
+- Shot Type: medium wide shot
+- Camera Motion: static
+- Mood: gritty, burdened
+- Anchor Text: 他们手里只有两万，却还在继续造车。
+- Priority: medium
+- Beat Role: development
+- Pace Weight: long
+- Asset Focus: environment
+- Visual Prompt: 重庆老旧工业区的狭小机修车间，昏黄工业灯下空间低矮拥挤，水泥地有油污，工作台散落工具和零件，中央是尚未完成的银灰色摩托车车架，桌上摊开一本起毛边旧账本，密密麻麻写着借款数字；39岁前期状态的张雪埋头工作，陈星熠穿深色外套站在一旁轻声说又借到钱了，两人都疲惫却没有退意，空气仿佛充满汽油和焊锡味，照片级写实，电影质感。
+
+### ep01_s05
+- Summary: 张雪抚摸发动机壳体，认定自己赌的不是一台车，而是一颗中国制造的心脏。
+- Shot Type: insert
+- Camera Motion: slow push in
+- Mood: focused, reverent
+- Anchor Text: 他赌的是一颗属于自己的心脏。
+- Priority: medium
+- Beat Role: development
+- Pace Weight: medium
+- Asset Focus: object
+- Visual Prompt: 重庆狭小车间内的工作台特写，精密加工纹路清晰的发动机壳体被张雪满是机械粗粝感的双手稳稳托住，旁边虚化可见未完成车架、工具、焊点和账本边角，昏黄灯光打在金属表面形成温热高光，强调“发动机即心脏”的象征，照片级写实，电影质感，机械细节丰富。
+
+### ep01_s06
+- Summary: 多年后在现代化会议室里，张雪面对保守的投资人和高管，坚持必须研发自己的发动机。
+- Shot Type: over-the-shoulder
+- Camera Motion: pan right
+- Mood: tense, confrontational
+- Anchor Text: 不造自己的发动机，我们永远只是躯壳。
+- Priority: high
+- Beat Role: turn
+- Pace Weight: long
+- Asset Focus: interaction
+- Visual Prompt: 冷白商务顶灯下的现代企业会议室，玻璃幕墙外能看见整片工厂园区，会议桌一侧坐着数名西装高管与投资人，文件和矿泉水整齐摆放；张雪穿深色夹克站在桌边，手掌压在桌面上，神情克制却坚定，画面形成明显对峙关系，冷色调、理性空间与人物理想主义发生冲撞，照片级写实，电影质感。
+
+### ep01_s07
+- Summary: 张雪清空桌面离开大楼，在工厂外夜色中独自停下，做出彻底出走的决定。
+- Shot Type: wide shot
+- Camera Motion: slow dolly out
+- Mood: lonely, resolute
+- Anchor Text: 那天之后，他离开了自己亲手参与建立的大楼。
+- Priority: high
+- Beat Role: turn
+- Pace Weight: medium
+- Asset Focus: character
+- Visual Prompt: 现代工厂大楼外的夜间空地，冷色路灯和楼体灯光拉出长长阴影，张雪独自从明亮门口走向开阔夜空，手里只拿着简单个人物品，脚步放慢后停住，身后是他参与建立的现代厂区，前方则是空旷黑夜和未知道路，环境安静克制，人物孤独感强烈，照片级写实，电影质感。
+
+### ep01_s08
+- Summary: 他拿出手机，在夜风里打下“我决定奔赴属于自己的星辰大海”。
+- Shot Type: insert
+- Camera Motion: static
+- Mood: restrained, decisive
+- Anchor Text: 我决定奔赴属于自己的星辰大海。
+- Priority: medium
+- Beat Role: development
+- Pace Weight: short
+- Asset Focus: object
+- Visual Prompt: 夜色中的黑色智能手机近景，屏幕上是简洁文字输入界面，清晰显示“我决定奔赴属于自己的星辰大海”，手指停在发送或输入完成的瞬间，背景虚化为工厂外冷色灯光与夜空，玻璃屏幕反射出张雪模糊而坚定的轮廓，照片级写实，电影质感。
+
+### ep01_s09
+- Summary: 2026年葡萄牙波尔蒂芒赛道上，红银相间的ZXMOTO 820RR-RS在发车位蓄势待发。
+- Shot Type: low angle medium shot
+- Camera Motion: slow push in
+- Mood: charged, triumphant
+- Anchor Text: 那台中国赛车，终于站上了欧洲赛道。
+- Priority: high
+- Beat Role: development
+- Pace Weight: medium
+- Asset Focus: object
+- Visual Prompt: 葡萄牙波尔蒂芒国际赛道正午烈日下，红银相间的ZXMOTO 820RR-RS停在发车格内，整流罩锋利反光，热浪让柏油路轻微扭曲；Debise穿专业红银黑赛车皮衣跨坐车上，头盔镜片映出看台和护栏，发车线、广告牌与国际赛事氛围完整可见，画面强调机器锋芒与历史时刻来临前的压缩张力，照片级写实，电影质感。
+
+### ep01_s10
+- Summary: 最后一圈里Debise完成极限制动与连续超车，张雪在维修区盯着数据屏几乎屏住呼吸。
+- Shot Type: montage
+- Camera Motion: handheld drift
+- Mood: explosive, tense
+- Anchor Text: 最后一圈，他们冲到了最前面。
+- Priority: high
+- Beat Role: turn
+- Pace Weight: long
+- Asset Focus: montage
+- Visual Prompt: 组合式高张力画面，一侧是葡萄牙波尔蒂芒赛道发卡弯，Debise驾驶红银ZXMOTO 820RR-RS在极限制动下压低车身，连续超越前方对手，轮胎贴地、车身倾角夸张；另一侧是赛道维修区内，张雪戴耳机死盯数据屏，身边工具柜、线缆和工位灯形成紧张工业氛围；热浪、速度残影、观众惊呼感与机械嘶吼共同构成胜负一瞬，照片级写实，电影质感。
+
+### ep01_s11
+- Summary: 深夜工厂里，张雪独自站在冠军赛车前，仿佛看见19岁的自己隔着17年向他发问。
+- Shot Type: medium shot
+- Camera Motion: slow push in
+- Mood: reflective, haunting
+- Anchor Text: 39岁的他，又看见了19岁的自己。
+- Priority: high
+- Beat Role: development
+- Pace Weight: long
+- Asset Focus: interaction
+- Visual Prompt: 深夜工厂车间大部分区域沉入阴影，单束顶灯打在展放中的冠军版ZXMOTO 820RR-RS上，39岁的张雪穿深色夹克缓步走近赛车，神情复杂；在灯光边缘以写实电影方式呈现一个仿佛真实存在的19岁张雪，仍穿湿旧风衣、身上带着泥路记忆般的痕迹，两代自己隔着赛车相望，空间空旷安静，带有命运回声感，照片级写实，电影质感。
+
+### ep01_s12
+- Summary: 张雪轻声告诉过去的自己“继续走”，而冠军赛车也成为属于ZXMOTO未来的开端而非终点。
+- Shot Type: wide shot
+- Camera Motion: slow dolly out
+- Mood: hopeful, unresolved
+- Anchor Text: 这场冠军，也许只是开始。
+- Priority: high
+- Beat Role: cliffhanger
+- Pace Weight: medium
+- Asset Focus: environment
+- Visual Prompt: 深夜工厂车间的宽阔空间中，冠军ZXMOTO 820RR-RS在聚光下如纪念碑般停放，39岁的张雪站在车旁微微侧身，视线从赛车望向更深处黑暗的生产线与未来方向，19岁的自己身影逐渐融入阴影，地面反光、工业结构轮廓和远处未亮起的区域共同暗示故事尚未结束，画面安静却带有强烈后劲，照片级写实，电影质感。
+
+```json
+{
+  "series_title": "ZXMOTO：从泥路到领奖台",
+  "episodes": [
+    {
+      "episode_number": 1,
+      "scene_beats": [
+        {
+          "scene_id": "ep01_s01",
+          "summary": "暴雨中的19岁张雪骑着小排量摩托，在湖南山路拼命追赶一辆电视台采访车。",
+          "visual_prompt": "19岁的张雪穿着被暴雨浸透的旧款深色风衣，骑着老旧黑红色小排量摩托，在湖南山区盘山公路上高速追赶前方白色电视台采访车，橘红色泥浆被车轮甩起，灰白雨雾压低天空，山路弯道逼仄，尾灯在雨幕中忽明忽暗，画面充满搏命追逐感，照片级写实，电影质感，阴冷暴雨天光。",
+          "shot_type": "wide shot",
+          "camera_motion": "handheld drift",
+          "mood": "desperate, suspenseful",
+          "anchor_text": "暴雨里，他在追一辆电视台的车。",
+          "priority": "high",
+          "beat_role": "hook",
+          "pace_weight": "medium",
+          "asset_focus": "interaction"
+        },
+        {
+          "scene_id": "ep01_s02",
+          "summary": "张雪在岔路口终于拦下采访车，冒雨大喊求一个进入圈子的机会。",
+          "visual_prompt": "山路狭窄岔路口，白色采访车减速停靠，车窗摇下，浑身湿透的19岁张雪站在泥水里拼命挥手，风衣紧贴身体，头发和雨水贴在额前，表情倔强又急切，对车内人物大喊请求，车窗内的人带着几分意外和轻微不以为然，路边积水、泥浆飞溅、模糊路牌和冷雨形成命运转折感，照片级写实，电影质感。",
+          "shot_type": "medium shot",
+          "camera_motion": "slow push in",
+          "mood": "raw, pleading",
+          "anchor_text": "我什么都能干，只求带我进这个圈子。",
+          "priority": "high",
+          "beat_role": "hook",
+          "pace_weight": "long",
+          "asset_focus": "interaction"
+        },
+        {
+          "scene_id": "ep01_s03",
+          "summary": "采访车离开后，张雪连人带车摔进泥里，却还是重新抓住车把站起来。",
+          "visual_prompt": "泥泞山路边，老旧小排量摩托侧翻在橘红色泥浆里，19岁张雪半身沾满泥水倒在地上，抬头望向灰白天空，胸口起伏，下一瞬又咬牙抓住车把把车扶起，手背和裤腿全是泥，雨水持续砸落，突出狼狈、屈辱和不肯认命的力量，照片级写实，电影质感，近距离情绪冲击。",
+          "shot_type": "close-up",
+          "camera_motion": "slow dolly out",
+          "mood": "bitter, stubborn",
+          "anchor_text": "他被拒绝了，但没有停下。",
+          "priority": "high",
+          "beat_role": "development",
+          "pace_weight": "medium",
+          "asset_focus": "character"
+        },
+        {
+          "scene_id": "ep01_s04",
+          "summary": "时间跳到2013年，张雪和陈星熠挤在重庆狭小车间里，对着旧账本和未完成车架继续砸钱研发。",
+          "visual_prompt": "重庆老旧工业区的狭小机修车间，昏黄工业灯下空间低矮拥挤，水泥地有油污，工作台散落工具和零件，中央是尚未完成的银灰色摩托车车架，桌上摊开一本起毛边旧账本，密密麻麻写着借款数字；39岁前期状态的张雪埋头工作，陈星熠穿深色外套站在一旁轻声说又借到钱了，两人都疲惫却没有退意，空气仿佛充满汽油和焊锡味，照片级写实，电影质感。",
+          "shot_type": "medium wide shot",
+          "camera_motion": "static",
+          "mood": "gritty, burdened",
+          "anchor_text": "他们手里只有两万，却还在继续造车。",
+          "priority": "medium",
+          "beat_role": "development",
+          "pace_weight": "long",
+          "asset_focus": "environment"
+        },
+        {
+          "scene_id": "ep01_s05",
+          "summary": "张雪抚摸发动机壳体，认定自己赌的不是一台车，而是一颗中国制造的心脏。",
+          "visual_prompt": "重庆狭小车间内的工作台特写，精密加工纹路清晰的发动机壳体被张雪满是机械粗粝感的双手稳稳托住，旁边虚化可见未完成车架、工具、焊点和账本边角，昏黄灯光打在金属表面形成温热高光，强调“发动机即心脏”的象征，照片级写实，电影质感，机械细节丰富。",
+          "shot_type": "insert",
+          "camera_motion": "slow push in",
+          "mood": "focused, reverent",
+          "anchor_text": "他赌的是一颗属于自己的心脏。",
+          "priority": "medium",
+          "beat_role": "development",
+          "pace_weight": "medium",
+          "asset_focus": "object"
+        },
+        {
+          "scene_id": "ep01_s06",
+          "summary": "多年后在现代化会议室里，张雪面对保守的投资人和高管，坚持必须研发自己的发动机。",
+          "visual_prompt": "冷白商务顶灯下的现代企业会议室，玻璃幕墙外能看见整片工厂园区，会议桌一侧坐着数名西装高管与投资人，文件和矿泉水整齐摆放；张雪穿深色夹克站在桌边，手掌压在桌面上，神情克制却坚定，画面形成明显对峙关系，冷色调、理性空间与人物理想主义发生冲撞，照片级写实，电影质感。",
+          "shot_type": "over-the-shoulder",
+          "camera_motion": "pan right",
+          "mood": "tense, confrontational",
+          "anchor_text": "不造自己的发动机，我们永远只是躯壳。",
+          "priority": "high",
+          "beat_role": "turn",
+          "pace_weight": "long",
+          "asset_focus": "interaction"
+        },
+        {
+          "scene_id": "ep01_s07",
+          "summary": "张雪清空桌面离开大楼，在工厂外夜色中独自停下，做出彻底出走的决定。",
+          "visual_prompt": "现代工厂大楼外的夜间空地，冷色路灯和楼体灯光拉出长长阴影，张雪独自从明亮门口走向开阔夜空，手里只拿着简单个人物品，脚步放慢后停住，身后是他参与建立的现代厂区，前方则是空旷黑夜和未知道路，环境安静克制，人物孤独感强烈，照片级写实，电影质感。",
+          "shot_type": "wide shot",
+          "camera_motion": "slow dolly out",
+          "mood": "lonely, resolute",
+          "anchor_text": "那天之后，他离开了自己亲手参与建立的大楼。",
+          "priority": "high",
+          "beat_role": "turn",
+          "pace_weight": "medium",
+          "asset_focus": "character"
+        },
+        {
+          "scene_id": "ep01_s08",
+          "summary": "他拿出手机，在夜风里打下“我决定奔赴属于自己的星辰大海”。",
+          "visual_prompt": "夜色中的黑色智能手机近景，屏幕上是简洁文字输入界面，清晰显示“我决定奔赴属于自己的星辰大海”，手指停在发送或输入完成的瞬间，背景虚化为工厂外冷色灯光与夜空，玻璃屏幕反射出张雪模糊而坚定的轮廓，照片级写实，电影质感。",
+          "shot_type": "insert",
+          "camera_motion": "static",
+          "mood": "restrained, decisive",
+          "anchor_text": "我决定奔赴属于自己的星辰大海。",
+          "priority": "medium",
+          "beat_role": "development",
+          "pace_weight": "short",
+          "asset_focus": "object"
+        },
+        {
+          "scene_id": "ep01_s09",
+          "summary": "2026年葡萄牙波尔蒂芒赛道上，红银相间的ZXMOTO 820RR-RS在发车位蓄势待发。",
+          "visual_prompt": "葡萄牙波尔蒂芒国际赛道正午烈日下，红银相间的ZXMOTO 820RR-RS停在发车格内，整流罩锋利反光，热浪让柏油路轻微扭曲；Debise穿专业红银黑赛车皮衣跨坐车上，头盔镜片映出看台和护栏，发车线、广告牌与国际赛事氛围完整可见，画面强调机器锋芒与历史时刻来临前的压缩张力，照片级写实，电影质感。",
+          "shot_type": "low angle medium shot",
+          "camera_motion": "slow push in",
+          "mood": "charged, triumphant",
+          "anchor_text": "那台中国赛车，终于站上了欧洲赛道。",
+          "priority": "high",
+          "beat_role": "development",
+          "pace_weight": "medium",
+          "asset_focus": "object"
+        },
+        {
+          "scene_id": "ep01_s10",
+          "summary": "最后一圈里Debise完成极限制动与连续超车，张雪在维修区盯着数据屏几乎屏住呼吸。",
+          "visual_prompt": "组合式高张力画面，一侧是葡萄牙波尔蒂芒赛道发卡弯，Debise驾驶红银ZXMOTO 820RR-RS在极限制动下压低车身，连续超越前方对手，轮胎贴地、车身倾角夸张；另一侧是赛道维修区内，张雪戴耳机死盯数据屏，身边工具柜、线缆和工位灯形成紧张工业氛围；热浪、速度残影、观众惊呼感与机械嘶吼共同构成胜负一瞬，照片级写实，电影质感。",
+          "shot_type": "montage",
+          "camera_motion": "handheld drift",
+          "mood": "explosive, tense",
+          "anchor_text": "最后一圈，他们冲到了最前面。",
+          "priority": "high",
+          "beat_role": "turn",
+          "pace_weight": "long",
+          "asset_focus": "montage"
+        },
+        {
+          "scene_id": "ep01_s11",
+          "summary": "深夜工厂里，张雪独自站在冠军赛车前，仿佛看见19岁的自己隔着17年向他发问。",
+          "visual_prompt": "深夜工厂车间大部分区域沉入阴影，单束顶灯打在展放中的冠军版ZXMOTO 820RR-RS上，39岁的张雪穿深色夹克缓步走近赛车，神情复杂；在灯光边缘以写实电影方式呈现一个仿佛真实存在的19岁张雪，仍穿湿旧风衣、身上带着泥路记忆般的痕迹，两代自己隔着赛车相望，空间空旷安静，带有命运回声感，照片级写实，电影质感。",
+          "shot_type": "medium shot",
+          "camera_motion": "slow push in",
+          "mood": "reflective, haunting",
+          "anchor_text": "39岁的他，又看见了19岁的自己。",
+          "priority": "high",
+          "beat_role": "development",
+          "pace_weight": "long",
+          "asset_focus": "interaction"
+        },
+        {
+          "scene_id": "ep01_s12",
+          "summary": "张雪轻声告诉过去的自己“继续走”，而冠军赛车也成为属于ZXMOTO未来的开端而非终点。",
+          "visual_prompt": "深夜工厂车间的宽阔空间中，冠军ZXMOTO 820RR-RS在聚光下如纪念碑般停放，39岁的张雪站在车旁微微侧身，视线从赛车望向更深处黑暗的生产线与未来方向，19岁的自己身影逐渐融入阴影，地面反光、工业结构轮廓和远处未亮起的区域共同暗示故事尚未结束，画面安静却带有强烈后劲，照片级写实，电影质感。",
+          "shot_type": "wide shot",
+          "camera_motion": "slow dolly out",
+          "mood": "hopeful, unresolved",
+          "anchor_text": "这场冠军，也许只是开始。",
+          "priority": "high",
+          "beat_role": "cliffhanger",
+          "pace_weight": "medium",
+          "asset_focus": "environment"
+        }
+      ]
+    }
+  ]
+}
+```

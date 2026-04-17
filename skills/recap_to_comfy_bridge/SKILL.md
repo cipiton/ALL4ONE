@@ -1,7 +1,7 @@
 ---
 name: recap_to_comfy_bridge
 display_name: Recap To Comfy Bridge
-description: Convert a recap_production output folder or its `04_episode_scene_script.json` into deterministic VideoArc-style bridge payloads for legacy ComfyUI asset and storyboard workflows.
+description: "Convert a `02_recap_production` recap bundle into bridge payloads: canonical `assets.json`, optional Qwen-compiled Z-Image prompts, legacy VideoArc-style assets, and storyboard JSON."
 supports_resume: false
 input_extensions:
   - .json
@@ -12,20 +12,20 @@ metadata:
       en: "Recap To Comfy Bridge"
       zh: "解说产物转 Comfy 桥接"
     description:
-      en: "Read recap_production outputs and write VideoArc-style bridge JSON payloads for the older ComfyUI pipeline."
-      zh: "读取 recap_production 的产物，并输出可供旧 ComfyUI 流程复用的 VideoArc 风格桥接 JSON。"
+      en: "Read a `02_recap_production` recap bundle and write canonical assets, optional Qwen-compiled Z-Image prompts, plus VideoArc-style bridge JSON payloads."
+      zh: "读取 `02_recap_production` 解说产物包，并输出规范 assets 以及 VideoArc 风格桥接 JSON。"
     workflow_hint:
-      en: "This bridge is deterministic and script-backed. Point it at a recap_production run folder or the folder's `04_episode_scene_script.json`, and it will derive sibling recap artifacts automatically."
-      zh: "该桥接流程为本地脚本确定性执行。把它指向一个 recap_production 运行目录或其中的 `04_episode_scene_script.json`，脚本会自动读取同级 recap 产物。"
+      en: "Stage 04 bridge. Preferred input is the Skill 2 `02_recap_production` folder; the bridge loads `04_episode_scene_script.json` plus sibling recap assets/image-config files, preferring JSON sidecars over txt fallbacks. Legacy `01_recap_production` folders are still accepted."
+      zh: "第 04 阶段桥接。首选输入为第 2 个技能产出的 `02_recap_production` 文件夹；桥接会读取其中的 `04_episode_scene_script.json` 以及同级 recap 资产/生图配置文件，优先使用 JSON sidecar，必要时回退到 txt。旧版 `01_recap_production` 文件夹仍兼容。"
     input_hint:
-      en: "Send a recap_production output folder that contains `04_episode_scene_script.json`, or send that JSON file directly."
-      zh: "请提供包含 `04_episode_scene_script.json` 的 recap_production 输出目录，或直接提供该 JSON 文件。"
+      en: "Skill 4 input: send the Skill 2 `02_recap_production/` folder. Fallback: `02_recap_production/04_episode_scene_script.json`."
+      zh: "第 4 个技能输入：请提供第 2 个技能产出的 `02_recap_production/` 文件夹。回退输入：`02_recap_production/04_episode_scene_script.json`。"
     output_hint:
-      en: "Writes `videoarc_assets.json`, `videoarc_storyboard.json`, and `bridge_summary.json` into the current project output folder."
-      zh: "会在当前项目输出目录中写出 `videoarc_assets.json`、`videoarc_storyboard.json` 和 `bridge_summary.json`。"
+      en: "Writes stage-04 outputs into `04_recap_to_comfy_bridge`: canonical `assets.json` with optional `compiled_prompt` fields, legacy `videoarc_assets.json`, `videoarc_storyboard.json`, and `bridge_summary.json`."
+      zh: "会在 `04_recap_to_comfy_bridge` 阶段目录中写出：规范 `assets.json`、兼容旧链路的 `videoarc_assets.json`、`videoarc_storyboard.json` 和 `bridge_summary.json`。"
     starter_prompt:
-      en: "Send the recap_production run folder you want to bridge into VideoArc-style payloads."
-      zh: "请提供要桥接成 VideoArc 风格载荷的 recap_production 运行目录。"
+      en: "Send the `02_recap_production` folder from Skill 2, or its `04_episode_scene_script.json` file."
+      zh: "请提供第 2 个技能产出的 `02_recap_production` 文件夹，或其中的 `04_episode_scene_script.json` 文件。"
 
 steps:
   - number: 1
@@ -48,34 +48,74 @@ output:
 
 # Recap To Comfy Bridge
 
-Convert current `recap_production` outputs into deterministic VideoArc-style JSON payloads that can feed older ComfyUI asset and storyboard logic.
+Convert the Skill 2 `02_recap_production` bundle into deterministic stage-04 bridge payloads that can feed older ComfyUI asset and storyboard logic.
 
 ## Expected Source Bundle
 
-The bridge expects a `recap_production` run folder with these top-level files:
+The bridge expects the recap stage folder:
+
+- `outputs/stories/<story_slug>/<run_id>/02_recap_production/`
+
+Inside that folder, it resolves these files:
 
 - `02_assets.txt`
 - `03_image_config.txt`
 - `04_episode_scene_script.json`
 
-The user may send either:
+Preferred user input:
 
-- the run folder itself
-- or the file `04_episode_scene_script.json`
+- the `02_recap_production` folder itself
 
-The bridge script derives the source folder from that JSON file and validates the sibling files before writing any outputs.
+Fallback user input:
+
+- the file `02_recap_production/04_episode_scene_script.json`
+
+The shared runtime resolves folder input to `04_episode_scene_script.json`, then the bridge script derives the source folder from that file and validates the sibling recap artifacts before writing any outputs.
+
+When the newer recap-production JSON sidecars exist, the bridge prefers:
+
+- `02_assets.json`
+- `03_image_config.json`
+
+It falls back to:
+
+- `02_assets.txt`
+- `03_image_config.txt`
+
+Public input contract notes:
+
+- story run root input is supported only when the shared runtime can resolve it to `02_recap_production`
+- do not pass `02_assets.json`, `03_image_config.json`, or bridge-stage `assets.json` as entry files
+
+Legacy `01_recap_production` folders from earlier runs are still accepted.
 
 ## Output
 
-Within the normal ONE4ALL output root, the bridge writes:
+Within the story-first run folder, stage 04 writes:
 
+- `assets.json`
 - `videoarc_assets.json`
 - `videoarc_storyboard.json`
 - `bridge_summary.json`
 
+`assets.json` preserves the normalized deterministic fields and may add Qwen prompt-compiler fields per asset:
+
+- `compiled_prompt`
+- `compiled_prompt_model`
+- `compiled_prompt_version`
+- `compiled_prompt_source`
+- `compiled_from_fields`
+- `compiled_prompt_rationale`
+
+The compiler uses the configured `qwen` model alias, currently `qwen/3-32b`, as a prompt compiler only. It is instructed to preserve source facts, enforce 2D/3D style, avoid multi-angle sheets/contact sheets/collages/split panels/labeled angles, and produce one clean Z-Image asset prompt for each character, scene, or prop.
+
+If Qwen is unavailable or a compile call fails, the bridge does not fail the stage. It keeps the deterministic normalized fields and records fallback status in `bridge_summary.json` under `qwen_prompt_compiler`.
+
+Set `ONE4ALL_QWEN_ASSET_PROMPT_COMPILER=0` to force the deterministic fallback path for bridge validation or offline runs.
+
 ## Bridge Scope
 
-This skill is a fast adapter layer only. It does not:
+This skill is an adapter and prompt-compilation layer. It does not:
 
 - run ComfyUI
 - rebuild the old VideoArc webapp

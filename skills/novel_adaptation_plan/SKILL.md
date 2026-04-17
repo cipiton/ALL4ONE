@@ -21,14 +21,14 @@ metadata:
       en: "This workflow extracts set pieces, grades them, plans pacing, binds episodes, and writes the final adaptation package."
       zh: "此流程会提取并分级名场面，规划节奏阶段，绑定单集安排，并输出最终改编方案。"
     input_hint:
-      en: "Send a `.txt` novel file, prepared outline, or project-ingested dossier for adaptation planning."
-      zh: "请提供 `.txt` 小说文件、已整理母本，或项目归纳档案来生成改编方案。"
+      en: "Novel Adaptation Plan input: send one `.txt` novel file, prepared outline/master outline, or project-ingested dossier for adaptation planning."
+      zh: "小说改编计划输入：请提供一个 `.txt` 小说文件、已整理大纲/母本，或项目归纳档案来生成改编方案。"
     output_hint:
       en: "Writes the standardized short-drama adaptation package and supporting planning files."
       zh: "会生成标准化短剧改编方案及配套规划文件。"
     starter_prompt:
-      en: "Send the novel source or project dossier for adaptation planning."
-      zh: "请提供用于改编策划的小说源文件或项目档案。"
+      en: "Send the novel source `.txt`, prepared outline, or project dossier for adaptation planning."
+      zh: "请提供用于改编策划的小说源 `.txt`、已整理大纲或项目档案。"
   startup:
     mode: explicit_step_selection
     default_step: 1

@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import Any  
   
 from .models import InputDocument, SkillDefinition  
+from .output_paths import is_story_pipeline_skill, resolve_story_stage_output
   
   
 def create_session_directory(  
@@ -15,6 +16,17 @@ def create_session_directory(
     input_root_path: Path | None = None,  
     input_paths: list[Path] | None = None,
 ) -> tuple[str, Path]:  
+    if is_story_pipeline_skill(skill_name):
+        context = resolve_story_stage_output(
+            outputs_root,
+            skill_name,
+            input_root_path=input_root_path,
+            input_paths=list(input_paths or []),
+        )
+        if context.stage_dir is None:
+            raise ValueError(f"Story-first output resolution did not return a stage directory for {skill_name}")
+        return context.run_id, context.stage_dir
+
     skill_root = outputs_root / skill_name  
     skill_root.mkdir(parents=True, exist_ok=True)  
   

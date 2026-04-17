@@ -1,0 +1,4 @@
+interface:
+  display_name: "CP Production"
+  short_description: "Novel-to-preproduction video package"
+  default_prompt: "Use $cp-production to turn a novel.txt story draft into narration, beats, assets, anchor prompts, and LTX-2 video prompts."

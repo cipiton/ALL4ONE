@@ -1,5 +1,67 @@
 version: 1
 skills:
+  - id: cp-production
+    type: skill
+    adapter: skill_md
+    display_name:
+      en: "CP Production"
+      zh: "CP 制作前期"
+    description:
+      en: "Turn raw story text such as novel.txt into a separated preproduction package with narration, beats, assets, FLUX klein anchor prompts, and LTX-2 video prompts."
+      zh: "将 `novel.txt` 等原始故事文本转换为拆分明确的制作前期包，包含旁白稿、节拍表、资产规划、FLUX klein 锚帧提示词和 LTX-2 视频提示词。"
+    spec_path: skills/cp-production/SKILL.md
+    aliases:
+      - cp-production
+      - cp_production
+    enabled: true
+
+  - id: recap_to_tts
+    type: skill
+    adapter: skill_md
+    display_name:
+      en: "Recap To TTS"
+      zh: "解说稿转配音"
+    description:
+      en: "Split a recap script into episode narration WAV files by calling the local Qwen TTS runner."
+      zh: "将解说剧脚本拆成分集旁白音频，并调用本地 Qwen TTS 生成 WAV。"
+    spec_path: skills/recap_to_tts/SKILL.md
+    enabled: true    
+
+
+  - id: flux-asset-and-scene-generation
+    type: skill
+    adapter: skill_md
+    display_name:
+      en: "FLUX Asset and Scene Generation"
+      zh: "FLUX 资产与关键场景生成"
+    description:
+      en: "Read recap production outputs directly, choose asset or keyscene generation, build FLUX.2 klein prompts, and run local image generation."
+      zh: "直接读取 recap production 产物，选择资产或关键场景生成，构建 FLUX.2 klein 提示词，并用本地 FLUX 运行 9B 资产图与 4B 关键场景图生成。"
+    spec_path: skills/flux-asset-and-scene-generation/SKILL.md
+    aliases:
+      - flux-asset-scene-generation
+      - flux-asset-and-scene-generation
+      - flux-klein-generation
+    enabled: true
+
+  - id: ltx-video-skill
+    type: skill
+    adapter: skill_md
+    display_name:
+      en: "LTX Video Skill"
+      zh: "LTX 视频提示词技能"
+    description:
+      en: "Read recap production beats, call the configured Gemini alias as a prompt director, and save structured LTX-ready shot prompts for later video generation."
+      zh: "读取 recap production 分镜 beat，调用已配置的 Gemini 别名作为提示词导演，并保存供后续视频生成使用的结构化 LTX 分镜提示词。"
+    spec_path: skills/ltx-video-skill/SKILL.md
+    aliases:
+      - ltx-video
+      - ltx-prompt-skill
+      - ltx-video-skill
+    enabled: true
+
+
+
   - id: recap_analysis
     type: skill
     adapter: skill_md
@@ -24,17 +86,7 @@ skills:
     spec_path: skills/recap_production/SKILL.md
     enabled: true
 
-  - id: recap_to_tts
-    type: skill
-    adapter: skill_md
-    display_name:
-      en: "Recap To TTS"
-      zh: "解说稿转配音"
-    description:
-      en: "Split a recap script into episode narration WAV files by calling the local Qwen TTS runner."
-      zh: "将解说剧脚本拆成分集旁白音频，并调用本地 Qwen TTS 生成 WAV。"
-    spec_path: skills/recap_to_tts/SKILL.md
-    enabled: true
+
 
   - id: recap_to_comfy_bridge
     type: skill
@@ -43,10 +95,43 @@ skills:
       en: "Recap To Comfy Bridge"
       zh: "解说产物转 Comfy 桥接"
     description:
-      en: "Convert recap_production outputs into VideoArc-style JSON payloads for legacy ComfyUI asset and storyboard workflows."
-      zh: "把 recap_production 产物转换成可供旧 ComfyUI 资产与分镜流程使用的 VideoArc 风格 JSON。"
+      en: "Stage 04 bridge: convert a `02_recap_production` bundle into canonical `assets.json`, legacy VideoArc-style assets, and storyboard JSON."
+      zh: "第 04 阶段桥接：把 `02_recap_production` 产物包转换成规范 `assets.json`、兼容旧链路的 VideoArc 资产载荷与分镜 JSON。"
     spec_path: skills/recap_to_comfy_bridge/SKILL.md
     enabled: true
+
+  - id: recap_to_assets_zimage
+    type: skill
+    adapter: skill_md
+    display_name:
+      en: "Recap To Assets Z-Image"
+      zh: "解说资产生图 Z-Image"
+    description:
+      en: "Generate character, scene, and prop T2I assets from bridge-stage assets.json via the local Z-Image-Turbo backend."
+      zh: "基于桥接阶段的 assets.json，通过本地 Z-Image-Turbo 生成角色、场景和道具 T2I 资产。"
+    spec_path: skills/recap_to_assets_zimage/SKILL.md
+    aliases:
+      - recap-to-assets-zimage
+    enabled: true
+
+  - id: recap_to_keyscene_kontext
+    type: skill
+    adapter: skill_md
+    display_name:
+      en: "Recap To Keyscene Kontext"
+      zh: "解说关键帧 Kontext"
+    description:
+      en: "Stage 06 keyscene I2I: combine bridge storyboard beats with generated T2I assets through a ComfyUI Flux Kontext API workflow."
+      zh: "第 06 阶段关键帧 I2I：将桥接分镜 beat 与已生成 T2I 资产通过 ComfyUI Flux Kontext API 工作流合成为关键帧。"
+    spec_path: skills/recap_to_keyscene_kontext/SKILL.md
+    aliases:
+      - recap-to-keyscene-kontext
+      - keyscene-i2i
+    enabled: true
+
+
+
+
 
   - id: novel2script
     type: skill

@@ -1,0 +1,26 @@
+{
+  "schema": "ltx_prompt_generation_manifest_v2",
+  "timestamp": "2026-04-16T17:12:57+08:00",
+  "input_folder": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\OUTPUTSSAVED\\REAL\\02_recap_production",
+  "selected_scene_script": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\OUTPUTSSAVED\\REAL\\02_recap_production\\04_episode_scene_script.json",
+  "selection_notes": [
+    "Selected canonical scene script: 04_episode_scene_script.json"
+  ],
+  "series_title": "zxmoto",
+  "story_slug": "zxmoto",
+  "model_alias_used": "gemini",
+  "resolved_model_route": "step execution: openrouter / google/gemini-2.5-flash (step override)",
+  "resolved_model": "google/gemini-2.5-flash",
+  "shot_count": 12,
+  "success_count": 6,
+  "fallback_count": 6,
+  "validation_issue_count": 2,
+  "validation_status": "warnings",
+  "output_root": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\ltx-video-skill\\04_episode_scene_script__20260416_171202\\generated_ltx_prompts",
+  "output_paths": {
+    "prompts": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\ltx-video-skill\\04_episode_scene_script__20260416_171202\\generated_ltx_prompts\\prompts.json",
+    "prompts_by_episode": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\ltx-video-skill\\04_episode_scene_script__20260416_171202\\generated_ltx_prompts\\prompts_by_episode.json",
+    "debug": null,
+    "manifest": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\ltx-video-skill\\04_episode_scene_script__20260416_171202\\generated_ltx_prompts\\manifest.json"
+  }
+}

@@ -1,0 +1,3991 @@
+{
+  "schema": "flux_keyscene_generation_manifest_v1",
+  "timestamp": "2026-04-15T09:32:14.459235+00:00",
+  "input_folder": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\OUTPUTSSAVED\\2222\\02_recap_production",
+  "mode": "keyscene",
+  "style_target": "3d-anime",
+  "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+  "backend": "klein_cli",
+  "generated_assets_root": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_assets",
+  "available_asset_counts": {
+    "characters": 4,
+    "props": 8,
+    "scenes": 6
+  },
+  "resume_enabled": true,
+  "resume_source": null,
+  "scene_validation": "warn",
+  "debug_keyscene_output": false,
+  "batch_generation": {
+    "job_count": 25,
+    "requested_model_reuse": true
+  },
+  "output_root": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_keyscenes",
+  "item_count": 25,
+  "items": [
+    {
+      "timestamp": "2026-04-15T09:06:39.632592+00:00",
+      "beat_id": "ep01_s01",
+      "episode_number": 1,
+      "mode": "keyscene",
+      "style_target": "3d-anime",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 3540401194,
+      "width": 864,
+      "height": 1080,
+      "prompt": "人物骑着或控制白色旧头盔完成这一瞬间动作。 白色旧头盔保持与人物匹配的真实整车比例，不过度放大，和道路或车道宽度关系正常。 车辆和人物位于中景或下中部，清楚落在湖南乡道暴雨路段的道路空间里，道路向背景延伸，周围保留可见环境。 宽构图，车辆位于下中部或中景，道路清楚后退到背景。 3D动漫质感。",
+      "prompt_source": "04_episode_scene_script.json beat fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "scene=exact_name_match",
+        "character=missing",
+        "prop=exact_name_match",
+        "shot_mode=vehicle_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance.",
+        "vehicle_preset=riding_on_road",
+        "Vehicle-shot template focuses on physical scale, blocking, and anti-oversize staging."
+      ],
+      "shot_mode": "vehicle_keyscene",
+      "prompt_template": "vehicle_keyscene",
+      "vehicle_shot": true,
+      "vehicle_preset": "riding_on_road",
+      "reference_policy": "vehicle_keyscene: scene + prop",
+      "reference_count": 2,
+      "prompt_length": 129,
+      "legacy_prompt_length": 306,
+      "raw_source_description": "暴雨中的采访车准备返程时，后方突然出现一个穿黄雨衣骑破摩托拼命追赶的少年 | 2006年湖南乡道暴雨路段，高精度3D CG风格，白色采访车行驶在被暴雨泡成深黄色泥浆的狭窄乡路上，密集雨幕中，一名19岁瘦高中国少年穿半透明黄色雨衣、戴发花的白色旧头盔，骑着破旧125cc小踏板摩托车从后方泥水中逼近，车轮甩起泥浆，天空阴沉压低，纪录片式强追逐感，画面重点是黄色雨衣在灰黄暴雨世界中格外刺眼 | 暴雨里，有人追了我们一百公里 | urgent, stormy | wide shot | slow",
+      "anti_oversize_rules": [
+        "车辆与骑手保持真实整车比例",
+        "车身符合真实世界尺寸，不要过度放大",
+        "车辆与道路、车道或赛道宽度关系正常",
+        "车辆与镜头保持自然距离，不要贴满画面",
+        "画面周围保留可见环境空间"
+      ],
+      "framing_clause": "宽构图，车辆位于下中部或中景，道路清楚后退到背景。",
+      "summary": "暴雨中的采访车准备返程时，后方突然出现一个穿黄雨衣骑破摩托拼命追赶的少年。",
+      "anchor_text": "暴雨里，有人追了我们一百公里。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_湖南乡道暴雨路段",
+          "asset_name": "湖南乡道暴雨路段",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_assets\\scenes\\scene_湖南乡道暴雨路段.png"
+        },
+        "character": null,
+        "prop": {
+          "asset_id": "prop_白色旧头盔",
+          "asset_name": "白色旧头盔",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_assets\\props\\prop_白色旧头盔.png"
+        }
+      },
+      "matching_notes": [
+        "Matched scene asset by explicit beat phrase: 湖南乡道暴雨路段, 天空阴沉.",
+        "No confident character asset match was found, so this reference was omitted.",
+        "Matched prop asset by explicit beat phrase: 白色旧头盔."
+      ],
+      "validation_warnings": [
+        "ep01_s01: vehicle shot will use scene + prop because no confident rider/character match was found."
+      ],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_湖南乡道暴雨路段",
+            "asset_name": "湖南乡道暴雨路段",
+            "score": 252,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "湖南乡道暴雨路段",
+              "天空阴沉"
+            ]
+          },
+          {
+            "asset_id": "scene_锈迹加油站",
+            "asset_name": "锈迹加油站",
+            "score": 140,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_重庆高架桥下石灰岩洞",
+            "asset_name": "重庆高架桥下石灰岩洞",
+            "score": 6,
+            "strategy": "keyword_overlap",
+            "matched_terms": [
+              "狭窄"
+            ]
+          },
+          {
+            "asset_id": "scene_赛道维修区",
+            "asset_name": "赛道维修区",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_达喀尔沙漠赛道",
+            "asset_name": "达喀尔沙漠赛道",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [
+          {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "character_张雪_Kove创始人",
+            "asset_name": "张雪_Kove创始人",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "character_张雪_重庆作坊期",
+            "asset_name": "张雪_重庆作坊期",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "character_采访者",
+            "asset_name": "采访者",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "prop": [
+          {
+            "asset_id": "prop_白色旧头盔",
+            "asset_name": "白色旧头盔",
+            "score": 166,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "白色旧头盔"
+            ]
+          },
+          {
+            "asset_id": "prop_Kove赛车夹克",
+            "asset_name": "Kove赛车夹克",
+            "score": 140,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_破125小踏板摩托车",
+            "asset_name": "破125小踏板摩托车",
+            "score": 140,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_赛车头盔",
+            "asset_name": "赛车头盔",
+            "score": 140,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_木箱工具",
+            "asset_name": "木箱工具",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ]
+      },
+      "limitations": [],
+      "debug_artifact": null,
+      "resume_status": "queued",
+      "resumed_from": null,
+      "previous_output_path": null,
+      "dropped_prop_reason": null,
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_keyscenes\\keyscenes\\ep01_s01.png"
+    },
+    {
+      "timestamp": "2026-04-15T09:06:39.632592+00:00",
+      "beat_id": "ep01_s02",
+      "episode_number": 1,
+      "mode": "keyscene",
+      "style_target": "3d-anime",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 3338445147,
+      "width": 864,
+      "height": 1080,
+      "prompt": "张雪在锈迹加油站里围绕Kove赛车夹克操作或检修。 Kove赛车夹克保持真实尺寸关系，不要把整车或机械放大成贴脸巨物。 Kove赛车夹克位于工位或工作区中景，周围保留工具、地面和工作间空间，机械与环境保持连贯。 中景，机械与工作区关系清楚，保留地面和工位边界。 3D动漫质感。",
+      "prompt_source": "04_episode_scene_script.json beat fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "scene=no_match",
+        "character=exact_name_match",
+        "prop=no_match",
+        "shot_mode=vehicle_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance.",
+        "vehicle_preset=workshop_vehicle_interaction",
+        "Vehicle-shot template focuses on physical scale, blocking, and anti-oversize staging."
+      ],
+      "shot_mode": "vehicle_keyscene",
+      "prompt_template": "vehicle_keyscene",
+      "vehicle_shot": true,
+      "vehicle_preset": "workshop_vehicle_interaction",
+      "reference_policy": "vehicle_keyscene: scene + character + prop",
+      "reference_count": 3,
+      "prompt_length": 113,
+      "legacy_prompt_length": 295,
+      "raw_source_description": "少年在泥泞路上死咬采访车不放，狼狈却倔强地维持追逐 | 湖南乡道暴雨环境中，镜头更贴近黄雨衣少年张雪，半透明雨衣紧贴身体，黑发被雨水压在额前，旧白头盔布满磨痕，瘦高身形在破125小踏板上前倾发力，雨水顺着下巴和雨衣边缘不断流下，轮胎在泥浆积水里打滑却仍强行稳住，突出疲惫、执拗和近乎赌命的追赶状态 | 他不是跟一段路，而是死咬着不放 | desperate, stubborn | medium shot",
+      "anti_oversize_rules": [
+        "车辆与骑手保持真实整车比例",
+        "车身符合真实世界尺寸，不要过度放大",
+        "车辆与道路、车道或赛道宽度关系正常",
+        "车辆与镜头保持自然距离，不要贴满画面",
+        "画面周围保留可见环境空间"
+      ],
+      "framing_clause": "中景，机械与工作区关系清楚，保留地面和工位边界。",
+      "summary": "少年在泥泞路上死咬采访车不放，狼狈却倔强地维持追逐。",
+      "anchor_text": "他不是跟一段路，而是死咬着不放。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_锈迹加油站",
+          "asset_name": "锈迹加油站",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_assets\\scenes\\scene_锈迹加油站.png"
+        },
+        "character": {
+          "asset_id": "character_张雪",
+          "asset_name": "张雪",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_assets\\characters\\character_张雪.png"
+        },
+        "prop": {
+          "asset_id": "prop_Kove赛车夹克",
+          "asset_name": "Kove赛车夹克",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_assets\\props\\prop_Kove赛车夹克.png"
+        }
+      },
+      "matching_notes": [
+        "Matched scene asset by keyword overlap: .",
+        "Matched character asset by explicit beat phrase: 张雪.",
+        "Matched prop asset by keyword overlap: ."
+      ],
+      "validation_warnings": [],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_锈迹加油站",
+            "asset_name": "锈迹加油站",
+            "score": 140,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_湖南乡道暴雨路段",
+            "asset_name": "湖南乡道暴雨路段",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_赛道维修区",
+            "asset_name": "赛道维修区",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_达喀尔沙漠赛道",
+            "asset_name": "达喀尔沙漠赛道",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_重庆城市桥下通道",
+            "asset_name": "重庆城市桥下通道",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [
+          {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "score": 246,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_张雪_Kove创始人",
+            "asset_name": "张雪_Kove创始人",
+            "score": 6,
+            "strategy": "keyword_overlap",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_张雪_重庆作坊期",
+            "asset_name": "张雪_重庆作坊期",
+            "score": 6,
+            "strategy": "keyword_overlap",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_采访者",
+            "asset_name": "采访者",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "prop": [
+          {
+            "asset_id": "prop_Kove赛车夹克",
+            "asset_name": "Kove赛车夹克",
+            "score": 140,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_破125小踏板摩托车",
+            "asset_name": "破125小踏板摩托车",
+            "score": 140,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_赛车头盔",
+            "asset_name": "赛车头盔",
+            "score": 140,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_木箱工具",
+            "asset_name": "木箱工具",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_焊枪",
+            "asset_name": "焊枪",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ]
+      },
+      "limitations": [],
+      "debug_artifact": null,
+      "resume_status": "queued",
+      "resumed_from": null,
+      "previous_output_path": null,
+      "dropped_prop_reason": null,
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_keyscenes\\keyscenes\\ep01_s02.png"
+    },
+    {
+      "timestamp": "2026-04-15T09:06:39.633593+00:00",
+      "beat_id": "ep01_s03",
+      "episode_number": 1,
+      "mode": "keyscene",
+      "style_target": "3d-anime",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 3599714636,
+      "width": 864,
+      "height": 1080,
+      "prompt": "采访车内的采访者和司机从惊讶转为警觉，终于决定停车看看这个少年到底想干什么。 让采访者在锈迹加油站里成为视觉中心，只保留一个环境提示。 越肩构图，突出表情、姿态和一个支持性的场景线索。 3D动漫质感。",
+      "prompt_source": "04_episode_scene_script.json beat fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "scene=no_match",
+        "character=exact_name_match",
+        "prop=missing",
+        "shot_mode=identity_emotion_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance."
+      ],
+      "shot_mode": "identity_emotion_keyscene",
+      "prompt_template": "identity_emotion_keyscene",
+      "vehicle_shot": false,
+      "vehicle_preset": null,
+      "reference_policy": "identity_emotion_keyscene: scene + character",
+      "reference_count": 2,
+      "prompt_length": 88,
+      "legacy_prompt_length": 284,
+      "raw_source_description": "采访车内的采访者和司机从惊讶转为警觉，终于决定停车看看这个少年到底想干什么 | 从采访车内部向前挡风玻璃和后视方向看的视角，高精度3D CG，雨刷快速摆动，玻璃上布满水痕，浅色衬衫的中年采访者与司机神情疲惫又疑惑，远处黄雨衣少年仍在雨幕中追近，车内昏暗潮湿，外部泥路和灰天形成压迫感，强调“原本想放弃空跑却被迫停下”的纪录片现场感 | 我们终于决定，把车停下来 | wary, curious | over-the-shoulder",
+      "anti_oversize_rules": [],
+      "framing_clause": "越肩构图，突出表情、姿态和一个支持性的场景线索。",
+      "summary": "采访车内的采访者和司机从惊讶转为警觉，终于决定停车看看这个少年到底想干什么。",
+      "anchor_text": "我们终于决定，把车停下来。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_锈迹加油站",
+          "asset_name": "锈迹加油站",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_assets\\scenes\\scene_锈迹加油站.png"
+        },
+        "character": {
+          "asset_id": "character_采访者",
+          "asset_name": "采访者",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_assets\\characters\\character_采访者.png"
+        },
+        "prop": null
+      },
+      "matching_notes": [
+        "Matched scene asset by keyword overlap: .",
+        "Matched character asset by explicit beat phrase: 采访者.",
+        "Prop omitted by reference policy."
+      ],
+      "validation_warnings": [],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_锈迹加油站",
+            "asset_name": "锈迹加油站",
+            "score": 140,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_重庆高架桥下石灰岩洞",
+            "asset_name": "重庆高架桥下石灰岩洞",
+            "score": 6,
+            "strategy": "keyword_overlap",
+            "matched_terms": [
+              "潮湿"
+            ]
+          },
+          {
+            "asset_id": "scene_湖南乡道暴雨路段",
+            "asset_name": "湖南乡道暴雨路段",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_赛道维修区",
+            "asset_name": "赛道维修区",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_达喀尔沙漠赛道",
+            "asset_name": "达喀尔沙漠赛道",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [
+          {
+            "asset_id": "character_采访者",
+            "asset_name": "采访者",
+            "score": 984,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "采访者"
+            ]
+          },
+          {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "character_张雪_Kove创始人",
+            "asset_name": "张雪_Kove创始人",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "character_张雪_重庆作坊期",
+            "asset_name": "张雪_重庆作坊期",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "prop": []
+      },
+      "limitations": [],
+      "debug_artifact": null,
+      "resume_status": "queued",
+      "resumed_from": null,
+      "previous_output_path": null,
+      "dropped_prop_reason": "compact_reference_policy",
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_keyscenes\\keyscenes\\ep01_s03.png"
+    },
+    {
+      "timestamp": "2026-04-15T09:06:39.633593+00:00",
+      "beat_id": "ep01_s04",
+      "episode_number": 1,
+      "mode": "keyscene",
+      "style_target": "3d-anime",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 3314237803,
+      "width": 864,
+      "height": 1080,
+      "prompt": "人物骑着或控制Kove赛车夹克完成这一瞬间动作。 Kove赛车夹克保持与人物匹配的真实整车比例，不过度放大，和道路或车道宽度关系正常。 车辆和人物位于中景或下中部，清楚落在锈迹加油站的道路空间里，道路向背景延伸，周围保留可见环境。 宽构图，车辆位于下中部或中景，道路清楚后退到背景。 3D动漫质感。",
+      "prompt_source": "04_episode_scene_script.json beat fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "scene=exact_name_match",
+        "character=missing",
+        "prop=no_match",
+        "shot_mode=vehicle_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance.",
+        "vehicle_preset=riding_on_road",
+        "Vehicle-shot template focuses on physical scale, blocking, and anti-oversize staging."
+      ],
+      "shot_mode": "vehicle_keyscene",
+      "prompt_template": "vehicle_keyscene",
+      "vehicle_shot": true,
+      "vehicle_preset": "riding_on_road",
+      "reference_policy": "vehicle_keyscene: scene + prop",
+      "reference_count": 2,
+      "prompt_length": 126,
+      "legacy_prompt_length": 258,
+      "raw_source_description": "车停在锈迹加油站边，少年一脚踩进泥水，急停支车冲到镜头前 | 乡镇边缘锈迹斑斑的老旧加油站，潮湿泥泞地面反着灰光，白色采访车停在棚架旁，黄雨衣少年骑破125小踏板急停，左脚重重踩进泥水，车身歪斜支住，老式加油机、褪色招牌和空旷站点共同构成破败场景，雨仍在下，画面强调荒凉与突然对峙 | 他在锈迹加油站边把我们拦住了 | raw, tense | wide shot | static",
+      "anti_oversize_rules": [
+        "车辆与骑手保持真实整车比例",
+        "车身符合真实世界尺寸，不要过度放大",
+        "车辆与道路、车道或赛道宽度关系正常",
+        "车辆与镜头保持自然距离，不要贴满画面",
+        "画面周围保留可见环境空间"
+      ],
+      "framing_clause": "宽构图，车辆位于下中部或中景，道路清楚后退到背景。",
+      "summary": "车停在锈迹加油站边，少年一脚踩进泥水，急停支车冲到镜头前。",
+      "anchor_text": "他在锈迹加油站边把我们拦住了。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_锈迹加油站",
+          "asset_name": "锈迹加油站",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_assets\\scenes\\scene_锈迹加油站.png"
+        },
+        "character": null,
+        "prop": {
+          "asset_id": "prop_Kove赛车夹克",
+          "asset_name": "Kove赛车夹克",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_assets\\props\\prop_Kove赛车夹克.png"
+        }
+      },
+      "matching_notes": [
+        "Matched scene asset by explicit beat phrase: 锈迹加油站.",
+        "No confident character asset match was found, so this reference was omitted.",
+        "Matched prop asset by keyword overlap: ."
+      ],
+      "validation_warnings": [
+        "ep01_s04: vehicle shot will use scene + prop because no confident rider/character match was found."
+      ],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_锈迹加油站",
+            "asset_name": "锈迹加油站",
+            "score": 1124,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "锈迹加油站"
+            ]
+          },
+          {
+            "asset_id": "scene_重庆高架桥下石灰岩洞",
+            "asset_name": "重庆高架桥下石灰岩洞",
+            "score": 6,
+            "strategy": "keyword_overlap",
+            "matched_terms": [
+              "潮湿"
+            ]
+          },
+          {
+            "asset_id": "scene_湖南乡道暴雨路段",
+            "asset_name": "湖南乡道暴雨路段",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_赛道维修区",
+            "asset_name": "赛道维修区",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_达喀尔沙漠赛道",
+            "asset_name": "达喀尔沙漠赛道",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [
+          {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "character_张雪_Kove创始人",
+            "asset_name": "张雪_Kove创始人",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "character_张雪_重庆作坊期",
+            "asset_name": "张雪_重庆作坊期",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "character_采访者",
+            "asset_name": "采访者",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "prop": [
+          {
+            "asset_id": "prop_Kove赛车夹克",
+            "asset_name": "Kove赛车夹克",
+            "score": 140,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_破125小踏板摩托车",
+            "asset_name": "破125小踏板摩托车",
+            "score": 140,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_赛车头盔",
+            "asset_name": "赛车头盔",
+            "score": 140,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_木箱工具",
+            "asset_name": "木箱工具",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_焊枪",
+            "asset_name": "焊枪",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ]
+      },
+      "limitations": [],
+      "debug_artifact": null,
+      "resume_status": "queued",
+      "resumed_from": null,
+      "previous_output_path": null,
+      "dropped_prop_reason": null,
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_keyscenes\\keyscenes\\ep01_s04.png"
+    },
+    {
+      "timestamp": "2026-04-15T09:06:39.633593+00:00",
+      "beat_id": "ep01_s05",
+      "episode_number": 1,
+      "mode": "keyscene",
+      "style_target": "3d-anime",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 1799980080,
+      "width": 864,
+      "height": 1080,
+      "prompt": "张雪摘下旧头盔，露出被雨水和汗水浸透的年轻面孔。 让张雪在锈迹加油站里成为视觉中心，只保留一个环境提示。 特写，突出表情、姿态和一个支持性的场景线索。 3D动漫质感。",
+      "prompt_source": "04_episode_scene_script.json beat fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "scene=exact_name_match",
+        "character=exact_name_match",
+        "prop=missing",
+        "shot_mode=identity_emotion_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance."
+      ],
+      "shot_mode": "identity_emotion_keyscene",
+      "prompt_template": "identity_emotion_keyscene",
+      "vehicle_shot": false,
+      "vehicle_preset": null,
+      "reference_policy": "identity_emotion_keyscene: scene + character",
+      "reference_count": 2,
+      "prompt_length": 71,
+      "legacy_prompt_length": 276,
+      "raw_source_description": "张雪摘下旧头盔，露出被雨水和汗水浸透的年轻面孔 | 张雪站在锈迹加油站边的泥地里，高精度3D CG近景，手里刚摘下发花的白色旧头盔，黑色短发湿漉漉贴在额头，脸型偏窄，面部被雨水与汗水混在一起冲刷，呼吸急促，黄雨衣半透明地贴着深色内搭，眼神却异常锋利，背景虚化为雨中的老旧加油棚和采访车，突出少年狼狈外表下的强烈意志 | 摘下头盔时，他脸上全是雨和汗 | exhausted, intense | close-up",
+      "anti_oversize_rules": [],
+      "framing_clause": "特写，突出表情、姿态和一个支持性的场景线索。",
+      "summary": "张雪摘下旧头盔，露出被雨水和汗水浸透的年轻面孔。",
+      "anchor_text": "摘下头盔时，他脸上全是雨和汗。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_锈迹加油站",
+          "asset_name": "锈迹加油站",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_assets\\scenes\\scene_锈迹加油站.png"
+        },
+        "character": {
+          "asset_id": "character_张雪",
+          "asset_name": "张雪",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_assets\\characters\\character_张雪.png"
+        },
+        "prop": null
+      },
+      "matching_notes": [
+        "Matched scene asset by explicit beat phrase: 锈迹加油站.",
+        "Matched character asset by explicit beat phrase: 张雪, 脸型偏窄.",
+        "Prop omitted by reference policy."
+      ],
+      "validation_warnings": [
+        "ep01_s05: prop reference omitted to keep the prompt/edit set compact."
+      ],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_锈迹加油站",
+            "asset_name": "锈迹加油站",
+            "score": 386,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "锈迹加油站"
+            ]
+          },
+          {
+            "asset_id": "scene_湖南乡道暴雨路段",
+            "asset_name": "湖南乡道暴雨路段",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_赛道维修区",
+            "asset_name": "赛道维修区",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_达喀尔沙漠赛道",
+            "asset_name": "达喀尔沙漠赛道",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_重庆城市桥下通道",
+            "asset_name": "重庆城市桥下通道",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [
+          {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "score": 990,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪",
+              "脸型偏窄"
+            ]
+          },
+          {
+            "asset_id": "character_张雪_Kove创始人",
+            "asset_name": "张雪_Kove创始人",
+            "score": 30,
+            "strategy": "keyword_overlap",
+            "matched_terms": [
+              "张雪",
+              "黑色短发"
+            ]
+          },
+          {
+            "asset_id": "character_张雪_重庆作坊期",
+            "asset_name": "张雪_重庆作坊期",
+            "score": 30,
+            "strategy": "keyword_overlap",
+            "matched_terms": [
+              "张雪",
+              "黑色短发"
+            ]
+          },
+          {
+            "asset_id": "character_采访者",
+            "asset_name": "采访者",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "prop": []
+      },
+      "limitations": [],
+      "debug_artifact": null,
+      "resume_status": "queued",
+      "resumed_from": null,
+      "previous_output_path": null,
+      "dropped_prop_reason": "compact_reference_policy",
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_keyscenes\\keyscenes\\ep01_s05.png"
+    },
+    {
+      "timestamp": "2026-04-15T09:06:39.634593+00:00",
+      "beat_id": "ep01_s06",
+      "episode_number": 1,
+      "mode": "keyscene",
+      "style_target": "3d-anime",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 3924359467,
+      "width": 864,
+      "height": 1080,
+      "prompt": "他开口第一句话就否认所有常见目的，说自己不要钱也不是来哭穷。 让张雪在锈迹加油站里成为视觉中心，只保留一个环境提示。 中近景，突出表情、姿态和一个支持性的场景线索。 3D动漫质感。",
+      "prompt_source": "04_episode_scene_script.json beat fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "scene=no_match",
+        "character=exact_name_match",
+        "prop=missing",
+        "shot_mode=identity_emotion_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance."
+      ],
+      "shot_mode": "identity_emotion_keyscene",
+      "prompt_template": "identity_emotion_keyscene",
+      "vehicle_shot": false,
+      "vehicle_preset": null,
+      "reference_policy": "identity_emotion_keyscene: scene + character",
+      "reference_count": 2,
+      "prompt_length": 78,
+      "legacy_prompt_length": 260,
+      "raw_source_description": "他开口第一句话就否认所有常见目的，说自己不要钱也不是来哭穷 | 加油站雨棚边缘，张雪面对采访者和镜头，雨滴仍从黄雨衣帽檐和下巴滑落，他一只手握着旧头盔，另一只手微微抬起制止误解，神情沙哑而倔强，采访者在前景边缘半侧身倾听，画面重点是少年用极短句子切断“求助者”标签的瞬间，戏剧张力强 | 我不要钱，也不是来哭穷的 | blunt, defiant | medium close-up | static",
+      "anti_oversize_rules": [],
+      "framing_clause": "中近景，突出表情、姿态和一个支持性的场景线索。",
+      "summary": "他开口第一句话就否认所有常见目的，说自己不要钱也不是来哭穷。",
+      "anchor_text": "我不要钱，也不是来哭穷的。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_锈迹加油站",
+          "asset_name": "锈迹加油站",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_assets\\scenes\\scene_锈迹加油站.png"
+        },
+        "character": {
+          "asset_id": "character_张雪",
+          "asset_name": "张雪",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_assets\\characters\\character_张雪.png"
+        },
+        "prop": null
+      },
+      "matching_notes": [
+        "Matched scene asset by keyword overlap: .",
+        "Matched character asset by explicit beat phrase: 张雪.",
+        "Prop omitted by reference policy."
+      ],
+      "validation_warnings": [],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_锈迹加油站",
+            "asset_name": "锈迹加油站",
+            "score": 140,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_湖南乡道暴雨路段",
+            "asset_name": "湖南乡道暴雨路段",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_赛道维修区",
+            "asset_name": "赛道维修区",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_达喀尔沙漠赛道",
+            "asset_name": "达喀尔沙漠赛道",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_重庆城市桥下通道",
+            "asset_name": "重庆城市桥下通道",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [
+          {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "score": 246,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_采访者",
+            "asset_name": "采访者",
+            "score": 246,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "采访者"
+            ]
+          },
+          {
+            "asset_id": "character_张雪_Kove创始人",
+            "asset_name": "张雪_Kove创始人",
+            "score": 6,
+            "strategy": "keyword_overlap",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_张雪_重庆作坊期",
+            "asset_name": "张雪_重庆作坊期",
+            "score": 6,
+            "strategy": "keyword_overlap",
+            "matched_terms": [
+              "张雪"
+            ]
+          }
+        ],
+        "prop": []
+      },
+      "limitations": [],
+      "debug_artifact": null,
+      "resume_status": "queued",
+      "resumed_from": null,
+      "previous_output_path": null,
+      "dropped_prop_reason": "compact_reference_policy",
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_keyscenes\\keyscenes\\ep01_s06.png"
+    },
+    {
+      "timestamp": "2026-04-15T09:06:39.634593+00:00",
+      "beat_id": "ep01_s07",
+      "episode_number": 1,
+      "mode": "keyscene",
+      "style_target": "3d-anime",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 851892141,
+      "width": 864,
+      "height": 1080,
+      "prompt": "突出破125小踏板摩托车的关键机械细节。 局部机械保持真实尺寸和厚度关系，不要把零件夸张成失真巨物。 局部细节位于近景，但仍保留一点安装环境、支架或手部关系，避免海报式漂浮特写。 插入镜头，突出机械细节与局部受光。 3D动漫质感。",
+      "prompt_source": "04_episode_scene_script.json with asset fallback selection",
+      "prompt_confidence": "fallback",
+      "prompt_notes": [
+        "scene=first_available_fallback",
+        "character=missing",
+        "prop=exact_name_match",
+        "shot_mode=vehicle_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance.",
+        "vehicle_preset=vehicle_detail",
+        "Vehicle-shot template focuses on physical scale, blocking, and anti-oversize staging.",
+        "Used at least one fallback-generated asset reference because no exact beat match was available."
+      ],
+      "shot_mode": "vehicle_keyscene",
+      "prompt_template": "vehicle_keyscene",
+      "vehicle_shot": true,
+      "vehicle_preset": "vehicle_detail",
+      "reference_policy": "vehicle_keyscene: scene + prop",
+      "reference_count": 2,
+      "prompt_length": 98,
+      "legacy_prompt_length": 261,
+      "raw_source_description": "张雪把所有执念都指向那台发动机，请求镜头真正对准机器本身 | 破125小踏板摩托车局部与发动机区域特写，高精度3D CG，沾满泥点和雨水的外壳、震动的金属部件、湿润油污、粗糙改装痕迹清晰可见，张雪湿透的手指坚定指向嗡嗡作响的发动机，雨滴敲打金属表面，镜头把“梦想不是自己，而是机器”直观化 | 你们拍它，拍我的发动机 | focused, fervent | insert | slow tilt down",
+      "anti_oversize_rules": [
+        "局部细节保持真实厚度与尺寸关系",
+        "不要把零件夸张成超现实巨物",
+        "保留一点安装环境或支撑关系"
+      ],
+      "framing_clause": "插入镜头，突出机械细节与局部受光。",
+      "summary": "张雪把所有执念都指向那台发动机，请求镜头真正对准机器本身。",
+      "anchor_text": "你们拍它，拍我的发动机。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_湖南乡道暴雨路段",
+          "asset_name": "湖南乡道暴雨路段",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_assets\\scenes\\scene_湖南乡道暴雨路段.png"
+        },
+        "character": null,
+        "prop": {
+          "asset_id": "prop_破125小踏板摩托车",
+          "asset_name": "破125小踏板摩托车",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_assets\\props\\prop_破125小踏板摩托车.png"
+        }
+      },
+      "matching_notes": [
+        "No reliable scene asset match was found; using the first available generated asset as fallback.",
+        "Vehicle detail keyscenes default to scene + prop.",
+        "Matched prop asset by explicit beat phrase: 破125小踏板摩托车."
+      ],
+      "validation_warnings": [
+        "ep01_s07: scene selection has no semantic overlap with the beat; chosen scene `湖南乡道暴雨路段` is low confidence."
+      ],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_湖南乡道暴雨路段",
+            "asset_name": "湖南乡道暴雨路段",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_赛道维修区",
+            "asset_name": "赛道维修区",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_达喀尔沙漠赛道",
+            "asset_name": "达喀尔沙漠赛道",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_重庆城市桥下通道",
+            "asset_name": "重庆城市桥下通道",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_重庆高架桥下石灰岩洞",
+            "asset_name": "重庆高架桥下石灰岩洞",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [],
+        "prop": [
+          {
+            "asset_id": "prop_破125小踏板摩托车",
+            "asset_name": "破125小踏板摩托车",
+            "score": 386,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "破125小踏板摩托车"
+            ]
+          },
+          {
+            "asset_id": "prop_Kove赛车夹克",
+            "asset_name": "Kove赛车夹克",
+            "score": 140,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_赛车头盔",
+            "asset_name": "赛车头盔",
+            "score": 140,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_木箱工具",
+            "asset_name": "木箱工具",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_焊枪",
+            "asset_name": "焊枪",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ]
+      },
+      "limitations": [
+        "No reliable scene asset match was found; using the first available generated asset as fallback.",
+        "ep01_s07: scene selection has no semantic overlap with the beat; chosen scene `湖南乡道暴雨路段` is low confidence."
+      ],
+      "debug_artifact": null,
+      "resume_status": "queued",
+      "resumed_from": null,
+      "previous_output_path": null,
+      "dropped_prop_reason": null,
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_keyscenes\\keyscenes\\ep01_s07.png"
+    },
+    {
+      "timestamp": "2026-04-15T09:06:39.635101+00:00",
+      "beat_id": "ep01_s08",
+      "episode_number": 1,
+      "mode": "keyscene",
+      "style_target": "3d-anime",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 1352924732,
+      "width": 864,
+      "height": 1080,
+      "prompt": "张雪在锈迹加油站里围绕Kove赛车夹克操作或检修。 Kove赛车夹克保持真实尺寸关系，不要把整车或机械放大成贴脸巨物。 Kove赛车夹克位于工位或工作区中景，周围保留工具、地面和工作间空间，机械与环境保持连贯。 中景，机械与工作区关系清楚，保留地面和工位边界。 3D动漫质感。",
+      "prompt_source": "04_episode_scene_script.json beat fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "scene=exact_name_match",
+        "character=exact_name_match",
+        "prop=no_match",
+        "shot_mode=vehicle_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance.",
+        "vehicle_preset=workshop_vehicle_interaction",
+        "Vehicle-shot template focuses on physical scale, blocking, and anti-oversize staging."
+      ],
+      "shot_mode": "vehicle_keyscene",
+      "prompt_template": "vehicle_keyscene",
+      "vehicle_shot": true,
+      "vehicle_preset": "workshop_vehicle_interaction",
+      "reference_policy": "vehicle_keyscene: scene + character + prop",
+      "reference_count": 3,
+      "prompt_length": 113,
+      "legacy_prompt_length": 298,
+      "raw_source_description": "少年用近乎宣战的语气说出野心，要造出让世界忘掉欧洲的中国机器 | 张雪站在雨中的锈迹加油站前，黄色雨衣被风和雨压得贴身，身后是破旧摩托和白色采访车，他指向自己的车与发动机，面色苍白却眼神发亮，像在向整个世界宣战；阴沉天空、冷灰环境与他口中狂妄目标形成强反差，画面强调寒酸现实与巨大野心的碰撞 | 我要造出让世界忘掉欧洲的中国机器 | fiery, audacious | medium shot",
+      "anti_oversize_rules": [
+        "车辆与骑手保持真实整车比例",
+        "车身符合真实世界尺寸，不要过度放大",
+        "车辆与道路、车道或赛道宽度关系正常",
+        "车辆与镜头保持自然距离，不要贴满画面",
+        "画面周围保留可见环境空间"
+      ],
+      "framing_clause": "中景，机械与工作区关系清楚，保留地面和工位边界。",
+      "summary": "少年用近乎宣战的语气说出野心，要造出让世界忘掉欧洲的中国机器。",
+      "anchor_text": "我要造出让世界忘掉欧洲的中国机器。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_锈迹加油站",
+          "asset_name": "锈迹加油站",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_assets\\scenes\\scene_锈迹加油站.png"
+        },
+        "character": {
+          "asset_id": "character_张雪",
+          "asset_name": "张雪",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_assets\\characters\\character_张雪.png"
+        },
+        "prop": {
+          "asset_id": "prop_Kove赛车夹克",
+          "asset_name": "Kove赛车夹克",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_assets\\props\\prop_Kove赛车夹克.png"
+        }
+      },
+      "matching_notes": [
+        "Matched scene asset by explicit beat phrase: 锈迹加油站.",
+        "Matched character asset by explicit beat phrase: 张雪.",
+        "Matched prop asset by keyword overlap: ."
+      ],
+      "validation_warnings": [],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_锈迹加油站",
+            "asset_name": "锈迹加油站",
+            "score": 386,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "锈迹加油站"
+            ]
+          },
+          {
+            "asset_id": "scene_湖南乡道暴雨路段",
+            "asset_name": "湖南乡道暴雨路段",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_赛道维修区",
+            "asset_name": "赛道维修区",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_达喀尔沙漠赛道",
+            "asset_name": "达喀尔沙漠赛道",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_重庆城市桥下通道",
+            "asset_name": "重庆城市桥下通道",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [
+          {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "score": 246,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_张雪_Kove创始人",
+            "asset_name": "张雪_Kove创始人",
+            "score": 6,
+            "strategy": "keyword_overlap",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_张雪_重庆作坊期",
+            "asset_name": "张雪_重庆作坊期",
+            "score": 6,
+            "strategy": "keyword_overlap",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_采访者",
+            "asset_name": "采访者",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "prop": [
+          {
+            "asset_id": "prop_Kove赛车夹克",
+            "asset_name": "Kove赛车夹克",
+            "score": 140,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_破125小踏板摩托车",
+            "asset_name": "破125小踏板摩托车",
+            "score": 140,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_赛车头盔",
+            "asset_name": "赛车头盔",
+            "score": 140,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_木箱工具",
+            "asset_name": "木箱工具",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_焊枪",
+            "asset_name": "焊枪",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ]
+      },
+      "limitations": [],
+      "debug_artifact": null,
+      "resume_status": "queued",
+      "resumed_from": null,
+      "previous_output_path": null,
+      "dropped_prop_reason": null,
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_keyscenes\\keyscenes\\ep01_s08.png"
+    },
+    {
+      "timestamp": "2026-04-15T09:06:39.635101+00:00",
+      "beat_id": "ep01_s09",
+      "episode_number": 1,
+      "mode": "keyscene",
+      "style_target": "3d-anime",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 2288774786,
+      "width": 864,
+      "height": 1080,
+      "prompt": "采访者骑着或控制摩托完成这一瞬间动作。 摩托保持与采访者匹配的真实整车比例，不过度放大，和道路或车道宽度关系正常。 车辆和人物位于中景或下中部，清楚落在锈迹加油站的道路空间里，道路向背景延伸，周围保留可见环境。 中宽景，车辆位于下中部或中景，道路清楚后退到背景。 3D动漫质感。",
+      "prompt_source": "04_episode_scene_script.json beat fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "scene=exact_name_match",
+        "character=exact_name_match",
+        "prop=missing",
+        "shot_mode=vehicle_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance.",
+        "vehicle_preset=riding_on_road",
+        "Vehicle-shot template focuses on physical scale, blocking, and anti-oversize staging."
+      ],
+      "shot_mode": "vehicle_keyscene",
+      "prompt_template": "vehicle_keyscene",
+      "vehicle_shot": true,
+      "vehicle_preset": "riding_on_road",
+      "reference_policy": "vehicle_keyscene: scene + character",
+      "reference_count": 2,
+      "prompt_length": 122,
+      "legacy_prompt_length": 265,
+      "raw_source_description": "采访者意识到眼前这个穷山沟少年并不是幻想家，而是准备把命押进机器里的人 | 以采访者视角凝视张雪的眼睛，3D CG近景，少年的脸仍挂着雨水，眼神执拗到近乎危险，背景中锈迹加油站、泥地和破摩托被压暗处理，环境安静下来只剩雨声感，画面像命运预兆般收束，突出“别人当狂言，我却感到不安”的悬念收口 | 我忽然觉得，他真的会把命押上去 | ominous, fateful | close-up",
+      "anti_oversize_rules": [
+        "车辆与骑手保持真实整车比例",
+        "车身符合真实世界尺寸，不要过度放大",
+        "车辆与道路、车道或赛道宽度关系正常",
+        "车辆与镜头保持自然距离，不要贴满画面",
+        "画面周围保留可见环境空间"
+      ],
+      "framing_clause": "中宽景，车辆位于下中部或中景，道路清楚后退到背景。",
+      "summary": "采访者意识到眼前这个穷山沟少年并不是幻想家，而是准备把命押进机器里的人。",
+      "anchor_text": "我忽然觉得，他真的会把命押上去。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_锈迹加油站",
+          "asset_name": "锈迹加油站",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_assets\\scenes\\scene_锈迹加油站.png"
+        },
+        "character": {
+          "asset_id": "character_采访者",
+          "asset_name": "采访者",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_assets\\characters\\character_采访者.png"
+        },
+        "prop": null
+      },
+      "matching_notes": [
+        "Matched scene asset by explicit beat phrase: 锈迹加油站.",
+        "Matched character asset by explicit beat phrase: 采访者.",
+        "Vehicle prop omitted because the match was not strong enough."
+      ],
+      "validation_warnings": [
+        "ep01_s09: dropped vehicle prop `Kove赛车夹克` because the match was not strong enough for a 3-reference vehicle shot."
+      ],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_锈迹加油站",
+            "asset_name": "锈迹加油站",
+            "score": 386,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "锈迹加油站"
+            ]
+          },
+          {
+            "asset_id": "scene_湖南乡道暴雨路段",
+            "asset_name": "湖南乡道暴雨路段",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_赛道维修区",
+            "asset_name": "赛道维修区",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_达喀尔沙漠赛道",
+            "asset_name": "达喀尔沙漠赛道",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_重庆城市桥下通道",
+            "asset_name": "重庆城市桥下通道",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [
+          {
+            "asset_id": "character_采访者",
+            "asset_name": "采访者",
+            "score": 984,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "采访者"
+            ]
+          },
+          {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "score": 246,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_张雪_Kove创始人",
+            "asset_name": "张雪_Kove创始人",
+            "score": 6,
+            "strategy": "keyword_overlap",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_张雪_重庆作坊期",
+            "asset_name": "张雪_重庆作坊期",
+            "score": 6,
+            "strategy": "keyword_overlap",
+            "matched_terms": [
+              "张雪"
+            ]
+          }
+        ],
+        "prop": []
+      },
+      "limitations": [],
+      "debug_artifact": null,
+      "resume_status": "queued",
+      "resumed_from": null,
+      "previous_output_path": null,
+      "dropped_prop_reason": "weak_vehicle_prop_match",
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_keyscenes\\keyscenes\\ep01_s09.png"
+    },
+    {
+      "timestamp": "2026-04-15T09:06:39.635101+00:00",
+      "beat_id": "ep02_s01",
+      "episode_number": 2,
+      "mode": "keyscene",
+      "style_target": "3d-anime",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 3177942343,
+      "width": 864,
+      "height": 1080,
+      "prompt": "几年后，张雪已经把自己埋进重庆高架桥下的石灰岩洞里造车。 让张雪落进重庆高架桥下石灰岩洞的空间关系里，主体位置和环境压迫感清楚。 宽构图，突出主体位置、场景层次和一个关键动作关系。 3D动漫质感。",
+      "prompt_source": "04_episode_scene_script.json beat fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "scene=exact_name_match",
+        "character=exact_name_match",
+        "prop=missing",
+        "shot_mode=staging_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance."
+      ],
+      "shot_mode": "staging_keyscene",
+      "prompt_template": "staging_keyscene",
+      "vehicle_shot": false,
+      "vehicle_preset": null,
+      "reference_policy": "staging_keyscene: scene + character",
+      "reference_count": 2,
+      "prompt_length": 86,
+      "legacy_prompt_length": 279,
+      "raw_source_description": "几年后，张雪已经把自己埋进重庆高架桥下的石灰岩洞里造车 | 重庆高架桥下石灰岩洞全景，高精度3D CG，巨大桥体阴影压在粗糙岩壁和潮湿地面上，狭窄洞穴里散落金属零件、旧工作台和临时照明，张雪_重庆作坊期穿灰黑背心、厚帆布围裙站在洞口与木箱工具旁，整个人像被城市吞进地下，画面强调隐秘、寒酸与不合常理的创业现场 | 几年后，他把自己埋进了桥下岩洞 | gritty, secretive | wide shot",
+      "anti_oversize_rules": [],
+      "framing_clause": "宽构图，突出主体位置、场景层次和一个关键动作关系。",
+      "summary": "几年后，张雪已经把自己埋进重庆高架桥下的石灰岩洞里造车。",
+      "anchor_text": "几年后，他把自己埋进了桥下岩洞。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_重庆高架桥下石灰岩洞",
+          "asset_name": "重庆高架桥下石灰岩洞",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_assets\\scenes\\scene_重庆高架桥下石灰岩洞.png"
+        },
+        "character": {
+          "asset_id": "character_张雪",
+          "asset_name": "张雪",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_assets\\characters\\character_张雪.png"
+        },
+        "prop": null
+      },
+      "matching_notes": [
+        "Matched scene asset by explicit beat phrase: 重庆高架桥下石灰岩洞, 潮湿, 狭窄.",
+        "Matched character asset by explicit beat phrase: 张雪.",
+        "Prop omitted by reference policy."
+      ],
+      "validation_warnings": [
+        "ep02_s01: prop reference omitted to keep the prompt/edit set compact."
+      ],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_重庆高架桥下石灰岩洞",
+            "asset_name": "重庆高架桥下石灰岩洞",
+            "score": 258,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "重庆高架桥下石灰岩洞",
+              "潮湿",
+              "狭窄"
+            ]
+          },
+          {
+            "asset_id": "scene_湖南乡道暴雨路段",
+            "asset_name": "湖南乡道暴雨路段",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_赛道维修区",
+            "asset_name": "赛道维修区",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_达喀尔沙漠赛道",
+            "asset_name": "达喀尔沙漠赛道",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_重庆城市桥下通道",
+            "asset_name": "重庆城市桥下通道",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [
+          {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "score": 984,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_张雪_重庆作坊期",
+            "asset_name": "张雪_重庆作坊期",
+            "score": 270,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪_重庆作坊期",
+              "张雪",
+              "重庆作坊期"
+            ]
+          },
+          {
+            "asset_id": "character_张雪_Kove创始人",
+            "asset_name": "张雪_Kove创始人",
+            "score": 24,
+            "strategy": "keyword_overlap",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_采访者",
+            "asset_name": "采访者",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "prop": []
+      },
+      "limitations": [],
+      "debug_artifact": null,
+      "resume_status": "queued",
+      "resumed_from": null,
+      "previous_output_path": null,
+      "dropped_prop_reason": "compact_reference_policy",
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_keyscenes\\keyscenes\\ep02_s01.png"
+    },
+    {
+      "timestamp": "2026-04-15T09:06:39.635101+00:00",
+      "beat_id": "ep02_s02",
+      "episode_number": 2,
+      "mode": "keyscene",
+      "style_target": "3d-anime",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 2133745994,
+      "width": 864,
+      "height": 1080,
+      "prompt": "木箱工具和满手油污，成了他全部的生产条件与生存方式。 把木箱工具压成画面主体，只保留湖南乡道暴雨路段的局部环境和受光关系。 中近景，突出物件、手部接触和局部光线。 3D动漫质感。",
+      "prompt_source": "04_episode_scene_script.json with asset fallback selection",
+      "prompt_confidence": "fallback",
+      "prompt_notes": [
+        "scene=first_available_fallback",
+        "character=missing",
+        "prop=exact_name_match",
+        "shot_mode=insert_object_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance.",
+        "Used at least one fallback-generated asset reference because no exact beat match was available."
+      ],
+      "shot_mode": "insert_object_keyscene",
+      "prompt_template": "insert_object_keyscene",
+      "vehicle_shot": false,
+      "vehicle_preset": null,
+      "reference_policy": "insert_object_keyscene: scene + prop",
+      "reference_count": 2,
+      "prompt_length": 77,
+      "legacy_prompt_length": 263,
+      "raw_source_description": "木箱工具和满手油污，成了他全部的生产条件与生存方式 | 石灰岩洞内的工作台边，旧木箱打开摆放，里面是扳手、钳子、螺丝刀等基础工具，张雪_重庆作坊期粗糙沾满机油的双手正在翻找零件，灰黑背心与帆布围裙布满焊点灼痕和油渍，冷湿空气凝在金属表面，画面重点突出资源匮乏与手工造物的原始感 | 没有厂房，只有一只木箱和一双油手 | austere, determined | medium close-up | static",
+      "anti_oversize_rules": [],
+      "framing_clause": "中近景，突出物件、手部接触和局部光线。",
+      "summary": "木箱工具和满手油污，成了他全部的生产条件与生存方式。",
+      "anchor_text": "没有厂房，只有一只木箱和一双油手。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_湖南乡道暴雨路段",
+          "asset_name": "湖南乡道暴雨路段",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_assets\\scenes\\scene_湖南乡道暴雨路段.png"
+        },
+        "character": null,
+        "prop": {
+          "asset_id": "prop_木箱工具",
+          "asset_name": "木箱工具",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_assets\\props\\prop_木箱工具.png"
+        }
+      },
+      "matching_notes": [
+        "No reliable scene asset match was found; using the first available generated asset as fallback.",
+        "Insert/object keyscenes default to scene + prop.",
+        "Matched prop asset by explicit beat phrase: 木箱工具, 钳子, 螺丝刀等基础工具."
+      ],
+      "validation_warnings": [
+        "ep02_s02: scene selection has no semantic overlap with the beat; chosen scene `湖南乡道暴雨路段` is low confidence."
+      ],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_湖南乡道暴雨路段",
+            "asset_name": "湖南乡道暴雨路段",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_赛道维修区",
+            "asset_name": "赛道维修区",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_达喀尔沙漠赛道",
+            "asset_name": "达喀尔沙漠赛道",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_重庆城市桥下通道",
+            "asset_name": "重庆城市桥下通道",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_重庆高架桥下石灰岩洞",
+            "asset_name": "重庆高架桥下石灰岩洞",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [],
+        "prop": [
+          {
+            "asset_id": "prop_木箱工具",
+            "asset_name": "木箱工具",
+            "score": 996,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "木箱工具",
+              "钳子",
+              "螺丝刀等基础工具"
+            ]
+          },
+          {
+            "asset_id": "prop_Kove赛车夹克",
+            "asset_name": "Kove赛车夹克",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_焊枪",
+            "asset_name": "焊枪",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_白色旧头盔",
+            "asset_name": "白色旧头盔",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_破125小踏板摩托车",
+            "asset_name": "破125小踏板摩托车",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ]
+      },
+      "limitations": [
+        "No reliable scene asset match was found; using the first available generated asset as fallback.",
+        "ep02_s02: scene selection has no semantic overlap with the beat; chosen scene `湖南乡道暴雨路段` is low confidence."
+      ],
+      "debug_artifact": null,
+      "resume_status": "queued",
+      "resumed_from": null,
+      "previous_output_path": null,
+      "dropped_prop_reason": null,
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_keyscenes\\keyscenes\\ep02_s02.png"
+    },
+    {
+      "timestamp": "2026-04-15T09:06:39.636105+00:00",
+      "beat_id": "ep02_s03",
+      "episode_number": 2,
+      "mode": "keyscene",
+      "style_target": "3d-anime",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 2496199369,
+      "width": 864,
+      "height": 1080,
+      "prompt": "白天桥下工人整队经过，却没人会注意这个躲在洞里的造车人。 让张雪_重庆作坊期落进重庆城市桥下通道的空间关系里，主体位置和环境压迫感清楚。 宽构图，突出主体位置、场景层次和一个关键动作关系。 3D动漫质感。",
+      "prompt_source": "04_episode_scene_script.json beat fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "scene=exact_name_match",
+        "character=exact_name_match",
+        "prop=missing",
+        "shot_mode=staging_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance."
+      ],
+      "shot_mode": "staging_keyscene",
+      "prompt_template": "staging_keyscene",
+      "vehicle_shot": false,
+      "vehicle_preset": null,
+      "reference_policy": "staging_keyscene: scene + character",
+      "reference_count": 2,
+      "prompt_length": 89,
+      "legacy_prompt_length": 277,
+      "raw_source_description": "白天桥下工人整队经过，却没人会注意这个躲在洞里的造车人 | 重庆城市桥下通道，高精度3D CG，巨大桥墩、潮湿混凝土地面和闷热工业空气中，一队穿整齐蓝色工服的工人从前景经过，远处石灰岩洞口半明半暗，张雪_重庆作坊期在阴影里弯身整理零件，形成被城市忽略的强烈对比，画面构图强调“人在人群边缘却无人看见” | 白天那么多人经过，却没人看他一眼 | indifferent, oppressive | wide shot",
+      "anti_oversize_rules": [],
+      "framing_clause": "宽构图，突出主体位置、场景层次和一个关键动作关系。",
+      "summary": "白天桥下工人整队经过，却没人会注意这个躲在洞里的造车人。",
+      "anchor_text": "白天那么多人经过，却没人看他一眼。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_重庆城市桥下通道",
+          "asset_name": "重庆城市桥下通道",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_assets\\scenes\\scene_重庆城市桥下通道.png"
+        },
+        "character": {
+          "asset_id": "character_张雪_重庆作坊期",
+          "asset_name": "张雪_重庆作坊期",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_assets\\characters\\character_张雪_重庆作坊期.png"
+        },
+        "prop": null
+      },
+      "matching_notes": [
+        "Matched scene asset by explicit beat phrase: 重庆城市桥下通道.",
+        "Matched character asset by explicit beat phrase: 张雪_重庆作坊期, 张雪, 重庆作坊期.",
+        "Prop omitted by reference policy."
+      ],
+      "validation_warnings": [],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_重庆城市桥下通道",
+            "asset_name": "重庆城市桥下通道",
+            "score": 246,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "重庆城市桥下通道"
+            ]
+          },
+          {
+            "asset_id": "scene_重庆高架桥下石灰岩洞",
+            "asset_name": "重庆高架桥下石灰岩洞",
+            "score": 6,
+            "strategy": "keyword_overlap",
+            "matched_terms": [
+              "潮湿"
+            ]
+          },
+          {
+            "asset_id": "scene_湖南乡道暴雨路段",
+            "asset_name": "湖南乡道暴雨路段",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_赛道维修区",
+            "asset_name": "赛道维修区",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_达喀尔沙漠赛道",
+            "asset_name": "达喀尔沙漠赛道",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [
+          {
+            "asset_id": "character_张雪_重庆作坊期",
+            "asset_name": "张雪_重庆作坊期",
+            "score": 252,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪_重庆作坊期",
+              "张雪",
+              "重庆作坊期"
+            ]
+          },
+          {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "score": 246,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_张雪_Kove创始人",
+            "asset_name": "张雪_Kove创始人",
+            "score": 6,
+            "strategy": "keyword_overlap",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_采访者",
+            "asset_name": "采访者",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "prop": []
+      },
+      "limitations": [],
+      "debug_artifact": null,
+      "resume_status": "queued",
+      "resumed_from": null,
+      "previous_output_path": null,
+      "dropped_prop_reason": "compact_reference_policy",
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_keyscenes\\keyscenes\\ep02_s03.png"
+    },
+    {
+      "timestamp": "2026-04-15T09:06:39.636105+00:00",
+      "beat_id": "ep02_s04",
+      "episode_number": 2,
+      "mode": "keyscene",
+      "style_target": "3d-anime",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 3544042602,
+      "width": 864,
+      "height": 1080,
+      "prompt": "到了夜里，石壁上只剩焊枪的蓝光不断跳动。 让张雪_重庆作坊期在重庆高架桥下石灰岩洞里成为视觉中心，只保留一个环境提示。 中景，突出表情、姿态和一个支持性的场景线索。 3D动漫质感。",
+      "prompt_source": "04_episode_scene_script.json beat fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "scene=exact_name_match",
+        "character=exact_name_match",
+        "prop=missing",
+        "shot_mode=identity_emotion_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance."
+      ],
+      "shot_mode": "identity_emotion_keyscene",
+      "prompt_template": "identity_emotion_keyscene",
+      "vehicle_shot": false,
+      "vehicle_preset": null,
+      "reference_policy": "identity_emotion_keyscene: scene + character",
+      "reference_count": 2,
+      "prompt_length": 77,
+      "legacy_prompt_length": 255,
+      "raw_source_description": "到了夜里，石壁上只剩焊枪的蓝光不断跳动 | 夜晚的重庆高架桥下石灰岩洞，周围黑暗潮湿，只有焊枪喷出的高亮蓝白电弧照亮张雪_重庆作坊期的侧脸、帆布围裙和粗糙岩壁，火花四溅落在散乱钢管与工具上，空气中有烟雾和热浪扭曲感，突出孤独、持续、机械劳动的夜战氛围 | 到了晚上，只剩焊枪还亮着 | nocturnal, intense | medium shot",
+      "anti_oversize_rules": [],
+      "framing_clause": "中景，突出表情、姿态和一个支持性的场景线索。",
+      "summary": "到了夜里，石壁上只剩焊枪的蓝光不断跳动。",
+      "anchor_text": "到了晚上，只剩焊枪还亮着。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_重庆高架桥下石灰岩洞",
+          "asset_name": "重庆高架桥下石灰岩洞",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_assets\\scenes\\scene_重庆高架桥下石灰岩洞.png"
+        },
+        "character": {
+          "asset_id": "character_张雪_重庆作坊期",
+          "asset_name": "张雪_重庆作坊期",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_assets\\characters\\character_张雪_重庆作坊期.png"
+        },
+        "prop": null
+      },
+      "matching_notes": [
+        "Matched scene asset by explicit beat phrase: 重庆高架桥下石灰岩洞, 潮湿.",
+        "Matched character asset by explicit beat phrase: 张雪_重庆作坊期, 张雪, 重庆作坊期.",
+        "Prop omitted by reference policy."
+      ],
+      "validation_warnings": [
+        "ep02_s04: prop reference omitted to keep the prompt/edit set compact."
+      ],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_重庆高架桥下石灰岩洞",
+            "asset_name": "重庆高架桥下石灰岩洞",
+            "score": 252,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "重庆高架桥下石灰岩洞",
+              "潮湿"
+            ]
+          },
+          {
+            "asset_id": "scene_湖南乡道暴雨路段",
+            "asset_name": "湖南乡道暴雨路段",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_赛道维修区",
+            "asset_name": "赛道维修区",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_达喀尔沙漠赛道",
+            "asset_name": "达喀尔沙漠赛道",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_重庆城市桥下通道",
+            "asset_name": "重庆城市桥下通道",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [
+          {
+            "asset_id": "character_张雪_重庆作坊期",
+            "asset_name": "张雪_重庆作坊期",
+            "score": 252,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪_重庆作坊期",
+              "张雪",
+              "重庆作坊期"
+            ]
+          },
+          {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "score": 246,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_张雪_Kove创始人",
+            "asset_name": "张雪_Kove创始人",
+            "score": 6,
+            "strategy": "keyword_overlap",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_采访者",
+            "asset_name": "采访者",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "prop": []
+      },
+      "limitations": [],
+      "debug_artifact": null,
+      "resume_status": "queued",
+      "resumed_from": null,
+      "previous_output_path": null,
+      "dropped_prop_reason": "compact_reference_policy",
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_keyscenes\\keyscenes\\ep02_s04.png"
+    },
+    {
+      "timestamp": "2026-04-15T09:06:39.636105+00:00",
+      "beat_id": "ep02_s05",
+      "episode_number": 2,
+      "mode": "keyscene",
+      "style_target": "3d-anime",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 2127037991,
+      "width": 864,
+      "height": 1080,
+      "prompt": "他从垃圾场和旧件堆里拆捡材料，把废料一点点拼成原型车。 让张雪与钛合金螺栓在湖南乡道暴雨路段里形成同一瞬间，空间关系清楚，动作关系直接。 宽构图，突出主体位置、场景层次和一个关键动作关系。 3D动漫质感。",
+      "prompt_source": "04_episode_scene_script.json with asset fallback selection",
+      "prompt_confidence": "fallback",
+      "prompt_notes": [
+        "scene=first_available_fallback",
+        "character=exact_name_match",
+        "prop=exact_name_match",
+        "shot_mode=staging_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance.",
+        "Used at least one fallback-generated asset reference because no exact beat match was available."
+      ],
+      "shot_mode": "staging_keyscene",
+      "prompt_template": "staging_keyscene",
+      "vehicle_shot": false,
+      "vehicle_preset": null,
+      "reference_policy": "staging_keyscene: scene + character + prop",
+      "reference_count": 3,
+      "prompt_length": 89,
+      "legacy_prompt_length": 294,
+      "raw_source_description": "他从垃圾场和旧件堆里拆捡材料，把废料一点点拼成原型车 | 组合式蒙太奇画面，高精度3D CG：张雪翻找废旧零件堆，捡起银灰色钛合金螺栓；拆下旧件放在工作台；切割钢管；焊接车架；在油污地面上反复比对结构尺寸。整体保持重庆桥下洞穴与工业废料环境连续性，画面信息密度高，突出“弗兰肯斯坦式原型车”的手工诞生过程 | 他靠捡、拆、焊，把废料拼成原型 | relentless, resourceful | montage | static",
+      "anti_oversize_rules": [],
+      "framing_clause": "宽构图，突出主体位置、场景层次和一个关键动作关系。",
+      "summary": "他从垃圾场和旧件堆里拆捡材料，把废料一点点拼成原型车。",
+      "anchor_text": "他靠捡、拆、焊，把废料拼成原型。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_湖南乡道暴雨路段",
+          "asset_name": "湖南乡道暴雨路段",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_assets\\scenes\\scene_湖南乡道暴雨路段.png"
+        },
+        "character": {
+          "asset_id": "character_张雪",
+          "asset_name": "张雪",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_assets\\characters\\character_张雪.png"
+        },
+        "prop": {
+          "asset_id": "prop_钛合金螺栓",
+          "asset_name": "钛合金螺栓",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_assets\\props\\prop_钛合金螺栓.png"
+        }
+      },
+      "matching_notes": [
+        "No reliable scene asset match was found; using the first available generated asset as fallback.",
+        "Matched character asset by explicit beat phrase: 张雪.",
+        "Matched prop asset by explicit beat phrase: 钛合金螺栓."
+      ],
+      "validation_warnings": [
+        "ep02_s05: scene selection has no semantic overlap with the beat; chosen scene `湖南乡道暴雨路段` is low confidence."
+      ],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_湖南乡道暴雨路段",
+            "asset_name": "湖南乡道暴雨路段",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_赛道维修区",
+            "asset_name": "赛道维修区",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_达喀尔沙漠赛道",
+            "asset_name": "达喀尔沙漠赛道",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_重庆城市桥下通道",
+            "asset_name": "重庆城市桥下通道",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_重庆高架桥下石灰岩洞",
+            "asset_name": "重庆高架桥下石灰岩洞",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [
+          {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "score": 246,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_张雪_Kove创始人",
+            "asset_name": "张雪_Kove创始人",
+            "score": 6,
+            "strategy": "keyword_overlap",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_张雪_重庆作坊期",
+            "asset_name": "张雪_重庆作坊期",
+            "score": 6,
+            "strategy": "keyword_overlap",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_采访者",
+            "asset_name": "采访者",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "prop": [
+          {
+            "asset_id": "prop_钛合金螺栓",
+            "asset_name": "钛合金螺栓",
+            "score": 246,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "钛合金螺栓"
+            ]
+          },
+          {
+            "asset_id": "prop_Kove赛车夹克",
+            "asset_name": "Kove赛车夹克",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_木箱工具",
+            "asset_name": "木箱工具",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_焊枪",
+            "asset_name": "焊枪",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_白色旧头盔",
+            "asset_name": "白色旧头盔",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ]
+      },
+      "limitations": [
+        "No reliable scene asset match was found; using the first available generated asset as fallback.",
+        "ep02_s05: scene selection has no semantic overlap with the beat; chosen scene `湖南乡道暴雨路段` is low confidence."
+      ],
+      "debug_artifact": null,
+      "resume_status": "queued",
+      "resumed_from": null,
+      "previous_output_path": null,
+      "dropped_prop_reason": null,
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_keyscenes\\keyscenes\\ep02_s05.png"
+    },
+    {
+      "timestamp": "2026-04-15T09:06:39.636105+00:00",
+      "beat_id": "ep02_s06",
+      "episode_number": 2,
+      "mode": "keyscene",
+      "style_target": "3d-anime",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 354612766,
+      "width": 864,
+      "height": 1080,
+      "prompt": "寒酸洞穴里并没有展厅光环，只有机油、冷铁和失败留下的痕迹。 把关键物件压成画面主体，只保留必要的环境线索。 插入镜头，突出物件、手部接触和局部光线。 3D动漫质感。",
+      "prompt_source": "04_episode_scene_script.json beat fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "scene=keyword_overlap",
+        "character=missing",
+        "prop=missing",
+        "shot_mode=insert_object_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance."
+      ],
+      "shot_mode": "insert_object_keyscene",
+      "prompt_template": "insert_object_keyscene",
+      "vehicle_shot": false,
+      "vehicle_preset": null,
+      "reference_policy": "insert_object_keyscene: scene",
+      "reference_count": 1,
+      "prompt_length": 69,
+      "legacy_prompt_length": 227,
+      "raw_source_description": "寒酸洞穴里并没有展厅光环，只有机油、冷铁和失败留下的痕迹 | 石灰岩洞内部细节特写，高精度3D CG，粗糙岩壁渗水、油污地面反光、散落的金属碎屑、磨损工作灯、焊渣、扳手和半成品机械结构交错摆放，空间狭窄压抑，没有任何现代厂房秩序感，突出冷、湿、硬、穷的物理环境质感 | 这里不是展厅，只是机油和冷铁的洞穴 | harsh, tactile | insert | slow",
+      "anti_oversize_rules": [],
+      "framing_clause": "插入镜头，突出物件、手部接触和局部光线。",
+      "summary": "寒酸洞穴里并没有展厅光环，只有机油、冷铁和失败留下的痕迹。",
+      "anchor_text": "这里不是展厅，只是机油和冷铁的洞穴。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_重庆高架桥下石灰岩洞",
+          "asset_name": "重庆高架桥下石灰岩洞",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_assets\\scenes\\scene_重庆高架桥下石灰岩洞.png"
+        },
+        "character": null,
+        "prop": null
+      },
+      "matching_notes": [
+        "Matched scene asset by keyword overlap: 狭窄.",
+        "Insert/object keyscenes default to scene + prop.",
+        "No confident prop asset match was found, so this reference was omitted."
+      ],
+      "validation_warnings": [
+        "ep02_s06: insert/object beat did not find a confident prop match; generating with scene-only context.",
+        "ep02_s06: scene selection for `重庆高架桥下石灰岩洞` is only weakly matched to the beat intent."
+      ],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_重庆高架桥下石灰岩洞",
+            "asset_name": "重庆高架桥下石灰岩洞",
+            "score": 6,
+            "strategy": "keyword_overlap",
+            "matched_terms": [
+              "狭窄"
+            ]
+          },
+          {
+            "asset_id": "scene_湖南乡道暴雨路段",
+            "asset_name": "湖南乡道暴雨路段",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_赛道维修区",
+            "asset_name": "赛道维修区",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_达喀尔沙漠赛道",
+            "asset_name": "达喀尔沙漠赛道",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_重庆城市桥下通道",
+            "asset_name": "重庆城市桥下通道",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [],
+        "prop": [
+          {
+            "asset_id": "prop_Kove赛车夹克",
+            "asset_name": "Kove赛车夹克",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_木箱工具",
+            "asset_name": "木箱工具",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_焊枪",
+            "asset_name": "焊枪",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_白色旧头盔",
+            "asset_name": "白色旧头盔",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_破125小踏板摩托车",
+            "asset_name": "破125小踏板摩托车",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ]
+      },
+      "limitations": [],
+      "debug_artifact": null,
+      "resume_status": "queued",
+      "resumed_from": null,
+      "previous_output_path": null,
+      "dropped_prop_reason": null,
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_keyscenes\\keyscenes\\ep02_s06.png"
+    },
+    {
+      "timestamp": "2026-04-15T09:06:39.637106+00:00",
+      "beat_id": "ep02_s07",
+      "episode_number": 2,
+      "mode": "keyscene",
+      "style_target": "3d-anime",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 4103356897,
+      "width": 864,
+      "height": 1080,
+      "prompt": "张雪变得沉默而耐磨，知道自己没有捷径，只能一毫米一毫米把梦想焊出来。 让张雪在重庆高架桥下石灰岩洞里成为视觉中心，只保留一个环境提示。 特写，突出表情、姿态和一个支持性的场景线索。 3D动漫质感。",
+      "prompt_source": "04_episode_scene_script.json beat fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "scene=keyword_overlap",
+        "character=exact_name_match",
+        "prop=missing",
+        "shot_mode=identity_emotion_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance."
+      ],
+      "shot_mode": "identity_emotion_keyscene",
+      "prompt_template": "identity_emotion_keyscene",
+      "vehicle_shot": false,
+      "vehicle_preset": null,
+      "reference_policy": "identity_emotion_keyscene: scene + character",
+      "reference_count": 2,
+      "prompt_length": 85,
+      "legacy_prompt_length": 260,
+      "raw_source_description": "张雪变得沉默而耐磨，知道自己没有捷径，只能一毫米一毫米把梦想焊出来 | 张雪_重庆作坊期在工作台前低头校准零件，脸部轮廓硬朗、神情克制，额头和手臂沾着汗与油渍，手指捏着小型零部件谨慎对位，焊枪和图纸草稿散在一旁，背景是潮湿岩洞和临时灯光，强调从少年喊话到沉默硬扛的性格变化 | 他知道，自己没有捷径 | stoic, resolute | close-up",
+      "anti_oversize_rules": [],
+      "framing_clause": "特写，突出表情、姿态和一个支持性的场景线索。",
+      "summary": "张雪变得沉默而耐磨，知道自己没有捷径，只能一毫米一毫米把梦想焊出来。",
+      "anchor_text": "他知道，自己没有捷径。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_重庆高架桥下石灰岩洞",
+          "asset_name": "重庆高架桥下石灰岩洞",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_assets\\scenes\\scene_重庆高架桥下石灰岩洞.png"
+        },
+        "character": {
+          "asset_id": "character_张雪",
+          "asset_name": "张雪",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_assets\\characters\\character_张雪.png"
+        },
+        "prop": null
+      },
+      "matching_notes": [
+        "Matched scene asset by keyword overlap: 潮湿.",
+        "Matched character asset by explicit beat phrase: 张雪.",
+        "Prop omitted by reference policy."
+      ],
+      "validation_warnings": [
+        "ep02_s07: prop reference omitted to keep the prompt/edit set compact.",
+        "ep02_s07: scene selection for `重庆高架桥下石灰岩洞` is only weakly matched to the beat intent."
+      ],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_重庆高架桥下石灰岩洞",
+            "asset_name": "重庆高架桥下石灰岩洞",
+            "score": 6,
+            "strategy": "keyword_overlap",
+            "matched_terms": [
+              "潮湿"
+            ]
+          },
+          {
+            "asset_id": "scene_湖南乡道暴雨路段",
+            "asset_name": "湖南乡道暴雨路段",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_赛道维修区",
+            "asset_name": "赛道维修区",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_达喀尔沙漠赛道",
+            "asset_name": "达喀尔沙漠赛道",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_重庆城市桥下通道",
+            "asset_name": "重庆城市桥下通道",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [
+          {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "score": 984,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_张雪_重庆作坊期",
+            "asset_name": "张雪_重庆作坊期",
+            "score": 270,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪_重庆作坊期",
+              "张雪",
+              "重庆作坊期"
+            ]
+          },
+          {
+            "asset_id": "character_张雪_Kove创始人",
+            "asset_name": "张雪_Kove创始人",
+            "score": 24,
+            "strategy": "keyword_overlap",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_采访者",
+            "asset_name": "采访者",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "prop": []
+      },
+      "limitations": [],
+      "debug_artifact": null,
+      "resume_status": "queued",
+      "resumed_from": null,
+      "previous_output_path": null,
+      "dropped_prop_reason": "compact_reference_policy",
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_keyscenes\\keyscenes\\ep02_s07.png"
+    },
+    {
+      "timestamp": "2026-04-15T09:06:39.637106+00:00",
+      "beat_id": "ep02_s08",
+      "episode_number": 2,
+      "mode": "keyscene",
+      "style_target": "3d-anime",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 3981919567,
+      "width": 864,
+      "height": 1080,
+      "prompt": "就在这处被忽略的洞穴里，中国第一台像样的超级跑车开始有了心跳。 把关键物件压成画面主体，只保留必要的环境线索。 中景，突出物件、手部接触和局部光线。 3D动漫质感。",
+      "prompt_source": "04_episode_scene_script.json with asset fallback selection",
+      "prompt_confidence": "fallback",
+      "prompt_notes": [
+        "scene=first_available_fallback",
+        "character=missing",
+        "prop=missing",
+        "shot_mode=insert_object_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance.",
+        "Used at least one fallback-generated asset reference because no exact beat match was available."
+      ],
+      "shot_mode": "insert_object_keyscene",
+      "prompt_template": "insert_object_keyscene",
+      "vehicle_shot": false,
+      "vehicle_preset": null,
+      "reference_policy": "insert_object_keyscene: scene",
+      "reference_count": 1,
+      "prompt_length": 70,
+      "legacy_prompt_length": 251,
+      "raw_source_description": "就在这处被忽略的洞穴里，中国第一台像样的超级跑车开始有了心跳 | 半成品高性能机械心脏与原型车结构在工作台和支架上被点亮，高精度3D CG，金属件刚完成组装，局部有热量和微微震动感，周围仍是寒酸洞穴、散落工具和阴冷石壁，但核心机械区域被强调整理与照亮，形成“穷地方里诞生大东西”的视觉反差，具有开创意味 | 中国像样的超级跑车，在这里开始有了心跳 | awakening, bold | medium shot | slow tilt up",
+      "anti_oversize_rules": [],
+      "framing_clause": "中景，突出物件、手部接触和局部光线。",
+      "summary": "就在这处被忽略的洞穴里，中国第一台像样的超级跑车开始有了心跳。",
+      "anchor_text": "中国像样的超级跑车，在这里开始有了心跳。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_湖南乡道暴雨路段",
+          "asset_name": "湖南乡道暴雨路段",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_assets\\scenes\\scene_湖南乡道暴雨路段.png"
+        },
+        "character": null,
+        "prop": null
+      },
+      "matching_notes": [
+        "No reliable scene asset match was found; using the first available generated asset as fallback.",
+        "Insert/object keyscenes default to scene + prop.",
+        "No confident prop asset match was found, so this reference was omitted."
+      ],
+      "validation_warnings": [
+        "ep02_s08: insert/object beat did not find a confident prop match; generating with scene-only context.",
+        "ep02_s08: scene selection has no semantic overlap with the beat; chosen scene `湖南乡道暴雨路段` is low confidence."
+      ],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_湖南乡道暴雨路段",
+            "asset_name": "湖南乡道暴雨路段",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_赛道维修区",
+            "asset_name": "赛道维修区",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_达喀尔沙漠赛道",
+            "asset_name": "达喀尔沙漠赛道",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_重庆城市桥下通道",
+            "asset_name": "重庆城市桥下通道",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_重庆高架桥下石灰岩洞",
+            "asset_name": "重庆高架桥下石灰岩洞",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [],
+        "prop": [
+          {
+            "asset_id": "prop_Kove赛车夹克",
+            "asset_name": "Kove赛车夹克",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_木箱工具",
+            "asset_name": "木箱工具",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_焊枪",
+            "asset_name": "焊枪",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_白色旧头盔",
+            "asset_name": "白色旧头盔",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_破125小踏板摩托车",
+            "asset_name": "破125小踏板摩托车",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ]
+      },
+      "limitations": [
+        "No reliable scene asset match was found; using the first available generated asset as fallback.",
+        "ep02_s08: scene selection has no semantic overlap with the beat; chosen scene `湖南乡道暴雨路段` is low confidence."
+      ],
+      "debug_artifact": null,
+      "resume_status": "queued",
+      "resumed_from": null,
+      "previous_output_path": null,
+      "dropped_prop_reason": null,
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_keyscenes\\keyscenes\\ep02_s08.png"
+    },
+    {
+      "timestamp": "2026-04-15T09:06:39.637106+00:00",
+      "beat_id": "ep02_s09",
+      "episode_number": 2,
+      "mode": "keyscene",
+      "style_target": "3d-anime",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 1600163482,
+      "width": 864,
+      "height": 1080,
+      "prompt": "车辆在赛道上完成这一瞬间动作。 车辆保持真实赛道比例，车身完整，不过度放大，与骑手和赛道宽度关系正常。 车辆位于中景或下中部，清楚落在一条赛道空间里，赛道向背景延伸，护栏或看台保持可见。 宽构图，赛道向背景清楚延伸，车辆保持在中景，不做巨幅海报式前景。 3D动漫质感。",
+      "prompt_source": "04_episode_scene_script.json beat fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "scene=no_match",
+        "character=exact_name_match",
+        "prop=missing",
+        "shot_mode=vehicle_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance.",
+        "vehicle_preset=bike_on_track",
+        "Vehicle-shot template focuses on physical scale, blocking, and anti-oversize staging."
+      ],
+      "shot_mode": "vehicle_keyscene",
+      "prompt_template": "vehicle_keyscene",
+      "vehicle_shot": true,
+      "vehicle_preset": "bike_on_track",
+      "reference_policy": "vehicle_keyscene: scene + character",
+      "reference_count": 2,
+      "prompt_length": 115,
+      "legacy_prompt_length": 268,
+      "raw_source_description": "可当原型终于出现，他也被更现实的问题逼问——这台机器真的能跑进赛道吗 | 张雪_重庆作坊期独自站在桥下洞口，回望身后半成品原型车和散乱工具，外面是重庆桥下通道灰闷的城市空间，远处光线刺白却遥远，洞内暗、洞外亮形成鲜明门槛感，画面像在问一个几乎不可能的问题：这台手工机器能否真正冲出地下 | 可它，真能从洞里跑进赛道吗？ | uncertain, suspenseful | wide shot",
+      "anti_oversize_rules": [
+        "车辆与骑手保持真实赛道比例",
+        "车辆落在一条赛道宽度内",
+        "护栏、赛道边界和背景空间保持可见"
+      ],
+      "framing_clause": "宽构图，赛道向背景清楚延伸，车辆保持在中景，不做巨幅海报式前景。",
+      "summary": "可当原型终于出现，他也被更现实的问题逼问——这台机器真的能跑进赛道吗。",
+      "anchor_text": "可它，真能从洞里跑进赛道吗？",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_赛道维修区",
+          "asset_name": "赛道维修区",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_assets\\scenes\\scene_赛道维修区.png"
+        },
+        "character": {
+          "asset_id": "character_张雪_重庆作坊期",
+          "asset_name": "张雪_重庆作坊期",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_assets\\characters\\character_张雪_重庆作坊期.png"
+        },
+        "prop": null
+      },
+      "matching_notes": [
+        "Matched scene asset by keyword overlap: .",
+        "Matched character asset by explicit beat phrase: 张雪_重庆作坊期, 张雪, 重庆作坊期.",
+        "Track vehicle shot prefers scene + character for scale stability."
+      ],
+      "validation_warnings": [
+        "ep02_s09: dropped prop `Kove赛车夹克` on track shot to avoid poster-scale vehicle behavior; exact design stays in prompt context."
+      ],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_赛道维修区",
+            "asset_name": "赛道维修区",
+            "score": 150,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_达喀尔沙漠赛道",
+            "asset_name": "达喀尔沙漠赛道",
+            "score": 150,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_湖南乡道暴雨路段",
+            "asset_name": "湖南乡道暴雨路段",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_重庆城市桥下通道",
+            "asset_name": "重庆城市桥下通道",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_重庆高架桥下石灰岩洞",
+            "asset_name": "重庆高架桥下石灰岩洞",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [
+          {
+            "asset_id": "character_张雪_重庆作坊期",
+            "asset_name": "张雪_重庆作坊期",
+            "score": 252,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪_重庆作坊期",
+              "张雪",
+              "重庆作坊期"
+            ]
+          },
+          {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "score": 246,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_张雪_Kove创始人",
+            "asset_name": "张雪_Kove创始人",
+            "score": 6,
+            "strategy": "keyword_overlap",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_采访者",
+            "asset_name": "采访者",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "prop": []
+      },
+      "limitations": [],
+      "debug_artifact": null,
+      "resume_status": "queued",
+      "resumed_from": null,
+      "previous_output_path": null,
+      "dropped_prop_reason": "track_scale_guardrail",
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_keyscenes\\keyscenes\\ep02_s09.png"
+    },
+    {
+      "timestamp": "2026-04-15T09:06:39.637106+00:00",
+      "beat_id": "ep03_s01",
+      "episode_number": 3,
+      "mode": "keyscene",
+      "style_target": "3d-anime",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 3617126394,
+      "width": 864,
+      "height": 1080,
+      "prompt": "赛车在赛道上完成这一瞬间动作。 赛车保持真实赛道比例，车身完整，不过度放大，与骑手和赛道宽度关系正常。 车辆位于中景或下中部，清楚落在一条赛道空间里，赛道向背景延伸，护栏或看台保持可见。 宽构图，赛道向背景清楚延伸，车辆保持在中景，不做巨幅海报式前景。 3D动漫质感。",
+      "prompt_source": "04_episode_scene_script.json beat fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "scene=exact_name_match",
+        "character=exact_name_match",
+        "prop=missing",
+        "shot_mode=vehicle_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance.",
+        "vehicle_preset=bike_on_track",
+        "Vehicle-shot template focuses on physical scale, blocking, and anti-oversize staging."
+      ],
+      "shot_mode": "vehicle_keyscene",
+      "prompt_template": "vehicle_keyscene",
+      "vehicle_shot": true,
+      "vehicle_preset": "bike_on_track",
+      "reference_policy": "vehicle_keyscene: scene + character",
+      "reference_count": 2,
+      "prompt_length": 115,
+      "legacy_prompt_length": 254,
+      "raw_source_description": "2019年，张雪已经以Kove创始人的身份站在国际赛场沙漠中 | 达喀尔沙漠赛道全景，高精度3D CG，起伏沙丘与硬质沙地在强烈日照下泛白发亮，远处赛车扬起长长尘土，张雪_Kove创始人穿Kove赛车夹克、戴专业赛车头盔，站在赛道边迎风而立，身形成熟挺拔，画面强调从山沟到世界赛场的巨大跨越 | 2019年，他已经站上了世界赛场 | epic, exposed | wide shot | slow",
+      "anti_oversize_rules": [
+        "车辆与骑手保持真实赛道比例",
+        "车辆落在一条赛道宽度内",
+        "护栏、赛道边界和背景空间保持可见"
+      ],
+      "framing_clause": "宽构图，赛道向背景清楚延伸，车辆保持在中景，不做巨幅海报式前景。",
+      "summary": "2019年，张雪已经以Kove创始人的身份站在国际赛场沙漠中。",
+      "anchor_text": "2019年，他已经站上了世界赛场。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_达喀尔沙漠赛道",
+          "asset_name": "达喀尔沙漠赛道",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_assets\\scenes\\scene_达喀尔沙漠赛道.png"
+        },
+        "character": {
+          "asset_id": "character_张雪",
+          "asset_name": "张雪",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_assets\\characters\\character_张雪.png"
+        },
+        "prop": null
+      },
+      "matching_notes": [
+        "Matched scene asset by explicit beat phrase: 达喀尔沙漠赛道.",
+        "Matched character asset by explicit beat phrase: 张雪.",
+        "Track vehicle shot prefers scene + character for scale stability."
+      ],
+      "validation_warnings": [
+        "ep03_s01: dropped prop `Kove赛车夹克` on track shot to avoid poster-scale vehicle behavior; exact design stays in prompt context."
+      ],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_达喀尔沙漠赛道",
+            "asset_name": "达喀尔沙漠赛道",
+            "score": 406,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "达喀尔沙漠赛道"
+            ]
+          },
+          {
+            "asset_id": "scene_赛道维修区",
+            "asset_name": "赛道维修区",
+            "score": 150,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_湖南乡道暴雨路段",
+            "asset_name": "湖南乡道暴雨路段",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_重庆城市桥下通道",
+            "asset_name": "重庆城市桥下通道",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_重庆高架桥下石灰岩洞",
+            "asset_name": "重庆高架桥下石灰岩洞",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [
+          {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "score": 984,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_张雪_Kove创始人",
+            "asset_name": "张雪_Kove创始人",
+            "score": 288,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪_Kove创始人",
+              "张雪",
+              "Kove创始人"
+            ]
+          },
+          {
+            "asset_id": "character_张雪_重庆作坊期",
+            "asset_name": "张雪_重庆作坊期",
+            "score": 24,
+            "strategy": "keyword_overlap",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_采访者",
+            "asset_name": "采访者",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "prop": []
+      },
+      "limitations": [],
+      "debug_artifact": null,
+      "resume_status": "queued",
+      "resumed_from": null,
+      "previous_output_path": null,
+      "dropped_prop_reason": "track_scale_guardrail",
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_keyscenes\\keyscenes\\ep03_s01.png"
+    },
+    {
+      "timestamp": "2026-04-15T09:06:39.638104+00:00",
+      "beat_id": "ep03_s02",
+      "episode_number": 3,
+      "mode": "keyscene",
+      "style_target": "3d-anime",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 225903221,
+      "width": 864,
+      "height": 1080,
+      "prompt": "张雪_Kove创始人骑着或控制车辆完成这一瞬间动作。 车辆保持与张雪_Kove创始人匹配的真实整车比例，不过度放大，和道路或车道宽度关系正常。 车辆和人物位于中景或下中部，清楚落在湖南乡道暴雨路段的道路空间里，道路向背景延伸，周围保留可见环境。 中宽景，车辆位于下中部或中景，道路清楚后退到背景。 3D动漫质感。",
+      "prompt_source": "04_episode_scene_script.json with asset fallback selection",
+      "prompt_confidence": "fallback",
+      "prompt_notes": [
+        "scene=first_available_fallback",
+        "character=exact_name_match",
+        "prop=missing",
+        "shot_mode=vehicle_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance.",
+        "vehicle_preset=riding_on_road",
+        "Vehicle-shot template focuses on physical scale, blocking, and anti-oversize staging.",
+        "Used at least one fallback-generated asset reference because no exact beat match was available."
+      ],
+      "shot_mode": "vehicle_keyscene",
+      "prompt_template": "vehicle_keyscene",
+      "vehicle_shot": true,
+      "vehicle_preset": "riding_on_road",
+      "reference_policy": "vehicle_keyscene: scene + character",
+      "reference_count": 2,
+      "prompt_length": 131,
+      "legacy_prompt_length": 263,
+      "raw_source_description": "镜头里的他像标准企业家，干净、稳重、已经拥有团队与品牌 | 比赛相关公共区域或团队区域内，张雪_Kove创始人摘下头盔或以白色团队Polo搭配功能外套出现在镜头前，站姿克制，脸部轮廓被创业压力磨得更锋利，背景可见简洁团队设备与品牌元素，整体呈现成熟、专业、可被资本识别的企业家形象 | 镜头前的他，已经很像一个成功老板 | composed, professional | medium shot | static",
+      "anti_oversize_rules": [
+        "车辆与骑手保持真实整车比例",
+        "车身符合真实世界尺寸，不要过度放大",
+        "车辆与道路、车道或赛道宽度关系正常",
+        "车辆与镜头保持自然距离，不要贴满画面",
+        "画面周围保留可见环境空间"
+      ],
+      "framing_clause": "中宽景，车辆位于下中部或中景，道路清楚后退到背景。",
+      "summary": "镜头里的他像标准企业家，干净、稳重、已经拥有团队与品牌。",
+      "anchor_text": "镜头前的他，已经很像一个成功老板。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_湖南乡道暴雨路段",
+          "asset_name": "湖南乡道暴雨路段",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_assets\\scenes\\scene_湖南乡道暴雨路段.png"
+        },
+        "character": {
+          "asset_id": "character_张雪_Kove创始人",
+          "asset_name": "张雪_Kove创始人",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_assets\\characters\\character_张雪_Kove创始人.png"
+        },
+        "prop": null
+      },
+      "matching_notes": [
+        "No reliable scene asset match was found; using the first available generated asset as fallback.",
+        "Matched character asset by explicit beat phrase: 张雪_Kove创始人, 张雪, Kove创始人.",
+        "No confident prop asset match was found, so this reference was omitted."
+      ],
+      "validation_warnings": [
+        "ep03_s02: scene selection has no semantic overlap with the beat; chosen scene `湖南乡道暴雨路段` is low confidence."
+      ],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_湖南乡道暴雨路段",
+            "asset_name": "湖南乡道暴雨路段",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_赛道维修区",
+            "asset_name": "赛道维修区",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_达喀尔沙漠赛道",
+            "asset_name": "达喀尔沙漠赛道",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_重庆城市桥下通道",
+            "asset_name": "重庆城市桥下通道",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_重庆高架桥下石灰岩洞",
+            "asset_name": "重庆高架桥下石灰岩洞",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [
+          {
+            "asset_id": "character_张雪_Kove创始人",
+            "asset_name": "张雪_Kove创始人",
+            "score": 252,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪_Kove创始人",
+              "张雪",
+              "Kove创始人"
+            ]
+          },
+          {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "score": 246,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_张雪_重庆作坊期",
+            "asset_name": "张雪_重庆作坊期",
+            "score": 6,
+            "strategy": "keyword_overlap",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_采访者",
+            "asset_name": "采访者",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "prop": [
+          {
+            "asset_id": "prop_Kove赛车夹克",
+            "asset_name": "Kove赛车夹克",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_木箱工具",
+            "asset_name": "木箱工具",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_焊枪",
+            "asset_name": "焊枪",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_白色旧头盔",
+            "asset_name": "白色旧头盔",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_破125小踏板摩托车",
+            "asset_name": "破125小踏板摩托车",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ]
+      },
+      "limitations": [
+        "No reliable scene asset match was found; using the first available generated asset as fallback.",
+        "ep03_s02: scene selection has no semantic overlap with the beat; chosen scene `湖南乡道暴雨路段` is low confidence."
+      ],
+      "debug_artifact": null,
+      "resume_status": "queued",
+      "resumed_from": null,
+      "previous_output_path": null,
+      "dropped_prop_reason": null,
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_keyscenes\\keyscenes\\ep03_s02.png"
+    },
+    {
+      "timestamp": "2026-04-15T09:06:39.638104+00:00",
+      "beat_id": "ep03_s03",
+      "episode_number": 3,
+      "mode": "keyscene",
+      "style_target": "3d-anime",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 1942498747,
+      "width": 864,
+      "height": 1080,
+      "prompt": "赛车在赛道上完成这一瞬间动作。 赛车保持真实赛道比例，车身完整，不过度放大，与骑手和赛道宽度关系正常。 车辆位于中景或下中部，清楚落在一条赛道空间里，赛道向背景延伸，护栏或看台保持可见。 宽构图，赛道向背景清楚延伸，车辆保持在中景，不做巨幅海报式前景。 3D动漫质感。",
+      "prompt_source": "04_episode_scene_script.json beat fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "scene=exact_name_match",
+        "character=exact_name_match",
+        "prop=missing",
+        "shot_mode=vehicle_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance.",
+        "vehicle_preset=bike_on_track",
+        "Vehicle-shot template focuses on physical scale, blocking, and anti-oversize staging."
+      ],
+      "shot_mode": "vehicle_keyscene",
+      "prompt_template": "vehicle_keyscene",
+      "vehicle_shot": true,
+      "vehicle_preset": "bike_on_track",
+      "reference_policy": "vehicle_keyscene: scene + character",
+      "reference_count": 2,
+      "prompt_length": 115,
+      "legacy_prompt_length": 272,
+      "raw_source_description": "但真正的张雪并不待在舒适区，而是在沙尘、热浪和轰鸣里与赛车待在一起 | 达喀尔沙漠赛道边缘与维修区过渡地带，高精度3D CG，热浪扭曲空气，张雪_Kove创始人把白色Polo藏在赛车夹克下，面罩和脸颊沾着细沙，正在贴近赛车检查部件，周围没有办公室感，只有烈日、风沙、金属反光和比赛噪音，突出“成功外表”与“真实工作现场”的落差 | 可真正的他，还在风沙和金属里 | harsh, committed | medium wide shot",
+      "anti_oversize_rules": [
+        "车辆与骑手保持真实赛道比例",
+        "车辆落在一条赛道宽度内",
+        "护栏、赛道边界和背景空间保持可见"
+      ],
+      "framing_clause": "宽构图，赛道向背景清楚延伸，车辆保持在中景，不做巨幅海报式前景。",
+      "summary": "但真正的张雪并不待在舒适区，而是在沙尘、热浪和轰鸣里与赛车待在一起。",
+      "anchor_text": "可真正的他，还在风沙和金属里。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_达喀尔沙漠赛道",
+          "asset_name": "达喀尔沙漠赛道",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_assets\\scenes\\scene_达喀尔沙漠赛道.png"
+        },
+        "character": {
+          "asset_id": "character_张雪",
+          "asset_name": "张雪",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_assets\\characters\\character_张雪.png"
+        },
+        "prop": null
+      },
+      "matching_notes": [
+        "Matched scene asset by explicit beat phrase: 达喀尔沙漠赛道.",
+        "Matched character asset by explicit beat phrase: 张雪.",
+        "Track vehicle shot prefers scene + character for scale stability."
+      ],
+      "validation_warnings": [
+        "ep03_s03: dropped prop `Kove赛车夹克` on track shot to avoid poster-scale vehicle behavior; exact design stays in prompt context."
+      ],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_达喀尔沙漠赛道",
+            "asset_name": "达喀尔沙漠赛道",
+            "score": 406,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "达喀尔沙漠赛道"
+            ]
+          },
+          {
+            "asset_id": "scene_赛道维修区",
+            "asset_name": "赛道维修区",
+            "score": 150,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_湖南乡道暴雨路段",
+            "asset_name": "湖南乡道暴雨路段",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_重庆城市桥下通道",
+            "asset_name": "重庆城市桥下通道",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_重庆高架桥下石灰岩洞",
+            "asset_name": "重庆高架桥下石灰岩洞",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [
+          {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "score": 984,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_张雪_Kove创始人",
+            "asset_name": "张雪_Kove创始人",
+            "score": 270,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪_Kove创始人",
+              "张雪",
+              "Kove创始人"
+            ]
+          },
+          {
+            "asset_id": "character_张雪_重庆作坊期",
+            "asset_name": "张雪_重庆作坊期",
+            "score": 24,
+            "strategy": "keyword_overlap",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_采访者",
+            "asset_name": "采访者",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "prop": []
+      },
+      "limitations": [],
+      "debug_artifact": null,
+      "resume_status": "queued",
+      "resumed_from": null,
+      "previous_output_path": null,
+      "dropped_prop_reason": "track_scale_guardrail",
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_keyscenes\\keyscenes\\ep03_s03.png"
+    },
+    {
+      "timestamp": "2026-04-15T09:06:39.638104+00:00",
+      "beat_id": "ep03_s04",
+      "episode_number": 3,
+      "mode": "keyscene",
+      "style_target": "3d-anime",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 3220539157,
+      "width": 864,
+      "height": 1080,
+      "prompt": "赛车在赛道上完成这一瞬间动作。 赛车保持真实赛道比例，车身完整，不过度放大，与骑手和赛道宽度关系正常。 车辆位于中景或下中部，清楚落在一条赛道空间里，赛道向背景延伸，护栏或看台保持可见。 中宽景，赛道向背景清楚延伸，车辆保持在中景，不做巨幅海报式前景。 3D动漫质感。",
+      "prompt_source": "04_episode_scene_script.json beat fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "scene=exact_name_match",
+        "character=exact_name_match",
+        "prop=missing",
+        "shot_mode=vehicle_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance.",
+        "vehicle_preset=bike_on_track",
+        "Vehicle-shot template focuses on physical scale, blocking, and anti-oversize staging."
+      ],
+      "shot_mode": "vehicle_keyscene",
+      "prompt_template": "vehicle_keyscene",
+      "vehicle_shot": true,
+      "vehicle_preset": "bike_on_track",
+      "reference_policy": "vehicle_keyscene: scene + character",
+      "reference_count": 2,
+      "prompt_length": 115,
+      "legacy_prompt_length": 279,
+      "raw_source_description": "深夜的维修区里，别的老板在看数据，他却蹲在赛车底下亲手排查故障 | 赛道维修区深夜场景，高精度3D CG，工作灯打出强烈明暗反差，赛车停在防滑垫上，工具架、金属箱和备用轮胎围在周围，张雪_Kove创始人半跪半蹲探进车底，手伸向变速箱区域拧紧机械部件，赛车头盔放在旁边，空气里有机油和橡胶质感，画面重点是亲力亲为的老板姿态 | 凌晨三点，他还蹲在赛车底下 | tense, obsessive | low angle medium shot",
+      "anti_oversize_rules": [
+        "车辆与骑手保持真实赛道比例",
+        "车辆落在一条赛道宽度内",
+        "护栏、赛道边界和背景空间保持可见"
+      ],
+      "framing_clause": "中宽景，赛道向背景清楚延伸，车辆保持在中景，不做巨幅海报式前景。",
+      "summary": "深夜的维修区里，别的老板在看数据，他却蹲在赛车底下亲手排查故障。",
+      "anchor_text": "凌晨三点，他还蹲在赛车底下。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_赛道维修区",
+          "asset_name": "赛道维修区",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_assets\\scenes\\scene_赛道维修区.png"
+        },
+        "character": {
+          "asset_id": "character_张雪_Kove创始人",
+          "asset_name": "张雪_Kove创始人",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_assets\\characters\\character_张雪_Kove创始人.png"
+        },
+        "prop": null
+      },
+      "matching_notes": [
+        "Matched scene asset by explicit beat phrase: 赛道维修区, 备用轮胎.",
+        "Matched character asset by explicit beat phrase: 张雪_Kove创始人, 张雪, Kove创始人.",
+        "Track vehicle shot prefers scene + character for scale stability."
+      ],
+      "validation_warnings": [
+        "ep03_s04: dropped prop `赛车头盔` on track shot to avoid poster-scale vehicle behavior; exact design stays in prompt context."
+      ],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_赛道维修区",
+            "asset_name": "赛道维修区",
+            "score": 402,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "赛道维修区",
+              "备用轮胎"
+            ]
+          },
+          {
+            "asset_id": "scene_达喀尔沙漠赛道",
+            "asset_name": "达喀尔沙漠赛道",
+            "score": 150,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_湖南乡道暴雨路段",
+            "asset_name": "湖南乡道暴雨路段",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_重庆城市桥下通道",
+            "asset_name": "重庆城市桥下通道",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_重庆高架桥下石灰岩洞",
+            "asset_name": "重庆高架桥下石灰岩洞",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [
+          {
+            "asset_id": "character_张雪_Kove创始人",
+            "asset_name": "张雪_Kove创始人",
+            "score": 252,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪_Kove创始人",
+              "张雪",
+              "Kove创始人"
+            ]
+          },
+          {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "score": 246,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_张雪_重庆作坊期",
+            "asset_name": "张雪_重庆作坊期",
+            "score": 6,
+            "strategy": "keyword_overlap",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_采访者",
+            "asset_name": "采访者",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "prop": []
+      },
+      "limitations": [],
+      "debug_artifact": null,
+      "resume_status": "queued",
+      "resumed_from": null,
+      "previous_output_path": null,
+      "dropped_prop_reason": "track_scale_guardrail",
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_keyscenes\\keyscenes\\ep03_s04.png"
+    },
+    {
+      "timestamp": "2026-04-15T09:06:39.638104+00:00",
+      "beat_id": "ep03_s05",
+      "episode_number": 3,
+      "mode": "keyscene",
+      "style_target": "3d-anime",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 2169988808,
+      "width": 864,
+      "height": 1080,
+      "prompt": "张雪_Kove创始人在赛道维修区里围绕Kove赛车夹克操作或检修。 Kove赛车夹克保持真实尺寸关系，不要把整车或机械放大成贴脸巨物。 Kove赛车夹克位于工位或工作区中景，周围保留工具、地面和工作间空间，机械与环境保持连贯。 中宽景，机械与工作区关系清楚，保留地面和工位边界。 3D动漫质感。",
+      "prompt_source": "04_episode_scene_script.json beat fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "scene=no_match",
+        "character=exact_name_match",
+        "prop=no_match",
+        "shot_mode=vehicle_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance.",
+        "vehicle_preset=workshop_vehicle_interaction",
+        "Vehicle-shot template focuses on physical scale, blocking, and anti-oversize staging."
+      ],
+      "shot_mode": "vehicle_keyscene",
+      "prompt_template": "vehicle_keyscene",
+      "vehicle_shot": true,
+      "vehicle_preset": "workshop_vehicle_interaction",
+      "reference_policy": "vehicle_keyscene: scene + character + prop",
+      "reference_count": 3,
+      "prompt_length": 118,
+      "legacy_prompt_length": 272,
+      "raw_source_description": "那双手即使走到国际赛场，依旧和当年修车铺里的一样沾着油污 | 张雪_Kove创始人的双手特写，高精度3D CG，手指关节粗糙、指甲缝有顽固黑色油渍，正握着扳手处理赛车机械连接件，金属表面有细沙和热感，背景虚化为维修灯和赛车底盘，画面把“创始人身份”拉回“修车人本质” | 他的手，从来没离开过机油 | tactile, revealing | insert | static",
+      "anti_oversize_rules": [
+        "车辆与骑手保持真实整车比例",
+        "车身符合真实世界尺寸，不要过度放大",
+        "车辆与道路、车道或赛道宽度关系正常",
+        "车辆与镜头保持自然距离，不要贴满画面",
+        "画面周围保留可见环境空间"
+      ],
+      "framing_clause": "中宽景，机械与工作区关系清楚，保留地面和工位边界。",
+      "summary": "那双手即使走到国际赛场，依旧和当年修车铺里的一样沾着油污。",
+      "anchor_text": "他的手，从来没离开过机油。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_赛道维修区",
+          "asset_name": "赛道维修区",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_assets\\scenes\\scene_赛道维修区.png"
+        },
+        "character": {
+          "asset_id": "character_张雪_Kove创始人",
+          "asset_name": "张雪_Kove创始人",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_assets\\characters\\character_张雪_Kove创始人.png"
+        },
+        "prop": {
+          "asset_id": "prop_Kove赛车夹克",
+          "asset_name": "Kove赛车夹克",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_assets\\props\\prop_Kove赛车夹克.png"
+        }
+      },
+      "matching_notes": [
+        "Matched scene asset by keyword overlap: .",
+        "Matched character asset by explicit beat phrase: 张雪_Kove创始人, 张雪, Kove创始人.",
+        "Matched prop asset by keyword overlap: ."
+      ],
+      "validation_warnings": [],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_赛道维修区",
+            "asset_name": "赛道维修区",
+            "score": 150,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_达喀尔沙漠赛道",
+            "asset_name": "达喀尔沙漠赛道",
+            "score": 150,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_湖南乡道暴雨路段",
+            "asset_name": "湖南乡道暴雨路段",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_重庆城市桥下通道",
+            "asset_name": "重庆城市桥下通道",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_重庆高架桥下石灰岩洞",
+            "asset_name": "重庆高架桥下石灰岩洞",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [
+          {
+            "asset_id": "character_张雪_Kove创始人",
+            "asset_name": "张雪_Kove创始人",
+            "score": 252,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪_Kove创始人",
+              "张雪",
+              "Kove创始人"
+            ]
+          },
+          {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "score": 246,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_张雪_重庆作坊期",
+            "asset_name": "张雪_重庆作坊期",
+            "score": 6,
+            "strategy": "keyword_overlap",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_采访者",
+            "asset_name": "采访者",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "prop": [
+          {
+            "asset_id": "prop_Kove赛车夹克",
+            "asset_name": "Kove赛车夹克",
+            "score": 140,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_破125小踏板摩托车",
+            "asset_name": "破125小踏板摩托车",
+            "score": 140,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_赛车头盔",
+            "asset_name": "赛车头盔",
+            "score": 140,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_木箱工具",
+            "asset_name": "木箱工具",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "prop_焊枪",
+            "asset_name": "焊枪",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ]
+      },
+      "limitations": [],
+      "debug_artifact": null,
+      "resume_status": "queued",
+      "resumed_from": null,
+      "previous_output_path": null,
+      "dropped_prop_reason": null,
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_keyscenes\\keyscenes\\ep03_s05.png"
+    },
+    {
+      "timestamp": "2026-04-15T09:06:39.639104+00:00",
+      "beat_id": "ep03_s06",
+      "episode_number": 3,
+      "mode": "keyscene",
+      "style_target": "3d-anime",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 415893878,
+      "width": 864,
+      "height": 1080,
+      "prompt": "赛车在赛道上完成这一瞬间动作。 赛车保持真实赛道比例，车身完整，不过度放大，与骑手和赛道宽度关系正常。 车辆位于中景或下中部，清楚落在一条赛道空间里，赛道向背景延伸，护栏或看台保持可见。 中宽景，赛道向背景清楚延伸，车辆保持在中景，不做巨幅海报式前景。 3D动漫质感。",
+      "prompt_source": "04_episode_scene_script.json beat fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "scene=exact_name_match",
+        "character=exact_name_match",
+        "prop=missing",
+        "shot_mode=vehicle_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance.",
+        "vehicle_preset=bike_on_track",
+        "Vehicle-shot template focuses on physical scale, blocking, and anti-oversize staging."
+      ],
+      "shot_mode": "vehicle_keyscene",
+      "prompt_template": "vehicle_keyscene",
+      "vehicle_shot": true,
+      "vehicle_preset": "bike_on_track",
+      "reference_policy": "vehicle_keyscene: scene + character",
+      "reference_count": 2,
+      "prompt_length": 115,
+      "legacy_prompt_length": 286,
+      "raw_source_description": "Kove被他真正推到世界舞台，但他要的从来不是开会和稳定，而是能吼出来的机器 | 赛道维修区与沙漠背景相连的区域，张雪_Kove创始人站在赛车旁，夹克被风吹起，头盔夹在臂弯或戴在头上，目光越过团队设备看向赛道远方，身后可见Kove品牌赛车与专业装备，既有成熟品牌气质，也保留强烈机械执念，画面突出“公司、名气、资本”都压不住他的极限导向 | 他要的不是稳定，是一台能吼出来的机器 | driven, uncompromising | medium close-up",
+      "anti_oversize_rules": [
+        "车辆与骑手保持真实赛道比例",
+        "车辆落在一条赛道宽度内",
+        "护栏、赛道边界和背景空间保持可见"
+      ],
+      "framing_clause": "中宽景，赛道向背景清楚延伸，车辆保持在中景，不做巨幅海报式前景。",
+      "summary": "Kove被他真正推到世界舞台，但他要的从来不是开会和稳定，而是能吼出来的机器。",
+      "anchor_text": "他要的不是稳定，是一台能吼出来的机器。",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_赛道维修区",
+          "asset_name": "赛道维修区",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_assets\\scenes\\scene_赛道维修区.png"
+        },
+        "character": {
+          "asset_id": "character_张雪_Kove创始人",
+          "asset_name": "张雪_Kove创始人",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_assets\\characters\\character_张雪_Kove创始人.png"
+        },
+        "prop": null
+      },
+      "matching_notes": [
+        "Matched scene asset by explicit beat phrase: 赛道维修区.",
+        "Matched character asset by explicit beat phrase: 张雪_Kove创始人, 张雪, Kove创始人.",
+        "Track vehicle shot prefers scene + character for scale stability."
+      ],
+      "validation_warnings": [
+        "ep03_s06: dropped prop `Kove赛车夹克` on track shot to avoid poster-scale vehicle behavior; exact design stays in prompt context."
+      ],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_赛道维修区",
+            "asset_name": "赛道维修区",
+            "score": 396,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "赛道维修区"
+            ]
+          },
+          {
+            "asset_id": "scene_达喀尔沙漠赛道",
+            "asset_name": "达喀尔沙漠赛道",
+            "score": 160,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_湖南乡道暴雨路段",
+            "asset_name": "湖南乡道暴雨路段",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_重庆城市桥下通道",
+            "asset_name": "重庆城市桥下通道",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_重庆高架桥下石灰岩洞",
+            "asset_name": "重庆高架桥下石灰岩洞",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [
+          {
+            "asset_id": "character_张雪_Kove创始人",
+            "asset_name": "张雪_Kove创始人",
+            "score": 252,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪_Kove创始人",
+              "张雪",
+              "Kove创始人"
+            ]
+          },
+          {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "score": 246,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_张雪_重庆作坊期",
+            "asset_name": "张雪_重庆作坊期",
+            "score": 6,
+            "strategy": "keyword_overlap",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_采访者",
+            "asset_name": "采访者",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "prop": []
+      },
+      "limitations": [],
+      "debug_artifact": null,
+      "resume_status": "queued",
+      "resumed_from": null,
+      "previous_output_path": null,
+      "dropped_prop_reason": "track_scale_guardrail",
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_keyscenes\\keyscenes\\ep03_s06.png"
+    },
+    {
+      "timestamp": "2026-04-15T09:06:39.639104+00:00",
+      "beat_id": "ep03_s07",
+      "episode_number": 3,
+      "mode": "keyscene",
+      "style_target": "3d-anime",
+      "chosen_model": "black-forest-labs/FLUX.2-klein-4B",
+      "backend": "klein_cli",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "seed": 476154999,
+      "width": 864,
+      "height": 1080,
+      "prompt": "赛车在赛道上完成这一瞬间动作。 赛车保持真实赛道比例，车身完整，不过度放大，与骑手和赛道宽度关系正常。 车辆位于中景或下中部，清楚落在一条赛道空间里，赛道向背景延伸，护栏或看台保持可见。 宽构图，赛道向背景清楚延伸，车辆保持在中景，不做巨幅海报式前景。 3D动漫质感。",
+      "prompt_source": "04_episode_scene_script.json beat fields",
+      "prompt_confidence": "structured",
+      "prompt_notes": [
+        "scene=no_match",
+        "character=exact_name_match",
+        "prop=missing",
+        "shot_mode=vehicle_keyscene",
+        "Compressed for FLUX.2 klein image editing: describe the target relation and let references carry appearance.",
+        "vehicle_preset=bike_on_track",
+        "Vehicle-shot template focuses on physical scale, blocking, and anti-oversize staging."
+      ],
+      "shot_mode": "vehicle_keyscene",
+      "prompt_template": "vehicle_keyscene",
+      "vehicle_shot": true,
+      "vehicle_preset": "bike_on_track",
+      "reference_policy": "vehicle_keyscene: scene + character",
+      "reference_count": 2,
+      "prompt_length": 115,
+      "legacy_prompt_length": 283,
+      "raw_source_description": "成功没有让他停下，反而把他推到“稳定经营”与“继续冒险”之间的危险边缘 | 达喀尔赛道与维修区交界的黄昏或深夜过渡时刻，高精度3D CG，远处赛道空旷，近处赛车、工具和工作灯构成冷硬前景，张雪_Kove创始人独自站在光影分界线之间，一边是成熟团队和秩序，一边是黑暗中延伸的赛道与未知风险，画面带有命运选择意味，为下阶段冲突留钩子 | 如果稳定和极限冲突，他会选哪边？ | ominous, conflicted | wide shot",
+      "anti_oversize_rules": [
+        "车辆与骑手保持真实赛道比例",
+        "车辆落在一条赛道宽度内",
+        "护栏、赛道边界和背景空间保持可见"
+      ],
+      "framing_clause": "宽构图，赛道向背景清楚延伸，车辆保持在中景，不做巨幅海报式前景。",
+      "summary": "成功没有让他停下，反而把他推到“稳定经营”与“继续冒险”之间的危险边缘。",
+      "anchor_text": "如果稳定和极限冲突，他会选哪边？",
+      "selected_assets": {
+        "scene": {
+          "asset_id": "scene_达喀尔沙漠赛道",
+          "asset_name": "达喀尔沙漠赛道",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_assets\\scenes\\scene_达喀尔沙漠赛道.png"
+        },
+        "character": {
+          "asset_id": "character_张雪_Kove创始人",
+          "asset_name": "张雪_Kove创始人",
+          "path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_assets\\characters\\character_张雪_Kove创始人.png"
+        },
+        "prop": null
+      },
+      "matching_notes": [
+        "Matched scene asset by keyword overlap: .",
+        "Matched character asset by explicit beat phrase: 张雪_Kove创始人, 张雪, Kove创始人.",
+        "Track vehicle shot prefers scene + character for scale stability."
+      ],
+      "validation_warnings": [
+        "ep03_s07: dropped prop `Kove赛车夹克` on track shot to avoid poster-scale vehicle behavior; exact design stays in prompt context."
+      ],
+      "candidate_scores": {
+        "scene": [
+          {
+            "asset_id": "scene_达喀尔沙漠赛道",
+            "asset_name": "达喀尔沙漠赛道",
+            "score": 160,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_赛道维修区",
+            "asset_name": "赛道维修区",
+            "score": 150,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_湖南乡道暴雨路段",
+            "asset_name": "湖南乡道暴雨路段",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_重庆城市桥下通道",
+            "asset_name": "重庆城市桥下通道",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          },
+          {
+            "asset_id": "scene_重庆高架桥下石灰岩洞",
+            "asset_name": "重庆高架桥下石灰岩洞",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "character": [
+          {
+            "asset_id": "character_张雪_Kove创始人",
+            "asset_name": "张雪_Kove创始人",
+            "score": 252,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪_Kove创始人",
+              "张雪",
+              "Kove创始人"
+            ]
+          },
+          {
+            "asset_id": "character_张雪",
+            "asset_name": "张雪",
+            "score": 246,
+            "strategy": "exact_name_match",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_张雪_重庆作坊期",
+            "asset_name": "张雪_重庆作坊期",
+            "score": 6,
+            "strategy": "keyword_overlap",
+            "matched_terms": [
+              "张雪"
+            ]
+          },
+          {
+            "asset_id": "character_采访者",
+            "asset_name": "采访者",
+            "score": 0,
+            "strategy": "no_match",
+            "matched_terms": []
+          }
+        ],
+        "prop": []
+      },
+      "limitations": [],
+      "debug_artifact": null,
+      "resume_status": "queued",
+      "resumed_from": null,
+      "previous_output_path": null,
+      "dropped_prop_reason": "track_scale_guardrail",
+      "output_path": "C:\\Users\\CP\\Documents\\WORKSPACES\\ONE4ALL\\outputs\\flux-asset-and-scene-generation\\04_episode_scene_script__20260415_165554\\generated_keyscenes\\keyscenes\\ep03_s07.png"
+    }
+  ]
+}

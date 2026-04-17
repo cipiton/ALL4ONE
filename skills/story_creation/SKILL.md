@@ -21,14 +21,14 @@ metadata:
       en: "This workflow is for original concept creation, not source adaptation, and can start directly from a short brief."
       zh: "此流程用于原创故事创建而不是源文本改编，可以直接从简短需求开始。"
     input_hint:
-      en: "Paste a short creative brief directly, or send a `.txt` file or folder if you already drafted notes."
-      zh: "可直接粘贴简短创意需求，也可以提供已整理好的 `.txt` 文件或文件夹。"
+      en: "Story Creation input: paste a short original-story brief directly, or send a `.txt` file/folder containing concept notes."
+      zh: "原创故事创建输入：可直接粘贴简短原创故事需求，也可以提供包含概念笔记的 `.txt` 文件或文件夹。"
     output_hint:
       en: "Writes an original story package that can feed later planning or scripting workflows."
       zh: "会生成可供后续策划或剧本流程继续使用的原创故事包。"
     starter_prompt:
-      en: "Send a short story brief or paste it directly here."
-      zh: "请提供简短故事需求，或直接在这里粘贴内容。"
+      en: "Send a short original-story brief, or paste it directly here."
+      zh: "请提供简短原创故事需求，或直接在这里粘贴内容。"
     inline_input_prompt:
       en: "Enter a file path, folder path, or a short creative brief directly."
       zh: "请输入文件路径、文件夹路径，或直接输入简短创意需求。"

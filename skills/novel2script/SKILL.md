@@ -1,6 +1,6 @@
 ---
 name: novel2script
-description: end-to-end workflow for chinese ai short drama / vertical microdrama creation. use when the user wants to turn an idea, premise, novel excerpt, character sheet, episode outline, or draft script into story polish, episode plot, highlight beats, per-episode screenplay, script analysis, production asset extraction, or asset image config; supports full pipeline or any single step with iterative revisions.
+description: end-to-end workflow for chinese ai short drama / vertical microdrama creation. use when the user wants to turn an idea, premise, novel excerpt, character profile, episode outline, or draft script into story polish, episode plot, highlight beats, per-episode screenplay, script analysis, production asset extraction, or asset image config; supports full pipeline or any single step with iterative revisions.
 metadata:
   display_name: Novel 2 Script
   i18n:
@@ -14,14 +14,14 @@ metadata:
       en: "Choose the starting step in chat and continue through the pipeline one approved step at a time."
       zh: "可在对话中选择起始步骤，并按已确认的步骤逐步推进整条流程。"
     input_hint:
-      en: "Send a `.txt` file, a folder of `.txt` files, or direct story brief text when suitable."
-      zh: "请提供 `.txt` 文件、包含 `.txt` 的文件夹，或在适合时直接输入故事需求文本。"
+      en: "Novel 2 Script input: send source material as a `.txt` file, a folder of `.txt` files, or a direct story brief when starting from an idea."
+      zh: "小说转剧本输入：请提供 `.txt` 源素材文件、包含 `.txt` 的文件夹；如果从创意开始，也可直接输入故事需求。"
     output_hint:
       en: "Writes step-by-step short-drama production deliverables such as outline, highlights, scripts, analysis, and assets."
       zh: "会按步骤生成短剧生产结果，例如大纲、亮点、剧本、分析和资产文件。"
     starter_prompt:
-      en: "Send the source material for the novel-to-script workflow."
-      zh: "请提供小说转剧本流程所需的源素材。"
+      en: "Send the source material, folder, or direct brief for the novel-to-script workflow."
+      zh: "请提供小说转剧本流程所需的源素材、文件夹或直接创意需求。"
   supports_resume: true
   input_extensions:
     - .txt

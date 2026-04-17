@@ -1,0 +1,84 @@
+{
+  "shot_id": "ep01_s03",
+  "episode_id": "ep01",
+  "request": {
+    "episode_id": "ep01",
+    "shot_id": "ep01_s03",
+    "shot_number": 3,
+    "total_shots": 3,
+    "summary": "采访车内的采访者和司机从惊讶转为警觉，终于决定停车看看这个少年到底想干什么",
+    "visual_prompt": "从采访车内部向前挡风玻璃和后视方向看的视角，高精度3D CG，雨刷快速摆动，玻璃上布满水痕，浅色衬衫的中年采访者与司机神情疲惫又疑惑，远处黄雨衣少年仍在雨幕中追近，车内昏暗潮湿，外部泥路和灰天形成压迫感，强调“原本想放弃空跑却被迫停下”的纪录片现场感",
+    "anchor_text": "我们终于决定，把车停下来",
+    "shot_type": "over-the-shoulder",
+    "camera_motion": "镜头缓慢推进",
+    "emotion": "wary， curious",
+    "duration_hint": "3-5s",
+    "priority": "medium",
+    "beat_role": "development",
+    "asset_focus": "interaction"
+  },
+  "result_status": "success",
+  "result_source": "gemini",
+  "warning": "",
+  "payload": {
+    "episode_id": "ep01",
+    "shot_id": "ep01_s03",
+    "shot_type": "over-the-shoulder",
+    "primary_action": "采访者和司机从惊讶转为警觉，终于决定停车",
+    "secondary_motion": "雨刷快速摆动，少年在雨幕中追近",
+    "environment_motion": "雨幕持续压低视线",
+    "camera_motion": "镜头缓慢推进",
+    "emotion": "wary, curious",
+    "duration_hint": "3-5s",
+    "final_prompt": "采访者和司机从惊讶转为警觉，终于决定停车，雨刷快速摆动，少年在雨幕中追近，雨幕持续压低视线，镜头缓慢推进。"
+  },
+  "validation_issues": [],
+  "raw_response_text": "{\n  \"episode_id\": \"ep01\",\n  \"shot_id\": \"ep01_s03\",\n  \"shot_type\": \"over-the-shoulder\",\n  \"primary_action\": \"采访者和司机从惊讶转为警觉，终于决定停车\",\n  \"secondary_motion\": \"雨刷快速摆动，少年在雨幕中追近\",\n  \"environment_motion\": \"无\",\n  \"camera_motion\": \"镜头缓慢推进\",\n  \"emotion\": \"wary, curious\",\n  \"duration_hint\": \"3-5s\",\n  \"final_prompt\": \"从采访车内部向前挡风玻璃和后视方向看的视角，高精度3D CG，雨刷快速摆动，玻璃上布满水痕，浅色衬衫的中年采访者与司机神情疲惫又疑惑，远处黄雨衣少年仍在雨幕中追近，车内昏暗潮湿，外部泥路和灰天形成压迫感，采访者和司机从惊讶转为警觉，终于决定停车，镜头缓慢推进。\"\n}",
+  "raw_response_json": {
+    "id": "gen-1776248606-xmvUgk8rgIdkR1VJcg6q",
+    "object": "chat.completion",
+    "created": 1776248606,
+    "model": "google/gemini-2.5-flash",
+    "provider": "Google",
+    "system_fingerprint": null,
+    "choices": [
+      {
+        "index": 0,
+        "logprobs": null,
+        "finish_reason": "stop",
+        "native_finish_reason": "STOP",
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"episode_id\": \"ep01\",\n  \"shot_id\": \"ep01_s03\",\n  \"shot_type\": \"over-the-shoulder\",\n  \"primary_action\": \"采访者和司机从惊讶转为警觉，终于决定停车\",\n  \"secondary_motion\": \"雨刷快速摆动，少年在雨幕中追近\",\n  \"environment_motion\": \"无\",\n  \"camera_motion\": \"镜头缓慢推进\",\n  \"emotion\": \"wary, curious\",\n  \"duration_hint\": \"3-5s\",\n  \"final_prompt\": \"从采访车内部向前挡风玻璃和后视方向看的视角，高精度3D CG，雨刷快速摆动，玻璃上布满水痕，浅色衬衫的中年采访者与司机神情疲惫又疑惑，远处黄雨衣少年仍在雨幕中追近，车内昏暗潮湿，外部泥路和灰天形成压迫感，采访者和司机从惊讶转为警觉，终于决定停车，镜头缓慢推进。\"\n}",
+          "refusal": null,
+          "reasoning": null
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 587,
+      "completion_tokens": 244,
+      "total_tokens": 831,
+      "cost": 0.0007861,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.0007861,
+        "upstream_inference_prompt_cost": 0.0001761,
+        "upstream_inference_completions_cost": 0.00061
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    }
+  },
+  "resolved_model": "google/gemini-2.5-flash",
+  "resolved_route": "global default: openrouter / google/gemini-2.5-flash (step override)"
+}
